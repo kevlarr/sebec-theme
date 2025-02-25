@@ -3,10 +3,7 @@
     "type": "dark",
     "semanticHighlighting": true,
     "colors": {
-        "editor.background": "#212630",
-        "editor.foreground": "#BFC8D9",
-        "editorWidget.background": "#3B4352",
-        "sideBar.background": "#1B1F27"
+        "editor.background": "#212630"
     },
     "token_colors": []
 }

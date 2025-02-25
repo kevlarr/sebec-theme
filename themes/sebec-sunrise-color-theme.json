@@ -1,10 +1,9 @@
 {
-	"name": "Sebec Sunrise",
-	"type": "light",
-  	"semanticHighlighting": true,
-	"colors": {
-		"editor.background": "#f5f5f5",
-		"editor.foreground": "#333333",
-        "list.activeSelectionIconForeground": "#fff"
-	}
+    "name": "sebec-sunrise",
+    "type": "light",
+    "semanticHighlighting": true,
+    "colors": {
+        "editor.background": "#F0EFEA"
+    },
+    "token_colors": []
 }
