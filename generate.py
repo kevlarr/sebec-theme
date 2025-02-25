@@ -151,13 +151,6 @@ Twilight = Theme(
 )
 
 
-def main():
-    export_palette()
-    Sunrise.save()
-    Twilight.save()
-    print("Themes generated successfully!")
-
-
 def export_palette():
     midpoint = int("ffffff", 16) // 2
     body = ""
@@ -190,11 +183,19 @@ def export_palette():
                 brightness = 0.3
 
         divStyle = f'style="background-color: {color_value};"'
-        spanStyle = f'style="color: {color_value}; filter: brightness({brightness})"'
+        buttonStyle = f'style="color: {color_value}; filter: brightness({brightness})"'
 
-        body += f'<div class="swatch" {divStyle} data-color-value="{color_value}" data-color-name="{color_name}">'
-        body += f'<span class="swatch-name" {spanStyle}>{color_name}</span>'
-        body += f'<span class="swatch-code" {spanStyle}>{color_value}</span>'
+        body += f'''<div
+            class="swatch" {divStyle}
+            data-color-value="{color_value}"
+            data-color-name="{color_name}"
+        >'''
+        body += f'''<button
+            class="swatch-name"
+            {buttonStyle}>{color_name}</button>'''
+        body += f'''<button
+            class="swatch-value"
+            {buttonStyle}>{color_value}</button>'''
         body += f'</div>'
 
     script = f"""
@@ -215,10 +216,15 @@ def export_palette():
     }}
 
     window.onload = function() {{
-        const swatches = document.querySelectorAll('.swatch');
-        swatches.forEach(swatch => {{
-            const paletteColor = `Color.${{swatch.dataset.colorName}}`;
-            swatch.addEventListener('click', () => copyText(paletteColor));
+        const swatchNames = document.querySelectorAll('.swatch-name');
+        swatchNames.forEach(name => {{
+            const paletteColor = `Color.${{name.textContent}}`;
+            name.addEventListener('click', () => copyText(paletteColor));
+        }});
+        const swatchValues = document.querySelectorAll('.swatch-value');
+        swatchValues.forEach(value => {{
+            const hex = value.textContent.slice(1);
+            value.addEventListener('click', () => copyText(hex));
         }});
     }};
     """
@@ -242,33 +248,38 @@ def export_palette():
             gap: 1rem;
             padding: 1rem;
         }}
+        button {{
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+        }}
+        button:hover {{
+            transform: scale(1.1);
+        }}
+        button:active {{
+            transform: scale(1.05);
+        }}
+        button, button:hover, button:active {{
+            transition: all 0.1s ease;
+        }}
         .swatch {{
             align-items: center;
             border-radius: 8px;
-            cursor: pointer;
             display: flex;
             flex-direction: column;
+            gap: 0.25rem;
             height: 64px;
             justify-content: center;
             width: 128px;
         }}
-        .swatch:hover {{
-            transform: scale(1.1);
-        }}
-        .swatch:active {{
-            transform: scale(1.05);
-        }}
-        .swatch, .swatch:hover, .swatch:active {{
-            transition: all 0.1s ease;
-        }}
         .swatch-name,
-        .swatch-code {{
-        font-size: 16px;
+        .swatch-value {{
+            font-size: 16px;
         }}
         .swatch-name {{
             font-weight: 900;
         }}
-        .swatch-code {{
+        .swatch-value {{
             font-style: italic;
             font-weight: 100;
         }}
@@ -277,6 +288,13 @@ def export_palette():
 
     with open("output/palette.html", "w") as f:
         f.write(page)
+
+
+def main():
+    export_palette()
+    Sunrise.save()
+    Twilight.save()
+    print("Themes and palette generated successfully!")
 
 
 if __name__ == "__main__":
