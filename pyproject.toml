@@ -1,0 +1,16 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "sebec"
+version = "0.1.0"
+description = ""
+authors = ["kevlarr <6306496+kevlarr@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+generate = "sebec.scripts.generate:main"
+
+[tool.poetry.dependencies]
+python = "^3.13"

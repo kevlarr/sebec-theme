@@ -3,7 +3,18 @@
     "type": "dark",
     "semanticHighlighting": true,
     "colors": {
-        "editor.background": "#212630"
+        "focusBorder": "#4C9DB8",
+        "foreground": "#C0C8D8",
+        "disabledForeground": "#4C566A",
+        "widget.border": "#4A6A96",
+        "editor.background": "#212630",
+        "editor.foreground": "#C0C8D8",
+        "editorWidget.background": "#3B4352",
+        "editorWidget.foreground": "#CCD3E0",
+        "sideBar.background": "#15181E",
+        "sideBar.foreground": "#ABB3C4",
+        "panel.background": "#1B1F27",
+        "terminal.foreground": "#B6BECE"
     },
     "token_colors": []
 }
