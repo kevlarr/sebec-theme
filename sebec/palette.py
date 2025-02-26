@@ -62,3 +62,11 @@ class Color(enum.StrEnum):
     solarOrange1 = "#D08870"
     solarYellow0 = "#E5BB67"
     solarYellow1 = "#EBCB8B"
+
+    def alpha(self, alpha: float) -> str:
+        """
+        Returns the color value with the alpha level appended to it,
+        convered to hexadecimal.
+        """
+        alpha = max(0.0, min(1.0, alpha))  # Clamp alpha to [0.0, 1.0]
+        return f"{self.value}{int(alpha * 255):02x}"

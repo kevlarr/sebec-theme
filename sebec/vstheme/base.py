@@ -9,6 +9,9 @@ from sebec.palette import Color
 PATH_TEMPLATE = str(pathlib.Path(__file__).parent.parent.parent / "themes/{name}-color-theme.json")
 
 
+Element = str
+
+
 class ThemeCategory(enum.StrEnum):
     light = "light"
     dark = "dark"
@@ -18,7 +21,9 @@ class ThemeCategory(enum.StrEnum):
 class Theme:
     name: str
     category: ThemeCategory
-    color_sections: list[dict[str, Color]]
+    colors: dict[str, list[Element]]
+    """Map of hexadecimal color codes (with or without alpha level) to
+    the list of elements that use that color."""
     # token_colors: list
 
     def save(self):
@@ -28,8 +33,9 @@ class Theme:
                 "type": self.category,
                 "semanticHighlighting": True,
                 "colors": {
-                    k: v for section in self.color_sections
-                    for k, v in section.items()
+                    element: color
+                    for color, element_list in self.colors.items()
+                    for element in element_list
                 },
                 "token_colors": [],
             }

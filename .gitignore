@@ -1,2 +1,4 @@
 output/
 palette.afdesign~lock~
+#**/__pycache__/
+#**/*.pyc
