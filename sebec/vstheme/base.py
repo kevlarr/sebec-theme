@@ -18,13 +18,20 @@ class ThemeCategory(enum.StrEnum):
 
 
 @dataclasses.dataclass
+class TokenColor:
+    name: str
+    scope: str | list[str]
+    settings: dict[str, str]
+
+
+@dataclasses.dataclass
 class Theme:
     name: str
     category: ThemeCategory
     colors: dict[str, list[Element]]
     """Map of hexadecimal color codes (with or without alpha level) to
     the list of elements that use that color."""
-    # token_colors: list
+    token_colors: list[TokenColor]
 
     def save(self):
         with open(PATH_TEMPLATE.format(name=self.name), "w") as f:
@@ -37,6 +44,9 @@ class Theme:
                     for color, element_list in self.colors.items()
                     for element in element_list
                 },
-                "token_colors": [],
+                "tokenColors": [
+                    token_color.__dict__
+                    for token_color in self.token_colors
+                ],
             }
             f.write(json.dumps(data, indent=4))

@@ -58,13 +58,13 @@
         "editorGutter.modifiedBackground": "#E5BB67",
         "minimapGutter.modifiedBackground": "#E5BB67bf",
         "descriptionForeground": "#ABB3C4",
+        "editor.foreground": "#ABB3C4",
+        "foreground": "#ABB3C4",
+        "icon.foreground": "#ABB3C4",
         "sideBar.foreground": "#ABB3C4",
         "sideBarTitle.foreground": "#ABB3C4",
         "sideBarSectionHeader.foreground": "#ABB3C4",
-        "icon.foreground": "#ABB3C4",
-        "foreground": "#ABB3C4",
-        "terminal.foreground": "#B6BECE",
-        "editor.foreground": "#C0C8D8",
+        "terminal.foreground": "#ABB3C4",
         "button.foreground": "#D9DEE8",
         "checkbox.foreground": "#D9DEE8",
         "dropdown.foreground": "#D9DEE8",
@@ -123,5 +123,63 @@
         "list.focusOutline": "#15181E00",
         "minimap.foregroundOpacity": "#15181E7f"
     },
-    "token_colors": []
+    "tokenColors": [
+        {
+            "name": "Comments",
+            "scope": [
+                "comment",
+                "comment.documentation",
+                "comment.block.documentationpunctuation.definition.comment"
+            ],
+            "settings": {
+                "fontStyle": "italic",
+                "foreground": "#5C7EAE"
+            }
+        },
+        {
+            "name": "Keywords",
+            "scope": [
+                "keyword",
+                "storage"
+            ],
+            "settings": {
+                "foreground": "#4A6A96"
+            }
+        },
+        {
+            "name": "Functions",
+            "scope": [
+                "entity.name.function",
+                "support.function"
+            ],
+            "settings": {
+                "fontStyle": "bold",
+                "foreground": "#819CC1"
+            }
+        },
+        {
+            "name": "Numbers, Characters",
+            "scope": [
+                "constant.numeric",
+                "constant.character"
+            ],
+            "settings": {
+                "foreground": "#C66F52"
+            }
+        },
+        {
+            "name": "Strings",
+            "scope": "string",
+            "settings": {
+                "foreground": "#76AD9B"
+            }
+        },
+        {
+            "name": "Punctuation",
+            "scope": "punctuation",
+            "settings": {
+                "foreground": "#405C82"
+            }
+        }
+    ]
 }

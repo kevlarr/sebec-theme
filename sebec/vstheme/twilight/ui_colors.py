@@ -1,12 +1,15 @@
+"""UI Colors
+
+See: https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
+"""
+
 from sebec.palette import Color
-from .base import Theme, ThemeCategory
 
 
-__all__ = ["Twilight"]
+
 
 
 # TODO: editor colors
-
 
 _CERULEAN_ELEMENTS = {
     Color.cerulean0: [
@@ -132,17 +135,17 @@ _SOLAR_ELEMENTS = {
 _SHINE_ELEMENTS = {
     Color.shine0: [
         "descriptionForeground", # Eg. extension descriptions in search
+        "editor.foreground",
+        "foreground",
+        "icon.foreground",
         "sideBar.foreground",
         "sideBarTitle.foreground",
         "sideBarSectionHeader.foreground",
-        "icon.foreground",
-        "foreground",
-    ],
-    Color.shine1: [
         "terminal.foreground",
     ],
+    Color.shine1: [
+    ],
     Color.shine2: [
-        "editor.foreground",
     ],
     Color.shine3: [
     ],
@@ -238,36 +241,31 @@ _OPACITY_CONTROLS = {
     ],
 }
 
+UI_COLORs = {
+    **_CERULEAN_ELEMENTS,
+    **_SAPPHIRE_ELEMENTS,
+    **_CEDAR_ELEMENTS,
+    **_SPRUCE_ELEMENTS,
+    **_SOLAR_ELEMENTS,
+    **_SHINE_ELEMENTS,
+    **_TWILIGHT_ELEMENTS,
+    **_OPACITY_CONTROLS,
 
-Twilight = Theme(
-    name="sebec-twilight",
-    category=ThemeCategory.dark,
-    colors={
-        **_CERULEAN_ELEMENTS,
-        **_SAPPHIRE_ELEMENTS,
-        **_CEDAR_ELEMENTS,
-        **_SPRUCE_ELEMENTS,
-        **_SOLAR_ELEMENTS,
-        **_SHINE_ELEMENTS,
-        **_TWILIGHT_ELEMENTS,
-        **_OPACITY_CONTROLS,
-
-        "red": [
-            # "editorActionList.background",
-            # "editorActionList.foreground",
-            # "editorActionList.focusForeground",
-            # "editorActionList.focusBackground",
+    "red": [
+        # "editorActionList.background",
+        # "editorActionList.foreground",
+        # "editorActionList.focusForeground",
+        # "editorActionList.focusBackground",
 
 
-            # "checkbox.selectBackground",
-            # "checkbox.selectBorder",
-            # "radio.activeForeground",
-            # "radio.activeBackground",
-            # "radio.activeBorder",
-            # "radio.inactiveForeground",
-            # "radio.inactiveBackground",
-            # "radio.inactiveBorder",
-            # "radio.inactiveHoverBackground",
-        ],
-    },
-)
+        # "checkbox.selectBackground",
+        # "checkbox.selectBorder",
+        # "radio.activeForeground",
+        # "radio.activeBackground",
+        # "radio.activeBorder",
+        # "radio.inactiveForeground",
+        # "radio.inactiveBackground",
+        # "radio.inactiveBorder",
+        # "radio.inactiveHoverBackground",
+    ],
+}
