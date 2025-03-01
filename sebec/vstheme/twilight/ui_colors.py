@@ -22,8 +22,6 @@ _CERULEAN_ELEMENTS = {
         "activityBar.activeBorder",
         "activityBar.foreground",
 
-"tree.indentGuidesStroke",
-"tree.inactiveIndentGuidesStroke",
     ],
     Color.cerulean1: [
         "textLink.activeForeground",
@@ -40,6 +38,9 @@ _SAPPHIRE_ELEMENTS = {
         "selection.background",
         "textBlockQuote.border",
         "toolbar.hoverBackground", # eg. hovering over icons in panels/widgets
+
+        "tree.indentGuidesStroke",
+        "tree.inactiveIndentGuidesStroke",
     ],
     Color.sapphire1: [
         # "toolbar.hoverOutline", # eg. hovering over "..." icons, etc. in panels
@@ -190,16 +191,16 @@ _TWILIGHT_ELEMENTS = {
         "activityBar.background",
         "breadcrumb.background",
         "dropdown.listBackground",
-        "editor.background",
         "sideBarTitle.background",
         "tab.activeBackground",
         "tab.hoverBackground",
+        "panel.background",
     ],
     Color.twilight2: [
+        "editor.background",
         "list.activeSelectionBackground",
         "list.hoverBackground",
         "list.inactiveSelectionBackground",
-        "panel.background",
         "sideBarSectionHeader.border",
         "sideBySideEditor.horizontalBorder",
         "sideBySideEditor.verticalBorder",
@@ -241,7 +242,7 @@ _OPACITY_CONTROLS = {
     ],
 }
 
-UI_COLORs = {
+UI_COLORS = {
     **_CERULEAN_ELEMENTS,
     **_SAPPHIRE_ELEMENTS,
     **_CEDAR_ELEMENTS,

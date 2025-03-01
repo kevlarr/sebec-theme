@@ -1,21 +1,113 @@
 from sebec.palette import Color
-from sebec.vstheme.base import TokenColor
+from sebec.vstheme.base import Scope as Scope
 
+
+ColorScopes = dict[str, list[Scope | str]]
+
+
+def merge_scopes(*css: ColorScopes) -> ColorScopes:
+    merged = {}
+    for cs in css:
+        for color, scopes in cs.items():
+            existing_scopes = merged.setdefault(color, [])
+            existing_scopes.extend(scopes)
+    return merged
+
+
+# For help on scopes see:
+# https://github.com/dunstontc/textmate/blob/master/scopes.md
+
+TEMP: ColorScopes = {
+    "#ff0000": [
+        # "storage.type",
+        # "support.type",
+        # "punctuation", # Includes `@` in decorator, ->, `.` in method calls, etc.
+    ],
+    Color.sapphire1: [
+        "keyword",
+        "storage.type",
+    ],
+    Color.shine2: [
+        "variable.parameter.function",
+    ],
+    Color.sapphire2: [
+        "meta.function",
+        "constant.language meta.function", # Constant in function signature, type or return
+        "meta.function.parameters",
+        "keyword.operator",
+    ],
+    Color.cerulean0: [
+        Scope("entity.name.function.decorator", fontStyle="regular"), # regular to override bold
+        "variable.other",
+        "support.variable",
+    ],
+    Color.cerulean1: [
+    ],
+    Color.cerulean2: [
+        Scope("entity.name.function", fontStyle="bold"),
+    ],
+}
+
+_literals = {
+    Color.solarPurple0: [
+        "constant.numeric",
+        "constant.character",
+        "constant.language", # Eg. `True`
+    ],
+    Color.cedar0: [
+        "punctuation.definition.string",
+    ],
+    Color.cedar1: [
+        "string",
+    ],
+}
+
+_misc = {
+    Color.solarPurple0: [
+        "constant.other", # Eg. CONSTANT variable names, css colors, etc.},
+    ],
+}
+
+# ALL = merge(TEMP, _literals, _misc, {
+SCOPE_SETTINGS = merge_scopes(_literals, _misc, {
+    # Color.sapphire1: [
+        # Scope(
+            # "comment",
+            # "comment.documentation",
+            # "comment.block.documentation",
+            # "punctuation.definition.comment",
+            # fontStyle="italic",
+        # ),
+    # ],
+
+    # Color.sapphire2: [
+        # "keyword",
+        # "storage.type",
+    # ],
+
+    # Color.solarPurple0: [
+        # "constant.other", # Eg. CONSTANT variable names, css colors, etc.
+        # "constant.numeric",
+        # "constant.character",
+        # "constant.language", # Eg. `True`
+    # ],
+
+    # Color.cedar0: [
+        # "punctuation.definition.string",
+    # ],
+    # Color.cedar1: [
+        # "string",
+    # ]
+})
 
 TOKEN_COLORS = [
-    TokenColor(
-        name="Comments",
-        scope=[
-            "comment",
-            "comment.documentation",
-            "comment.block.documentation"
-            "punctuation.definition.comment"
-        ],
-        settings={
-            "fontStyle": "italic",
-            "foreground": Color.sapphire2,
-        }
-    ),
+    # TokenColor(
+        # name="Punctuation",
+        # scope="punctuation",
+        # settings={
+            # "foreground": Color.sapphire0,
+        # }
+    # ),
     # TokenColor(
         # name="Comments: Preprocessor",
         # scope="comment.block.preprocessor",
@@ -29,33 +121,6 @@ TOKEN_COLORS = [
         # scope="invalid.illegal",
         # settings={
             # "foreground": "#660000"
-        # }
-    # ),
-    # TokenColor(
-        # name="Operators",
-        # scope="keyword.operator",
-        # settings={
-            # "foreground": "#777777"
-        # }
-    # ),
-    TokenColor(
-        name="Keywords",
-        scope=[
-            "keyword",
-            "storage"
-        ],
-        settings={
-            "foreground": Color.sapphire1
-        }
-    ),
-    # TokenColor(
-        # name="Types",
-        # scope=[
-            # "storage.type",
-            # "support.type"
-        # ],
-        # settings={
-            # "foreground": "#7A3E9D"
         # }
     # ),
     # TokenColor(
@@ -82,17 +147,17 @@ TOKEN_COLORS = [
         # }
     # ),
 
-    TokenColor(
-        name="Functions",
-        scope=[
-            "entity.name.function",
-            "support.function"
-        ],
-        settings={
-            "fontStyle": "bold",
-            "foreground": Color.sapphire3,
-        }
-    ),
+    # TokenColor(
+        # name="Functions",
+        # scope=[
+            # "entity.name.function",
+            # "support.function"
+        # ],
+        # settings={
+            # "fontStyle": "bold",
+            # "foreground": Color.sapphire3,
+        # }
+    # ),
 
     # FIXME: This colorizes types (dataclass attributes, )
     # TokenColor(
@@ -123,24 +188,6 @@ TOKEN_COLORS = [
         # }
     # ),
 
-    TokenColor(
-        name="Numbers, Characters",
-        scope=[
-            "constant.numeric",
-            "constant.character",
-            # "constant", # FIXME: what color?
-        ],
-        settings={
-            "foreground": Color.solarOrange0,
-        }
-    ),
-    TokenColor(
-        name="Strings",
-        scope="string",
-        settings={
-            "foreground": Color.spruce1,
-        }
-    ),
 
     # TokenColor(
         # name="Strings: Escape Sequences",
@@ -163,13 +210,6 @@ TOKEN_COLORS = [
             # "foreground": "#AB6526"
         # }
     # ),
-    TokenColor(
-        name="Punctuation",
-        scope="punctuation",
-        settings={
-            "foreground": Color.sapphire0,
-        }
-    ),
 
     # TokenColor(
         # name="HTML: Doctype Declaration",

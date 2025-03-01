@@ -21,5 +21,5 @@ Sunrise = Theme(
             "editor.background",
         ]
     },
-    token_colors=[],
+    scopes={},
 )

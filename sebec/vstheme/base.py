@@ -2,6 +2,7 @@ import dataclasses
 import enum
 import json
 import pathlib
+import typing
 
 from sebec.palette import Color
 
@@ -17,11 +18,15 @@ class ThemeCategory(enum.StrEnum):
     dark = "dark"
 
 
-@dataclasses.dataclass
-class TokenColor:
-    name: str
+class Scope:
+    name: str | None
     scope: str | list[str]
     settings: dict[str, str]
+
+    def __init__(self, *scopes: str, name: str | None = None, **settings):
+        self.name = name
+        self.scope = scopes
+        self.settings = settings
 
 
 @dataclasses.dataclass
@@ -31,7 +36,9 @@ class Theme:
     colors: dict[str, list[Element]]
     """Map of hexadecimal color codes (with or without alpha level) to
     the list of elements that use that color."""
-    token_colors: list[TokenColor]
+    scopes: dict[str, list[Scope | str]]
+    """Map of hexadecimal color codes (with or without alpha level) to
+    the list of scope names or Scope objects that use that color."""
 
     def save(self):
         with open(PATH_TEMPLATE.format(name=self.name), "w") as f:
@@ -45,8 +52,25 @@ class Theme:
                     for element in element_list
                 },
                 "tokenColors": [
-                    token_color.__dict__
-                    for token_color in self.token_colors
+                    self._scope_to_token_color(scope, color)
+                    for color, scope_setting_list in self.scopes.items()
+                    for scope in scope_setting_list
                 ],
             }
             f.write(json.dumps(data, indent=4))
+
+    @staticmethod
+    def _scope_to_token_color(scope: Scope | str, color: str):
+        if isinstance(scope, str):
+            return {"scope": scope, "settings": {"foreground": color}}
+
+        val = {
+            "scope": scope.scope,
+            "settings": {
+                "foreground": color,
+                **scope.settings,
+            }
+        }
+        if scope.name:
+            val["name"] = scope.name
+        return val
