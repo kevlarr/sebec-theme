@@ -23,10 +23,6 @@ TEMP: ColorScopes = {
         # "support.type",
         # "punctuation", # Includes `@` in decorator, ->, `.` in method calls, etc.
     ],
-    Color.sapphire1: [
-        "keyword",
-        "storage.type",
-    ],
     Color.shine2: [
         "variable.parameter.function",
     ],
@@ -37,34 +33,43 @@ TEMP: ColorScopes = {
         "keyword.operator",
     ],
     Color.cerulean0: [
-        Scope("entity.name.function.decorator", fontStyle="regular"), # regular to override bold
-        "variable.other",
-        "support.variable",
     ],
     Color.cerulean1: [
     ],
     Color.cerulean2: [
-        Scope("entity.name.function", fontStyle="bold"),
     ],
 }
 
 _literals = {
-    Color.solarPurple0: [
+    Color.solarPurple1: [
         "constant.numeric",
         "constant.character",
         "constant.language", # Eg. `True`
     ],
-    Color.cedar0: [
+    Color.spruce0: [
         "punctuation.definition.string",
     ],
-    Color.cedar1: [
+    Color.spruce1: [
         "string",
     ],
 }
 
 _misc = {
-    Color.solarPurple0: [
-        "constant.other", # Eg. CONSTANT variable names, css colors, etc.},
+    Color.shine2: [
+        Scope("constant.other", fontStyle="bold"), # Eg. CONSTANT variable names, css colors, etc.},
+    ],
+    Color.cerulean0: [
+        Scope("entity.name.function.decorator", fontStyle="regular"), # regular to override bold
+    ],
+    Color.cerulean1: [
+        # "variable.other",
+        # "support.variable",
+        Scope("entity.name.function.member", fontStyle="bold"),
+        Scope("entity.name.type.class", fontStyle="bold"),
+    ],
+    Color.sapphire2: [
+        "keyword",
+        "storage.type",
     ],
 }
 

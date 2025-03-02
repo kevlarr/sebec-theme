@@ -127,37 +127,79 @@
         {
             "scope": "constant.numeric",
             "settings": {
-                "foreground": "#A3759C"
+                "foreground": "#B48EAE"
             }
         },
         {
             "scope": "constant.character",
             "settings": {
-                "foreground": "#A3759C"
+                "foreground": "#B48EAE"
             }
         },
         {
             "scope": "constant.language",
             "settings": {
-                "foreground": "#A3759C"
-            }
-        },
-        {
-            "scope": "constant.other",
-            "settings": {
-                "foreground": "#A3759C"
+                "foreground": "#B48EAE"
             }
         },
         {
             "scope": "punctuation.definition.string",
             "settings": {
-                "foreground": "#7DA05A"
+                "foreground": "#5E9C87"
             }
         },
         {
             "scope": "string",
             "settings": {
-                "foreground": "#91B073"
+                "foreground": "#76AD9B"
+            }
+        },
+        {
+            "scope": [
+                "constant.other"
+            ],
+            "settings": {
+                "foreground": "#C0C8D8",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": [
+                "entity.name.function.decorator"
+            ],
+            "settings": {
+                "foreground": "#4C9DB8",
+                "fontStyle": "regular"
+            }
+        },
+        {
+            "scope": [
+                "entity.name.function.member"
+            ],
+            "settings": {
+                "foreground": "#69ADC4",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": [
+                "entity.name.type.class"
+            ],
+            "settings": {
+                "foreground": "#69ADC4",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "keyword",
+            "settings": {
+                "foreground": "#5C7EAE"
+            }
+        },
+        {
+            "scope": "storage.type",
+            "settings": {
+                "foreground": "#5C7EAE"
             }
         }
     ]
