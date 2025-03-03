@@ -1,6 +1,17 @@
+import pathlib
+import xml.etree.ElementTree as ET
+
 from sebec.vstheme import Sunrise, Twilight
 from sebec.vstheme.base import Color
-import xml.etree.ElementTree as ET
+
+
+PALETTE_HTML_PATH = str(
+    pathlib.Path(__file__)
+    .parent # scripts
+    .parent # sebec
+    .parent # root
+    / "package/palette.html"
+)
 
 
 def export_palette():
@@ -138,7 +149,7 @@ def export_palette():
     </html>
     '''
 
-    with open("output/palette.html", "w") as f:
+    with open(PALETTE_HTML_PATH, "w") as f:
         f.write(page)
 
 

@@ -9,8 +9,12 @@ from .tokens import SemanticToken, TextmateToken
 
 
 PATH_TEMPLATE = str(
-    pathlib.Path(__file__).parent.parent.parent.parent /
-    "themes/{slug}-color-theme.json"
+    pathlib.Path(__file__)
+    .parent # base
+    .parent # vstheme
+    .parent # sebec
+    .parent # root
+    / "package/vscode/themes/{slug}-color-theme.json"
 )
 
 
