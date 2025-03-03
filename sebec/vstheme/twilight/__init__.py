@@ -8,7 +8,7 @@ __all__ = ["Twilight"]
 
 
 Twilight = Theme(
-    name="sebec-twilight",
+    name="Sebec Twilight",
     category=ThemeCategory.dark,
     semantic_tokens=SEMANTIC_TOKENS,
     textmate_tokens=TEXTMATE_TOKENS,

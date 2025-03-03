@@ -5,7 +5,7 @@ __all__ = ["Sunrise"]
 
 
 Sunrise = Theme(
-    name="sebec-sunrise",
+    name="Sebec Sunrise",
     category=ThemeCategory.light,
 
     # "editor.background": "#f5f5f5",

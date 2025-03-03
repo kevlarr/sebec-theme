@@ -1,5 +1,6 @@
 from sebec.vstheme import Sunrise, Twilight
 from sebec.vstheme.base import Color
+import xml.etree.ElementTree as ET
 
 
 def export_palette():
@@ -195,8 +196,106 @@ white   shine5        shine6
     raise NotImplementedError()
 
 
+# iterm name to vscode name
+color_name_map = {
+    "Ansi 0 Color": "ansiBlack",
+    "Ansi 1 Color": "ansiRed",
+    "Ansi 2 Color": "ansiGreen",
+    "Ansi 3 Color": "ansiYellow",
+    "Ansi 4 Color": "ansiBlue",
+    "Ansi 5 Color": "ansiMagenta",
+    "Ansi 6 Color": "ansiCyan",
+    "Ansi 7 Color": "ansiWhite",
+    "Ansi 8 Color": "ansiBrightBlack",
+    "Ansi 9 Color": "ansiBrightRed",
+    "Ansi 10 Color": "ansiBrightGreen",
+    "Ansi 11 Color": "ansiBrightYellow",
+    "Ansi 12 Color": "ansiBrightBlue",
+    "Ansi 13 Color": "ansiBrightMagenta",
+    "Ansi 14 Color": "ansiBrightCyan",
+    "Ansi 15 Color": "ansiBrightWhite",
+    "Background Color": "background",
+    "Foreground Color": "foreground",
+    "Selection Color": "selectionBackground",
+}
+
+
+
+
+def generate_iterm_colors():
+
+    # ansi 0-15 each have 3:
+    # - Ansi N Color
+    # - Ansi N Color (Dark)
+    # - Ansi N Color (Light)
+
+
+    colors = {
+        "Ansi 0 Color": Color.,
+        "Ansi 1 Color": "#ff0000",
+        "Ansi 2 Color": "#00ff00",
+        "Ansi 3 Color": "#ffff00",
+        "Ansi 4 Color": "#0000ff",
+        "Ansi 5 Color": "#ff00ff",
+        "Ansi 6 Color": "#00ffff",
+        "Ansi 7 Color": "#ffffff",
+        "Ansi 8 Color": "#808080",
+        "Ansi 9 Color": "#ff0000",
+        "Ansi 10 Color": "#00ff00",
+        "Ansi 11 Color": "#ffff00",
+        "Ansi 12 Color": "#0000ff",
+        "Ansi 13 Color": "#ff00ff",
+        "Ansi 14 Color": "#00ffff",
+        "Ansi 15 Color": "#ffffff",
+        "Background Color": "#000000",
+        "Foreground Color": "#ffffff",
+        "Cursor Color": "#ffffff",
+        "Selection Color": "#44475a",
+        "Selected Text Color": "#ffffff",
+    }
+
+    root = ET.Element("plist", version="1.0")
+    dict_elem = ET.SubElement(root, "dict")
+
+    for key, value in colors.items():
+        key_elem = ET.SubElement(dict_elem, "key")
+        key_elem.text = key
+        dict_elem.append(key_elem)
+
+        dict_color = ET.SubElement(dict_elem, "dict")
+        color_space = ET.SubElement(dict_color, "key")
+        color_space.text = "Color Space"
+        color_space_value = ET.SubElement(dict_color, "string")
+        color_space_value.text = "sRGB"
+
+        red = ET.SubElement(dict_color, "key")
+        red.text = "Red Component"
+        red_value = ET.SubElement(dict_color, "real")
+        red_value.text = str(int(value[1:3], 16) / 255.0)
+
+        green = ET.SubElement(dict_color, "key")
+        green.text = "Green Component"
+        green_value = ET.SubElement(dict_color, "real")
+        green_value.text = str(int(value[3:5], 16) / 255.0)
+
+        blue = ET.SubElement(dict_color, "key")
+        blue.text = "Blue Component"
+        blue_value = ET.SubElement(dict_color, "real")
+        blue_value.text = str(int(value[5:7], 16) / 255.0)
+
+        alpha = ET.SubElement(dict_color, "key")
+        alpha.text = "Alpha Component"
+        alpha_value = ET.SubElement(dict_color, "real")
+        alpha_value.text = "1"
+
+    tree = ET.ElementTree(root)
+    ET.indent(tree, "\t")
+    with open("output/Sebec-test.itermcolors", "wb") as f:
+        tree.write(f, encoding="utf-8", xml_declaration=True)
+
 def main():
     export_palette()
+    generate_iterm_colors()
     # Sunrise.save()
     Twilight.save()
     print("Themes and palette generated successfully!")

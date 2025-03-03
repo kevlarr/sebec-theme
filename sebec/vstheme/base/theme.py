@@ -10,7 +10,7 @@ from .tokens import SemanticToken, TextmateToken
 
 PATH_TEMPLATE = str(
     pathlib.Path(__file__).parent.parent.parent.parent /
-    "themes/{name}-color-theme.json"
+    "themes/{slug}-color-theme.json"
 )
 
 
@@ -42,7 +42,8 @@ class Theme:
     the list of UI elements that use that color."""
 
     def save(self):
-        with open(PATH_TEMPLATE.format(name=self.name), "w") as f:
+        slug = self.name.lower().replace(" ", "-")
+        with open(PATH_TEMPLATE.format(slug=slug), "w") as f:
             data = {
                 "name": self.name,
                 "type": self.category,
