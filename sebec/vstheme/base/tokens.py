@@ -1,3 +1,10 @@
+"""Utility classes for defining semantic & textmate tokens.
+
+https://macromates.com/manual/en/language_grammars#naming_conventions
+https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
+"""
+
 __all__ = ["SemanticToken", "TextmateToken"]
 
 
