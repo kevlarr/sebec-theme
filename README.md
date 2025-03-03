@@ -31,3 +31,18 @@ for visual distinction without significant contrast
 - Four 2-color **accent ranges** that visually pop against the others for increased attention grabbing
 
 ![Design Preview](./design/palette.svg)
+
+## Development
+
+Run `poetry install` to add the necessary scripts.
+
+The VS Code and iTerm2 themes are generated via `poetry run generate`,
+which will update their files stored in `package/`.
+
+After updating the palette (Affinity Designer), re-export the `palette.svg` file
+from the artboard and then run `poetry run update-colors` to update the `Color` enum itself.
+
+### Testing the VS Code theme
+
+Open `package/vscode` in a **new** VS Code instance, after which selecting the `launch.json`
+file and pressing `F5` will open another instance with the theme activated.
