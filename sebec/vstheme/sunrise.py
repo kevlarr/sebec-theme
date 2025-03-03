@@ -18,7 +18,7 @@ Sunrise = Theme(
     semantic_tokens={},
     textmate_tokens={},
     ui_colors={
-        Color.sunrise5: [
+        Color.Sunrise5: [
             "editor.background",
         ]
     },

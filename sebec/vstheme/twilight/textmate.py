@@ -1,26 +1,32 @@
+"""
+Textmate token color assignments.
+
+See:
+- https://macromates.com/manual/en/language_grammars#naming_conventions
+"""
 from sebec.vstheme.base import Color, TextmateToken as Token
 
 TEXTMATE_TOKENS = {
-    Color.sapphire0.style(italic=True): [
+    Color.Sapphire0.style(italic=True): [
         Token("comment"),
     ],
-    Color.sapphire2: [
+    Color.Sapphire2: [
         Token("keyword.control", "keyword.operator", "keyword.other"),
     ],
-    Color.sapphire2.style(bold=True): [
+    Color.Sapphire2.style(bold=True): [
         Token("storage.type.class", "storage.type.function"),
     ],
 
-    Color.cerulean0: [
+    Color.Cerulean0: [
         "punctuation.definition.decorator",
     ],
 
-    Color.solarPurple0: [
+    Color.SolarPurple0: [
         "variable.parameter.function-call",
     ],
 
 
-    Color.spruce0: [
+    Color.Spruce0: [
         "string",
     ]
 }

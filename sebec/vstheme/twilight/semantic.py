@@ -4,42 +4,42 @@ SEMANTIC_TOKENS = {
     ##
     ## Blue
     ##
-    Color.sapphire2: [
+    Color.Sapphire2: [
         Token("class", "typeHint"),
     ],
-    Color.cerulean0: [
+    Color.Cerulean0: [
         Token("function", "decorator"),
         "parameter",
     ],
-    Color.cerulean1.style(bold=True): [
+    Color.Cerulean1.style(bold=True): [
         "selfParameter",
     ],
 
     ##
     ## Accent
     ##
-    Color.solarPurple0: [
+    Color.SolarPurple0: [
     ],
-    Color.solarPurple0.style(bold=True): [
+    Color.SolarPurple0.style(bold=True): [
     ],
-    Color.solarPurple1: [
+    Color.SolarPurple1: [
         "class",
     ],
 
     ##
     ## White
     ##
-    Color.sunrise0: [
+    Color.Sunrise0: [
         Token("property", "declaration"),
     ],
-    Color.sunrise0.style(bold=True): [
+    Color.Sunrise0.style(bold=True): [
         Token("class", "declaration"),
         Token("method", "declaration"),
         Token("variable", "readonly"),
     ],
-    Color.shine2.style(bold=True): [
+    Color.Shine2.style(bold=True): [
     ],
 
-    # Color.cerulean0: [
+    # Color.Cerulean0: [
     # ],
 }
