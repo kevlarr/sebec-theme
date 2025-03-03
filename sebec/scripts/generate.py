@@ -196,32 +196,6 @@ white   shine5        shine6
     raise NotImplementedError()
 
 
-# iterm name to vscode name
-color_name_map = {
-    "Ansi 0 Color": "ansiBlack",
-    "Ansi 1 Color": "ansiRed",
-    "Ansi 2 Color": "ansiGreen",
-    "Ansi 3 Color": "ansiYellow",
-    "Ansi 4 Color": "ansiBlue",
-    "Ansi 5 Color": "ansiMagenta",
-    "Ansi 6 Color": "ansiCyan",
-    "Ansi 7 Color": "ansiWhite",
-    "Ansi 8 Color": "ansiBrightBlack",
-    "Ansi 9 Color": "ansiBrightRed",
-    "Ansi 10 Color": "ansiBrightGreen",
-    "Ansi 11 Color": "ansiBrightYellow",
-    "Ansi 12 Color": "ansiBrightBlue",
-    "Ansi 13 Color": "ansiBrightMagenta",
-    "Ansi 14 Color": "ansiBrightCyan",
-    "Ansi 15 Color": "ansiBrightWhite",
-    "Background Color": "background",
-    "Foreground Color": "foreground",
-    "Selection Color": "selectionBackground",
-}
-
-
-
-
 def generate_iterm_colors():
 
     # ansi 0-15 each have 3:
@@ -231,7 +205,7 @@ def generate_iterm_colors():
 
 
     colors = {
-        "Ansi 0 Color": Color.,
+        "Ansi 0 Color": "#ff0000",
         "Ansi 1 Color": "#ff0000",
         "Ansi 2 Color": "#00ff00",
         "Ansi 3 Color": "#ffff00",
@@ -253,6 +227,45 @@ def generate_iterm_colors():
         "Selection Color": "#44475a",
         "Selected Text Color": "#ffffff",
     }
+
+    from sebec.terminal import TerminalColors, ItermColors
+
+    tc = TerminalColors(
+        ansi_black="#000000",
+        ansi_black_bright="#808080",
+        ansi_red="#ff0000",
+        ansi_red_bright="#ff8080",
+        ansi_green="#00ff00",
+        ansi_green_bright="#80ff80",
+        ansi_yellow="#ffff00",
+        ansi_yellow_bright="#ffff80",
+        ansi_blue="#0000ff",
+        ansi_blue_bright="#8080ff",
+        ansi_magenta="#ff00ff",
+        ansi_magenta_bright="#ff80ff",
+        ansi_cyan="#00ffff",
+        ansi_cyan_bright="#80ffff",
+        ansi_white="#ffffff",
+        ansi_white_bright="#f0f0f0",
+        foreground="#d4d4d4",
+        background="#1e1e1e",
+        selection_foreground="#d4d4d4",
+        selection_background="#1e1e1e",
+        match_background="#1e1e1e",
+        cursor_color="#d4d4d4",
+        cursor_text_color="#d4d4d4",
+    )
+    ic = ItermColors(
+        **tc.__dict__,
+        badge_color="#ff0000",
+        bold_color="#ff0000",
+        cursor_guide_color="#ff0000",
+        link_color="#ff0000",
+        tab_color="#ff0000",
+        underline_color="#ff0000",
+    )
+
+    breakpoint()
 
     root = ET.Element("plist", version="1.0")
     dict_elem = ET.SubElement(root, "dict")
@@ -295,7 +308,7 @@ def generate_iterm_colors():
 
 def main():
     export_palette()
-    generate_iterm_colors()
+    # generate_iterm_colors()
     # Sunrise.save()
     Twilight.save()
     print("Themes and palette generated successfully!")
