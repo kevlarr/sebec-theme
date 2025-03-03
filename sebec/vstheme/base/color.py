@@ -1,5 +1,7 @@
 import enum
 
+from .style import ColorStyle, TokenStyle
+
 
 __all__ = ["Color"]
 
@@ -63,10 +65,34 @@ class Color(enum.StrEnum):
     solarYellow0 = "#E5BB67"
     solarYellow1 = "#EBCB8B"
 
-    def alpha(self, alpha: float) -> str:
-        """
-        Returns the color value with the alpha level appended to it,
-        convered to hexadecimal.
-        """
-        alpha = max(0.0, min(1.0, alpha))  # Clamp alpha to [0.0, 1.0]
-        return f"{self.value}{int(alpha * 255):02x}"
+    def alpha(self, alpha: float) -> ColorStyle:
+        """Returns a new `ColorStyle` for the color with the specified alpha level."""
+        return ColorStyle(foreground=self.value, alpha=_clamp_alpha(alpha))
+
+    def serialize(self) -> str:
+        return self.value
+
+    def style(
+        self,
+        *,
+        alpha: float = None,
+        bold: bool = None,
+        italic: bool = None,
+        underline: bool = None,
+    ) -> TokenStyle:
+        """Returns a new `TokenStyle` for the color and specified token style options."""
+        if alpha is not None:
+            alpha = _clamp_alpha(alpha)
+
+        return TokenStyle(
+            foreground=self.value,
+            alpha=alpha,
+            bold=bold,
+            italic=italic,
+            underline=underline,
+        )
+
+
+def _clamp_alpha(alpha: float) -> float:
+    # Restricts alpha to [0.0, 1.0]
+    return max(0.0, min(1.0, alpha))

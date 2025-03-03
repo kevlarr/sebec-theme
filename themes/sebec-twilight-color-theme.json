@@ -94,11 +94,11 @@
         "activityBar.background": "#1B1F27",
         "breadcrumb.background": "#1B1F27",
         "dropdown.listBackground": "#1B1F27",
+        "editor.background": "#1B1F27",
         "sideBarTitle.background": "#1B1F27",
         "tab.activeBackground": "#1B1F27",
         "tab.hoverBackground": "#1B1F27",
-        "panel.background": "#1B1F27",
-        "editor.background": "#212630",
+        "panel.background": "#212630",
         "list.activeSelectionBackground": "#212630",
         "list.hoverBackground": "#212630",
         "list.inactiveSelectionBackground": "#212630",
@@ -123,83 +123,75 @@
         "list.focusOutline": "#15181E00",
         "minimap.foregroundOpacity": "#15181E7f"
     },
+    "semanticTokenColors": {
+        "class.typeHint": "#5C7EAE",
+        "function.decorator": "#4C9DB8",
+        "parameter": "#4C9DB8",
+        "selfParameter": {
+            "foreground": "#69ADC4",
+            "fontStyle": "bold"
+        },
+        "class": "#B48EAE",
+        "property.declaration": "#C2C0B7",
+        "class.declaration": {
+            "foreground": "#C2C0B7",
+            "fontStyle": "bold"
+        },
+        "method.declaration": {
+            "foreground": "#C2C0B7",
+            "fontStyle": "bold"
+        },
+        "variable.readonly": {
+            "foreground": "#C2C0B7",
+            "fontStyle": "bold"
+        }
+    },
     "tokenColors": [
         {
-            "scope": "constant.numeric",
+            "scope": [
+                "comment"
+            ],
             "settings": {
-                "foreground": "#B48EAE"
+                "foreground": "#405C82",
+                "fontStyle": "italic"
             }
         },
         {
-            "scope": "constant.character",
+            "scope": [
+                "keyword.control",
+                "keyword.operator",
+                "keyword.other"
+            ],
             "settings": {
-                "foreground": "#B48EAE"
+                "foreground": "#5C7EAE"
             }
         },
         {
-            "scope": "constant.language",
+            "scope": [
+                "storage.type.class",
+                "storage.type.function"
+            ],
             "settings": {
-                "foreground": "#B48EAE"
+                "foreground": "#5C7EAE",
+                "fontStyle": "bold"
             }
         },
         {
-            "scope": "punctuation.definition.string",
+            "scope": "punctuation.definition.decorator",
             "settings": {
-                "foreground": "#5E9C87"
+                "foreground": "#4C9DB8"
+            }
+        },
+        {
+            "scope": "variable.parameter.function-call",
+            "settings": {
+                "foreground": "#A3759C"
             }
         },
         {
             "scope": "string",
             "settings": {
-                "foreground": "#76AD9B"
-            }
-        },
-        {
-            "scope": [
-                "constant.other"
-            ],
-            "settings": {
-                "foreground": "#C0C8D8",
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": [
-                "entity.name.function.decorator"
-            ],
-            "settings": {
-                "foreground": "#4C9DB8",
-                "fontStyle": "regular"
-            }
-        },
-        {
-            "scope": [
-                "entity.name.function.member"
-            ],
-            "settings": {
-                "foreground": "#69ADC4",
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": [
-                "entity.name.type.class"
-            ],
-            "settings": {
-                "foreground": "#69ADC4",
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": "keyword",
-            "settings": {
-                "foreground": "#5C7EAE"
-            }
-        },
-        {
-            "scope": "storage.type",
-            "settings": {
-                "foreground": "#5C7EAE"
+                "foreground": "#5E9C87"
             }
         }
     ]

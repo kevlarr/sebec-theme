@@ -1,5 +1,4 @@
-from sebec.palette import Color
-from .base import Theme, ThemeCategory
+from sebec.vstheme.base import Color, Theme, ThemeCategory
 
 
 __all__ = ["Sunrise"]
@@ -16,10 +15,11 @@ Sunrise = Theme(
     # "sideBar.foreground": Color.polar3,
     # "panel.background": "#EAE8E1",
     # "editorWidth.background": "#F6F6F3",
-    colors={
+    semantic_tokens={},
+    textmate_tokens={},
+    ui_colors={
         Color.sunrise5: [
             "editor.background",
         ]
     },
-    scopes={},
 )

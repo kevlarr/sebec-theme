@@ -1,5 +1,5 @@
-from sebec.palette import Color
 from sebec.vstheme import Sunrise, Twilight
+from sebec.vstheme.base import Color
 
 
 def export_palette():
@@ -197,6 +197,6 @@ white   shine5        shine6
 
 def main():
     export_palette()
-    Sunrise.save()
+    # Sunrise.save()
     Twilight.save()
     print("Themes and palette generated successfully!")

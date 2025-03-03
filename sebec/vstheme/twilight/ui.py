@@ -3,10 +3,7 @@
 See: https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
 """
 
-from sebec.palette import Color
-
-
-
+from sebec.vstheme.base import Color
 
 
 # TODO: editor colors
@@ -21,7 +18,6 @@ _CERULEAN_ELEMENTS = {
         "tab.selectedBorderTop",
         "activityBar.activeBorder",
         "activityBar.foreground",
-
     ],
     Color.cerulean1: [
         "textLink.activeForeground",
@@ -52,7 +48,7 @@ _SAPPHIRE_ELEMENTS = {
         "scrollbarSlider.activeBackground",
     ],
     Color.sapphire3: [
-            "editorGutter.foldingControlForeground",
+        "editorGutter.foldingControlForeground",
     ],
 }
 _CEDAR_ELEMENTS = {
@@ -108,7 +104,6 @@ _SOLAR_ELEMENTS = {
         "list.errorForeground", # foreground colors for filenames AND tab titles when error
         "minimap.errorHighlight",
         "minimapGutter.deletedBackground",
-
     ],
     Color.solarRed0.alpha(0.75): [
         "editorWarning.foreground",
@@ -191,13 +186,13 @@ _TWILIGHT_ELEMENTS = {
         "activityBar.background",
         "breadcrumb.background",
         "dropdown.listBackground",
+        "editor.background",
         "sideBarTitle.background",
         "tab.activeBackground",
         "tab.hoverBackground",
-        "panel.background",
     ],
     Color.twilight2: [
-        "editor.background",
+        "panel.background",
         "list.activeSelectionBackground",
         "list.hoverBackground",
         "list.inactiveSelectionBackground",
@@ -219,7 +214,7 @@ _TWILIGHT_ELEMENTS = {
     ],
     Color.twilight4: [
         "scrollbarSlider.background",
-"listFilterWidget.background",
+        "listFilterWidget.background",
     ],
     Color.twilight5: [
         "activityBar.inactiveForeground",

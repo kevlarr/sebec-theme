@@ -1,0 +1,69 @@
+import dataclasses
+import enum
+import json
+import pathlib
+
+from .color import Color
+from .style import ColorStyle, TokenStyle
+from .tokens import SemanticToken, TextmateToken
+
+
+PATH_TEMPLATE = str(
+    pathlib.Path(__file__).parent.parent.parent.parent /
+    "themes/{name}-color-theme.json"
+)
+
+
+TokenKey = Color | ColorStyle | TokenStyle | str
+UiColorKey = Color | ColorStyle | str
+
+
+class ThemeCategory(enum.StrEnum):
+    light = "light"
+    dark = "dark"
+
+
+@dataclasses.dataclass
+class Theme:
+    name: str
+
+    category: ThemeCategory
+
+    semantic_tokens: dict[TokenKey, list[SemanticToken | str]]
+    """Map of foreground color literal or color/token style object to the list of semantic
+    tokens names or `SemanticToken` objects to which the style should apply."""
+
+    textmate_tokens: dict[TokenKey, list[TextmateToken | str]]
+    """Map of foreground colors or font styles to the list of Textmate
+    tokens names or `TextmateToken` objects to which the style should apply."""
+
+    ui_colors: dict[UiColorKey, list[str]]
+    """Map of hexadecimal color codes (with or without alpha level) to
+    the list of UI elements that use that color."""
+
+    def save(self):
+        with open(PATH_TEMPLATE.format(name=self.name), "w") as f:
+            data = {
+                "name": self.name,
+                "type": self.category,
+                "semanticHighlighting": True,
+                "colors": {
+                    element: color if isinstance(color, str) else color.serialize()
+                    for color, element_list in self.ui_colors.items()
+                    for element in element_list
+                },
+                "semanticTokenColors": {
+                    (token if isinstance(token, str) else token.serialize()): style.serialize()
+                    for style, token_list in self.semantic_tokens.items()
+                    for token in token_list
+                },
+                "tokenColors": [
+                    {
+                        **({"scope": token} if isinstance(token, str) else token.serialize()),
+                        "settings": {"foreground": style} if isinstance(style, str) else style.serialize()
+                    }
+                    for style, token_list in self.textmate_tokens.items()
+                    for token in token_list
+                ],
+            }
+            f.write(json.dumps(data, indent=4))
