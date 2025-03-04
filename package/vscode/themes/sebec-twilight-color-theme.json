@@ -162,6 +162,7 @@
                 "keyword.operator",
                 "keyword.other"
             ],
+            "name": "Keywords",
             "settings": {
                 "foreground": "#6988b5"
             }

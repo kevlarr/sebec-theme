@@ -4,6 +4,10 @@ https://macromates.com/manual/en/language_grammars#naming_conventions
 https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
 https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
 """
+import dataclasses
+
+from sebec.color import ColorStyle
+
 
 __all__ = ["SemanticToken", "TextmateToken"]
 
@@ -41,3 +45,36 @@ class TextmateToken:
         if self.name:
             return {"scope": self.scope, "name": self.name}
         return {"scope": self.scope}
+
+
+@dataclasses.dataclass(eq=True, frozen=True)
+class TokenStyle(ColorStyle):
+    """Style object suitable for theming Textmate and semantic tokens."""
+
+    bold: bool | None = None
+    """Whether the text should be rendered in bold"""
+
+    italic: bool | None = None
+    """Whether the text should be rendered in italic"""
+
+    underline: bool | None = None
+    """Whether the text should be underlined"""
+
+    def serialize(self) -> dict | str:
+        """Returns a dict with the foreground color and a font style string
+        suitable for Textmate and semantic tokens if any styles arepresent,
+        otherwise returns the foreground color as a string."""
+        color = super().__str__()
+
+        font_style = ""
+        if self.bold is True:
+            font_style += "bold"
+        if self.italic is True:
+            font_style += " italic"
+        if self.underline is True:
+            font_style += " underline"
+
+        if font_style:
+            return {"foreground": color, "fontStyle": font_style.strip()}
+
+        return color

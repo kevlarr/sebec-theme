@@ -3,9 +3,8 @@ import enum
 import json
 import pathlib
 
-from .color import Color
-from .style import ColorStyle, TokenStyle
-from .tokens import SemanticToken, TextmateToken
+from sebec.color import Color, ColorStyle
+from .tokens import SemanticToken, TextmateToken, TokenStyle
 
 
 PATH_TEMPLATE = str(
@@ -53,12 +52,16 @@ class Theme:
                 "type": self.category,
                 "semanticHighlighting": True,
                 "colors": {
-                    element: color if isinstance(color, str) else color.serialize()
+                    element: str(color)
                     for color, element_list in self.ui_colors.items()
                     for element in element_list
                 },
                 "semanticTokenColors": {
-                    (token if isinstance(token, str) else token.serialize()): style.serialize()
+                    (
+                        token if isinstance(token, str) else token.serialize()
+                    ): (
+                        style.serialize() if isinstance(style, TokenStyle) else str(style)
+                    )
                     for style, token_list in self.semantic_tokens.items()
                     for token in token_list
                 },

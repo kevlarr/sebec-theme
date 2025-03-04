@@ -4,16 +4,17 @@ Textmate token color assignments.
 See:
 - https://macromates.com/manual/en/language_grammars#naming_conventions
 """
-from sebec.vstheme.base import Color, TextmateToken as Token
+from sebec.color import Color
+from sebec.vstheme.base import TextmateToken as Token, TokenStyle as Style
 
 TEXTMATE_TOKENS = {
-    Color.Sapphire0.style(italic=True): [
+    Style(Color.Sapphire0, italic=True): [
         Token("comment"),
     ],
     Color.Sapphire2: [
-        Token("keyword.control", "keyword.operator", "keyword.other"),
+        Token("keyword.control", "keyword.operator", "keyword.other", name="Keywords"),
     ],
-    Color.Sapphire2.style(bold=True): [
+    Style(Color.Sapphire2, bold=True): [
         Token("storage.type.class", "storage.type.function"),
     ],
 

@@ -1,4 +1,5 @@
-from sebec.vstheme.base import Color, SemanticToken as Token
+from sebec.color import Color
+from sebec.vstheme.base import SemanticToken as Token, TokenStyle as Style
 
 SEMANTIC_TOKENS = {
     ##
@@ -11,7 +12,7 @@ SEMANTIC_TOKENS = {
         Token("function", "decorator"),
         "parameter",
     ],
-    Color.Cerulean1.style(bold=True): [
+    Style(Color.Cerulean1, bold=True): [
         "selfParameter",
     ],
 
@@ -20,7 +21,7 @@ SEMANTIC_TOKENS = {
     ##
     Color.SolarPurple0: [
     ],
-    Color.SolarPurple0.style(bold=True): [
+    Style(Color.SolarPurple0, bold=True): [
     ],
     Color.SolarPurple1: [
         "class",
@@ -32,12 +33,12 @@ SEMANTIC_TOKENS = {
     Color.Sunrise0: [
         Token("property", "declaration"),
     ],
-    Color.Sunrise0.style(bold=True): [
+    Style(Color.Sunrise0, bold=True): [
         Token("class", "declaration"),
         Token("method", "declaration"),
         Token("variable", "readonly"),
     ],
-    Color.Shine2.style(bold=True): [
+    Style(Color.Shine2, bold=True): [
     ],
 
     # Color.Cerulean0: [
