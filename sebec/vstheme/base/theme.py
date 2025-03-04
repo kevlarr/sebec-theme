@@ -1,20 +1,14 @@
 import dataclasses
 import enum
 import json
-import pathlib
+from pathlib import Path
 
 from sebec.color import Color, ColorStyle
+from sebec.terminal import TerminalApp, VscodeTerminalColors
 from .tokens import SemanticToken, TextmateToken, TokenStyle
 
 
-PATH_TEMPLATE = str(
-    pathlib.Path(__file__)
-    .parent # base
-    .parent # vstheme
-    .parent # sebec
-    .parent # root
-    / "package/vscode/themes/{slug}-color-theme.json"
-)
+THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
 
 
 TokenKey = Color | ColorStyle | TokenStyle | str
@@ -36,6 +30,8 @@ class Theme:
     """Map of foreground color literal or color/token style object to the list of semantic
     tokens names or `SemanticToken` objects to which the style should apply."""
 
+    terminal_colors: VscodeTerminalColors
+
     textmate_tokens: dict[TokenKey, list[TextmateToken | str]]
     """Map of foreground colors or font styles to the list of Textmate
     tokens names or `TextmateToken` objects to which the style should apply."""
@@ -44,18 +40,23 @@ class Theme:
     """Map of hexadecimal color codes (with or without alpha level) to
     the list of UI elements that use that color."""
 
-    def save(self):
+    def save(self, package_path: Path):
         slug = self.name.lower().replace(" ", "-")
-        with open(PATH_TEMPLATE.format(slug=slug), "w") as f:
+        filename = THEME_FILENAME_TEMPLATE.format(slug=slug)
+
+        ui_colors = {
+            element: str(color)
+            for color, element_list in self.ui_colors.items()
+            for element in element_list
+        }
+        terminal_colors = self.terminal_colors.serialize(app=TerminalApp.Vscode)
+
+        with open(package_path / filename, "w") as f:
             data = {
                 "name": self.name,
                 "type": self.category,
                 "semanticHighlighting": True,
-                "colors": {
-                    element: str(color)
-                    for color, element_list in self.ui_colors.items()
-                    for element in element_list
-                },
+                "colors": {**ui_colors, **terminal_colors},
                 "semanticTokenColors": {
                     (
                         token if isinstance(token, str) else token.serialize()

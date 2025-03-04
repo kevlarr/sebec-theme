@@ -24,6 +24,6 @@ def main():
     write_itermcolors(PACKAGE_PATH / "Sebec.itermcolors", light=ITERM_LIGHT, dark=ITERM_DARK)
 
     # Sunrise.save()
-    Twilight.save()
+    Twilight.save(PACKAGE_PATH / "vscode/themes")
 
     print("Themes and palette generated successfully!")

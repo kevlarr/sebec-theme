@@ -7,30 +7,7 @@ from dataclasses import dataclass
 from enum import StrEnum
 from typing import Annotated
 
-from sebec.vstheme.base import Color
-
-
-# color_name_map = {
-    # "Ansi 0 Color": "ansiBlack",
-    # "Ansi 8 Color": "ansiBrightBlack",
-    # "Ansi 1 Color": "ansiRed",
-    # "Ansi 2 Color": "ansiGreen",
-    # "Ansi 3 Color": "ansiYellow",
-    # "Ansi 4 Color": "ansiBlue",
-    # "Ansi 5 Color": "ansiMagenta",
-    # "Ansi 6 Color": "ansiCyan",
-    # "Ansi 7 Color": "ansiWhite",
-    # "Ansi 9 Color": "ansiBrightRed",
-    # "Ansi 10 Color": "ansiBrightGreen",
-    # "Ansi 11 Color": "ansiBrightYellow",
-    # "Ansi 12 Color": "ansiBrightBlue",
-    # "Ansi 13 Color": "ansiBrightMagenta",
-    # "Ansi 14 Color": "ansiBrightCyan",
-    # "Ansi 15 Color": "ansiBrightWhite",
-    # "Background Color": "background",
-    # "Foreground Color": "foreground",
-    # "Selection Color": "selectionBackground",
-# }
+from sebec.color import Color
 
 
 class TerminalApp(StrEnum):
@@ -63,8 +40,11 @@ class Base:
                     continue
 
                 for anno in element.__annotations__[key].__metadata__:
-                    if not isinstance(anno, Alias) or (app and anno.app != app):
+                    if not isinstance(anno, Alias) or not app or anno.app != app:
                         continue
+
+                    if not app:
+                        breakpoint()
 
                     key = anno.alias
 
@@ -123,6 +103,6 @@ class ItermColors(Base):
     underline_color:     Annotated[Color, Iterm("Underline Color")]
 
 @dataclass(frozen=True)
-class VscodeColors(Base):
+class VscodeTerminalColors(Base):
     """Color options for VS Code's integrated terminal."""
     terminal: TerminalColors
