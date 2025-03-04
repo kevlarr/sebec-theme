@@ -3,7 +3,7 @@ from pathlib import Path
 from sebec.vstheme.base import Color
 
 
-def export_palette_html(package_path: Path):
+def export_palette_html(destination: Path):
     midpoint = int("ffffff", 16) // 2
     body = ""
 
@@ -138,7 +138,5 @@ def export_palette_html(package_path: Path):
     </html>
     '''
 
-    filepath = package_path / Path("palette2.html")
-
-    with open(filepath, "w") as f:
+    with open(destination, "w") as f:
         f.write(page)
