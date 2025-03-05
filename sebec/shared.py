@@ -45,9 +45,9 @@ ANSI_LIGHT = AnsiColors(
 
 TERMINAL_DARK = TerminalColors(
     ansi=ANSI_DARK,
-    foreground=Color.Shine2,
+    foreground=Color.Sunrise2,
     background=Color.Twilight2,
-    selection_foreground=Color.Shine4,
+    selection_foreground=Color.Sunrise4,
     selection_background=Color.Sapphire0,
     match_background=Color.SolarPurple0,
     cursor_color=Color.Cerulean3,

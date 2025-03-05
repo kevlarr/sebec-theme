@@ -107,9 +107,9 @@
         "badge.background": "#e4bb67",
         "editorGutter.modifiedBackground": "#e4bb67",
         "editorMinimap.inlineChatInserted": "#e4bb67",
-        "terminal.foreground": "#b6bece",
+        "terminal.foreground": "#cac9c4",
         "terminal.background": "#212630",
-        "terminal.selectionForeground": "#ccd3e0",
+        "terminal.selectionForeground": "#dfded8",
         "terminal.selectionBackground": "#405c82",
         "terminal.findMatchBackground": "#a9709f",
         "terminalCursor.foreground": "#7bb7cc",
@@ -132,24 +132,20 @@
         "terminal.ansiBrightWhite": "#ccd3e0"
     },
     "semanticTokenColors": {
-        "property.declaration": "#9fa9bc",
+        "property.declaration": {
+            "foreground": "#dfded8",
+            "fontStyle": "bold"
+        },
         "class.declaration": {
-            "foreground": "#9fa9bc",
+            "foreground": "#dfded8",
             "fontStyle": "bold"
         },
         "method.declaration": {
-            "foreground": "#9fa9bc",
+            "foreground": "#dfded8",
             "fontStyle": "bold"
         },
         "variable.readonly": {
-            "foreground": "#9fa9bc",
-            "fontStyle": "bold"
-        },
-        "class.typeHint": "#6988b5",
-        "function.decorator": "#437789",
-        "parameter": "#437789",
-        "selfParameter": {
-            "foreground": "#4e90a6",
+            "foreground": "#dfded8",
             "fontStyle": "bold"
         }
     },

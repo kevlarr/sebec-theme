@@ -18,10 +18,10 @@ _final = {
     ## Shine
     ##
     **{
-        Color.Shine0: [
-            Token("property", "declaration"),
+        Color.Shine4: [
         ],
-        Style(Color.Shine0, bold=True): [
+        Style(Color.Sunrise4, bold=True): [
+            Token("property", "declaration"),
             Token("class", "declaration"),
             Token("method", "declaration"),
             Token("variable", "readonly"),
@@ -33,16 +33,16 @@ _final = {
     ## Blues
     ##
     **{
-        Color.Sapphire2: [
-            Token("class", "typeHint"),
-        ],
-        Color.Cerulean0: [
-            Token("function", "decorator"),
-            "parameter",
-        ],
-        Style(Color.Cerulean1, bold=True): [
-            "selfParameter",
-        ],
+        # Color.Sapphire2: [
+            # Token("class", "typeHint"),
+        # ],
+        # Color.Cerulean0: [
+            # Token("function", "decorator"),
+            # "parameter",
+        # ],
+        # Style(Color.Cerulean1, bold=True): [
+            # "selfParameter",
+        # ],
     },
     ##
     ## Greens
