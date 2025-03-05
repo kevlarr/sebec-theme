@@ -14,10 +14,10 @@ _final = {
 }
 
 
-xTEXTMATE_TOKENS = merge_color_maps(_final)
+TEXTMATE_TOKENS = merge_color_maps(_final)
 
 
-TEXTMATE_TOKENS = {
+xTEXTMATE_TOKENS = {
     Style(Color.Sapphire0, italic=True): [
         Token("comment"),
     ],
