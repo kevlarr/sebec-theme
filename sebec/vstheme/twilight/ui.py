@@ -10,115 +10,36 @@ from sebec.color import Color
 from sebec.util import merge_color_maps
 
 
-# TODO: editor colors
-
-_SPRUCE_ELEMENTS = {
-    Color.Spruce1.alpha(0.5): [
-    ],
-    Color.Spruce1: [
-    ],
-    Color.Spruce2: [
-    ],
-    Color.Spruce3: [
-    ],
-}
-_SOLAR_ELEMENTS = {
-    Color.SolarPurple0: [
-    ],
-    Color.SolarPurple0.alpha(0.25): [
-        "editorMinimap.inlineChatInserted",
-        "list.dropBackground",
-        "sash.hoverBorder", # The drag border indicator on hover
-    ],
-    Color.SolarPurple0.alpha(0.75): [
-        "list.filterMatchBackground",
-    ],
-    Color.SolarPurple1: [
-        "tab.dragAndDropBorder",
-    ],
-    Color.SolarPurple1.alpha(0.25): [
-        "editorGroup.dropBackground",
-        "sideBar.dropBackground",
-    ],
-    Color.SolarRed0: [
-        "activityErrorBadge.background",
-        "editorGutter.deletedBackground",
-        "inputValidation.errorBorder",
-        "inputValidation.errorBackground",
-        "list.errorForeground", # foreground colors for filenames AND tab titles when error
-        "minimap.errorHighlight",
-        "minimapGutter.deletedBackground",
-    ],
-    Color.SolarRed0.alpha(0.75): [
-        "editorWarning.foreground",
-        "editorError.foreground",
-    ],
-    Color.SolarRed1: [
-        "errorForeground",
-    ],
-    Color.SolarOrange0: [
-        "activityWarningBadge.background",
-        "inputValidation.warningBorder",
-        "inputValidation.warningBackground",
-        "list.warningForeground",
-    ],
-    Color.SolarOrange0.alpha(0.75): [
-        "minimap.warningHighlight",
-    ],
-    Color.SolarYellow0: [
-        "editorGutter.modifiedBackground",
-    ],
-    Color.SolarYellow0.alpha(0.75): [
-        "minimapGutter.modifiedBackground",
-    ],
-}
-_TWILIGHT_ELEMENTS = {
-    Color.Twilight0: [
-        # "inputValidation.errorBackground",
-    ],
-    Color.Twilight1: [
-        "dropdown.listBackground",
-    ],
-    Color.Twilight2: [
-    ],
-    Color.Twilight3: [
-        "textBlockQuote.background",
-    ],
-    Color.Twilight4: [
-        "listFilterWidget.background",
-    ],
-    Color.Twilight5: [
-        "activityBar.inactiveForeground",
-    ],
-    Color.Twilight6: [
-        "disabledForeground",
-        "input.placeholderForeground",
-        "scrollbar.shadow",
-        "tab.inactiveForeground",
-    ],
-}
-
-# Opacity controls - only the alpha level is considered, not the color
-_OPACITY_CONTROLS = {
-    Color.Twilight0.alpha(0): [
-        "list.focusOutline",
-        "panel.border",
-
-        "editorGroup.border",
-        "sideBarSectionHeader.border",
-    ],
-    Color.Twilight0.alpha(0.5): [
-        "minimap.foregroundOpacity",
-    ],
-}
-
-_temp = {
-
-}
-
 _todo = [
+        # "editorActionList.background",
+        # "editorActionList.foreground",
+        # "editorActionList.focusForeground",
+        # "editorActionList.focusBackground",
+
+        # "sideBySideEditor.horizontalBorder",
+        # "sideBySideEditor.verticalBorder",
+        # "tab.border",
+        # "editorGroup.border", # border between editor groups
+        # "editorGroupHeader.border",
+        # "editorGroupHeader.tabsBorder",
+        # "sideBar.border",
+
+        # "checkbox.selectBackground",
+        # "checkbox.selectBorder",
+        # "radio.activeForeground",
+        # "radio.activeBackground",
+        # "radio.activeBorder",
+        # "radio.inactiveForeground",
+        # "radio.inactiveBackground",
+        # "radio.inactiveBorder",
+        # "radio.inactiveHoverBackground",
+
+    "textBlockQuote.background",
+
     "tab.activeBorder", # Bottom border of active tab
     "textLink.activeForeground", # Foreground on link hover/click (eg. in Welcome page)
+
+    "inputValidation.errorBackground",
 
     # Cerulean1 but.. did I see these?
     "inputValidation.infoBorder",
@@ -132,6 +53,18 @@ _todo = [
     "toolbar.hoverOutline", # eg. hovering over "..." icons, etc. in panels
 
 ]
+
+# For opacity controls, only the alpha level matters for the element
+_opacities = {
+    Color.Twilight0.alpha(0): [
+        "list.focusOutline",
+        "editorGroup.border",
+        "sideBarSectionHeader.border",
+    ],
+    Color.Twilight0.alpha(0.5): [
+        "minimap.foregroundOpacity",
+    ],
+}
 
 _final = {
     ##
@@ -163,6 +96,7 @@ _final = {
             # Primary backgrounds
             "activityBar.background",
             "breadcrumb.background",
+            "dropdown.listBackground",
             "editor.background",
             "sideBarTitle.background",
             "tab.activeBackground",
@@ -174,6 +108,7 @@ _final = {
             "list.hoverBackground",
             "list.inactiveSelectionBackground",
             "panel.background",
+            "panel.border",
         ],
         Color.Twilight3: [
             # Primary backgrounds
@@ -187,15 +122,20 @@ _final = {
         Color.Twilight4: [
             # Primary backgrounds
             "scrollbarSlider.background",
+            "listFilterWidget.background",
         ],
         Color.Twilight5: [
+            "activityBar.inactiveForeground",
         ],
         Color.Twilight6: [
+            "disabledForeground",
+            "input.placeholderForeground",
+            "scrollbar.shadow",
+            "tab.inactiveForeground",
         ],
         Color.Twilight7: [
         ],
     },
-
     ##
     ## Sunrise
     ##
@@ -217,7 +157,6 @@ _final = {
         Color.Sunrise7: [
         ],
     },
-
     ##
     ## Shine
     ##
@@ -260,7 +199,6 @@ _final = {
         Color.Shine7: [
         ],
     },
-
     ##
     ## Blues
     ##
@@ -300,7 +238,15 @@ _final = {
         ##
         ## Secondary accents, not as attention-grabbing as SolarPurple
         ##
+        Color.Cerulean0.alpha(0.5): [
+            # Drag and drop
+            "editorGroup.dropBackground",
+            "list.dropBackground",
+            "sideBar.dropBackground",
+        ],
         Color.Cerulean0: [
+            # Drag and drop
+            "tab.dragAndDropBorder",
         ],
         Color.Cerulean1: [
             "activityBar.activeBorder",
@@ -314,7 +260,6 @@ _final = {
             "tab.activeForeground",
         ],
     },
-
     ##
     ## Greens
     ##
@@ -344,7 +289,6 @@ _final = {
         Color.Spruce3: [
         ],
     },
-
     ##
     ## Solar
     ##
@@ -352,11 +296,15 @@ _final = {
         ##
         ## Purple
         ##
+        Color.SolarPurple0.alpha(0.75): [
+            "list.filterMatchBackground",
+        ],
         Color.SolarPurple0: [
             "focusBorder",
             "minimap.selectionHighlight",
             "toolbar.activeBackground", # Eg. the "..." icons when opened or other buttons when clicked
             "progressBar.background",
+            "sash.hoverBorder", # The drag border indicator on hover
         ],
         Color.SolarPurple1: [
             "minimap.findMatchHighlight",
@@ -365,63 +313,50 @@ _final = {
         ## Red
         ##
         Color.SolarRed0: [
+            "activityErrorBadge.background",
+            "editorGutter.deletedBackground",
+            "inputValidation.errorBorder",
+            "inputValidation.errorBackground",
+            "list.errorForeground", # foreground colors for filenames AND tab titles when error
+            "minimap.errorHighlight",
+            "minimapGutter.deletedBackground",
+        ],
+        Color.SolarRed1.alpha(0.75): [
+            "editorWarning.foreground",
+            "editorError.foreground",
         ],
         Color.SolarRed1: [
+            "errorForeground",
         ],
         ##
         ## Orange
         ##
+        Color.SolarOrange0.alpha(0.75): [
+            # "minimap.warningHighlight",
+        ],
         Color.SolarOrange0: [
+            # "activityWarningBadge.background",
+            # "inputValidation.warningBorder",
+            # "inputValidation.warningBackground",
+            # "list.warningForeground",
         ],
         Color.SolarOrange1: [
         ],
+        ##
         ## Yellow
         ##
+        Color.SolarYellow0.alpha(0.75): [
+            "minimapGutter.modifiedBackground",
+        ],
         Color.SolarYellow0: [
             "activityBarBadge.background",
             "badge.background", # Eg. the "Changes" count badge in Source Control sidebar
+            "editorGutter.modifiedBackground",
+            "editorMinimap.inlineChatInserted",
         ],
         Color.SolarYellow1: [
         ],
     },
 }
 
-UI_COLORS = merge_color_maps(_final)
-
-xUI_COLORS = {
-    # **_CERULEAN_ELEMENTS,
-    # **_SAPPHIRE_ELEMENTS,
-    # **_CEDAR_ELEMENTS,
-    # **_SPRUCE_ELEMENTS,
-    # **_SOLAR_ELEMENTS,
-    # **_SHINE_ELEMENTS,
-    # **_TWILIGHT_ELEMENTS,
-    # **_OPACITY_CONTROLS,
-
-
-
-    "red": [
-        # "editorActionList.background",
-        # "editorActionList.foreground",
-        # "editorActionList.focusForeground",
-        # "editorActionList.focusBackground",
-
-        # "sideBySideEditor.horizontalBorder",
-        # "sideBySideEditor.verticalBorder",
-        # "tab.border",
-        # "editorGroup.border", # border between editor groups
-        # "editorGroupHeader.border",
-        # "editorGroupHeader.tabsBorder",
-        # "sideBar.border",
-
-        # "checkbox.selectBackground",
-        # "checkbox.selectBorder",
-        # "radio.activeForeground",
-        # "radio.activeBackground",
-        # "radio.activeBorder",
-        # "radio.inactiveForeground",
-        # "radio.inactiveBackground",
-        # "radio.inactiveBorder",
-        # "radio.inactiveHoverBackground",
-    ],
-}
+UI_COLORS = merge_color_maps(_opacities, _final)
