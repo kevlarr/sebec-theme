@@ -1,7 +1,16 @@
 from sebec.color import Color
 from sebec.vstheme.base import SemanticToken as Token, TokenStyle as Style
+from sebec.util import merge_color_maps
 
-SEMANTIC_TOKENS = {
+
+_final = {
+
+}
+
+
+SEMANTIC_TOKENS = merge_color_maps(_final)
+
+xSEMANTIC_TOKENS = {
     ##
     ## Blue
     ##

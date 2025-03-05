@@ -6,65 +6,16 @@ NOTE: Any terminal colors that are assiged here and are duplicative of those def
 in `sebec.shared` will be overridden.
 """
 
-from sebec.vstheme.base import Color
+from sebec.color import Color
+from sebec.util import merge_color_maps
 
 
 # TODO: editor colors
 
-_CERULEAN_ELEMENTS = {
-    Color.Cerulean1: [
-        "inputValidation.infoBorder",
-        "inputValidation.infoBackground",
-        "minimap.infoHighlight",
-        "textLink.foreground",
-        # "tab.activeBorder",
-        "tab.selectedBorderTop",
-        "activityBar.activeBorder",
-        "activityBar.foreground",
-    ],
-    Color.Cerulean2: [
-        "textLink.activeForeground",
-    ],
-    Color.Cerulean3: [
-        "tab.activeForeground",
-    ],
-}
-_SAPPHIRE_ELEMENTS = {
-    Color.Sapphire0: [
-        "button.background",
-        "inputOption.hoverBackground",
-        "scrollbarSlider.hoverBackground",
-        "selection.background",
-        "textBlockQuote.border",
-        "toolbar.hoverBackground", # eg. hovering over icons in panels/widgets
-
-        "tree.indentGuidesStroke",
-        "tree.inactiveIndentGuidesStroke",
-    ],
-    Color.Sapphire1: [
-        # "toolbar.hoverOutline", # eg. hovering over "..." icons, etc. in panels
-    ],
-    Color.Sapphire2: [
-        "button.hoverBackground",
-        "inputOption.activeBackground",
-        "scrollbarSlider.activeBackground",
-    ],
-    Color.Sapphire3: [
-        "editorGutter.foldingControlForeground",
-    ],
-}
-_CEDAR_ELEMENTS = {
-}
 _SPRUCE_ELEMENTS = {
     Color.Spruce1.alpha(0.5): [
-        "minimap.findMatchHighlight",
     ],
     Color.Spruce1: [
-        "activityBarBadge.background",
-        "badge.background",
-        "editorGutter.addedBackground",
-        "minimapGutter.addedBackground",
-        "progressBar.background",
     ],
     Color.Spruce2: [
     ],
@@ -73,9 +24,6 @@ _SPRUCE_ELEMENTS = {
 }
 _SOLAR_ELEMENTS = {
     Color.SolarPurple0: [
-        "focusBorder",
-        "minimap.selectionHighlight",
-        "toolbar.activeBackground", # Eg. the "..." icons when opened or other buttons when clicked
     ],
     Color.SolarPurple0.alpha(0.25): [
         "editorMinimap.inlineChatInserted",
@@ -124,83 +72,19 @@ _SOLAR_ELEMENTS = {
         "minimapGutter.modifiedBackground",
     ],
 }
-_SHINE_ELEMENTS = {
-    Color.Shine1: [
-        "descriptionForeground", # Eg. extension descriptions in search
-        "editor.foreground",
-        "foreground",
-        "icon.foreground",
-        "sideBar.foreground",
-        "sideBarTitle.foreground",
-        "sideBarSectionHeader.foreground",
-    ],
-    Color.Shine2: [
-    ],
-    Color.Shine3: [
-    ],
-    Color.Shine4: [
-    ],
-    Color.Shine5: [
-        "button.foreground",
-        "checkbox.foreground",
-        "dropdown.foreground",
-        "editorWidget.foreground",
-        "input.foreground",
-        "inputValidation.errorForeground",
-        "inputValidation.infoForeground",
-        "inputValidation.warningForeground",
-        "list.activeSelectionForeground",
-        "list.activeSelectionIconForeground",
-        "list.inactiveSelectionForeground",
-        "list.inactiveSelectionIconForeground",
-    ],
-    Color.Shine6: [
-    ],
-    Color.Shine7: [
-    ],
-}
 _TWILIGHT_ELEMENTS = {
     Color.Twilight0: [
-        "tab.inactiveBackground",
-        "activityBarBadge.foreground",
-        "activityErrorBadge.foreground",
-        "activityWarningBadge.foreground",
-        "badge.foreground",
-        "checkbox.background",
-        "dropdown.background",
-        "editorGroupHeader.tabsBackground",
-        "input.background",
         # "inputValidation.errorBackground",
-        "inputOption.activeBorder", # match input color to hide the border
-        "minimap.background",
-        "sideBar.background",
-        "sideBarSectionHeader.background",
-        "textCodeBlock.background", # Eg. blocks in markdown
     ],
     Color.Twilight1: [
-        "activityBar.background",
-        "breadcrumb.background",
         "dropdown.listBackground",
-        "editor.background",
-        "sideBarTitle.background",
-        "tab.activeBackground",
-        "tab.hoverBackground",
     ],
     Color.Twilight2: [
-        "panel.background",
-        "list.activeSelectionBackground",
-        "list.hoverBackground",
-        "list.inactiveSelectionBackground",
     ],
     Color.Twilight3: [
-        "checkbox.border",
-        "dropdown.border",
-        "input.border",
-        "editorWidget.background",
         "textBlockQuote.background",
     ],
     Color.Twilight4: [
-        "scrollbarSlider.background",
         "listFilterWidget.background",
     ],
     Color.Twilight5: [
@@ -228,15 +112,293 @@ _OPACITY_CONTROLS = {
     ],
 }
 
-UI_COLORS = {
-    **_CERULEAN_ELEMENTS,
-    **_SAPPHIRE_ELEMENTS,
-    **_CEDAR_ELEMENTS,
-    **_SPRUCE_ELEMENTS,
-    **_SOLAR_ELEMENTS,
-    **_SHINE_ELEMENTS,
-    **_TWILIGHT_ELEMENTS,
-    **_OPACITY_CONTROLS,
+_temp = {
+
+}
+
+_todo = [
+    "tab.activeBorder", # Bottom border of active tab
+    "textLink.activeForeground", # Foreground on link hover/click (eg. in Welcome page)
+
+    # Cerulean1 but.. did I see these?
+    "inputValidation.infoBorder",
+    "inputValidation.infoBackground",
+    "minimap.infoHighlight",
+
+    # Sapphire0
+    "textBlockQuote.border",
+
+    # Sapphire1
+    "toolbar.hoverOutline", # eg. hovering over "..." icons, etc. in panels
+
+]
+
+_final = {
+    ##
+    ## Twilight
+    ##
+    **{
+        Color.Twilight0: [
+            # Primary backgrounds
+            "editorGroupHeader.tabsBackground",
+            "minimap.background",
+            "sideBar.background",
+            "sideBarSectionHeader.background",
+            "tab.inactiveBackground",
+            "textCodeBlock.background", # Eg. blocks in markdown
+
+            # Input & control elements
+            "checkbox.background",
+            "dropdown.background",
+            "input.background",
+            "inputOption.activeBorder", # match input color to hide the border
+
+            # Foreground colors
+            "activityBarBadge.foreground",
+            "activityErrorBadge.foreground",
+            "activityWarningBadge.foreground",
+            "badge.foreground", # Eg. the "Changes" count badge in Source Control sidebar
+        ],
+        Color.Twilight1: [
+            # Primary backgrounds
+            "activityBar.background",
+            "breadcrumb.background",
+            "editor.background",
+            "sideBarTitle.background",
+            "tab.activeBackground",
+            "tab.hoverBackground",
+        ],
+        Color.Twilight2: [
+            # Primary backgrounds
+            "list.activeSelectionBackground",
+            "list.hoverBackground",
+            "list.inactiveSelectionBackground",
+            "panel.background",
+        ],
+        Color.Twilight3: [
+            # Primary backgrounds
+            "editorWidget.background",
+
+            # Input & control elements
+            "checkbox.border",
+            "dropdown.border",
+            "input.border",
+        ],
+        Color.Twilight4: [
+            # Primary backgrounds
+            "scrollbarSlider.background",
+        ],
+        Color.Twilight5: [
+        ],
+        Color.Twilight6: [
+        ],
+        Color.Twilight7: [
+        ],
+    },
+
+    ##
+    ## Sunrise
+    ##
+    **{
+        Color.Sunrise0: [
+        ],
+        Color.Sunrise0: [
+        ],
+        Color.Sunrise2: [
+        ],
+        Color.Sunrise3: [
+        ],
+        Color.Sunrise4: [
+        ],
+        Color.Sunrise5: [
+        ],
+        Color.Sunrise6: [
+        ],
+        Color.Sunrise7: [
+        ],
+    },
+
+    ##
+    ## Shine
+    ##
+    **{
+        Color.Shine0: [
+        ],
+        Color.Shine1: [
+            # Foreground colors
+            "descriptionForeground", # Eg. extension descriptions in search
+            "editor.foreground",
+            "foreground",
+            "icon.foreground",
+            "sideBar.foreground",
+            "sideBarTitle.foreground",
+            "sideBarSectionHeader.foreground",
+        ],
+        Color.Shine2: [
+        ],
+        Color.Shine3: [
+        ],
+        Color.Shine4: [
+        ],
+        Color.Shine5: [
+            # Foreground colors
+            "button.foreground",
+            "checkbox.foreground",
+            "dropdown.foreground",
+            "editorWidget.foreground",
+            "input.foreground",
+            "inputValidation.errorForeground",
+            "inputValidation.infoForeground",
+            "inputValidation.warningForeground",
+            "list.activeSelectionForeground",
+            "list.activeSelectionIconForeground",
+            "list.inactiveSelectionForeground",
+            "list.inactiveSelectionIconForeground",
+        ],
+        Color.Shine6: [
+        ],
+        Color.Shine7: [
+        ],
+    },
+
+    ##
+    ## Blues
+    ##
+    **{
+        ##
+        ## Sapphire
+        ##
+        ## Good for elements that need some distinction from background
+        ## but without popping or distracting.
+        ##
+        Color.Sapphire0: [
+            # Input & control elements
+            "button.background",
+            "inputOption.hoverBackground",
+            "toolbar.hoverBackground", # eg. hovering over icons in panels/widgets
+
+            "scrollbarSlider.hoverBackground",
+            "selection.background",
+            "tree.indentGuidesStroke",
+            "tree.inactiveIndentGuidesStroke",
+        ],
+        Color.Sapphire1: [
+            # Input & control elements
+            "button.hoverBackground",
+        ],
+        Color.Sapphire2: [
+            # Input & control elements
+            "inputOption.activeBackground", # eg. the regex button in Find widget when activated
+
+            "scrollbarSlider.activeBackground",
+        ],
+        Color.Sapphire3: [
+            "editorGutter.foldingControlForeground", # The > carets for folding
+        ],
+        ##
+        ## Cerulean
+        ##
+        ## Secondary accents, not as attention-grabbing as SolarPurple
+        ##
+        Color.Cerulean0: [
+        ],
+        Color.Cerulean1: [
+            "activityBar.activeBorder",
+            "activityBar.foreground",
+            "tab.selectedBorderTop",
+            "textLink.foreground",
+        ],
+        Color.Cerulean2: [
+        ],
+        Color.Cerulean3: [
+            "tab.activeForeground",
+        ],
+    },
+
+    ##
+    ## Greens
+    ##
+    **{
+        ##
+        ## Cedar
+        ##
+        Color.Cedar0: [
+        ],
+        Color.Cedar0: [
+        ],
+        Color.Cedar2: [
+        ],
+        Color.Cedar3: [
+        ],
+        ##
+        ## Spruce
+        ##
+        Color.Spruce0: [
+            "editorGutter.addedBackground",
+            "minimapGutter.addedBackground",
+        ],
+        Color.Spruce1: [
+        ],
+        Color.Spruce2: [
+        ],
+        Color.Spruce3: [
+        ],
+    },
+
+    ##
+    ## Solar
+    ##
+    **{
+        ##
+        ## Purple
+        ##
+        Color.SolarPurple0: [
+            "focusBorder",
+            "minimap.selectionHighlight",
+            "toolbar.activeBackground", # Eg. the "..." icons when opened or other buttons when clicked
+            "progressBar.background",
+        ],
+        Color.SolarPurple1: [
+            "minimap.findMatchHighlight",
+        ],
+        ##
+        ## Red
+        ##
+        Color.SolarRed0: [
+        ],
+        Color.SolarRed1: [
+        ],
+        ##
+        ## Orange
+        ##
+        Color.SolarOrange0: [
+        ],
+        Color.SolarOrange1: [
+        ],
+        ## Yellow
+        ##
+        Color.SolarYellow0: [
+            "activityBarBadge.background",
+            "badge.background", # Eg. the "Changes" count badge in Source Control sidebar
+        ],
+        Color.SolarYellow1: [
+        ],
+    },
+}
+
+UI_COLORS = merge_color_maps(_final)
+
+xUI_COLORS = {
+    # **_CERULEAN_ELEMENTS,
+    # **_SAPPHIRE_ELEMENTS,
+    # **_CEDAR_ELEMENTS,
+    # **_SPRUCE_ELEMENTS,
+    # **_SOLAR_ELEMENTS,
+    # **_SHINE_ELEMENTS,
+    # **_TWILIGHT_ELEMENTS,
+    # **_OPACITY_CONTROLS,
+
+
 
     "red": [
         # "editorActionList.background",
@@ -251,7 +413,6 @@ UI_COLORS = {
         # "editorGroupHeader.border",
         # "editorGroupHeader.tabsBorder",
         # "sideBar.border",
-
 
         # "checkbox.selectBackground",
         # "checkbox.selectBorder",

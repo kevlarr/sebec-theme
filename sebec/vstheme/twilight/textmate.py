@@ -6,6 +6,16 @@ See:
 """
 from sebec.color import Color
 from sebec.vstheme.base import TextmateToken as Token, TokenStyle as Style
+from sebec.util import merge_color_maps
+
+
+_final = {
+
+}
+
+
+xTEXTMATE_TOKENS = merge_color_maps(_final)
+
 
 TEXTMATE_TOKENS = {
     Style(Color.Sapphire0, italic=True): [
