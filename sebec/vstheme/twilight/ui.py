@@ -45,7 +45,6 @@ _SAPPHIRE_ELEMENTS = {
         # "toolbar.hoverOutline", # eg. hovering over "..." icons, etc. in panels
     ],
     Color.Sapphire2: [
-        # "editorGroup.border",
         "button.hoverBackground",
         "inputOption.activeBackground",
         "scrollbarSlider.activeBackground",
@@ -192,19 +191,11 @@ _TWILIGHT_ELEMENTS = {
         "list.activeSelectionBackground",
         "list.hoverBackground",
         "list.inactiveSelectionBackground",
-        "sideBarSectionHeader.border",
-        "sideBySideEditor.horizontalBorder",
-        "sideBySideEditor.verticalBorder",
-        "tab.border",
     ],
     Color.Twilight3: [
         "checkbox.border",
         "dropdown.border",
-        "editorGroup.border", # border between editor groups
-        # "editorGroupHeader.border",
-        # "editorGroupHeader.tabsBorder",
         "input.border",
-        "sideBar.border",
         "editorWidget.background",
         "textBlockQuote.background",
     ],
@@ -227,6 +218,10 @@ _TWILIGHT_ELEMENTS = {
 _OPACITY_CONTROLS = {
     Color.Twilight0.alpha(0): [
         "list.focusOutline",
+        "panel.border",
+
+        "editorGroup.border",
+        "sideBarSectionHeader.border",
     ],
     Color.Twilight0.alpha(0.5): [
         "minimap.foregroundOpacity",
@@ -248,6 +243,14 @@ UI_COLORS = {
         # "editorActionList.foreground",
         # "editorActionList.focusForeground",
         # "editorActionList.focusBackground",
+
+        # "sideBySideEditor.horizontalBorder",
+        # "sideBySideEditor.verticalBorder",
+        # "tab.border",
+        # "editorGroup.border", # border between editor groups
+        # "editorGroupHeader.border",
+        # "editorGroupHeader.tabsBorder",
+        # "sideBar.border",
 
 
         # "checkbox.selectBackground",
