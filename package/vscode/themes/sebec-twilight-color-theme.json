@@ -44,25 +44,25 @@
         "input.placeholderForeground": "#556077",
         "scrollbar.shadow": "#556077",
         "tab.inactiveForeground": "#556077",
-        "descriptionForeground": "#abb3c4",
-        "editor.foreground": "#abb3c4",
-        "foreground": "#abb3c4",
-        "icon.foreground": "#abb3c4",
-        "sideBar.foreground": "#abb3c4",
-        "sideBarTitle.foreground": "#abb3c4",
-        "sideBarSectionHeader.foreground": "#abb3c4",
-        "button.foreground": "#d9dee8",
-        "checkbox.foreground": "#d9dee8",
-        "dropdown.foreground": "#d9dee8",
-        "editorWidget.foreground": "#d9dee8",
-        "input.foreground": "#d9dee8",
-        "inputValidation.errorForeground": "#d9dee8",
-        "inputValidation.infoForeground": "#d9dee8",
-        "inputValidation.warningForeground": "#d9dee8",
-        "list.activeSelectionForeground": "#d9dee8",
-        "list.activeSelectionIconForeground": "#d9dee8",
-        "list.inactiveSelectionForeground": "#d9dee8",
-        "list.inactiveSelectionIconForeground": "#d9dee8",
+        "descriptionForeground": "#b6b5af",
+        "editor.foreground": "#b6b5af",
+        "foreground": "#b6b5af",
+        "icon.foreground": "#b6b5af",
+        "sideBar.foreground": "#b6b5af",
+        "sideBarTitle.foreground": "#b6b5af",
+        "sideBarSectionHeader.foreground": "#b6b5af",
+        "button.foreground": "#e8e7e3",
+        "checkbox.foreground": "#e8e7e3",
+        "dropdown.foreground": "#e8e7e3",
+        "editorWidget.foreground": "#e8e7e3",
+        "input.foreground": "#e8e7e3",
+        "inputValidation.errorForeground": "#e8e7e3",
+        "inputValidation.infoForeground": "#e8e7e3",
+        "inputValidation.warningForeground": "#e8e7e3",
+        "list.activeSelectionForeground": "#e8e7e3",
+        "list.activeSelectionIconForeground": "#e8e7e3",
+        "list.inactiveSelectionForeground": "#e8e7e3",
+        "list.inactiveSelectionIconForeground": "#e8e7e3",
         "button.background": "#405c82",
         "inputOption.hoverBackground": "#405c82",
         "toolbar.hoverBackground": "#405c82",
@@ -149,5 +149,39 @@
             "fontStyle": "bold"
         }
     },
-    "tokenColors": []
+    "tokenColors": [
+        {
+            "scope": "punctuation.separator",
+            "settings": {
+                "foreground": "#4a6a96"
+            }
+        },
+        {
+            "scope": "keyword.control",
+            "settings": {
+                "foreground": "#6988b5"
+            }
+        },
+        {
+            "scope": [
+                "comment"
+            ],
+            "settings": {
+                "foreground": "#4e90a6",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "punctuation.definition.string",
+            "settings": {
+                "foreground": "#4e7e62"
+            }
+        },
+        {
+            "scope": "string",
+            "settings": {
+                "foreground": "#6fae8a"
+            }
+        }
+    ]
 }

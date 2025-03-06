@@ -141,29 +141,6 @@ _final = {
     ##
     **{
         Color.Sunrise0: [
-        ],
-        Color.Sunrise0: [
-        ],
-        Color.Sunrise2: [
-        ],
-        Color.Sunrise3: [
-        ],
-        Color.Sunrise4: [
-        ],
-        Color.Sunrise5: [
-        ],
-        Color.Sunrise6: [
-        ],
-        Color.Sunrise7: [
-        ],
-    },
-    ##
-    ## Shine
-    ##
-    **{
-        Color.Shine0: [
-        ],
-        Color.Shine1: [
             # Foreground colors
             "descriptionForeground", # Eg. extension descriptions in search
             "editor.foreground",
@@ -173,13 +150,15 @@ _final = {
             "sideBarTitle.foreground",
             "sideBarSectionHeader.foreground",
         ],
-        Color.Shine2: [
+        Color.Sunrise1: [
         ],
-        Color.Shine3: [
+        Color.Sunrise2: [
         ],
-        Color.Shine4: [
+        Color.Sunrise3: [
         ],
-        Color.Shine5: [
+        Color.Sunrise4: [
+        ],
+        Color.Sunrise5: [
             # Foreground colors
             "button.foreground",
             "checkbox.foreground",
@@ -193,6 +172,27 @@ _final = {
             "list.activeSelectionIconForeground",
             "list.inactiveSelectionForeground",
             "list.inactiveSelectionIconForeground",
+        ],
+        Color.Sunrise6: [
+        ],
+        Color.Sunrise7: [
+        ],
+    },
+    ##
+    ## Shine
+    ##
+    **{
+        Color.Shine0: [
+        ],
+        Color.Shine1: [
+        ],
+        Color.Shine2: [
+        ],
+        Color.Shine3: [
+        ],
+        Color.Shine4: [
+        ],
+        Color.Shine5: [
         ],
         Color.Shine6: [
         ],

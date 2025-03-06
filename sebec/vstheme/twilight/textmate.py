@@ -10,7 +10,21 @@ from sebec.util import merge_color_maps
 
 
 _final = {
-
+    Color.Sapphire1: [
+        "punctuation.separator",
+    ],
+    Color.Sapphire2: [
+        "keyword.control",
+    ],
+    Style(Color.Cerulean1, italic=True): [
+        Token("comment"),
+    ],
+    Color.Spruce0: [
+        "punctuation.definition.string",
+    ],
+    Color.Spruce2: [
+        "string",
+    ]
 }
 
 
@@ -18,9 +32,6 @@ TEXTMATE_TOKENS = merge_color_maps(_final)
 
 
 xTEXTMATE_TOKENS = {
-    Style(Color.Sapphire0, italic=True): [
-        Token("comment"),
-    ],
     Color.Sapphire2: [
         Token("keyword.control", "keyword.operator", "keyword.other", name="Keywords"),
     ],
