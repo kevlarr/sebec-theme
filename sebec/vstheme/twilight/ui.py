@@ -66,76 +66,74 @@ _opacities = {
     ],
 }
 
+_twilight = {
+    Color.Twilight0: [
+        # Primary backgrounds
+        "editorGroupHeader.tabsBackground",
+        "minimap.background",
+        "sideBar.background",
+        "sideBarSectionHeader.background",
+        "tab.inactiveBackground",
+        "textCodeBlock.background", # Eg. blocks in markdown
+
+        # Input & control elements
+        "checkbox.background",
+        "dropdown.background",
+        "input.background",
+        "inputOption.activeBorder", # match input color to hide the border
+
+        # Foreground colors
+        "activityBarBadge.foreground",
+        "activityErrorBadge.foreground",
+        "activityWarningBadge.foreground",
+        "badge.foreground", # Eg. the "Changes" count badge in Source Control sidebar
+    ],
+    Color.Twilight1: [
+        # Primary backgrounds
+        "activityBar.background",
+        "breadcrumb.background",
+        "dropdown.listBackground",
+        "editor.background",
+        "sideBarTitle.background",
+        "tab.activeBackground",
+        "tab.hoverBackground",
+    ],
+    Color.Twilight2: [
+        # Primary backgrounds
+        "list.activeSelectionBackground",
+        "list.hoverBackground",
+        "list.inactiveSelectionBackground",
+        "panel.background",
+        "panel.border",
+    ],
+    Color.Twilight3: [
+        # Primary backgrounds
+        "editorWidget.background",
+
+        # Input & control elements
+        "checkbox.border",
+        "dropdown.border",
+        "input.border",
+    ],
+    Color.Twilight4: [
+        # Primary backgrounds
+        "scrollbarSlider.background",
+        "listFilterWidget.background",
+    ],
+    Color.Twilight5: [
+        "activityBar.inactiveForeground",
+    ],
+    Color.Twilight6: [
+        "disabledForeground",
+        "input.placeholderForeground",
+        "scrollbar.shadow",
+        "tab.inactiveForeground",
+    ],
+    Color.Twilight7: [
+    ],
+}
+
 _final = {
-    ##
-    ## Twilight
-    ##
-    **{
-        Color.Twilight0: [
-            # Primary backgrounds
-            "editorGroupHeader.tabsBackground",
-            "minimap.background",
-            "sideBar.background",
-            "sideBarSectionHeader.background",
-            "tab.inactiveBackground",
-            "textCodeBlock.background", # Eg. blocks in markdown
-
-            # Input & control elements
-            "checkbox.background",
-            "dropdown.background",
-            "input.background",
-            "inputOption.activeBorder", # match input color to hide the border
-
-            # Foreground colors
-            "activityBarBadge.foreground",
-            "activityErrorBadge.foreground",
-            "activityWarningBadge.foreground",
-            "badge.foreground", # Eg. the "Changes" count badge in Source Control sidebar
-        ],
-        Color.Twilight1: [
-            # Primary backgrounds
-            "activityBar.background",
-            "breadcrumb.background",
-            "dropdown.listBackground",
-            "editor.background",
-            "sideBarTitle.background",
-            "tab.activeBackground",
-            "tab.hoverBackground",
-        ],
-        Color.Twilight2: [
-            # Primary backgrounds
-            "list.activeSelectionBackground",
-            "list.hoverBackground",
-            "list.inactiveSelectionBackground",
-            "panel.background",
-            "panel.border",
-        ],
-        Color.Twilight3: [
-            # Primary backgrounds
-            "editorWidget.background",
-
-            # Input & control elements
-            "checkbox.border",
-            "dropdown.border",
-            "input.border",
-        ],
-        Color.Twilight4: [
-            # Primary backgrounds
-            "scrollbarSlider.background",
-            "listFilterWidget.background",
-        ],
-        Color.Twilight5: [
-            "activityBar.inactiveForeground",
-        ],
-        Color.Twilight6: [
-            "disabledForeground",
-            "input.placeholderForeground",
-            "scrollbar.shadow",
-            "tab.inactiveForeground",
-        ],
-        Color.Twilight7: [
-        ],
-    },
     ##
     ## Sunrise
     ##
@@ -359,4 +357,4 @@ _final = {
     },
 }
 
-UI_COLORS = merge_color_maps(_opacities, _final)
+UI_COLORS = merge_color_maps(_opacities, _twilight, _final)

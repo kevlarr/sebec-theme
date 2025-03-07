@@ -13,8 +13,6 @@ _todo = [
     Semantic("method"),
     Semantic("function"),
     Semantic("function.decorator"),
-    Semantic("parameter.declaration"), # declaration of params
-    Semantic("selfParameter"),
     Semantic("variable.readonly"), # usage of CONSTANTS
     Semantic("variable.readonly.declaration"), # declaration of CONSTANTS
 
@@ -51,12 +49,19 @@ _sunrise = {
     Color.Sunrise4: [
     ],
     Color.Sunrise5: [
+        Semantic("parameter"),
+    ],
+    Style(Color.Sunrise5, bold=True): [
     ],
     Color.Sunrise6: [
     ],
     Color.Sunrise7: [
         Semantic("class"),
+        Semantic("parameter.declaration"),
         Semantic("property.declaration"),
+    ],
+    Style(Color.Sunrise7, bold=True): [
+        Semantic("selfParameter"),
     ],
 }
 _sapphire = {
@@ -66,11 +71,11 @@ _sapphire = {
     Color.Sapphire1: [
         Textmate("keyword.control.flow"), # eg. `if`, `while`
         Textmate("keyword.control.import"),
-        Textmate([
-            "punctuation.separator",              # eg. `,`, `.` in method calls, or `:` in dicts
-            "punctuation.section.class.begin",    # eg. `:` after class def
-            "punctuation.section.function.begin", # eg. `:` after function def
-        ], name="low-contrast punctuation")
+        # Textmate([
+            # "punctuation.separator",              # eg. `,`, `.` in method calls, or `:` in dicts
+            # "punctuation.section.class.begin",    # eg. `:` after class def
+            # "punctuation.section.function.begin", # eg. `:` after function def
+        # ], name="low-contrast punctuation")
     ],
     Style(Color.Sapphire1, bold=True): [
         Textmate(["storage.type.class", "storage.type.function"], name="class & def keywords")
@@ -81,6 +86,8 @@ _cerulean = {
     Color.Cerulean0: [
     ],
     Color.Cerulean2: [
+    ],
+    Color.Cerulean3: [
         Semantic("function"),
         Semantic("method"),
     ],
