@@ -51,7 +51,7 @@ class Theme:
                     semantic_token_colors[token.value] = style
                 else:
                     settings = {"foreground": style} if isinstance(style, str) else style
-                    textmate_token_colors.append({"scope": [token.value], "settings": settings})
+                    textmate_token_colors.append({"scope": token.value, "settings": settings})
 
         ui_colors = {
             element: str(color)

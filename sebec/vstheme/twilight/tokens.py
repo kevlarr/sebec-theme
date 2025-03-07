@@ -25,7 +25,6 @@ _todo = [
 
     Textmate("punctuation.definition.decorator"), # `@` for decorators
     Textmate("variable.parameter.function-call"), # eg. keyword arguments
-    Textmate("variable.parameter.function-call"),
 
 ]
 
@@ -67,23 +66,23 @@ _sapphire = {
     Color.Sapphire1: [
         Textmate("keyword.control.flow"), # eg. `if`, `while`
         Textmate("keyword.control.import"),
-        Textmate("punctuation.separator"), # eg. `,`, `.` in method calls, or `:` in dicts
-        Textmate("punctuation.section.class.begin"), # eg. `:` after class def
-        Textmate("punctuation.section.function.begin"), # eg. `:` after function def
+        Textmate([
+            "punctuation.separator",              # eg. `,`, `.` in method calls, or `:` in dicts
+            "punctuation.section.class.begin",    # eg. `:` after class def
+            "punctuation.section.function.begin", # eg. `:` after function def
+        ], name="low-contrast punctuation")
     ],
     Style(Color.Sapphire1, bold=True): [
-        Textmate("storage.type.class"),
-        Textmate("storage.type.function"),
+        Textmate(["storage.type.class", "storage.type.function"], name="class & def keywords")
     ],
 
 }
 _cerulean = {
     Color.Cerulean0: [
-        Textmate("meta.function-call.arguments keyword.operator.assignment"), # The `=` in keyword args
-        Textmate("variable.parameter.function-call"),
     ],
     Color.Cerulean2: [
         Semantic("function"),
+        Semantic("method"),
     ],
     Style(Color.Cerulean3, bold=True): [
         Semantic("class"),
@@ -108,6 +107,12 @@ _spruce = {
     ],
 }
 _solar = {
+    Color.SolarPurple0: [
+        Textmate([
+            "meta.function-call.arguments keyword.operator.assignment",
+            "variable.parameter.function-call",
+        ], name="Keyword arguments w/ = sign")
+    ],
 
 }
 

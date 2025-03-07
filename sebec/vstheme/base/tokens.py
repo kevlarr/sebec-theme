@@ -21,7 +21,7 @@ class Semantic:
 @dataclass(frozen=True)
 class Textmate:
     """Textmate token selector with optional name."""
-    value: str
+    value: list[str] | str
     name: str | None = None
 
 
