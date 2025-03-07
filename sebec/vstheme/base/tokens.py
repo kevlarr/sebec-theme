@@ -52,13 +52,16 @@ class TokenStyle(ColorStyle):
     """Style object suitable for theming Textmate and semantic tokens."""
 
     bold: bool | None = None
-    """Whether the text should be rendered in bold"""
+    """Whether or not the text should be rendered in bold"""
 
     italic: bool | None = None
-    """Whether the text should be rendered in italic"""
+    """Whether or not the text should be rendered in italic"""
+
+    strikethrough: bool | None = None
+    """Whether or not the text should be struck through"""
 
     underline: bool | None = None
-    """Whether the text should be underlined"""
+    """Whether or not the text should be underlined"""
 
     def serialize(self) -> dict | str:
         """Returns a dict with the foreground color and a font style string
@@ -67,12 +70,10 @@ class TokenStyle(ColorStyle):
         color = super().__str__()
 
         font_style = ""
-        if self.bold is True:
-            font_style += "bold"
-        if self.italic is True:
-            font_style += " italic"
-        if self.underline is True:
-            font_style += " underline"
+        if self.bold:          font_style += "bold"
+        if self.italic:        font_style += " italic"
+        if self.strikethrough: font_style += " strikethrough"
+        if self.underline:     font_style += " underline"
 
         if font_style:
             return {"foreground": color, "fontStyle": font_style.strip()}

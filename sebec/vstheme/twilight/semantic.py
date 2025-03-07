@@ -2,6 +2,21 @@ from sebec.color import Color
 from sebec.vstheme.base import SemanticToken as Token, TokenStyle as Style
 from sebec.util import merge_color_maps
 
+_todo = [
+    "method",
+    "function",
+    "function.decorator",
+    "parameter.declaration", # declaration of params
+    "selfParameter",
+    "variable.readonly", # usage of CONSTANTS
+    "variable.readonly.declaration", # declaration of CONSTANTS
+
+    # `paramter` is tough because it overrides textmate grammer
+    # for keyword args
+    #
+    # "parameter", # usage/declaration of params
+]
+
 
 _final = {
     ##
@@ -10,39 +25,59 @@ _final = {
     **{
     },
     ##
-    ## Sunrise
+    ## Shine
     ##
     **{
     },
     ##
-    ## Shine
+    ## Sunrise
     ##
     **{
-        Color.Shine4: [
+        Color.Sunrise0: [
         ],
-        Style(Color.Sunrise4, bold=True): [
-            Token("property", "declaration"),
-            Token("class", "declaration"),
-            Token("method", "declaration"),
-            Token("variable", "readonly"),
+        Style(Color.Sunrise0, italic=True): [
+            "class.typeHint",
         ],
-        Style(Color.Shine2, bold=True): [
+        Color.Sunrise1: [
+        ],
+        Color.Sunrise2: [
+        ],
+        Color.Sunrise3: [
+            "property.declaration",
+        ],
+        Style(Color.Sunrise3, bold=True): [
+        ],
+        Style(Color.Sunrise1, underline=True): [
+            "module",
+        ],
+        Color.Sunrise4: [
+        ],
+        Color.Sunrise5: [
+        ],
+        Color.Sunrise6: [
+        ],
+        Color.Sunrise7: [
+            "class",
+            "property.declaration",
+        ],
+        Style(Color.Sunrise7, bold=True): [
         ],
     },
     ##
     ## Blues
     ##
     **{
-        # Color.Sapphire2: [
-            # Token("class", "typeHint"),
-        # ],
-        # Color.Cerulean0: [
-            # Token("function", "decorator"),
-            # "parameter",
-        # ],
-        # Style(Color.Cerulean1, bold=True): [
-            # "selfParameter",
-        # ],
+        Color.Sapphire0: [
+        ],
+        Color.Cerulean2: [
+            "function",
+        ],
+        Style(Color.Cerulean3, bold=True): [
+            "class",
+            "class.declaration",
+            "function.declaration",
+            "method.declaration",
+        ],
     },
     ##
     ## Greens
@@ -53,6 +88,10 @@ _final = {
     ## Solar
     ##
     **{
+        Color.SolarPurple0: [
+        ],
+        Style(Color.SolarPurple0, bold=True): [
+        ],
     },
 }
 
