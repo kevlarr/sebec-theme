@@ -5,7 +5,7 @@ from pathlib import Path
 
 from sebec.color import Color, ColorStyle
 from sebec.terminal import TerminalApp, VscodeTerminalColors
-from .tokens import SemanticToken, TextmateToken, TokenStyle
+from .tokens import Semantic, Textmate, TokenStyle
 
 
 THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
@@ -26,15 +26,11 @@ class Theme:
 
     category: ThemeCategory
 
-    semantic_tokens: dict[TokenKey, list[SemanticToken | str]]
-    """Map of foreground color literal or color/token style object to the list of semantic
-    tokens names or `SemanticToken` objects to which the style should apply."""
-
     terminal_colors: VscodeTerminalColors
 
-    textmate_tokens: dict[TokenKey, list[TextmateToken | str]]
-    """Map of foreground colors or font styles to the list of Textmate
-    tokens names or `TextmateToken` objects to which the style should apply."""
+    token_colors: dict[TokenKey, list[Textmate | Semantic]]
+    """Map of foreground colors or font styles to the list of Textmate or
+    Semantic token objects to which the style should apply."""
 
     ui_colors: dict[UiColorKey, list[str]]
     """Map of hexadecimal color codes (with or without alpha level) to
@@ -43,6 +39,19 @@ class Theme:
     def save(self, package_path: Path):
         slug = self.name.lower().replace(" ", "-")
         filename = THEME_FILENAME_TEMPLATE.format(slug=slug)
+
+        semantic_token_colors = {}
+        textmate_token_colors = []
+
+        for color_or_style, token_list in self.token_colors.items():
+            style = color_or_style.serialize() if isinstance(color_or_style, TokenStyle) else str(color_or_style)
+
+            for token in token_list:
+                if isinstance(token, Semantic):
+                    semantic_token_colors[token.value] = style
+                else:
+                    settings = {"foreground": style} if isinstance(style, str) else style
+                    textmate_token_colors.append({"scope": [token.value], "settings": settings})
 
         ui_colors = {
             element: str(color)
@@ -57,22 +66,7 @@ class Theme:
                 "type": self.category,
                 "semanticHighlighting": True,
                 "colors": {**ui_colors, **terminal_colors},
-                "semanticTokenColors": {
-                    (
-                        token if isinstance(token, str) else token.serialize()
-                    ): (
-                        style.serialize() if isinstance(style, TokenStyle) else str(style)
-                    )
-                    for style, token_list in self.semantic_tokens.items()
-                    for token in token_list
-                },
-                "tokenColors": [
-                    {
-                        **({"scope": token} if isinstance(token, str) else token.serialize()),
-                        "settings": {"foreground": style} if isinstance(style, str) else style.serialize()
-                    }
-                    for style, token_list in self.textmate_tokens.items()
-                    for token in token_list
-                ],
+                "semanticTokenColors": semantic_token_colors,
+                "tokenColors": textmate_token_colors,
             }
             f.write(json.dumps(data, indent=4))

@@ -1,0 +1,126 @@
+"""
+Textmate & semantic token color assignments.
+
+See:
+- https://macromates.com/manual/en/language_grammars#naming_conventions
+"""
+from sebec.color import Color
+from sebec.vstheme.base.tokens import Semantic, Textmate, TokenStyle as Style
+from sebec.util import merge_color_maps
+
+
+_todo = [
+    Semantic("method"),
+    Semantic("function"),
+    Semantic("function.decorator"),
+    Semantic("parameter.declaration"), # declaration of params
+    Semantic("selfParameter"),
+    Semantic("variable.readonly"), # usage of CONSTANTS
+    Semantic("variable.readonly.declaration"), # declaration of CONSTANTS
+
+    # `paramter` is tough because it overrides textmate grammer
+    # for keyword args
+    #
+    # Semantic("parameter"), # usage/declaration of params
+
+    Textmate("punctuation.definition.decorator"), # `@` for decorators
+    Textmate("variable.parameter.function-call"), # eg. keyword arguments
+    Textmate("variable.parameter.function-call"),
+
+]
+
+_twilight = {
+    Color.Twilight7: [
+    ],
+}
+_sunrise = {
+    Color.Sunrise0: [
+    ],
+    Style(Color.Sunrise0, italic=True): [
+        Semantic("class.typeHint"),
+    ],
+    Color.Sunrise1: [
+    ],
+    Style(Color.Sunrise1, underline=True): [
+        Semantic("module"),
+    ],
+    Color.Sunrise2: [
+    ],
+    Color.Sunrise3: [
+        Semantic("property.declaration"),
+    ],
+    Color.Sunrise4: [
+    ],
+    Color.Sunrise5: [
+    ],
+    Color.Sunrise6: [
+    ],
+    Color.Sunrise7: [
+        Semantic("class"),
+        Semantic("property.declaration"),
+    ],
+}
+_sapphire = {
+    Style(Color.Sapphire0, italic=True): [
+        Textmate("comment"),
+    ],
+    Color.Sapphire1: [
+        Textmate("keyword.control.flow"), # eg. `if`, `while`
+        Textmate("keyword.control.import"),
+        Textmate("punctuation.separator"), # eg. `,`, `.` in method calls, or `:` in dicts
+        Textmate("punctuation.section.class.begin"), # eg. `:` after class def
+        Textmate("punctuation.section.function.begin"), # eg. `:` after function def
+    ],
+    Style(Color.Sapphire1, bold=True): [
+        Textmate("storage.type.class"),
+        Textmate("storage.type.function"),
+    ],
+
+}
+_cerulean = {
+    Color.Cerulean0: [
+        Textmate("meta.function-call.arguments keyword.operator.assignment"), # The `=` in keyword args
+        Textmate("variable.parameter.function-call"),
+    ],
+    Color.Cerulean2: [
+        Semantic("function"),
+    ],
+    Style(Color.Cerulean3, bold=True): [
+        Semantic("class"),
+        Semantic("class.declaration"),
+        Semantic("function.declaration"),
+        Semantic("method.declaration"),
+    ],
+}
+_cedar = {
+
+}
+_spruce = {
+    Style(Color.Spruce0, italic=True): [
+        Textmate("punctuation.definition.string"), # quotes around the string
+    ],
+    Style(Color.Spruce2, italic=True): [
+        Textmate("string"),
+    ],
+    Color.Spruce2: [
+        Textmate("constant.numeric"),
+        Textmate("constant.language"),
+    ],
+}
+_solar = {
+
+}
+
+COLOR_TOKENS = {
+    **_twilight,
+    **_sunrise,
+    **_sapphire,
+    **_cerulean,
+    **_cedar,
+    **_spruce,
+    **_solar,
+    **{
+        "#ff0000": [
+        ]
+    }
+}

@@ -17,9 +17,8 @@ Sunrise = Theme(
     # "sideBar.foreground": Color.polar3,
     # "panel.background": "#EAE8E1",
     # "editorWidth.background": "#F6F6F3",
-    semantic_tokens={},
     terminal_colors=VscodeTerminalColors(terminal=TERMINAL_LIGHT),
-    textmate_tokens={},
+    token_colors={},
     ui_colors={
         Color.Sunrise5: [
             "editor.background",
