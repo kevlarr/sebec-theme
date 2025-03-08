@@ -72,7 +72,7 @@ def main():
             style = element.attributes.get("style")
             if not style: continue
 
-            match = re.match("fill:(#[a-fA-F0-9]{6,8});", style.value)
+            match = re.match("fill:(#[a-fA-F0-9]{3,6});", style.value)
             if not match: continue
 
             colors.append({

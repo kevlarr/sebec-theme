@@ -91,11 +91,9 @@ _spruce = {
     ],
 }
 _solar = {
-    Color.SolarOrange0: [
+    Color.SolarOrange1: [
         Semantic("property"),
         Semantic("property.declaration"),
-    ],
-    Color.SolarOrange1: [
     ],
     Style(Color.SolarPurple0, italic=True): [
         Textmate("punctuation.definition.string"), # quotes around the string

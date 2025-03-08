@@ -55,20 +55,27 @@ def _append(parent, color_map: dict[str, str], *, suffix: str = None):
         color_space_value = ElementTree.SubElement(dict_color, "string")
         color_space_value.text = "P3"
 
+        if len(value) == 4:
+            r, g, b = value[1:]
+        elif len(value) == 7:
+            r, g, b = value[1:3], value[3:5], value[5:]
+        else:
+            raise ValueError(f"expected 3- or 6- character hex string; received {value}")
+
         red = ElementTree.SubElement(dict_color, "key")
         red.text = "Red Component"
         red_value = ElementTree.SubElement(dict_color, "real")
-        red_value.text = str(int(value[1:3], 16) / 255.0)
+        red_value.text = str(int(r, 16) / 255.0)
 
         green = ElementTree.SubElement(dict_color, "key")
         green.text = "Green Component"
         green_value = ElementTree.SubElement(dict_color, "real")
-        green_value.text = str(int(value[3:5], 16) / 255.0)
+        green_value.text = str(int(g, 16) / 255.0)
 
         blue = ElementTree.SubElement(dict_color, "key")
         blue.text = "Blue Component"
         blue_value = ElementTree.SubElement(dict_color, "real")
-        blue_value.text = str(int(value[5:7], 16) / 255.0)
+        blue_value.text = str(int(b, 16) / 255.0)
 
         alpha = ElementTree.SubElement(dict_color, "key")
         alpha.text = "Alpha Component"

@@ -18,8 +18,8 @@ ANSI_DARK = AnsiColors(
     magenta_bright=Color.SolarPurple1,
     cyan=Color.Cerulean1,
     cyan_bright=Color.Cerulean2,
-    white=Color.Shine2,
-    white_bright=Color.Shine4,
+    white=Color.Sunrise2,
+    white_bright=Color.Sunrise4,
 )
 
 # Most colors are the same except for Sapphire/Cerulean being darker variants
@@ -39,8 +39,8 @@ ANSI_LIGHT = AnsiColors(
     magenta_bright=Color.SolarPurple1,
     cyan=Color.Cerulean0,
     cyan_bright=Color.Cerulean1,
-    white=Color.Shine2,
-    white_bright=Color.Shine4,
+    white=Color.Sunrise2,
+    white_bright=Color.Sunrise4,
 )
 
 TERMINAL_DARK = TerminalColors(
@@ -62,5 +62,5 @@ TERMINAL_LIGHT = TerminalColors(
     selection_background=Color.Sapphire3,
     match_background=Color.SolarPurple1,
     cursor_color=Color.Cerulean0,
-    cursor_text_color=Color.Shine6,
+    cursor_text_color=Color.Sunrise6,
 )

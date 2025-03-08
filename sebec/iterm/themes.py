@@ -6,7 +6,7 @@ from sebec.shared import TERMINAL_DARK, TERMINAL_LIGHT
 ITERM_DARK = ItermColors(
     terminal=TERMINAL_DARK,
     badge_color=Color.Cerulean0,
-    bold_color=Color.Shine5,
+    bold_color=Color.Sunrise5,
     cursor_guide_color=Color.Twilight4,
     link_color=Color.Cerulean1,
     tab_color=Color.Twilight2,

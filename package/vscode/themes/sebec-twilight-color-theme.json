@@ -128,8 +128,8 @@
         "terminal.ansiBrightMagenta": "#bc8fb5",
         "terminal.ansiCyan": "#499bb6",
         "terminal.ansiBrightCyan": "#69b1c9",
-        "terminal.ansiWhite": "#b6bece",
-        "terminal.ansiBrightWhite": "#ccd3e0"
+        "terminal.ansiWhite": "#bcbab3",
+        "terminal.ansiBrightWhite": "#d6d4cd"
     },
     "semanticTokenColors": {
         "module": {
@@ -160,8 +160,8 @@
             "foreground": "#8cc6d9",
             "fontStyle": "bold"
         },
-        "property": "#c67053",
-        "property.declaration": "#c67053"
+        "property": "#d28f79",
+        "property.declaration": "#d28f79"
     },
     "tokenColors": [
         {

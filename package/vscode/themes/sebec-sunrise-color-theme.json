@@ -7,12 +7,12 @@
         "sideBar.background": "#e3e2dd",
         "editor.background": "#edece8",
         "terminal.foreground": "#556077",
-        "terminal.background": "#edece8",
+        "terminal.background": "#f6f6f4",
         "terminal.selectionForeground": "#1b1f27",
         "terminal.selectionBackground": "#8cacd9",
         "terminal.findMatchBackground": "#bc8fb5",
         "terminalCursor.foreground": "#3d7a8f",
-        "terminalCursor.background": "#e5e9f0",
+        "terminalCursor.background": "#edece8",
         "terminal.ansiBlack": "#0d0e12",
         "terminal.ansiBrightBlack": "#242932",
         "terminal.ansiRed": "#a1454d",
@@ -27,8 +27,8 @@
         "terminal.ansiBrightMagenta": "#bc8fb5",
         "terminal.ansiCyan": "#3d7a8f",
         "terminal.ansiBrightCyan": "#499bb6",
-        "terminal.ansiWhite": "#b6bece",
-        "terminal.ansiBrightWhite": "#ccd3e0"
+        "terminal.ansiWhite": "#bcbab3",
+        "terminal.ansiBrightWhite": "#d6d4cd"
     },
     "semanticTokenColors": {
         "property": "#c67053",

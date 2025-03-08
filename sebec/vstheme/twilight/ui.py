@@ -179,24 +179,24 @@ _final = {
     ##
     ## Shine
     ##
-    **{
-        Color.Shine0: [
-        ],
-        Color.Shine1: [
-        ],
-        Color.Shine2: [
-        ],
-        Color.Shine3: [
-        ],
-        Color.Shine4: [
-        ],
-        Color.Shine5: [
-        ],
-        Color.Shine6: [
-        ],
-        Color.Shine7: [
-        ],
-    },
+    # **{
+        # Color.Shine0: [
+        # ],
+        # Color.Shine1: [
+        # ],
+        # Color.Shine2: [
+        # ],
+        # Color.Shine3: [
+        # ],
+        # Color.Shine4: [
+        # ],
+        # Color.Shine5: [
+        # ],
+        # Color.Shine6: [
+        # ],
+        # Color.Shine7: [
+        # ],
+    # },
     ##
     ## Blues
     ##
