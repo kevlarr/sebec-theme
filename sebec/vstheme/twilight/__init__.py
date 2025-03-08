@@ -7,14 +7,6 @@ from .ui import UI_COLORS
 
 __all__ = ["Twilight"]
 
-"""
-Guidelines
-
-  - Least important fades away
-    * Keywords
-    * Punctuation
-"""
-
 
 Twilight = Theme(
     name="Sebec Twilight",

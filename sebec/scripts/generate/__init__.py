@@ -23,7 +23,8 @@ def main():
     export_palette_html(PACKAGE_PATH / "palette.html")
     write_itermcolors(PACKAGE_PATH / "Sebec.itermcolors", light=ITERM_LIGHT, dark=ITERM_DARK)
 
-    # Sunrise.save()
-    Twilight.save(PACKAGE_PATH / "vscode/themes")
+    themes = PACKAGE_PATH / "vscode/themes"
+    Sunrise.save(themes)
+    Twilight.save(themes)
 
     print("Themes and palette generated successfully!")
