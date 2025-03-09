@@ -1,0 +1,107 @@
+{
+    "name": "Sebec Sunrise",
+    "type": "light",
+    "semanticHighlighting": true,
+    "colors": {
+        "editor.foreground": "#485265",
+        "sideBar.background": "#e3e2dd",
+        "editor.background": "#edece8",
+        "terminal.foreground": "#556077",
+        "terminal.background": "#f6f6f4",
+        "terminal.selectionForeground": "#1b1f27",
+        "terminal.selectionBackground": "#8cacd9",
+        "terminal.findMatchBackground": "#bc8fb5",
+        "terminalCursor.foreground": "#3d7a8f",
+        "terminalCursor.background": "#edece8",
+        "terminal.ansiBlack": "#0d0e12",
+        "terminal.ansiBrightBlack": "#242932",
+        "terminal.ansiRed": "#a1454d",
+        "terminal.ansiBrightRed": "#ba5e66",
+        "terminal.ansiGreen": "#627e4e",
+        "terminal.ansiBrightGreen": "#759a5b",
+        "terminal.ansiYellow": "#e4bb67",
+        "terminal.ansiBrightYellow": "#ecce93",
+        "terminal.ansiBlue": "#3d5f8f",
+        "terminal.ansiBrightBlue": "#4976b6",
+        "terminal.ansiMagenta": "#a9709f",
+        "terminal.ansiBrightMagenta": "#bc8fb5",
+        "terminal.ansiCyan": "#3d7a8f",
+        "terminal.ansiBrightCyan": "#499bb6",
+        "terminal.ansiWhite": "#bcbab3",
+        "terminal.ansiBrightWhite": "#d6d4cd"
+    },
+    "semanticTokenColors": {
+        "property": "#c67053",
+        "property.declaration": "#c67053",
+        "class": "#4976b6",
+        "function": "#4976b6",
+        "method": "#4976b6",
+        "class.declaration": {
+            "foreground": "#4976b6",
+            "fontStyle": "bold"
+        },
+        "function.declaration": {
+            "foreground": "#4976b6",
+            "fontStyle": "bold"
+        },
+        "method.declaration": {
+            "foreground": "#4976b6",
+            "fontStyle": "bold"
+        }
+    },
+    "tokenColors": [
+        {
+            "scope": [
+                "punctuation.definition",
+                "punctuation.separator",
+                "punctuation.section.class.begin",
+                "punctuation.section.function.begin"
+            ],
+            "settings": {
+                "foreground": "#9d9c95"
+            }
+        },
+        {
+            "scope": "comment",
+            "settings": {
+                "foreground": "#627e4e",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": [
+                "storage.type.class",
+                "storage.type.function"
+            ],
+            "settings": {
+                "foreground": "#499bb6",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "keyword",
+            "settings": {
+                "foreground": "#499bb6"
+            }
+        },
+        {
+            "scope": "constant.numeric",
+            "settings": {
+                "foreground": "#a9709f"
+            }
+        },
+        {
+            "scope": "constant.language",
+            "settings": {
+                "foreground": "#a9709f"
+            }
+        },
+        {
+            "scope": "string",
+            "settings": {
+                "foreground": "#a9709f",
+                "fontStyle": "italic"
+            }
+        }
+    ]
+}

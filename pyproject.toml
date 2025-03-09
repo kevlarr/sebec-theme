@@ -11,6 +11,7 @@ readme = "README.md"
 
 [tool.poetry.scripts]
 generate = "sebec.scripts.generate:main"
+update-colors = "sebec.scripts.update_colors:main"
 
 [tool.poetry.dependencies]
 python = "^3.13"

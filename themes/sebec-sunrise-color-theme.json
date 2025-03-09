@@ -1,9 +1,0 @@
-{
-    "name": "sebec-sunrise",
-    "type": "light",
-    "semanticHighlighting": true,
-    "colors": {
-        "editor.background": "#F0EFEA"
-    },
-    "token_colors": []
-}

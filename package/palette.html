@@ -1,0 +1,469 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" rel="stylesheet">
+        <script>
+    function copyText(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.focus({preventScroll:true});
+        textArea.select();
+
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            alert('Unable to copy to clipboard', err);
+        }
+
+        document.body.removeChild(textArea);
+    }
+
+    window.onload = function() {
+        const swatchNames = document.querySelectorAll('.swatch-name');
+        swatchNames.forEach(name => {
+            const paletteColor = `Color.${name.textContent}`;
+            name.addEventListener('click', () => copyText(paletteColor));
+        });
+        const swatchValues = document.querySelectorAll('.swatch-value');
+        swatchValues.forEach(value => {
+            const hex = value.textContent.slice(1);
+            value.addEventListener('click', () => copyText(hex));
+        });
+    };
+    </script>
+    </head>
+    <body><div
+            class="swatch" style="background-color: #627e4e;"
+            data-color-value="#627e4e"
+            data-color-name="Cedar0"
+        ><button
+            class="swatch-name"
+            style="color: #627e4e; filter: brightness(1.75)">Cedar0</button><button
+            class="swatch-value"
+            style="color: #627e4e; filter: brightness(1.75)">#627e4e</button></div><div
+            class="swatch" style="background-color: #759a5b;"
+            data-color-value="#759a5b"
+            data-color-name="Cedar1"
+        ><button
+            class="swatch-name"
+            style="color: #759a5b; filter: brightness(1.75)">Cedar1</button><button
+            class="swatch-value"
+            style="color: #759a5b; filter: brightness(1.75)">#759a5b</button></div><div
+            class="swatch" style="background-color: #8aae6f;"
+            data-color-value="#8aae6f"
+            data-color-name="Cedar2"
+        ><button
+            class="swatch-name"
+            style="color: #8aae6f; filter: brightness(0.3)">Cedar2</button><button
+            class="swatch-value"
+            style="color: #8aae6f; filter: brightness(0.3)">#8aae6f</button></div><div
+            class="swatch" style="background-color: #9fbf88;"
+            data-color-value="#9fbf88"
+            data-color-name="Cedar3"
+        ><button
+            class="swatch-name"
+            style="color: #9fbf88; filter: brightness(0.3)">Cedar3</button><button
+            class="swatch-value"
+            style="color: #9fbf88; filter: brightness(0.3)">#9fbf88</button></div><div
+            class="swatch" style="background-color: #3d7a8f;"
+            data-color-value="#3d7a8f"
+            data-color-name="Cerulean0"
+        ><button
+            class="swatch-name"
+            style="color: #3d7a8f; filter: brightness(2.25)">Cerulean0</button><button
+            class="swatch-value"
+            style="color: #3d7a8f; filter: brightness(2.25)">#3d7a8f</button></div><div
+            class="swatch" style="background-color: #499bb6;"
+            data-color-value="#499bb6"
+            data-color-name="Cerulean1"
+        ><button
+            class="swatch-name"
+            style="color: #499bb6; filter: brightness(2.25)">Cerulean1</button><button
+            class="swatch-value"
+            style="color: #499bb6; filter: brightness(2.25)">#499bb6</button></div><div
+            class="swatch" style="background-color: #69b1c9;"
+            data-color-value="#69b1c9"
+            data-color-name="Cerulean2"
+        ><button
+            class="swatch-name"
+            style="color: #69b1c9; filter: brightness(1.75)">Cerulean2</button><button
+            class="swatch-value"
+            style="color: #69b1c9; filter: brightness(1.75)">#69b1c9</button></div><div
+            class="swatch" style="background-color: #8cc6d9;"
+            data-color-value="#8cc6d9"
+            data-color-name="Cerulean3"
+        ><button
+            class="swatch-name"
+            style="color: #8cc6d9; filter: brightness(0.3)">Cerulean3</button><button
+            class="swatch-value"
+            style="color: #8cc6d9; filter: brightness(0.3)">#8cc6d9</button></div><div
+            class="swatch" style="background-color: #3d5f8f;"
+            data-color-value="#3d5f8f"
+            data-color-name="Sapphire0"
+        ><button
+            class="swatch-name"
+            style="color: #3d5f8f; filter: brightness(2.25)">Sapphire0</button><button
+            class="swatch-value"
+            style="color: #3d5f8f; filter: brightness(2.25)">#3d5f8f</button></div><div
+            class="swatch" style="background-color: #4976b6;"
+            data-color-value="#4976b6"
+            data-color-name="Sapphire1"
+        ><button
+            class="swatch-name"
+            style="color: #4976b6; filter: brightness(2.25)">Sapphire1</button><button
+            class="swatch-value"
+            style="color: #4976b6; filter: brightness(2.25)">#4976b6</button></div><div
+            class="swatch" style="background-color: #6991c9;"
+            data-color-value="#6991c9"
+            data-color-name="Sapphire2"
+        ><button
+            class="swatch-name"
+            style="color: #6991c9; filter: brightness(1.75)">Sapphire2</button><button
+            class="swatch-value"
+            style="color: #6991c9; filter: brightness(1.75)">#6991c9</button></div><div
+            class="swatch" style="background-color: #8cacd9;"
+            data-color-value="#8cacd9"
+            data-color-name="Sapphire3"
+        ><button
+            class="swatch-name"
+            style="color: #8cacd9; filter: brightness(0.3)">Sapphire3</button><button
+            class="swatch-value"
+            style="color: #8cacd9; filter: brightness(0.3)">#8cacd9</button></div><div
+            class="swatch" style="background-color: #9fa9bc;"
+            data-color-value="#9fa9bc"
+            data-color-name="Shine0"
+        ><button
+            class="swatch-name"
+            style="color: #9fa9bc; filter: brightness(0.3)">Shine0</button><button
+            class="swatch-value"
+            style="color: #9fa9bc; filter: brightness(0.3)">#9fa9bc</button></div><div
+            class="swatch" style="background-color: #abb3c4;"
+            data-color-value="#abb3c4"
+            data-color-name="Shine1"
+        ><button
+            class="swatch-name"
+            style="color: #abb3c4; filter: brightness(0.3)">Shine1</button><button
+            class="swatch-value"
+            style="color: #abb3c4; filter: brightness(0.3)">#abb3c4</button></div><div
+            class="swatch" style="background-color: #b6bece;"
+            data-color-value="#b6bece"
+            data-color-name="Shine2"
+        ><button
+            class="swatch-name"
+            style="color: #b6bece; filter: brightness(0.4)">Shine2</button><button
+            class="swatch-value"
+            style="color: #b6bece; filter: brightness(0.4)">#b6bece</button></div><div
+            class="swatch" style="background-color: #c0c8d8;"
+            data-color-value="#c0c8d8"
+            data-color-name="Shine3"
+        ><button
+            class="swatch-name"
+            style="color: #c0c8d8; filter: brightness(0.4)">Shine3</button><button
+            class="swatch-value"
+            style="color: #c0c8d8; filter: brightness(0.4)">#c0c8d8</button></div><div
+            class="swatch" style="background-color: #ccd3e0;"
+            data-color-value="#ccd3e0"
+            data-color-name="Shine4"
+        ><button
+            class="swatch-name"
+            style="color: #ccd3e0; filter: brightness(0.5)">Shine4</button><button
+            class="swatch-value"
+            style="color: #ccd3e0; filter: brightness(0.5)">#ccd3e0</button></div><div
+            class="swatch" style="background-color: #d9dee8;"
+            data-color-value="#d9dee8"
+            data-color-name="Shine5"
+        ><button
+            class="swatch-name"
+            style="color: #d9dee8; filter: brightness(0.5)">Shine5</button><button
+            class="swatch-value"
+            style="color: #d9dee8; filter: brightness(0.5)">#d9dee8</button></div><div
+            class="swatch" style="background-color: #e5e9f0;"
+            data-color-value="#e5e9f0"
+            data-color-name="Shine6"
+        ><button
+            class="swatch-name"
+            style="color: #e5e9f0; filter: brightness(0.5)">Shine6</button><button
+            class="swatch-value"
+            style="color: #e5e9f0; filter: brightness(0.5)">#e5e9f0</button></div><div
+            class="swatch" style="background-color: #edf0f5;"
+            data-color-value="#edf0f5"
+            data-color-name="Shine7"
+        ><button
+            class="swatch-name"
+            style="color: #edf0f5; filter: brightness(0.6)">Shine7</button><button
+            class="swatch-value"
+            style="color: #edf0f5; filter: brightness(0.6)">#edf0f5</button></div><div
+            class="swatch" style="background-color: #c67053;"
+            data-color-value="#c67053"
+            data-color-name="SolarOrange0"
+        ><button
+            class="swatch-name"
+            style="color: #c67053; filter: brightness(0.4)">SolarOrange0</button><button
+            class="swatch-value"
+            style="color: #c67053; filter: brightness(0.4)">#c67053</button></div><div
+            class="swatch" style="background-color: #d28f79;"
+            data-color-value="#d28f79"
+            data-color-name="SolarOrange1"
+        ><button
+            class="swatch-name"
+            style="color: #d28f79; filter: brightness(0.5)">SolarOrange1</button><button
+            class="swatch-value"
+            style="color: #d28f79; filter: brightness(0.5)">#d28f79</button></div><div
+            class="swatch" style="background-color: #a9709f;"
+            data-color-value="#a9709f"
+            data-color-name="SolarPurple0"
+        ><button
+            class="swatch-name"
+            style="color: #a9709f; filter: brightness(0.3)">SolarPurple0</button><button
+            class="swatch-value"
+            style="color: #a9709f; filter: brightness(0.3)">#a9709f</button></div><div
+            class="swatch" style="background-color: #bc8fb5;"
+            data-color-value="#bc8fb5"
+            data-color-name="SolarPurple1"
+        ><button
+            class="swatch-name"
+            style="color: #bc8fb5; filter: brightness(0.4)">SolarPurple1</button><button
+            class="swatch-value"
+            style="color: #bc8fb5; filter: brightness(0.4)">#bc8fb5</button></div><div
+            class="swatch" style="background-color: #a1454d;"
+            data-color-value="#a1454d"
+            data-color-name="SolarRed0"
+        ><button
+            class="swatch-name"
+            style="color: #a1454d; filter: brightness(0.3)">SolarRed0</button><button
+            class="swatch-value"
+            style="color: #a1454d; filter: brightness(0.3)">#a1454d</button></div><div
+            class="swatch" style="background-color: #ba5e66;"
+            data-color-value="#ba5e66"
+            data-color-name="SolarRed1"
+        ><button
+            class="swatch-name"
+            style="color: #ba5e66; filter: brightness(0.4)">SolarRed1</button><button
+            class="swatch-value"
+            style="color: #ba5e66; filter: brightness(0.4)">#ba5e66</button></div><div
+            class="swatch" style="background-color: #e4bb67;"
+            data-color-value="#e4bb67"
+            data-color-name="SolarYellow0"
+        ><button
+            class="swatch-name"
+            style="color: #e4bb67; filter: brightness(0.5)">SolarYellow0</button><button
+            class="swatch-value"
+            style="color: #e4bb67; filter: brightness(0.5)">#e4bb67</button></div><div
+            class="swatch" style="background-color: #ecce93;"
+            data-color-value="#ecce93"
+            data-color-name="SolarYellow1"
+        ><button
+            class="swatch-name"
+            style="color: #ecce93; filter: brightness(0.6)">SolarYellow1</button><button
+            class="swatch-value"
+            style="color: #ecce93; filter: brightness(0.6)">#ecce93</button></div><div
+            class="swatch" style="background-color: #4e7e62;"
+            data-color-value="#4e7e62"
+            data-color-name="Spruce0"
+        ><button
+            class="swatch-name"
+            style="color: #4e7e62; filter: brightness(1.75)">Spruce0</button><button
+            class="swatch-value"
+            style="color: #4e7e62; filter: brightness(1.75)">#4e7e62</button></div><div
+            class="swatch" style="background-color: #5b9a75;"
+            data-color-value="#5b9a75"
+            data-color-name="Spruce1"
+        ><button
+            class="swatch-name"
+            style="color: #5b9a75; filter: brightness(1.75)">Spruce1</button><button
+            class="swatch-value"
+            style="color: #5b9a75; filter: brightness(1.75)">#5b9a75</button></div><div
+            class="swatch" style="background-color: #6fae8a;"
+            data-color-value="#6fae8a"
+            data-color-name="Spruce2"
+        ><button
+            class="swatch-name"
+            style="color: #6fae8a; filter: brightness(1.75)">Spruce2</button><button
+            class="swatch-value"
+            style="color: #6fae8a; filter: brightness(1.75)">#6fae8a</button></div><div
+            class="swatch" style="background-color: #88bf9f;"
+            data-color-value="#88bf9f"
+            data-color-name="Spruce3"
+        ><button
+            class="swatch-name"
+            style="color: #88bf9f; filter: brightness(0.3)">Spruce3</button><button
+            class="swatch-value"
+            style="color: #88bf9f; filter: brightness(0.3)">#88bf9f</button></div><div
+            class="swatch" style="background-color: #9d9c95;"
+            data-color-value="#9d9c95"
+            data-color-name="Sunrise0"
+        ><button
+            class="swatch-name"
+            style="color: #9d9c95; filter: brightness(0.3)">Sunrise0</button><button
+            class="swatch-value"
+            style="color: #9d9c95; filter: brightness(0.3)">#9d9c95</button></div><div
+            class="swatch" style="background-color: #aeaca3;"
+            data-color-value="#aeaca3"
+            data-color-name="Sunrise1"
+        ><button
+            class="swatch-name"
+            style="color: #aeaca3; filter: brightness(0.3)">Sunrise1</button><button
+            class="swatch-value"
+            style="color: #aeaca3; filter: brightness(0.3)">#aeaca3</button></div><div
+            class="swatch" style="background-color: #bcbab3;"
+            data-color-value="#bcbab3"
+            data-color-name="Sunrise2"
+        ><button
+            class="swatch-name"
+            style="color: #bcbab3; filter: brightness(0.4)">Sunrise2</button><button
+            class="swatch-value"
+            style="color: #bcbab3; filter: brightness(0.4)">#bcbab3</button></div><div
+            class="swatch" style="background-color: #cbcac2;"
+            data-color-value="#cbcac2"
+            data-color-name="Sunrise3"
+        ><button
+            class="swatch-name"
+            style="color: #cbcac2; filter: brightness(0.4)">Sunrise3</button><button
+            class="swatch-value"
+            style="color: #cbcac2; filter: brightness(0.4)">#cbcac2</button></div><div
+            class="swatch" style="background-color: #d6d4cd;"
+            data-color-value="#d6d4cd"
+            data-color-name="Sunrise4"
+        ><button
+            class="swatch-name"
+            style="color: #d6d4cd; filter: brightness(0.5)">Sunrise4</button><button
+            class="swatch-value"
+            style="color: #d6d4cd; filter: brightness(0.5)">#d6d4cd</button></div><div
+            class="swatch" style="background-color: #e3e2dd;"
+            data-color-value="#e3e2dd"
+            data-color-name="Sunrise5"
+        ><button
+            class="swatch-name"
+            style="color: #e3e2dd; filter: brightness(0.5)">Sunrise5</button><button
+            class="swatch-value"
+            style="color: #e3e2dd; filter: brightness(0.5)">#e3e2dd</button></div><div
+            class="swatch" style="background-color: #edece8;"
+            data-color-value="#edece8"
+            data-color-name="Sunrise6"
+        ><button
+            class="swatch-name"
+            style="color: #edece8; filter: brightness(0.6)">Sunrise6</button><button
+            class="swatch-value"
+            style="color: #edece8; filter: brightness(0.6)">#edece8</button></div><div
+            class="swatch" style="background-color: #f6f6f4;"
+            data-color-value="#f6f6f4"
+            data-color-name="Sunrise7"
+        ><button
+            class="swatch-name"
+            style="color: #f6f6f4; filter: brightness(0.7)">Sunrise7</button><button
+            class="swatch-value"
+            style="color: #f6f6f4; filter: brightness(0.7)">#f6f6f4</button></div><div
+            class="swatch" style="background-color: #0d0e12;"
+            data-color-value="#0d0e12"
+            data-color-name="Twilight0"
+        ><button
+            class="swatch-name"
+            style="color: #0d0e12; filter: brightness(10)">Twilight0</button><button
+            class="swatch-value"
+            style="color: #0d0e12; filter: brightness(10)">#0d0e12</button></div><div
+            class="swatch" style="background-color: #13161b;"
+            data-color-value="#13161b"
+            data-color-name="Twilight1"
+        ><button
+            class="swatch-name"
+            style="color: #13161b; filter: brightness(7)">Twilight1</button><button
+            class="swatch-value"
+            style="color: #13161b; filter: brightness(7)">#13161b</button></div><div
+            class="swatch" style="background-color: #1b1f27;"
+            data-color-value="#1b1f27"
+            data-color-name="Twilight2"
+        ><button
+            class="swatch-name"
+            style="color: #1b1f27; filter: brightness(4)">Twilight2</button><button
+            class="swatch-value"
+            style="color: #1b1f27; filter: brightness(4)">#1b1f27</button></div><div
+            class="swatch" style="background-color: #242932;"
+            data-color-value="#242932"
+            data-color-name="Twilight3"
+        ><button
+            class="swatch-name"
+            style="color: #242932; filter: brightness(4)">Twilight3</button><button
+            class="swatch-value"
+            style="color: #242932; filter: brightness(4)">#242932</button></div><div
+            class="swatch" style="background-color: #313744;"
+            data-color-value="#313744"
+            data-color-name="Twilight4"
+        ><button
+            class="swatch-name"
+            style="color: #313744; filter: brightness(4)">Twilight4</button><button
+            class="swatch-value"
+            style="color: #313744; filter: brightness(4)">#313744</button></div><div
+            class="swatch" style="background-color: #3c4453;"
+            data-color-value="#3c4453"
+            data-color-name="Twilight5"
+        ><button
+            class="swatch-name"
+            style="color: #3c4453; filter: brightness(2.25)">Twilight5</button><button
+            class="swatch-value"
+            style="color: #3c4453; filter: brightness(2.25)">#3c4453</button></div><div
+            class="swatch" style="background-color: #556077;"
+            data-color-value="#556077"
+            data-color-name="Twilight6"
+        ><button
+            class="swatch-name"
+            style="color: #556077; filter: brightness(1.75)">Twilight6</button><button
+            class="swatch-value"
+            style="color: #556077; filter: brightness(1.75)">#556077</button></div><div
+            class="swatch" style="background-color: #485265;"
+            data-color-value="#485265"
+            data-color-name="Twilight7"
+        ><button
+            class="swatch-name"
+            style="color: #485265; filter: brightness(2.25)">Twilight7</button><button
+            class="swatch-value"
+            style="color: #485265; filter: brightness(2.25)">#485265</button></div></body>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-wrap: wrap;
+            font-family: 'Nunito', sans-serif;
+            gap: 1rem;
+            padding: 1rem;
+        }
+        button {
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(1.05);
+        }
+        button, button:hover, button:active {
+            transition: all 0.1s ease;
+        }
+        .swatch {
+            align-items: center;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            height: 64px;
+            justify-content: center;
+            width: 128px;
+        }
+        .swatch-name,
+        .swatch-value {
+            font-size: 16px;
+        }
+        .swatch-name {
+            font-weight: 900;
+        }
+        .swatch-value {
+            font-style: italic;
+            font-weight: 100;
+        }
+    </html>
+    
