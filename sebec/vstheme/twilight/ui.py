@@ -1,9 +1,6 @@
 """UI Colors
 
 See: https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
-
-NOTE: Any terminal colors that are assiged here and are duplicative of those defined
-in `sebec.shared` will be overridden.
 """
 
 from sebec.color import Color

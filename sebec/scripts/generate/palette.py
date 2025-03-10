@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from sebec.vstheme.base import Color
+from sebec.color import Color
 
 
 def export_palette_html(destination: Path):

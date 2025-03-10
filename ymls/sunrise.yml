@@ -1,0 +1,41 @@
+name: Sebec Sunrise
+style: light
+
+terminal:
+  background: sunrise7
+  foreground: twilight6
+  selectionBackground: sapphire3
+  selectionForeground: twilight2
+  matchBackground: solarPurple1
+  cursorColor: cerulean0
+  cursorTextColor: sunrise6
+
+  ansi:
+    black: twilight0
+    blackBright: twilight3
+    blue: sapphire0
+    blueBright: sapphire1
+    cyan: cerulean0
+    cyanBright: cerulean1
+    green: cedar0
+    greenBright: cedar1
+    red: solarRed0
+    redBright: solarRed1
+    magenta: solarPurple0
+    magentaBright: solarPurple1
+    white: sunrise2
+    whiteBright: sunrise4
+    yellow: solarYellow0
+    yellowBright: solarYellow1
+
+  iterm:
+    badgeColor: cerulean0
+    boldColor: twilight2
+    cursorGuideColor: sunrise6
+    linkColor: cerulean0
+    tabColor: sunrise7
+    underlineColor: cerulean0
+
+vscode:
+  tokens: []
+  ui: []

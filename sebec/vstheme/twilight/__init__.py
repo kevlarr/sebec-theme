@@ -1,5 +1,3 @@
-from sebec.shared import TERMINAL_DARK
-from sebec.terminal import VscodeTerminalColors
 from sebec.vstheme.base import Theme, ThemeCategory
 from .tokens import COLOR_TOKENS
 from .ui import UI_COLORS

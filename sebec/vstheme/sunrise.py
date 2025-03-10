@@ -1,6 +1,4 @@
-from sebec.shared import TERMINAL_LIGHT
 from sebec.vstheme.base.tokens import Semantic, Textmate, TokenStyle as Style
-from sebec.terminal import VscodeTerminalColors
 from sebec.vstheme.base import Color, Theme, ThemeCategory
 
 
