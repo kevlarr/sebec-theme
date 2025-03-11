@@ -57,7 +57,7 @@ def _append_colors(parent, color_map: dict[str, str], *, suffix: str = None):
 
         if len(value) == 4:
             r, g, b = value[1:]
-        elif len(value) == 7:
+        elif len(value) in (7, 9):
             r, g, b = value[1:3], value[3:5], value[5:]
         else:
             raise ValueError(f"expected 3- or 6- character hex string; received {value}")

@@ -1,7 +1,5 @@
 # Fix:
 #
-#  - VS Code alone needs an alpha level on the terminal match background color
-#
 #  - border between editor groups
 #    - if right editor is selected, left editor scrollbar fades away and hard to find border to drag
 #
@@ -253,15 +251,15 @@ vscode:
     ##
     - solarPurple0:
       - focusBorder
-      - minimap.selectionHighlight
       - toolbar.activeBackground # Eg. the "..." icons when opened or other buttons when clicked
       - progressBar.background
       - sash.hoverBorder # The drag border indicator on hover
 
     - solarPurple0 alpha=0.75:
       - list.filterMatchBackground
+      - minimap.selectionHighlight
 
-    - solarPurple1:
+    - solarPurple1 alpha=0.75:
       - minimap.findMatchHighlight
 
       # foreground colors for filenames AND tab titles when error

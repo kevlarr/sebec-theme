@@ -51,6 +51,12 @@ class TerminalBase(Base):
             for key, value in element.__dict__.items():
                 serialized_key = None
 
+                if isinstance(value, TerminalBase):
+                    new_elements.append(value)
+                    continue
+
+                field_annotations = element.__annotations__[key]
+
                 for anno in element.__annotations__[key].__metadata__:
                     if isinstance(anno, Alias) and anno.app == app:
                         serialized_key = anno.alias
@@ -248,12 +254,12 @@ class TerminalColors(TerminalBase):
         ColorStyle,
         Field(alias="cursorColor"),
         Iterm("Cursor Color"),
-        Vscode("terminalCursor.background"),
+        Vscode("terminalCursor.foreground"),
         WindowsTerminal("cursorColor"),
     ]
     cursor_text_color: Annotated[
         ColorStyle,
         Field(alias="cursorTextColor"),
         Iterm("Cursor Text Color"),
-        Vscode("terminalCursor.foreground"),
+        Vscode("terminalCursor.background"),
     ]
