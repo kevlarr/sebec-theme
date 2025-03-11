@@ -67,104 +67,104 @@ class AnsiColors(TerminalBase):
     """ANSI color options with annotations specifying the key names for each terminal application."""
 
     black: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 0 Color"),
         Vscode("terminal.ansiBlack"),
         WindowsTerminal("black"),
     ]
     black_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="blackBright"),
         Iterm("Ansi 8 Color"),
         Vscode("terminal.ansiBrightBlack"),
         WindowsTerminal("brightblack"),
     ]
     blue: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 4 Color"),
         Vscode("terminal.ansiBlue"),
         WindowsTerminal("blue"),
     ]
     blue_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="blueBright"),
         Iterm("Ansi 12 Color"),
         Vscode("terminal.ansiBrightBlue"),
         WindowsTerminal("brightBlue"),
     ]
     cyan: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 6 Color"),
         Vscode("terminal.ansiCyan"),
         WindowsTerminal("cyan"),
     ]
     cyan_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="cyanBright"),
         Iterm("Ansi 14 Color"),
         Vscode("terminal.ansiBrightCyan"),
         WindowsTerminal("brightCyan"),
     ]
     green: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 2 Color"),
         Vscode("terminal.ansiGreen"),
         WindowsTerminal("green"),
     ]
     green_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="greenBright"),
         Iterm("Ansi 10 Color"),
         Vscode("terminal.ansiBrightGreen"),
         WindowsTerminal("brightGreen"),
     ]
     magenta: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 5 Color"),
         Vscode("terminal.ansiMagenta"),
         WindowsTerminal("purple"),
     ]
     magenta_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="magentaBright"),
         Iterm("Ansi 13 Color"),
         Vscode("terminal.ansiBrightMagenta"),
         WindowsTerminal("brightPurple"),
     ]
     red: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 1 Color"),
         Vscode("terminal.ansiRed"),
         WindowsTerminal("red"),
     ]
     red_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="redBright"),
         Iterm("Ansi 9 Color"),
         Vscode("terminal.ansiBrightRed"),
         WindowsTerminal("brightRed"),
     ]
     yellow: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 3 Color"),
         Vscode("terminal.ansiYellow"),
         WindowsTerminal("yellow"),
     ]
     yellow_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="yellowBright"),
         Iterm("Ansi 11 Color"),
         Vscode("terminal.ansiBrightYellow"),
         WindowsTerminal("brightYellow"),
     ]
     white: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Ansi 7 Color"),
         Vscode("terminal.ansiWhite"),
         WindowsTerminal("white"),
     ]
     white_bright: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="whiteBright"),
         Iterm("Ansi 15 Color"),
         Vscode("terminal.ansiBrightWhite"),
@@ -175,32 +175,32 @@ class AnsiColors(TerminalBase):
 class ItermColors(TerminalBase):
     """Color options specific to iTerm2."""
     badge_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="badgeColor"),
         Iterm("Badge Color"),
     ]
     bold_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="boldColor"),
         Iterm("Bold Color"),
     ]
     cursor_guide_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="cursorGuideColor"),
         Iterm("Cursor Guide Color"),
     ]
     link_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="linkColor"),
         Iterm("Link Color"),
     ]
     tab_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="tabColor"),
         Iterm("Tab Color"),
     ]
     underline_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="underlineColor"),
         Iterm("Underline Color"),
     ]
@@ -214,45 +214,45 @@ class TerminalColors(TerminalBase):
     iterm: ItermColors
 
     background: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Background Color"),
         Vscode("terminal.background"),
         WindowsTerminal("background"),
     ]
     foreground: Annotated[
-        Color,
+        ColorStyle,
         Iterm("Foreground Color"),
         Vscode("terminal.foreground"),
         WindowsTerminal("foreground"),
     ]
     selection_background: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="selectionBackground"),
         Iterm("Selection Color"),
         Vscode("terminal.selectionBackground"),
         WindowsTerminal("selectionBackground"),
     ]
     selection_foreground: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="selectionForeground"),
         Iterm("Selected Text Color"),
         Vscode("terminal.selectionForeground"),
     ]
     match_background: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="matchBackground"),
         Iterm("Match Background Color"),
         Vscode("terminal.findMatchBackground"),
     ]
     cursor_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="cursorColor"),
         Iterm("Cursor Color"),
         Vscode("terminalCursor.background"),
         WindowsTerminal("cursorColor"),
     ]
     cursor_text_color: Annotated[
-        Color,
+        ColorStyle,
         Field(alias="cursorTextColor"),
         Iterm("Cursor Text Color"),
         Vscode("terminalCursor.foreground"),

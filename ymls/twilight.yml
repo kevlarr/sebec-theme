@@ -242,6 +242,65 @@ vscode:
       - tab.activeForeground
 
     ##
+    ## Spruce
+    ##
+    - spruce0:
+      - editorGutter.addedBackground
+      - minimapGutter.addedBackground
+
+    ##
+    ## Solar
+    ##
+    - solarPurple0:
+      - focusBorder
+      - minimap.selectionHighlight
+      - toolbar.activeBackground # Eg. the "..." icons when opened or other buttons when clicked
+      - progressBar.background
+      - sash.hoverBorder # The drag border indicator on hover
+
+    - solarPurple0 alpha=0.75:
+      - list.filterMatchBackground
+
+    - solarPurple1:
+      - minimap.findMatchHighlight
+
+      # foreground colors for filenames AND tab titles when error
+    - solarRed0
+      - activityErrorBadge.background
+      - editorGutter.deletedBackground
+      - inputValidation.errorBorder
+      - inputValidation.errorBackground
+      - list.errorForeground
+      - minimap.errorHighlight
+      - minimapGutter.deletedBackground
+
+    - solarRed1
+      - errorForeground
+
+    - solarRed1 alpha=0.75:
+      - editorWarning.foreground
+      - editorError.foreground
+
+
+    - solarOrange0:
+       - activityWarningBadge.background
+       - inputValidation.warningBorder
+       - inputValidation.warningBackground
+       - list.warningForeground
+
+    - solarOrange0 alpha=0.75:
+       - minimap.warningHighlight
+
+    - solarYellow0:
+      - activityBarBadge.background
+      - badge.background # Eg. the "Changes" count badge in Source Control sidebar
+      - editorGutter.modifiedBackground
+      - editorMinimap.inlineChatInserted
+
+    - solarYellow0 alpha=0.75:
+      - minimapGutter.modifiedBackground
+
+    ##
     ## Opacity controls
     ##
 
