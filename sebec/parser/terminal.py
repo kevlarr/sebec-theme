@@ -6,10 +6,11 @@
 from enum import StrEnum
 from typing import Annotated
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import Field, model_validator
 
 from sebec.color import Color
-from .base import Base
+from .base import Base, ColorStyle
+from .formatters import parse_color_style
 
 
 class TerminalApp(StrEnum):
@@ -29,16 +30,13 @@ Vscode = lambda alias: Alias(TerminalApp.Vscode, alias)
 WindowsTerminal = lambda alias: Alias(TerminalApp.WindowsTerminal, alias)
 
 
-# class Base:
-
-
 class TerminalBase(Base):
 
     @model_validator(mode="before")
     @classmethod
     def convert_colors(cls, values):
         return {
-            k: Color[v.lower()] if isinstance(v, str) else v
+            k: parse_color_style(v) if isinstance(v, str) else v
             for k, v in values.items()
         }
 
@@ -51,20 +49,15 @@ class TerminalBase(Base):
             element = stack.pop()
 
             for key, value in element.__dict__.items():
-                if not isinstance(value, Color) and not isinstance(value, str):
-                    new_elements.append(value)
-                    continue
+                serialized_key = None
 
                 for anno in element.__annotations__[key].__metadata__:
-                    if not isinstance(anno, Alias) or not app or anno.app != app:
-                        continue
+                    if isinstance(anno, Alias) and anno.app == app:
+                        serialized_key = anno.alias
+                        break
 
-                    if not app:
-                        breakpoint()
-
-                    key = anno.alias
-
-                rval[key] = str(value)
+                if serialized_key:
+                    rval[serialized_key] = str(value)
 
             stack = [*stack, *new_elements]
 

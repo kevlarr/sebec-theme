@@ -1,7 +1,7 @@
 
 import pathlib
 
-from sebec.exporters import iterm, vscode, windows_terminal
+from sebec.exporters import iterm, vscode #, windows_terminal
 from sebec.parser import parse_yml
 # from sebec.vstheme import Sunrise, Twilight
 # from sebec.vstheme.base import Color
@@ -31,24 +31,23 @@ def main():
         light=sunrise.terminal,
         dark=twilight.terminal,
     )
-    vscode.export(
-        package_path=vscode_themes_path,
-        theme=sunrise,
-    )
+    # vscode.export(
+        # package_path=vscode_themes_path,
+        # theme=sunrise,
+    # )
     vscode.export(
         package_path=vscode_themes_path,
         theme=twilight,
     )
-    windows_terminal.export(
-        package_path=package_path,
-        light=sunrise.terminal,
-        dark=twilight.terminal,
-    )
+    # windows_terminal.export(
+        # package_path=package_path,
+        # light=sunrise.terminal,
+        # dark=twilight.terminal,
+    # )
 
     # export_palette_html(package_path / "palette.html")
 
     # Sunrise.save(themes)
     # Twilight.save(themes)
-    breakpoint()
 
     print("Themes and palette generated successfully!")

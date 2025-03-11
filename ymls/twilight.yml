@@ -1,3 +1,50 @@
+# Fix:
+#
+#  - VS Code alone needs an alpha level on the terminal match background color
+#
+#  - border between editor groups
+#    - if right editor is selected, left editor scrollbar fades away and hard to find border to drag
+#
+# Todo:
+#
+#   UI:
+#      - "editorActionList.background",
+#      - "editorActionList.foreground",
+#      - "editorActionList.focusForeground",
+#      - "editorActionList.focusBackground",
+
+#      - "sideBySideEditor.horizontalBorder",
+#      - "sideBySideEditor.verticalBorder",
+#      - "tab.border",
+#      - "editorGroup.border", #border between editor groups
+#      - "editorGroupHeader.border",
+#      - "editorGroupHeader.tabsBorder",
+#      - "sideBar.border",
+
+#      - "checkbox.selectBackground",
+#      - "checkbox.selectBorder",
+#      - "radio.activeForeground",
+#      - "radio.activeBackground",
+#      - "radio.activeBorder",
+#      - "radio.inactiveForeground",
+#      - "radio.inactiveBackground",
+#      - "radio.inactiveBorder",
+#      - "radio.inactiveHoverBackground",
+
+#      - "textBlockQuote.background",
+#      - "textBlockQuote.border",
+
+#      - "toolbar.hoverOutline", #eg. hovering over "..." icons, etc. in panels
+
+#      - "tab.activeBorder", #Bottom border of active tab
+#      - "textLink.activeForeground", #Foreground on link hover/click (eg. in Welcome page)
+
+#      - "inputValidation.errorBackground",
+
+#      - Cerulean1 but.. did I see these?
+#      - "inputValidation.infoBackground",
+#      - "minimap.infoHighlight",
+
 name: Sebec Twilight
 style: dark
 
@@ -6,7 +53,7 @@ terminal:
   foreground: sunrise2
   selectionBackground: sapphire0
   selectionForeground: sunrise4
-  matchBackground: solarPurple0
+  matchBackground: solarPurple0 alpha=0.25
   cursorColor: cerulean3
   cursorTextColor: twilight0
 
@@ -38,21 +85,171 @@ terminal:
 
 vscode:
   tokens:
-    - Sapphire0
-    - Sapphire0 bold:
-        - semantic: class
-        - textmate: function
-        - textmate:
-            - one.scope
-            - second.scope
-          name: multiple scopes
-        - textmate: ["other", "multiple"]
-    - Spruce0 alpha=0.5 italic underline:
-        - textmate: comment
+    - sapphire0
+    - sapphire0 bold:
+      - semantic: class
+      - textmate: function
+      - textmate:
+          - one.scope
+          - second.scope
+        name: multiple scopes
+      - textmate: ["other", "multiple"]
+    - spruce0 alpha=0.5 italic underline:
+      - textmate: comment
 
   ui:
-    - Twilight0:
-        - sideBar.background
-    - Twilight1
-    - SolarRed0 alpha=0.5:
-        - something
+
+    ##
+    ## Twilight
+    ##
+    - twilight0:
+      # Primary backgrounds
+      - editorGroupHeader.tabsBackground
+      - minimap.background
+      - sideBar.background
+      - sideBarSectionHeader.background
+      - tab.inactiveBackground
+      - textCodeBlock.background # Eg. blocks in markdown
+      # Input & control elements
+      - checkbox.background
+      - dropdown.background
+      - input.background
+      - inputOption.activeBorder # match input color to hide the border
+      # Foreground colors
+      - activityBarBadge.foreground
+      - activityErrorBadge.foreground
+      - activityWarningBadge.foreground
+      - badge.foreground # Eg. the - Changes" count badge in Source Control sidebar
+
+    - twilight1:
+      # Primary backgrounds
+      - activityBar.background
+      - breadcrumb.background
+      - dropdown.listBackground
+      - editor.background
+      - sideBarTitle.background
+      - tab.activeBackground
+      - tab.hoverBackground
+
+    - twilight2:
+      # Primary backgrounds
+      - list.activeSelectionBackground
+      - list.hoverBackground
+      - list.inactiveSelectionBackground
+      - panel.background
+      - panel.border
+
+    - twilight3:
+      # Primary backgrounds
+      - editorWidget.background
+
+      # Input & control elements
+      - checkbox.border
+      - dropdown.border
+      - input.border
+
+    - twilight4:
+      # Primary backgrounds
+      - scrollbarSlider.background
+      - listFilterWidget.background
+
+    - twilight5:
+      - activityBar.inactiveForeground
+
+    - twilight6:
+      - disabledForeground
+      - input.placeholderForeground
+      - scrollbar.shadow
+      - tab.inactiveForeground
+
+    - twilight7
+
+    ##
+    ## Sunrise
+    ##
+
+    - sunrise0:
+      # Foreground colors
+      - descriptionForeground # Eg. extension descriptions in search
+      - editor.foreground
+      - foreground
+      - icon.foreground
+      - sideBar.foreground
+      - sideBarTitle.foreground
+      - sideBarSectionHeader.foreground
+
+    - sunrise5:
+      # Foreground colors
+      - button.foreground
+      - checkbox.foreground
+      - dropdown.foreground
+      - editorWidget.foreground
+      - input.foreground
+      - inputValidation.errorForeground
+      - inputValidation.infoForeground
+      - inputValidation.warningForeground
+      - list.activeSelectionForeground
+      - list.activeSelectionIconForeground
+      - list.inactiveSelectionForeground
+      - list.inactiveSelectionIconForeground
+
+    ##
+    ## Sapphire
+    ##
+    - sapphire0:
+      # Input & control elements
+      - button.background
+      - inputOption.hoverBackground
+      - toolbar.hoverBackground # eg. hovering over icons in panels/widgets
+
+      - scrollbarSlider.hoverBackground
+      - selection.background
+      - tree.indentGuidesStroke
+      - tree.inactiveIndentGuidesStroke
+
+    - sapphire1:
+      # Input & control elements
+      - button.hoverBackground
+
+    - sapphire2:
+      - scrollbarSlider.activeBackground
+      # Input & control elements
+      - inputOption.activeBackground # eg. the regex button in Find widget when activated
+
+    - sapphire3:
+      - editorGutter.foldingControlForeground # The > carets for folding
+
+    ##
+    ## Cerulean
+    ##
+    - cerulean0 alpha=0.5:
+      # Drag and drop
+      - editorGroup.dropBackground
+      - list.dropBackground
+      - sideBar.dropBackground
+
+    - cerulean0:
+      # Drag and drop
+      - tab.dragAndDropBorder
+
+    - cerulean1:
+      - activityBar.activeBorder
+      - activityBar.foreground
+      - tab.selectedBorderTop
+      - textLink.foreground
+
+    - cerulean3:
+      - tab.activeForeground
+
+    ##
+    ## Opacity controls
+    ##
+
+    # Opacity controls; only the alpha level matters
+    - "#ffffff alpha=0":
+      - editorGroup.border
+      - list.focusOutline
+      - sideBarSectionHeader.border
+
+    - "#ffffff alpha=0.5":
+      - minimap.foregroundOpacity

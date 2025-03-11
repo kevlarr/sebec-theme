@@ -2,7 +2,9 @@
 import json
 from pathlib import Path
 
+from sebec.parser.terminal import TerminalApp
 from sebec.parser.theme import ThemeModel
+from sebec.parser.vscode import SemanticToken, TextmateToken, TokenStyle
 
 
 THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
@@ -16,29 +18,27 @@ def export(*, package_path: Path, theme: ThemeModel):
     semantic_token_colors = {}
     textmate_token_colors = []
 
-    for color_or_style, token_list in self.token_colors.items():
-        style = color_or_style.serialize() if isinstance(color_or_style, TokenStyle) else str(color_or_style)
+    for token in theme.vscode.tokens:
+        style = token.style.serialize()
+        if isinstance(token, SemanticToken):
+            semantic_token_colors[token.scope] = style
+        else:
+            settings = {"foreground": style} if isinstance(style, str) else style
+            textmate_token_colors.append({"scope": token.scope, "settings": settings})
 
-        for token in token_list:
-            if isinstance(token, Semantic):
-                semantic_token_colors[token.value] = style
-            else:
-                settings = {"foreground": style} if isinstance(style, str) else style
-                textmate_token_colors.append({"scope": token.value, "settings": settings})
+    terminal_colors = theme.terminal.serialize(app=TerminalApp.Vscode)
+    ui_colors = {ui.scope: str(ui.style) for ui in theme.vscode.ui}
 
-    ui_colors = {
-        element: str(color)
-        for color, element_list in self.ui_colors.items()
-        for element in element_list
-    }
-    terminal_colors = self.terminal_colors.serialize(app=TerminalApp.Vscode)
+    # Merge UI & terminal colors together but prioritize UI such that
+    # they can override terminal colors if desired.
+    colors = {**terminal_colors, **ui_colors}
 
     with open(package_path / filename, "w") as f:
         data = {
-            "name": self.name,
-            "type": self.category,
+            "name": theme.name,
+            "type": theme.style,
             "semanticHighlighting": True,
-            "colors": {**ui_colors, **terminal_colors},
+            "colors": colors,
             "semanticTokenColors": semantic_token_colors,
             "tokenColors": textmate_token_colors,
         }
