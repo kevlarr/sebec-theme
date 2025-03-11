@@ -82,8 +82,51 @@ terminal:
     underlineColor: cerulean0
 
 vscode:
+  # Semantic & textmate token color assignments.
+  #
+  # See:
+  # - https://macromates.com/manual/en/language_grammars#naming_conventions
   tokens:
+
+
+    ## TODO
+    #Semantic("method"),
+    #Semantic("variable.readonly"), # usage of CONSTANTS
+    #Semantic("variable.readonly.declaration"), # declaration of CONSTANTS
+    #Textmate("variable.parameter.function-call"), # eg. keyword arguments
+
+    ##
+    ## Twilight
+    ##
+    - twilight7:
+
+      - name: Low-contrast punctuation
+        textmate:
+          - punctuation.definition
+          - punctuation.separator              # eg. `,`, `.` in method calls, or `:` in dicts
+          - punctuation.section.class.begin    # eg. `:` after class def
+          - punctuation.section.function.begin # eg. `:` after function def
+
+      - name: Keyword argument '=' sign
+        textmate:
+          - meta.function-call.arguments keyword.operator.assignment
+
+    ##
+    ## Sunrise
+    ##
+    - sunrise0 underline:
+      - semantic: module
+
+    - sunrise1 bold:
+      - semantic: selfParameter
+
+
+    ##
+    ## Sapphire
+    ##
+
     - sapphire0
+
     - sapphire0 bold:
       - semantic: class
       - textmate: function
@@ -92,8 +135,70 @@ vscode:
           - second.scope
         name: multiple scopes
       - textmate: ["other", "multiple"]
-    - spruce0 alpha=0.5 italic underline:
-      - textmate: comment
+
+    - sapphire1:
+      - textmate: keyword.control.flow # eg. `if`, `while`
+      - textmate: keyword.control.import
+
+    - sapphire1 bold:
+      - name: class & def keywords
+        textmate:
+        - storage.type.class
+        - storage.type.function
+
+    - sapphire2:
+      - name: Keyword arguments
+        textmate: variable.parameter.function-call
+
+    ##
+    ## Cerulean
+    ##
+
+    - cerulean1:
+      - textmate: punctuation.definition.decorator # `@` for decorators
+
+    - cerulean1 italic:
+      - semantic: class.typeHint
+
+    - cerulean3:
+      - semantic: class
+      - semantic: function
+      - semantic: method
+      - semantic: function.decorator
+
+    - cerulean3 bold:
+      - semantic: class.declaration
+      - semantic: function.declaration
+      - semantic: method.declaration
+
+    ##
+    ## Spruce
+    ##
+    - spruce0 italic:
+      - textmate:
+        - comment
+        - punctuation.definition.comment
+
+    ##
+    ## Cedar
+    ##
+
+    ##
+    ## Solar
+    ##
+    - solarOrange1:
+      - semantic: property
+      - semantic: property.declaration
+
+    - solarPurple0 italic:
+      - textmate: punctuation.definition.string, # quotes around the string
+
+    - solarPurple1 italic:
+      - textmate: string
+
+    - solarPurple1:
+      - textmate: constant.numeric
+      - textmate: constant.language
 
   ui:
 

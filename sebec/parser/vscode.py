@@ -1,3 +1,11 @@
+"""Utility classes for defining VS Code color selections for UI elements
+and semantic & textmate tokens.
+
+https://macromates.com/manual/en/language_grammars#naming_conventions
+https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
+"""
+
 from typing import Annotated
 
 from pydantic import BeforeValidator, Field
