@@ -117,14 +117,12 @@ vscode:
     - sunrise0 underline:
       - semantic: module
 
-    - sunrise1 bold:
+    - sunrise4:
       - semantic: selfParameter
-
 
     ##
     ## Sapphire
     ##
-
     - sapphire0
 
     - sapphire0 bold:
@@ -149,6 +147,8 @@ vscode:
     - sapphire2:
       - name: Keyword arguments
         textmate: variable.parameter.function-call
+
+      - textmate: entity.name.tag.yaml
 
     ##
     ## Cerulean
