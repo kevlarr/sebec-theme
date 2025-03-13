@@ -91,8 +91,6 @@ vscode:
 
     ## TODO
     #Semantic("method"),
-    #Semantic("variable.readonly"), # usage of CONSTANTS
-    #Semantic("variable.readonly.declaration"), # declaration of CONSTANTS
     #Textmate("variable.parameter.function-call"), # eg. keyword arguments
 
     ##
@@ -111,14 +109,16 @@ vscode:
         textmate:
           - meta.function-call.arguments keyword.operator.assignment
 
+    - twilight7 bold:
+      - semantic: class.typeHint
+      - semantic: enum.typeHint
+
     ##
     ## Sunrise
     ##
     - sunrise0 underline:
       - semantic: module
 
-    - sunrise4:
-      - semantic: selfParameter
 
     ##
     ## Sapphire
@@ -126,28 +126,27 @@ vscode:
     - sapphire0
 
     - sapphire0 bold:
-      - semantic: class
-      - textmate: function
-      - textmate:
-          - one.scope
-          - second.scope
-        name: multiple scopes
-      - textmate: ["other", "multiple"]
-
-    - sapphire1:
-      - textmate: keyword.control.flow # eg. `if`, `while`
-      - textmate: keyword.control.import
-
-    - sapphire1 bold:
       - name: class & def keywords
         textmate:
         - storage.type.class
         - storage.type.function
+      - textmate: ["other", "multiple"]
+      - textmate: keyword.control.flow # eg. `if`, `while`
+      - textmate: keyword.control.import
+      - textmate: keyword.operator.logical # eg. `in`, `not`
 
-    - sapphire2:
+    - sapphire1:
       - name: Keyword arguments
         textmate: variable.parameter.function-call
+      - name: SQL keywords
+        textmate:
+        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
+        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
+        - keyword.other.alias.sql # eg. AS
+        - keyword.other.sql       # eg. CASE, WHEN, etc
 
+    - sapphire2:
+      # FIXME: yaml keys are italicized because of strings
       - textmate: entity.name.tag.yaml
 
     ##
@@ -157,16 +156,19 @@ vscode:
     - cerulean1:
       - textmate: punctuation.definition.decorator # `@` for decorators
 
-    - cerulean1 italic:
-      - semantic: class.typeHint
+    #- cerulean2:
+      #- textmate: storage.type.function.lambda.python
 
     - cerulean3:
       - semantic: class
+      - semantic: enum
       - semantic: function
+      - textmate: meta.function-call.generic.python
       - semantic: method
       - semantic: function.decorator
+      - textmate: support.function.string.sql
 
-    - cerulean3 bold:
+    - cerulean2 bold:
       - semantic: class.declaration
       - semantic: function.declaration
       - semantic: method.declaration
@@ -189,14 +191,22 @@ vscode:
     - solarOrange1:
       - semantic: property
       - semantic: property.declaration
+      - textmate: constant.other.table-name.sql # table columns
+
+
+    - solarPurple0 bold:
+      - semantic: selfParameter
+      - semantic: clsParameter
+      - semantic: variable.builtin
+      - semantic: variable.declaration.readonly
+      - semantic: variable.readonly
 
     - solarPurple0 italic:
       - textmate: punctuation.definition.string, # quotes around the string
-
-    - solarPurple1 italic:
       - textmate: string
 
-    - solarPurple1:
+    - solarPurple0:
+      - semantic: enumMember
       - textmate: constant.numeric
       - textmate: constant.language
 
@@ -208,7 +218,6 @@ vscode:
     - twilight0:
       # Primary backgrounds
       - editorGroupHeader.tabsBackground
-      - minimap.background
       - sideBar.background
       - sideBarSectionHeader.background
       - tab.inactiveBackground
@@ -223,6 +232,9 @@ vscode:
       - activityErrorBadge.foreground
       - activityWarningBadge.foreground
       - badge.foreground # Eg. the - Changes" count badge in Source Control sidebar
+
+    - twilight0 alpha=0.25:
+      - minimap.background
 
     - twilight1:
       # Primary backgrounds
@@ -251,6 +263,9 @@ vscode:
       - dropdown.border
       - input.border
 
+      - tree.indentGuidesStroke
+      - tree.inactiveIndentGuidesStroke
+
     - twilight4:
       # Primary backgrounds
       - scrollbarSlider.background
@@ -264,8 +279,6 @@ vscode:
       - input.placeholderForeground
       - scrollbar.shadow
       - tab.inactiveForeground
-
-    - twilight7
 
     ##
     ## Sunrise
@@ -307,8 +320,6 @@ vscode:
 
       - scrollbarSlider.hoverBackground
       - selection.background
-      - tree.indentGuidesStroke
-      - tree.inactiveIndentGuidesStroke
 
     - sapphire1:
       # Input & control elements
@@ -368,7 +379,7 @@ vscode:
       - minimap.findMatchHighlight
 
       # foreground colors for filenames AND tab titles when error
-    - solarRed0
+    - solarRed0:
       - activityErrorBadge.background
       - editorGutter.deletedBackground
       - inputValidation.errorBorder
@@ -377,7 +388,7 @@ vscode:
       - minimap.errorHighlight
       - minimapGutter.deletedBackground
 
-    - solarRed1
+    - solarRed1:
       - errorForeground
 
     - solarRed1 alpha=0.75:

@@ -4,6 +4,8 @@ Sebec is a combined light & dark color theme heavily inspired by (and derived fr
 with an extended palette that enables a *pleasant light theme* as well as *greater variations in background colors*
 for UI elements to enable easier visual separation of panels & widgets and improving focus on 'top' elements.
 
+## Background
+
 **Goals**
 
 - Provide a light theme that is consistent with the dark theme and easy to read
@@ -31,6 +33,48 @@ for visual distinction without significant contrast
 - Four 2-color **accent ranges** that visually pop against the others for increased attention grabbing
 
 ![Design Preview](./design/palette.svg)
+
+### Style Guide
+
+#### Sunrise Theme
+
+##### Styles
+
+TODO
+
+bold
+italic
+underline
+strikethrough
+
+##### Colors
+
+**Twilight:**
+- Foreground colors
+
+**Sunrise:**
+- Background colors for UI elements
+
+#### Twilight Theme
+
+**Twilight:**
+- Background colors for UI elements
+- Editor tokens that should recede into the background to reduce visual clutter
+
+**Sunrise:**
+- Foreground colors in UI, editor, and terminal
+
+**Sapphire:**
+- Editor tokens that should be readable without attracting focus
+
+**Cerulean:**
+- Editor tokens that should have visual prominence
+
+**SolarPurple:**
+- Editor tokens that should be distinct from language constructs, classes, and methods, eg:
+    - Literal values, eg. strings and booleans
+    - Constant variables
+    - Enum members
 
 ## Development
 
