@@ -1,54 +1,22 @@
 # Fix:
 #
+#  - if a selector overrides another that has a style applied (eg. bold),
+#    the element keeps that style even if the priority selector does not
+#    have a style
+#
 #  - border between editor groups
 #    - if right editor is selected, left editor scrollbar fades away and hard to find border to drag
 #
 # Todo:
 #
 #   UI:
-#      - "editorActionList.background",
-#      - "editorActionList.foreground",
-#      - "editorActionList.focusForeground",
-#      - "editorActionList.focusBackground",
-
-#      - "sideBySideEditor.horizontalBorder",
-#      - "sideBySideEditor.verticalBorder",
-#      - "tab.border",
-#      - "editorGroup.border", #border between editor groups
-#      - "editorGroupHeader.border",
-#      - "editorGroupHeader.tabsBorder",
-#      - "sideBar.border",
-
-#      - "checkbox.selectBackground",
-#      - "checkbox.selectBorder",
-#      - "radio.activeForeground",
-#      - "radio.activeBackground",
-#      - "radio.activeBorder",
-#      - "radio.inactiveForeground",
-#      - "radio.inactiveBackground",
-#      - "radio.inactiveBorder",
-#      - "radio.inactiveHoverBackground",
-
-#      - "textBlockQuote.background",
-#      - "textBlockQuote.border",
-
-#      - "toolbar.hoverOutline", #eg. hovering over "..." icons, etc. in panels
-
-#      - "tab.activeBorder", #Bottom border of active tab
-#      - "textLink.activeForeground", #Foreground on link hover/click (eg. in Welcome page)
-
-#      - "inputValidation.errorBackground",
-
-#      - Cerulean1 but.. did I see these?
-#      - "inputValidation.infoBackground",
-#      - "minimap.infoHighlight",
 
 name: Sebec Twilight
 style: dark
 
 terminal:
-  background: twilight2
-  foreground: sunrise2
+  background: twilight1
+  foreground: sunrise0
   selectionBackground: sapphire0
   selectionForeground: sunrise4
   matchBackground: solarPurple0 alpha=0.25
@@ -68,8 +36,8 @@ terminal:
     redBright: solarRed1
     magenta: solarPurple0
     magentaBright: solarPurple1
-    white: sunrise2
-    whiteBright: sunrise4
+    white: sunrise0
+    whiteBright: sunrise2
     yellow: solarYellow0
     yellowBright: solarYellow1
 
@@ -109,7 +77,7 @@ vscode:
         textmate:
           - meta.function-call.arguments keyword.operator.assignment
 
-    - twilight7 bold:
+    - twilight7 italic:
       - semantic: class.typeHint
       - semantic: enum.typeHint
 
@@ -201,7 +169,7 @@ vscode:
       - semantic: variable.declaration.readonly
       - semantic: variable.readonly
 
-    - solarPurple0 italic:
+    - solarPurple1 italic:
       - textmate: punctuation.definition.string, # quotes around the string
       - textmate: string
 
@@ -212,22 +180,64 @@ vscode:
 
   ui:
 
-    ##
-    ## Twilight
-    ##
+    ###
+    ### TODO
+    ###
+    - "#ff0000":
+      #- editorActionList.background
+      #- editorActionList.foreground
+      #- editorActionList.focusForeground
+      #- editorActionList.focusBackground
+
+      #- sideBySideEditor.horizontalBorder
+      #- sideBySideEditor.verticalBorder
+      #- tab.border
+      #- editorGroup.border #border between editor groups
+      #- editorGroupHeader.border
+      #- editorGroupHeader.tabsBorder
+      #- sideBar.border
+
+      #- checkbox.selectBackground
+      #- checkbox.selectBorder
+      #- radio.activeForeground
+      #- radio.activeBackground
+      #- radio.activeBorder
+      #- radio.inactiveForeground
+      #- radio.inactiveBackground
+      #- radio.inactiveBorder
+      #- radio.inactiveHoverBackground
+
+      #- textBlockQuote.background
+      #- textBlockQuote.border
+
+      #- toolbar.hoverOutline #eg. hovering over ..." icons, etc. in panels
+
+      #- tab.activeBorder #Bottom border of active tab
+      #- textLink.activeForeground #Foreground on link hover/click (eg. in Welcome page)
+
+      #- inputValidation.errorBackground
+
+      ## Cerulean1 but.. did I see these?
+      #- inputValidation.infoBackground
+      #- minimap.infoHighlight
+
+    ###
+    ### Final
+    ###
+
+    ### Twilight
+
     - twilight0:
-      # Primary backgrounds
+      - breadcrumb.background
+      - editor.background
       - editorGroupHeader.tabsBackground
-      - sideBar.background
-      - sideBarSectionHeader.background
       - tab.inactiveBackground
-      - textCodeBlock.background # Eg. blocks in markdown
-      # Input & control elements
+      # Inputs
       - checkbox.background
       - dropdown.background
       - input.background
       - inputOption.activeBorder # match input color to hide the border
-      # Foreground colors
+      # Badges
       - activityBarBadge.foreground
       - activityErrorBadge.foreground
       - activityWarningBadge.foreground
@@ -237,52 +247,41 @@ vscode:
       - minimap.background
 
     - twilight1:
-      # Primary backgrounds
-      - activityBar.background
-      - breadcrumb.background
-      - dropdown.listBackground
-      - editor.background
+      - panel.background # should match terminal.background
+      - panel.border
+
+    - twilight2:
+      - sideBar.background
+      - sideBarSectionHeader.background
       - sideBarTitle.background
+
+    - twilight3:
+      - activityBar.background
+      - dropdown.listBackground
+      - dropdown.listBackground
       - tab.activeBackground
       - tab.hoverBackground
 
-    - twilight2:
-      # Primary backgrounds
-      - list.activeSelectionBackground
+    - twilight4:
       - list.hoverBackground
-      - list.inactiveSelectionBackground
-      - panel.background
-      - panel.border
-
-    - twilight3:
-      # Primary backgrounds
+      - editorLineNumber.foreground
       - editorWidget.background
 
-      # Input & control elements
-      - checkbox.border
-      - dropdown.border
-      - input.border
-
-      - tree.indentGuidesStroke
-      - tree.inactiveIndentGuidesStroke
-
-    - twilight4:
-      # Primary backgrounds
-      - scrollbarSlider.background
-      - listFilterWidget.background
-
     - twilight5:
-      - activityBar.inactiveForeground
+      - checkbox.border
+      - input.border
+      - dropdown.border
 
     - twilight6:
       - disabledForeground
       - input.placeholderForeground
-      - scrollbar.shadow
       - tab.inactiveForeground
 
-    ##
-    ## Sunrise
-    ##
+    - twilight7:
+      - activityBar.inactiveForeground
+      - editorLineNumber.activeForeground
+
+    ### Sunrise
 
     - sunrise0:
       # Foreground colors
@@ -295,7 +294,6 @@ vscode:
       - sideBarSectionHeader.foreground
 
     - sunrise5:
-      # Foreground colors
       - button.foreground
       - checkbox.foreground
       - dropdown.foreground
@@ -308,6 +306,39 @@ vscode:
       - list.activeSelectionIconForeground
       - list.inactiveSelectionForeground
       - list.inactiveSelectionIconForeground
+
+    ### Sapphire
+
+    ### Cerulean
+
+    - cerulean0:
+      - list.activeSelectionBackground
+      - list.inactiveSelectionBackground
+      - tree.indentGuidesStroke
+      - tree.inactiveIndentGuidesStroke
+
+    ### Cedar
+
+    ### Spruce
+
+    ### Solar
+
+
+
+    ##
+    ## Proposed
+    ##
+
+    - twilight4:
+      # Primary backgrounds
+      - scrollbarSlider.background
+      - listFilterWidget.background
+
+    - twilight5:
+
+    - twilight6:
+      - scrollbar.shadow
+
 
     ##
     ## Sapphire

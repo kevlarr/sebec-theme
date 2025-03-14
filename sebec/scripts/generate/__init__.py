@@ -31,10 +31,10 @@ def main():
         light=sunrise.terminal,
         dark=twilight.terminal,
     )
-    # vscode.export(
-        # package_path=vscode_themes_path,
-        # theme=sunrise,
-    # )
+    vscode.export(
+        package_path=vscode_themes_path,
+        theme=sunrise,
+    )
     vscode.export(
         package_path=vscode_themes_path,
         theme=twilight,

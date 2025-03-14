@@ -2,7 +2,7 @@ name: Sebec Sunrise
 style: light
 
 terminal:
-  background: sunrise7
+  background: sunrise5
   foreground: twilight6
   selectionBackground: sapphire3
   selectionForeground: twilight2
@@ -87,11 +87,25 @@ vscode:
     # "panel.background": "#EAE8E1",
     # "editorWidth.background": "#F6F6F3",
 
-    - twilight7:
+    - twilight0:
+      - foreground
       - editor.foreground
 
-    - sunrise5:
+    - sunrise1:
+      - editorLineNumber.foreground
+
+    - sunrise4:
       - sideBar.background
+
+    - sunrise5:
+      - panel.background
+      - panel.border
 
     - sunrise6:
       - editor.background
+
+    - sunrise7:
+      - editorWidget.background
+
+    - twilight7 alpha=0.25:
+      - widget.shadow

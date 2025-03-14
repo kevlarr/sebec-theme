@@ -11,7 +11,7 @@ _COLOR_STYLE_RGX = "^([a-zA-Z0-9]+|#[a-f0-9]{6})(\s+alpha=[\d\.]+)?$"
 _TOKEN_STYLE_RGX = f"{_COLOR_STYLE_RGX[:-1]}(\s+bold)?(\s+italic)?(\s+strikethrough)?(\s+underline)?\s*$"
 
 
-def parse_color_style(value):
+def parse_color_style(value: str) -> dict:
     match = re.match(_COLOR_STYLE_RGX, value)
     assert match, "invalid color"
 
@@ -26,7 +26,7 @@ def parse_color_style(value):
     return dict(foreground=_parse_foreground(foreground))
 
 
-def parse_token_style(value):
+def parse_token_style(value: str) -> dict:
     match = re.match(_TOKEN_STYLE_RGX, value)
     assert match, "invalid token style"
 

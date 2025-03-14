@@ -25,7 +25,7 @@ def flatten_ui_settings(value):
         dict(style=color, scope=scope)
         for color_and_scopes in values
         for color, scope_list in color_and_scopes.items()
-        for scope in scope_list
+        for scope in scope_list or []
     ]
 
 
@@ -40,7 +40,7 @@ def flatten_tokens(value):
         dict(style=color, **token)
         for color_and_scopes in values
         for color, token_list in color_and_scopes.items()
-        for token in token_list
+        for token in token_list or []
     ]
 
 
