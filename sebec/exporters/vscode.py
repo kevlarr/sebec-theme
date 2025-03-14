@@ -12,7 +12,7 @@ THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
 
 def export(*, package_path: Path, theme: ThemeModel):
 
-    slug = theme.name.lower().replace(" ", "-")
+    slug = theme.name.lower().replace(" ", "-").replace("(", "").replace(")", "")
     filename = THEME_FILENAME_TEMPLATE.format(slug=slug)
 
     semantic_token_colors = {}

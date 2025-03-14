@@ -1,5 +1,6 @@
 import pathlib
 import re
+import shutil
 import sys
 from xml.dom import minidom
 
@@ -33,6 +34,10 @@ class Color(enum.StrEnum):
 
 def main():
     source_path = DESIGN_PATH / sys.argv[1]
+
+    # Copy the source file over to `palette.svg` for use in the README
+    palette_path = DESIGN_PATH / "palette.svg"
+    shutil.copy(source_path, palette_path)
 
     colors = []
 
