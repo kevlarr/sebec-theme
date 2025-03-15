@@ -3,13 +3,6 @@
 #  - if a selector overrides another that has a style applied (eg. bold),
 #    the element keeps that style even if the priority selector does not
 #    have a style
-#
-#  - border between editor groups
-#    - if right editor is selected, left editor scrollbar fades away and hard to find border to drag
-#
-# Todo:
-#
-#   UI:
 
 name: Sebec Twilight (Dusk)
 style: dark
@@ -114,6 +107,7 @@ vscode:
         - keyword.other.sql       # eg. CASE, WHEN, etc
 
     - sapphire2:
+      - textmate: support.type.property-name.json
       # FIXME: yaml keys are italicized because of strings
       - textmate: entity.name.tag.yaml
 
@@ -146,8 +140,11 @@ vscode:
     ##
     - spruce0 italic:
       - textmate:
-        - comment
         - punctuation.definition.comment
+
+    - spruce1 italic:
+      - textmate:
+        - comment
 
     ##
     ## Cedar
@@ -156,6 +153,7 @@ vscode:
     ##
     ## Solar
     ##
+
     - solarOrange1:
       - semantic: property
       - semantic: property.declaration
@@ -221,9 +219,13 @@ vscode:
       #- inputValidation.infoBackground
       #- minimap.infoHighlight
 
-    ###
-    ### Final
-    ###
+
+    ##
+    ## Opacity controls
+    ##
+    - "#ffffff alpha=0.5":
+      - minimap.foregroundOpacity
+
 
     ### Twilight
 
@@ -251,6 +253,7 @@ vscode:
       - panel.border
 
     - twilight2:
+      - editorGroup.border
       - sideBar.background
       - sideBarSectionHeader.background
       - sideBarTitle.background
@@ -266,6 +269,7 @@ vscode:
       - list.hoverBackground
       - editorLineNumber.foreground
       - editorWidget.background
+      - sideBarSectionHeader.border
 
     - twilight5:
       - checkbox.border
@@ -275,7 +279,11 @@ vscode:
     - twilight6:
       - disabledForeground
       - input.placeholderForeground
+      - inputOption.hoverBackground
+      - listFilterWidget.background # brighter than editor widget because editor is darker than sidebar
+      - scrollbarSlider.background # must be brighter than any scrollable widget
       - tab.inactiveForeground
+      - toolbar.hoverBackground # eg. hovering over icons in panels/widgets
 
     - twilight7:
       - activityBar.inactiveForeground
@@ -309,6 +317,23 @@ vscode:
 
     ### Sapphire
 
+    - sapphire0:
+      - button.background
+      - list.filterMatchBackground
+
+    - sapphire0 alpha=0.75:
+      - minimap.selectionHighlight
+
+    - sapphire1:
+      - button.hoverBackground
+      - selection.background
+
+    - sapphire1 alpha=0.75:
+      - minimap.findMatchHighlight
+
+    - sapphire2:
+      - editorGutter.foldingControlForeground # The > carets for folding
+
     ### Cerulean
 
     - cerulean0:
@@ -317,115 +342,26 @@ vscode:
       - tree.indentGuidesStroke
       - tree.inactiveIndentGuidesStroke
 
-    ### Cedar
-
-    ### Spruce
-
-    ### Solar
-
-
-
-    ##
-    ## Proposed
-    ##
-
-    - twilight4:
-      # Primary backgrounds
-      - scrollbarSlider.background
-      - listFilterWidget.background
-
-    - twilight5:
-
-    - twilight6:
-      - scrollbar.shadow
-
-
-    ##
-    ## Sapphire
-    ##
-    - sapphire0:
-      # Input & control elements
-      - button.background
-      - inputOption.hoverBackground
-      - toolbar.hoverBackground # eg. hovering over icons in panels/widgets
-
-      - scrollbarSlider.hoverBackground
-      - selection.background
-
-    - sapphire1:
-      # Input & control elements
-      - button.hoverBackground
-
-    - sapphire2:
-      - scrollbarSlider.activeBackground
-      # Input & control elements
-      - inputOption.activeBackground # eg. the regex button in Find widget when activated
-
-    - sapphire3:
-      - editorGutter.foldingControlForeground # The > carets for folding
-
-    ##
-    ## Cerulean
-    ##
-    - cerulean0 alpha=0.5:
-      # Drag and drop
-      - editorGroup.dropBackground
-      - list.dropBackground
-      - sideBar.dropBackground
-
-    - cerulean0:
-      # Drag and drop
-      - tab.dragAndDropBorder
-
     - cerulean1:
       - activityBar.activeBorder
       - activityBar.foreground
+      - inputOption.activeBackground # eg. the regex button in Find widget when activated
       - tab.selectedBorderTop
       - textLink.foreground
+      - toolbar.activeBackground # Eg. the "..." icons when opened or other buttons when clicked
 
     - cerulean3:
       - tab.activeForeground
 
-    ##
-    ## Spruce
-    ##
+    ### Cedar
+
+    ### Spruce
+
     - spruce0:
       - editorGutter.addedBackground
       - minimapGutter.addedBackground
 
-    ##
-    ## Solar
-    ##
-    - solarPurple0:
-      - focusBorder
-      - toolbar.activeBackground # Eg. the "..." icons when opened or other buttons when clicked
-      - progressBar.background
-      - sash.hoverBorder # The drag border indicator on hover
-
-    - solarPurple0 alpha=0.75:
-      - list.filterMatchBackground
-      - minimap.selectionHighlight
-
-    - solarPurple1 alpha=0.75:
-      - minimap.findMatchHighlight
-
-      # foreground colors for filenames AND tab titles when error
-    - solarRed0:
-      - activityErrorBadge.background
-      - editorGutter.deletedBackground
-      - inputValidation.errorBorder
-      - inputValidation.errorBackground
-      - list.errorForeground
-      - minimap.errorHighlight
-      - minimapGutter.deletedBackground
-
-    - solarRed1:
-      - errorForeground
-
-    - solarRed1 alpha=0.75:
-      - editorWarning.foreground
-      - editorError.foreground
-
+    ### Solar
 
     - solarOrange0:
        - activityWarningBadge.background
@@ -436,6 +372,39 @@ vscode:
     - solarOrange0 alpha=0.75:
        - minimap.warningHighlight
 
+    - solarPurple0 alpha=0.25:
+      - scrollbar.shadow # indicator lines in the terminal that viewport can scroll horizontally/vertically
+      # Drag and drop
+      - editorGroup.dropBackground
+      - list.dropBackground
+      - sideBar.dropBackground
+
+    - solarPurple0:
+      - sash.hoverBorder # The drag border indicator on hover
+      - tab.dragAndDropBorder
+      - focusBorder
+      - progressBar.background
+      - scrollbarSlider.hoverBackground
+
+    - solarPurple1:
+      - scrollbarSlider.activeBackground
+
+    - solarRed0:
+      - activityErrorBadge.background
+      - editorGutter.deletedBackground
+      - inputValidation.errorBorder
+      - inputValidation.errorBackground
+      - list.errorForeground
+      - minimapGutter.deletedBackground
+
+    - solarRed0 alpha=0.75:
+      - minimap.errorHighlight
+
+    - solarRed1:
+      - errorForeground
+      - editorWarning.foreground
+      - editorError.foreground
+
     - solarYellow0:
       - activityBarBadge.background
       - badge.background # Eg. the "Changes" count badge in Source Control sidebar
@@ -444,16 +413,3 @@ vscode:
 
     - solarYellow0 alpha=0.75:
       - minimapGutter.modifiedBackground
-
-    ##
-    ## Opacity controls
-    ##
-
-    # Opacity controls; only the alpha level matters
-    - "#ffffff alpha=0":
-      - editorGroup.border
-      - list.focusOutline
-      - sideBarSectionHeader.border
-
-    - "#ffffff alpha=0.5":
-      - minimap.foregroundOpacity

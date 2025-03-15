@@ -5,19 +5,19 @@
     "colors": {
         "terminal.background": "#f1f0e9",
         "terminal.foreground": "#4c566a",
-        "terminal.selectionBackground": "#849ec2",
+        "terminal.selectionBackground": "#7992c3",
         "terminal.selectionForeground": "#202632",
         "terminal.findMatchBackground": "#b67cac",
         "terminalCursor.foreground": "#346879",
         "terminalCursor.background": "#f7f6f2",
         "terminal.ansiBlack": "#131720",
         "terminal.ansiBrightBlack": "#272d3a",
-        "terminal.ansiBlue": "#405c82",
-        "terminal.ansiBrightBlue": "#4a6a96",
+        "terminal.ansiBlue": "#2f4674",
+        "terminal.ansiBrightBlue": "#3a5488",
         "terminal.ansiCyan": "#346879",
         "terminal.ansiBrightCyan": "#4e90a6",
-        "terminal.ansiGreen": "#627e4e",
-        "terminal.ansiBrightGreen": "#759a5b",
+        "terminal.ansiGreen": "#4e653e",
+        "terminal.ansiBrightGreen": "#62814b",
         "terminal.ansiMagenta": "#815679",
         "terminal.ansiBrightMagenta": "#b67cac",
         "terminal.ansiRed": "#84333a",
@@ -39,19 +39,19 @@
     "semanticTokenColors": {
         "property": "#ab6249",
         "property.declaration": "#ab6249",
-        "class": "#4a6a96",
-        "function": "#4a6a96",
-        "method": "#4a6a96",
+        "class": "#3a5488",
+        "function": "#3a5488",
+        "method": "#3a5488",
         "class.declaration": {
-            "foreground": "#4a6a96",
+            "foreground": "#3a5488",
             "fontStyle": "bold"
         },
         "function.declaration": {
-            "foreground": "#4a6a96",
+            "foreground": "#3a5488",
             "fontStyle": "bold"
         },
         "method.declaration": {
-            "foreground": "#4a6a96",
+            "foreground": "#3a5488",
             "fontStyle": "bold"
         }
     },
@@ -70,7 +70,7 @@
         {
             "scope": "comment",
             "settings": {
-                "foreground": "#627e4e",
+                "foreground": "#4e653e",
                 "fontStyle": "italic"
             }
         },
