@@ -49,11 +49,6 @@ vscode:
   # - https://macromates.com/manual/en/language_grammars#naming_conventions
   tokens:
 
-
-    ## TODO
-    #Semantic("method"),
-    #Textmate("variable.parameter.function-call"), # eg. keyword arguments
-
     ##
     ## Twilight
     ##
@@ -77,16 +72,13 @@ vscode:
     ##
     ## Sunrise
     ##
-    - sunrise0 underline:
-      - semantic: module
-
 
     ##
     ## Sapphire
     ##
     - sapphire0
 
-    - sapphire0 bold:
+    - sapphire1 bold:
       - name: class & def keywords
         textmate:
         - storage.type.class
@@ -96,7 +88,7 @@ vscode:
       - textmate: keyword.control.import
       - textmate: keyword.operator.logical # eg. `in`, `not`
 
-    - sapphire1:
+    - sapphire2:
       - name: Keyword arguments
         textmate: variable.parameter.function-call
       - name: SQL keywords
@@ -106,10 +98,10 @@ vscode:
         - keyword.other.alias.sql # eg. AS
         - keyword.other.sql       # eg. CASE, WHEN, etc
 
-    - sapphire2:
       - textmate: support.type.property-name.json
       # FIXME: yaml keys are italicized because of strings
       - textmate: entity.name.tag.yaml
+      - textmate: keyword.operator
 
     ##
     ## Cerulean
@@ -118,8 +110,11 @@ vscode:
     - cerulean1:
       - textmate: punctuation.definition.decorator # `@` for decorators
 
-    #- cerulean2:
-      #- textmate: storage.type.function.lambda.python
+    - cerulean1 underline:
+      - semantic: module
+
+    - cerulean1:
+      #- textmate: storage.type.function.lambda.python # This inherits bold from storage.type.function
 
     - cerulean3:
       - semantic: class
@@ -159,22 +154,25 @@ vscode:
       - semantic: property.declaration
       - textmate: constant.other.table-name.sql # table columns
 
-
-    - solarPurple0 bold:
-      - semantic: selfParameter
-      - semantic: clsParameter
-      - semantic: variable.builtin
-      - semantic: variable.declaration.readonly
-      - semantic: variable.readonly
-
-    - solarPurple1 italic:
-      - textmate: punctuation.definition.string, # quotes around the string
-      - textmate: string
-
     - solarPurple0:
       - semantic: enumMember
       - textmate: constant.numeric
       - textmate: constant.language
+      - textmate: punctuation.definition.string, # quotes around the string
+
+    - solarPurple0 bold:
+      #- semantic: selfParameter
+      #- semantic: clsParameter
+      - semantic: variable.builtin
+      - semantic: variable.declaration.readonly
+      - semantic: variable.readonly
+
+    - sunrise0 bold:
+      - semantic: selfParameter
+      - semantic: clsParameter
+
+    - solarPurple1 italic:
+      - textmate: string
 
   ui:
 

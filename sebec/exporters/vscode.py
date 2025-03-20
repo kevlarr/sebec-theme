@@ -4,7 +4,7 @@ from pathlib import Path
 
 from sebec.parser.terminal import TerminalApp
 from sebec.parser.theme import ThemeModel
-from sebec.parser.vscode import SemanticToken, TextmateToken, TokenStyle
+from sebec.parser.vscode import SemanticToken
 
 
 THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
@@ -43,23 +43,3 @@ def export(*, package_path: Path, theme: ThemeModel):
             "tokenColors": textmate_token_colors,
         }
         f.write(json.dumps(data, indent=4))
-
-
-
-
-def _serialize_token_style(style: TokenStyle) -> dict | str:
-    """Returns a dict with the foreground color and a font style string
-    suitable for Textmate and semantic tokens if any styles arepresent,
-    otherwise returns the foreground color as a string."""
-    color = super().__str__()
-
-    font_style = ""
-    if self.bold:          font_style += "bold"
-    if self.italic:        font_style += " italic"
-    if self.strikethrough: font_style += " strikethrough"
-    if self.underline:     font_style += " underline"
-
-    if font_style:
-        return {"foreground": color, "fontStyle": font_style.strip()}
-
-    return color
