@@ -1,6 +1,6 @@
 # Sebec Theme
 
-Sebec is a combined light & dark color theme heavily inspired by (and derived from) [Nord](https://www.nordtheme.com/),
+Sebec is a (very WIP) combined light & dark color theme heavily inspired by (and derived from) [Nord](https://www.nordtheme.com/),
 with an extended palette that enables a *pleasant light theme* as well as *greater variations in background colors*
 for UI elements to enable easier visual separation of panels & widgets and improving focus on 'top' elements.
 
