@@ -11,22 +11,22 @@ terminal:
   cursorTextColor: dawn6
 
   ansi:
-    black: dusk0
-    blackBright: dusk3
-    blue: sapphire0
-    blueBright: sapphire1
-    cyan: cerulean0
-    cyanBright: cerulean1
-    green: evergreen0
-    greenBright: evergreen1
-    red: solarRed0
-    redBright: solarRed1
-    magenta: solarPurple0
-    magentaBright: solarPurple1
-    white: dawn2
-    whiteBright: dawn4
-    yellow: solarYellow0
-    yellowBright: solarYellow1
+    black: dusk3
+    blackBright: dusk0
+    blue: sapphire1
+    blueBright: sapphire2
+    cyan: cerulean1
+    cyanBright: cerulean2
+    green: evergreen1
+    greenBright: evergreen2
+    red: solarRed1
+    redBright: solarRed2
+    magenta: solarPurple1
+    magentaBright: solarPurple2
+    white: dawn5
+    whiteBright: dawn7
+    yellow: solarYellow1
+    yellowBright: solarYellow2
 
   iterm:
     badgeColor: cerulean0
