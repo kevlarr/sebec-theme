@@ -1,0 +1,111 @@
+name: Sebec Twilight (Dawn)
+style: light
+
+terminal:
+  background: dawn5
+  foreground: dusk6
+  selectionBackground: sapphire3
+  selectionForeground: dusk2
+  matchBackground: solarPurple1
+  cursorColor: cerulean0
+  cursorTextColor: dawn6
+
+  ansi:
+    black: dusk0
+    blackBright: dusk3
+    blue: sapphire0
+    blueBright: sapphire1
+    cyan: cerulean0
+    cyanBright: cerulean1
+    green: evergreen0
+    greenBright: evergreen1
+    red: solarRed0
+    redBright: solarRed1
+    magenta: solarPurple0
+    magentaBright: solarPurple1
+    white: dawn2
+    whiteBright: dawn4
+    yellow: solarYellow0
+    yellowBright: solarYellow1
+
+  iterm:
+    badgeColor: cerulean0
+    boldColor: dusk2
+    cursorGuideColor: dawn6
+    linkColor: cerulean0
+    tabColor: dawn7
+    underlineColor: cerulean0
+
+vscode:
+  tokens:
+    - dawn0:
+      - name: Low-contrast punctuation
+        textmate:
+          - punctuation.definition
+          - punctuation.separator              # eg. `,`, `.` in method calls, or `:` in dicts
+          - punctuation.section.class.begin    # eg. `:` after class def
+          - punctuation.section.function.begin # eg. `:` after function def
+
+    - solarOrange0:
+      - semantic: property
+      - semantic: property.declaration
+
+    - evergreen0 italic:
+      - textmate: comment
+
+    - sapphire1:
+      - semantic: class
+      - semantic: function
+      - semantic: method
+
+    - sapphire1 bold:
+      - semantic: class.declaration
+      - semantic: function.declaration
+      - semantic: method.declaration
+
+    - cerulean1 bold:
+      - textmate:
+        - storage.type.class
+        - storage.type.function
+
+    - cerulean1:
+      - textmate: keyword
+
+    - solarPurple0:
+      - textmate: constant.numeric
+      - textmate: constant.language
+
+    - solarPurple0 italic:
+      - textmate: string
+
+  ui:
+    # "editor.background": "#f5f5f5",
+    # "editor.foreground": "#333333",
+    # "list.activeSelectionIconForeground": "#fff"
+    # "sideBar.background": "#E0E0D6",
+    # "sideBar.foreground": Color.polar3,
+    # "panel.background": "#EAE8E1",
+    # "editorWidth.background": "#F6F6F3",
+
+    - dusk0:
+      - foreground
+      - editor.foreground
+
+    - dawn1:
+      - editorLineNumber.foreground
+
+    - dawn4:
+      - sideBar.background
+
+    - dawn5:
+      - panel.background
+      - panel.border
+
+    - dawn6:
+      - editor.background
+
+    - dawn7:
+      - editorWidget.background
+
+    - dusk7 alpha=0.25:
+      - widget.shadow
