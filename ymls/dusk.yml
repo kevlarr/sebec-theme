@@ -72,17 +72,6 @@ vscode:
     # Evergreen is useful for tokens that should have a lower contrast ratio
     # like Dusk and still present as very separate from the background and
     # other shades of blue but without drawing attention like accent colors
-    - solarPurple0 italic:
-      - textmate: constant.character.format.placeholder
-      - textmate: storage.type.string # eg. the `f` in `f"string"`
-      - textmate: punctuation.definition.string, # quotes around the string
-
-    - solarPurple1:
-      - textmate: constant.numeric
-      - textmate: constant.language
-
-    - solarPurple2 italic:
-      - textmate: string
 
     # Sapphire is useful for tokens that should be legible against the
     # background but still blend in fairly well and coordinate with many
@@ -147,6 +136,18 @@ vscode:
     - solarPurple0:
       - textmate: support.variable.magic
 
+    - solarPurple0 italic:
+      - textmate: constant.character.format.placeholder
+      - textmate: storage.type.string # eg. the `f` in `f"string"`
+      - textmate: punctuation.definition.string, # quotes around the string
+
+    - solarPurple1:
+      - textmate: constant.numeric
+      - textmate: constant.language
+
+    - solarPurple2 italic:
+      - textmate: string
+
     - solarOrange0:
       - semantic: selfParameter
       - semantic: clsParameter
@@ -200,16 +201,10 @@ vscode:
     - dusk6:
       - scrollbarSlider.background # must be brighter than any scrollable widget
 
-    - cerulean1:
-      - tab.selectedBorderTop
-
-    - cerulean3:
-      - tab.activeForeground # Overridden by green, red, etc. if changed or errors
-
-    - solarPurple0:
+    - cerulean0:
       - scrollbarSlider.hoverBackground
 
-    - solarPurple1 alpha=0.25:
+    - cerulean1 alpha=0.25:
       - scrollbar.shadow # indicator lines in the terminal that viewport can scroll horizontally/vertically
 
       # Drag and drop
@@ -217,7 +212,8 @@ vscode:
       - list.dropBackground
       - sideBar.dropBackground
 
-    - solarPurple1:
+    - cerulean1:
+      - tab.selectedBorderTop
       - scrollbarSlider.activeBackground
 
     ##
@@ -263,6 +259,9 @@ vscode:
     - cerulean1:
       - textLink.foreground
 
+    - cerulean3:
+      - tab.activeForeground # Overridden by green, red, etc. if changed or errors
+
     - solarRed1:
       - errorForeground
       - editorWarning.foreground
@@ -282,7 +281,7 @@ vscode:
       - dropdown.listBackground
 
     - dusk4:
-      - list.hoverBackground
+      - list.hoverBackground # includes entire section, eg. title & description above a dropdown
 
     - dusk5:
       - checkbox.border
@@ -302,7 +301,7 @@ vscode:
     - sapphire1:
       - button.hoverBackground
 
-    - cerulean1:
+    - sapphire2:
       - inputOption.activeBackground # eg. the regex button in Find widget when activated
       - toolbar.activeBackground # Eg. the "..." icons when opened or other buttons when clicked
 
@@ -353,7 +352,7 @@ vscode:
     - solarOrange1 alpha=0.75:
        - minimap.warningHighlight
 
-    - solarOrange1:
+    - solarOrange2:
        - activityWarningBadge.background
 
     - solarPurple0:
@@ -365,7 +364,7 @@ vscode:
     - solarRed0 alpha=0.75:
       - minimap.errorHighlight
 
-    - solarRed1:
+    - solarRed2:
       - activityErrorBadge.background
       - editorGutter.deletedBackground
       - minimapGutter.deletedBackground
@@ -373,9 +372,11 @@ vscode:
     - solarYellow1 alpha=0.75:
       - minimapGutter.modifiedBackground
 
-    - solarYellow1:
+    - cerulean3:
       - activityBarBadge.background
       - badge.background # Eg. the "Changes" count badge in Source Control sidebar
+
+    - solarYellow1:
       - editorGutter.modifiedBackground
       - editorMinimap.inlineChatInserted
 
