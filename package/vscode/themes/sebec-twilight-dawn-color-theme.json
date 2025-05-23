@@ -3,7 +3,7 @@
     "type": "light",
     "semanticHighlighting": true,
     "colors": {
-        "terminal.background": "#edece8",
+        "terminal.background": "#f2f1ee",
         "terminal.foreground": "#454d5f",
         "terminal.selectionBackground": "#7e97c8",
         "terminal.selectionForeground": "#1a1d23",
@@ -15,7 +15,7 @@
         "terminal.ansiBlue": "#3d588f",
         "terminal.ansiBrightBlue": "#5474b6",
         "terminal.ansiCyan": "#3d7a8f",
-        "terminal.ansiBrightCyan": "#3d7a8f",
+        "terminal.ansiBrightCyan": "#549db6",
         "terminal.ansiGreen": "#4e8349",
         "terminal.ansiBrightGreen": "#68a762",
         "terminal.ansiMagenta": "#9f6f97",

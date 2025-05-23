@@ -2,7 +2,7 @@ name: Sebec Twilight (Dawn)
 style: light
 
 terminal:
-  background: dawn4
+  background: dawn5
   foreground: dusk6
   selectionBackground: sapphire3
   selectionForeground: dusk2
