@@ -34,14 +34,15 @@ class Color(enum.StrEnum):
 
 def main():
     source_path = DESIGN_PATH / sys.argv[1]
-    palette_path = DESIGN_PATH / "palette.svg"
 
+    # Copy the source file over to `palette.svg` for use in the README
+    palette_path = DESIGN_PATH / "palette.svg"
     shutil.copy(source_path, palette_path)
 
     colors = []
 
     with open(source_path) as svg_file:
-        doc = minidom.parse(svg_file)  # parseString also exists
+        doc = minidom.parse(svg_file)
         for element in doc.getElementsByTagName("*"):
             style = element.attributes.get("style")
             if not style: continue

@@ -4,14 +4,13 @@ import logging
 from sebec.color import Color
 
 
-_LOGGER = logging.getLogger(__name__)
-
+_logger = logging.getLogger(__name__)
 
 _COLOR_STYLE_RGX = "^([a-zA-Z0-9]+|#[a-f0-9]{6})(\s+alpha=[\d\.]+)?$"
 _TOKEN_STYLE_RGX = f"{_COLOR_STYLE_RGX[:-1]}(\s+bold)?(\s+italic)?(\s+strikethrough)?(\s+underline)?\s*$"
 
 
-def parse_color_style(value):
+def parse_color_style(value: str) -> dict:
     match = re.match(_COLOR_STYLE_RGX, value)
     assert match, "invalid color"
 
@@ -26,7 +25,7 @@ def parse_color_style(value):
     return dict(foreground=_parse_foreground(foreground))
 
 
-def parse_token_style(value):
+def parse_token_style(value: str) -> dict:
     match = re.match(_TOKEN_STYLE_RGX, value)
     assert match, "invalid token style"
 
@@ -47,7 +46,7 @@ def parse_token_style(value):
 
 def _parse_foreground(value: str) -> Color | str:
     if value.startswith("#"):
-        _LOGGER.warning("Found unnamed color '%s'.", value)
+        _logger.warning("Found unnamed color '%s'.", value)
         return value.lower()
 
     return Color[value.lower()]
