@@ -1,80 +1,54 @@
-# Sebec Theme
+# Sebec Twilight
 
-Sebec is a (very WIP) combined light & dark color theme heavily inspired by (and derived from) [Nord](https://www.nordtheme.com/),
-with an extended palette that enables a *pleasant light theme* as well as *greater variations in background colors*
-for UI elements to enable easier visual separation of panels & widgets and improving focus on 'top' elements.
+Sebec Twilight is a (work in progress) cross-application, dual color theme. Application support currently includes:
 
-## Background
+- iTerm2
+- VS Code
+- Windows Terminal
 
-**Goals**
+The main goals for this project include:
 
-- Provide a light theme that is consistent with the dark theme and easy to read
+1. Finding the perfect balance in token stylization
 
-- Like Nord, avoid the "rainbow explosion" that some of us find distracting and sometimes even exhausting
+    a. Using enough colorization & style rules to aid visual processing but
+     prevent them from becoming overly distracting
 
-- Improve visual separation of UI elements like panels, editors, widget, minimap, etc
+    b. Having consistent color & style rules across both light & dark themes to
+    reduce the cognitive impact of switching modes
 
-    - Avoid a 'flat wash' of background colors or reliance on borders
+2. Leveraging a greater range of background colors
 
-    - Naturally pull attention to the element that is meant to be focused on
+    a. Increasing the range of UI element background colors improves the visual
+    separation of elements and attention to overlay elements
 
-- **Theme-as-code**: Using named colors and generative utilities to enable faster editing,
-significantly easier maintenance, and greater consistency across application themes
+3. Reducing the maintenance burden of custom themes
+
+    a. Themes for supported applications should all be generated automatically
+    from a single, easy to read configuration
+
+    b. Updating palette colors should not require manually changing hex or rgb values
+    in any application theme file
 
 ## Palette
 
-The palette consists of:
+This theme is inspired by [Nord](https://www.nordtheme.com/),
+in particular the Polar Night and Aurora swatches, with the palette extended
+in a way that similarly finds inspiration in nature.
 
-- Three 8-color **primary ranges** to enable a greater hierarchy in foreground & background colors
+The palette is comprised of:
 
-- Four 4-color **accent ranges** (warm & cool greens & blues) that blend well with the 8-color ranges
-for visual distinction without significant contrast
+- **Sky**: Two 8-color ranges meant for use as the primary background & foreground colors
+    - **Dawn** and **Dusk**: Inspired by the colors of the sky as it brightens before sunset and fades after sunset
 
-- Four 2-color **accent ranges** that visually pop against the others for increased attention grabbing
+- **Lake**: Three 4-color ranges meant for use as the primary accent & token colors
+    - **Sapphire** and **Cerulean**: Inspired by the reflections of the sky on the water,
+    these are intended to be the predominant shades used for token colorization
+    - **Evergreen**: Inspired by the deep, warm greens of spruce, cedar, and pines that surround the lake, this range is intended to offer extra separation
+    from the blues above while still not contrasting too much
+
+- **Solar**: Four 3-color ranges meant for use as secondary accents
 
 ![Design Preview](./design/palette.svg)
-
-### Style Guide
-
-#### Sunrise Theme
-
-##### Styles
-
-TODO
-
-bold
-italic
-underline
-strikethrough
-
-##### Colors
-
-**Twilight:**
-- Foreground colors
-
-**Sunrise:**
-- Background colors for UI elements
-
-#### Twilight Theme
-
-**Twilight:**
-- Background colors for UI elements
-- Editor tokens that should recede into the background to reduce visual clutter
-
-**Sunrise:**
-- Foreground colors in UI, editor, and terminal
-
-**Sapphire:**
-- Editor tokens that should be readable without attracting focus
-
-**Cerulean:**
-- Editor tokens that should have visual prominence
-
-**SolarPurple:**
-- Editor tokens that should be distinct from language constructs, classes, and methods, eg:
-    - Literal values, eg. strings and booleans
-    - Constant variables
-    - Enum members
 
 ## Development
 

@@ -45,7 +45,7 @@ def main() -> None:
         # dark=twilight.terminal,
     # )
 
-    # export_palette_html(package_path / "palette.html")
+    export_palette_html(package_path / "palette.html")
 
     # Sunrise.save(themes)
     # Twilight.save(themes)

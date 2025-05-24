@@ -5,15 +5,15 @@
     "colors": {
         "terminal.background": "#1e2229",
         "terminal.foreground": "#aaa692",
-        "terminal.selectionBackground": "#2b3e64",
+        "terminal.selectionBackground": "#2b4364",
         "terminal.selectionForeground": "#edece8",
         "terminal.findMatchBackground": "#84587c3f",
         "terminalCursor.foreground": "#7eb6c8",
         "terminalCursor.background": "#111318",
         "terminal.ansiBlack": "#111318",
         "terminal.ansiBrightBlack": "#1e2229",
-        "terminal.ansiBlue": "#3d588f",
-        "terminal.ansiBrightBlue": "#5474b6",
+        "terminal.ansiBlue": "#3d5f8f",
+        "terminal.ansiBrightBlue": "#547cb6",
         "terminal.ansiCyan": "#3d7a8f",
         "terminal.ansiBrightCyan": "#549db6",
         "terminal.ansiGreen": "#4e8349",
@@ -75,7 +75,7 @@
         "tab.inactiveForeground": "#454d5f",
         "activityBar.inactiveForeground": "#5e6a82",
         "editorLineNumber.activeForeground": "#5e6a82",
-        "editorGutter.foldingControlForeground": "#5474b6",
+        "editorGutter.foldingControlForeground": "#547cb6",
         "textLink.foreground": "#3d7a8f",
         "tab.activeForeground": "#7eb6c8",
         "errorForeground": "#a7444c",
@@ -94,11 +94,11 @@
         "inputOption.hoverBackground": "#454d5f",
         "listFilterWidget.background": "#454d5f",
         "toolbar.hoverBackground": "#454d5f",
-        "button.background": "#2b3e64",
-        "list.filterMatchBackground": "#2b3e64",
-        "button.hoverBackground": "#3d588f",
-        "inputOption.activeBackground": "#5474b6",
-        "toolbar.activeBackground": "#5474b6",
+        "button.background": "#2b4364",
+        "list.filterMatchBackground": "#2b4364",
+        "button.hoverBackground": "#3d5f8f",
+        "inputOption.activeBackground": "#547cb6",
+        "toolbar.activeBackground": "#547cb6",
         "inputValidation.warningBorder": "#9b5741",
         "inputValidation.warningBackground": "#9b5741",
         "list.warningForeground": "#9b5741",
@@ -109,11 +109,11 @@
         "activityErrorBadge.foreground": "#111318",
         "activityWarningBadge.foreground": "#111318",
         "badge.foreground": "#111318",
-        "minimap.selectionHighlight": "#2b3e64bf",
-        "list.activeSelectionBackground": "#2b3e64",
-        "list.inactiveSelectionBackground": "#2b3e64",
-        "minimap.findMatchHighlight": "#3d588fbf",
-        "selection.background": "#3d588f",
+        "minimap.selectionHighlight": "#2b4364bf",
+        "list.activeSelectionBackground": "#2b4364",
+        "list.inactiveSelectionBackground": "#2b4364",
+        "minimap.findMatchHighlight": "#3d5f8fbf",
+        "selection.background": "#3d5f8f",
         "tree.indentGuidesStroke": "#2b5664",
         "tree.inactiveIndentGuidesStroke": "#2b5664",
         "activityBar.activeBorder": "#3d7a8f",
@@ -212,7 +212,7 @@
         {
             "scope": "variable.parameter.function-call",
             "settings": {
-                "foreground": "#3d588f"
+                "foreground": "#3d5f8f"
             }
         },
         {
@@ -222,7 +222,7 @@
                 "storage.modifier"
             ],
             "settings": {
-                "foreground": "#3d588f",
+                "foreground": "#3d5f8f",
                 "fontStyle": "bold"
             }
         },
@@ -233,26 +233,26 @@
                 "keyword.operator.logical"
             ],
             "settings": {
-                "foreground": "#3d588f",
+                "foreground": "#3d5f8f",
                 "fontStyle": "bold"
             }
         },
         {
             "scope": "support.type.property-name.json",
             "settings": {
-                "foreground": "#5474b6"
+                "foreground": "#547cb6"
             }
         },
         {
             "scope": "entity.name.tag.yaml",
             "settings": {
-                "foreground": "#5474b6"
+                "foreground": "#547cb6"
             }
         },
         {
             "scope": "keyword.operator",
             "settings": {
-                "foreground": "#5474b6"
+                "foreground": "#547cb6"
             }
         },
         {

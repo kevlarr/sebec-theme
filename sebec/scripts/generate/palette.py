@@ -70,7 +70,7 @@ def export_palette_html(destination: Path):
     window.onload = function() {{
         const swatchNames = document.querySelectorAll('.swatch-name');
         swatchNames.forEach(name => {{
-            const paletteColor = `Color.${{name.textContent}}`;
+            const paletteColor = name.textContent;
             name.addEventListener('click', () => copyText(paletteColor));
         }});
         const swatchValues = document.querySelectorAll('.swatch-value');

@@ -35,7 +35,7 @@
 			<key>Red Component</key>
 			<real>0.16862745098039217</real>
 			<key>Green Component</key>
-			<real>0.24313725490196078</real>
+			<real>0.2627450980392157</real>
 			<key>Blue Component</key>
 			<real>0.39215686274509803</real>
 			<key>Alpha Component</key>
@@ -204,7 +204,7 @@
 			<key>Red Component</key>
 			<real>0.23921568627450981</real>
 			<key>Green Component</key>
-			<real>0.34509803921568627</real>
+			<real>0.37254901960784315</real>
 			<key>Blue Component</key>
 			<real>0.5607843137254902</real>
 			<key>Alpha Component</key>
@@ -217,7 +217,7 @@
 			<key>Red Component</key>
 			<real>0.32941176470588235</real>
 			<key>Green Component</key>
-			<real>0.4549019607843137</real>
+			<real>0.48627450980392156</real>
 			<key>Blue Component</key>
 			<real>0.7137254901960784</real>
 			<key>Alpha Component</key>
@@ -412,7 +412,7 @@
 			<key>Red Component</key>
 			<real>0.16862745098039217</real>
 			<key>Green Component</key>
-			<real>0.24313725490196078</real>
+			<real>0.2627450980392157</real>
 			<key>Blue Component</key>
 			<real>0.39215686274509803</real>
 			<key>Alpha Component</key>
@@ -581,7 +581,7 @@
 			<key>Red Component</key>
 			<real>0.23921568627450981</real>
 			<key>Green Component</key>
-			<real>0.34509803921568627</real>
+			<real>0.37254901960784315</real>
 			<key>Blue Component</key>
 			<real>0.5607843137254902</real>
 			<key>Alpha Component</key>
@@ -594,7 +594,7 @@
 			<key>Red Component</key>
 			<real>0.32941176470588235</real>
 			<key>Green Component</key>
-			<real>0.4549019607843137</real>
+			<real>0.48627450980392156</real>
 			<key>Blue Component</key>
 			<real>0.7137254901960784</real>
 			<key>Alpha Component</key>
@@ -789,7 +789,7 @@
 			<key>Red Component</key>
 			<real>0.49411764705882355</real>
 			<key>Green Component</key>
-			<real>0.592156862745098</real>
+			<real>0.615686274509804</real>
 			<key>Blue Component</key>
 			<real>0.7843137254901961</real>
 			<key>Alpha Component</key>
@@ -958,7 +958,7 @@
 			<key>Red Component</key>
 			<real>0.23921568627450981</real>
 			<key>Green Component</key>
-			<real>0.34509803921568627</real>
+			<real>0.37254901960784315</real>
 			<key>Blue Component</key>
 			<real>0.5607843137254902</real>
 			<key>Alpha Component</key>
@@ -971,7 +971,7 @@
 			<key>Red Component</key>
 			<real>0.32941176470588235</real>
 			<key>Green Component</key>
-			<real>0.4549019607843137</real>
+			<real>0.48627450980392156</real>
 			<key>Blue Component</key>
 			<real>0.7137254901960784</real>
 			<key>Alpha Component</key>
