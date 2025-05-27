@@ -1,22 +1,22 @@
-name: Sebec Twilight (Dawn)
+name: Twilight Lake Dawn
 style: light
 
 terminal:
   background: dawn5
-  foreground: dusk6
-  selectionBackground: sapphire3
-  selectionForeground: dusk2
-  matchBackground: solarPurple1
+  foreground: dusk5
+  selectionBackground: cerulean3
+  selectionForeground: dusk3
+  matchBackground: solarPurple2
   cursorColor: cerulean0
   cursorTextColor: dawn6
 
   ansi:
     black: dusk3
     blackBright: dusk0
-    blue: sapphire1
-    blueBright: sapphire2
-    cyan: cerulean1
-    cyanBright: cerulean2
+    blue: sapphire0
+    blueBright: sapphire1
+    cyan: cerulean0
+    cyanBright: cerulean1
     green: evergreen1
     greenBright: evergreen2
     red: solarRed1
@@ -25,8 +25,8 @@ terminal:
     magentaBright: solarPurple2
     white: dawn5
     whiteBright: dawn7
-    yellow: solarYellow1
-    yellowBright: solarYellow2
+    yellow: solarYellow0
+    yellowBright: solarYellow1
 
   iterm:
     badgeColor: cerulean0
@@ -112,20 +112,20 @@ vscode:
       - textmate: support.function.string.sql
 
     # Evergreen
+    - evergreen0:
+      - textmate: support.variable.magic
+
+    - evergreen0 italic:
+      - textmate: string
+
     - evergreen1:
       - textmate: constant.character.format.placeholder
       - textmate: constant.numeric
       - textmate: constant.language
 
-    - evergreen1 italic:
-      - textmate: string
-
     - evergreen2 italic:
       - textmate: storage.type.string # eg. the `f` in `f"string"`
       - textmate: punctuation.definition.string, # quotes around the string
-
-    - evergreen2:
-      - textmate: support.variable.magic
 
     # Solar
     - solarOrange2:

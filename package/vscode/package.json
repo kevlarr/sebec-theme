@@ -12,14 +12,14 @@
   "contributes": {
     "themes": [
       {
-        "label": "Sebec Twilight (Dawn)",
+        "label": "Twilight Lake Dawn",
         "uiTheme": "vs",
-        "path": "./themes/sebec-twilight-dawn-color-theme.json"
+        "path": "./themes/twilight-lake-dawn-color-theme.json"
       },
       {
-        "label": "Sebec Twilight (Dusk)",
+        "label": "Twilight Lake Dusk",
         "uiTheme": "vs-dark",
-        "path": "./themes/sebec-twilight-dusk-color-theme.json"
+        "path": "./themes/twilight-lake-dusk-color-theme.json"
       }
     ]
   }

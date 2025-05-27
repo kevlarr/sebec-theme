@@ -27,7 +27,7 @@ def main() -> None:
     usk = parse_yml(yml_path / "dusk.yml")
 
     iterm.export(
-        package_path / "Sebec.itermcolors",
+        package_path / "Twilight Lake.itermcolors",
         light=dawn.terminal,
         dark=usk.terminal,
     )

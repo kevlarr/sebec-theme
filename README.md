@@ -1,10 +1,20 @@
-# Sebec Twilight
+# Twilight Lake
 
-Sebec Twilight is a (work in progress) cross-application, dual color theme. Application support currently includes:
+Twilight Lake is a cross-application, dual color theme
+originally derived from [Nord](https://www.nordtheme.com/) (in particular the Polar Night and Aurora swatches)
+with an extended palette inspired by the shifting colors of twilight
+on a forested lake.
+
+Application support currently includes:
 
 - iTerm2
 - VS Code
 - Windows Terminal
+
+**Note:** This theme is still very much a work in progress, and language
+support in VS Code is still very preliminary.
+
+## Background
 
 The main goals for this project include:
 
@@ -31,10 +41,6 @@ The main goals for this project include:
 
 ## Palette
 
-This theme is inspired by [Nord](https://www.nordtheme.com/),
-in particular the Polar Night and Aurora swatches, with the palette extended
-in a way that similarly finds inspiration in nature.
-
 The palette is comprised of:
 
 - **Sky**: Two 8-color ranges meant for use as the primary background & foreground colors
@@ -48,16 +54,16 @@ The palette is comprised of:
 
 - **Solar**: Four 3-color ranges meant for use as secondary accents
 
-![Design Preview](./design/palette.svg)
+![Palette colors](./design/palette.svg)
 
 ## Development
 
 Run `poetry install` to add the necessary scripts.
 
-The VS Code and iTerm2 themes are generated via `poetry run generate`,
+The various theme files are generated via `poetry run generate`,
 which will update their files stored in `package/`.
 
-After updating the palette (Affinity Designer), re-export the `palette.svg` file
+After updating the Affinity Designer palette, re-export the `palette.svg` file
 from the artboard and then run `poetry run update-colors` to update the `Color` enum itself.
 
 ### Testing the VS Code theme
