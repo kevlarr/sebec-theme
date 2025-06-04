@@ -1,9 +1,3 @@
-# Fix:
-#
-#  - if a selector overrides another that has a style applied (eg. bold),
-#    the element keeps that style even if the priority selector does not
-#    have a style
-
 name: Twilight Lake Dusk
 style: dark
 
@@ -49,14 +43,16 @@ vscode:
   # - https://macromates.com/manual/en/language_grammars#naming_conventions
   tokens:
 
-    - "#ff0000": # TODO: what is this?
-      - textmate: ["other", "multiple"]
-
     # Dusk is useful for tokens that should blend into the background
-    - dusk6:
+    - dusk6 italic:
+      - textmate: comment
+      - textmate: punctuation.definition.comment
+
+    - dusk7:
       - name: Low-contrast punctuation
         textmate:
-          - punctuation.definition
+          - punctuation.parenthesis            # Eg. parentheses when wrapping lines in Python
+          - punctuation.definition.arguments   # eg. parentheses around args in function call
           - punctuation.separator              # eg. `,`, `.` in method calls, or `:` in dicts
           - punctuation.section.class.begin    # eg. `:` after class def
           - punctuation.section.function.begin # eg. `:` after function def
@@ -65,24 +61,24 @@ vscode:
         textmate:
           - meta.function-call.arguments keyword.operator.assignment
 
-    - dusk6 italic:
-      - textmate: comment
-      - textmate: punctuation.definition.comment
-
     # Evergreen is useful for tokens that should have a lower contrast ratio
     # like Dusk and still present as very separate from the background and
     # other shades of blue but without drawing attention like accent colors
     - evergreen0 italic:
-      - textmate: constant.character.format.placeholder
-      - textmate: storage.type.string # eg. the `f` in `f"string"`
-      - textmate: punctuation.definition.string, # quotes around the string
-
-    - evergreen1:
-      - textmate: constant.numeric
-      - textmate: constant.language
+      - name: String embellishments (quotes, placeholders, etc)
+        textmate:
+        - constant.character.format.placeholder
+        - storage.type.string # eg. the `f` in `f"string"`
+        - punctuation.definition.string, # quotes around the string
 
     - evergreen1 italic:
       - textmate: string
+
+    - evergreen2:
+      - name: Literal values
+        textmate:
+        - constant.language
+        - constant.numeric
 
     # Sapphire is useful for tokens that should be legible against the
     # background but still blend in fairly well and coordinate with many
@@ -90,6 +86,13 @@ vscode:
     - sapphire1:
       - name: Keyword arguments
         textmate: variable.parameter.function-call
+
+      - name: SQL keywords
+        textmate:
+        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
+        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
+        - keyword.other.alias.sql # eg. AS
+        - keyword.other.sql       # eg. CASE, WHEN, etc
 
     - sapphire1 bold:
       - name: class & def keywords
@@ -104,22 +107,22 @@ vscode:
         - keyword.control.import
         - keyword.operator.logical # eg. `in`, `not`
 
+    - sapphire1:
+      - name: Operator symbols
+        textmate:
+        - keyword.operator.arithmetic
+        - keyword.operator.assignment
+
     - sapphire2:
-      - textmate: support.type.property-name.json
-      - textmate: entity.name.tag.yaml
-      - textmate: keyword.operator
+      - name: Serialized property names
+        textmate:
+          - support.type.property-name.json
+          - entity.name.tag.yaml
 
     # Cerulean is useful for tokens that should stand out from keywords and
     # plain text while also not being too different or distracting
     - cerulean0:
       - textmate: punctuation.definition.decorator # `@` for decorators
-
-      - name: SQL keywords
-        textmate:
-        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
-        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
-        - keyword.other.alias.sql # eg. AS
-        - keyword.other.sql       # eg. CASE, WHEN, etc
 
     - cerulean1:
       - semantic: class.typeHint
@@ -144,18 +147,19 @@ vscode:
 
     # Solar is useful for accents and defining different classes of tokens,
     # but they should be used judiciously to avoid candy colors
-    - solarPurple0:
+    - solarRed2:
       - textmate: support.variable.magic
+      - textmate: constant.other.caps
 
-    - solarOrange0:
-      - semantic: selfParameter
-      - semantic: clsParameter
-
-    - solarOrange2:
+    - solarPurple1:
       - textmate: constant.other.table-name.sql # table columns
       - semantic: property
       - semantic: property.declaration
       - semantic: enumMember
+
+    - solarPurple1 bold:
+      - semantic: selfParameter
+      - semantic: clsParameter
 
   ui:
     ##
@@ -218,6 +222,17 @@ vscode:
     ##
     ## Foreground colors
     ##
+    - dusk5:
+      - editorLineNumber.foreground
+
+    - dusk6:
+      - disabledForeground
+      - tab.inactiveForeground
+
+    - dusk7:
+      - activityBar.inactiveForeground
+      - editorLineNumber.activeForeground
+
     - dawn0:
       - descriptionForeground # Eg. extension descriptions in search
       - editor.foreground
@@ -240,17 +255,6 @@ vscode:
       - list.activeSelectionIconForeground
       - list.inactiveSelectionForeground
       - list.inactiveSelectionIconForeground
-
-    - dusk4:
-      - editorLineNumber.foreground
-
-    - dusk6:
-      - disabledForeground
-      - tab.inactiveForeground
-
-    - dusk7:
-      - activityBar.inactiveForeground
-      - editorLineNumber.activeForeground
 
     - sapphire2:
       - editorGutter.foldingControlForeground # The > carets for folding
@@ -354,12 +358,6 @@ vscode:
     - solarOrange2:
        - activityWarningBadge.background
 
-    - solarPurple0:
-      - sash.hoverBorder # The drag border indicator on hover
-      - tab.dragAndDropBorder
-      - focusBorder
-      - progressBar.background
-
     - solarRed0 alpha=0.75:
       - minimap.errorHighlight
 
@@ -374,6 +372,10 @@ vscode:
     - cerulean2:
       - activityBarBadge.background
       - badge.background # Eg. the "Changes" count badge in Source Control sidebar
+      - sash.hoverBorder # The drag border indicator on hover
+      - tab.dragAndDropBorder
+      - focusBorder
+      - progressBar.background
 
     - solarYellow1:
       - editorGutter.modifiedBackground

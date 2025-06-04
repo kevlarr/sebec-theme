@@ -2,7 +2,7 @@ name: Twilight Lake Dawn
 style: light
 
 terminal:
-  background: dawn5
+  background: dawn4
   foreground: dusk5
   selectionBackground: cerulean3
   selectionForeground: dusk3
@@ -42,7 +42,8 @@ vscode:
     - dawn0:
       - name: Low-contrast punctuation
         textmate:
-          - punctuation.definition
+          - punctuation.parenthesis            # Eg. parentheses when wrapping lines in Python
+          - punctuation.definition.arguments   # eg. parentheses around args in function call
           - punctuation.separator              # eg. `,`, `.` in method calls, or `:` in dicts
           - punctuation.section.class.begin    # eg. `:` after class def
           - punctuation.section.function.begin # eg. `:` after function def
@@ -57,12 +58,51 @@ vscode:
         - punctuation.definition.comment
 
     # Sapphire
-    - sapphire2:
-      - textmate: support.type.property-name.json
-      - textmate: entity.name.tag.yaml
-      - textmate: keyword.operator
+    - sapphire0:
+      - name: Serialized property names
+        textmate:
+          - support.type.property-name.json
+          - entity.name.tag.yaml
 
-    - sapphire2 bold:
+    - sapphire1:
+      - semantic: class.typeHint
+      - semantic: enum.typeHint
+
+    - sapphire1 underline:
+      - semantic: module
+
+    - sapphire1 bold:
+      - semantic: class.declaration
+      - semantic: function.declaration
+      - semantic: method.declaration
+
+    - sapphire1:
+      - semantic: class
+      - semantic: enum
+      - semantic: function
+      - textmate: meta.function-call.generic.python
+      - semantic: method
+      - semantic: function.decorator
+      - textmate: support.function.string.sql
+
+    - sapphire3:
+      - textmate: punctuation.definition.decorator # `@` for decorators
+
+    # Cerulean
+    - cerulean2:
+      - name: Operator symbols
+        textmate:
+        - keyword.operator.arithmetic
+        - keyword.operator.assignment
+
+      - name: SQL keywords
+        textmate:
+        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
+        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
+        - keyword.other.alias.sql # eg. AS
+        - keyword.other.sql       # eg. CASE, WHEN, etc
+
+    - cerulean2 bold:
       - name: class & def keywords
         textmate:
         - storage.type.class
@@ -75,41 +115,9 @@ vscode:
         - keyword.control.import
         - keyword.operator.logical # eg. `in`, `not`
 
-    - sapphire3:
+    - cerulean2:
       - name: Keyword arguments
         textmate: variable.parameter.function-call
-
-    # Cerulean
-    - cerulean3:
-      - textmate: punctuation.definition.decorator # `@` for decorators
-
-      - name: SQL keywords
-        textmate:
-        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
-        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
-        - keyword.other.alias.sql # eg. AS
-        - keyword.other.sql       # eg. CASE, WHEN, etc
-
-    - cerulean2:
-      - semantic: class.typeHint
-      - semantic: enum.typeHint
-
-    - cerulean1 underline:
-      - semantic: module
-
-    - cerulean2 bold:
-      - semantic: class.declaration
-      - semantic: function.declaration
-      - semantic: method.declaration
-
-    - cerulean1:
-      - semantic: class
-      - semantic: enum
-      - semantic: function
-      - textmate: meta.function-call.generic.python
-      - semantic: method
-      - semantic: function.decorator
-      - textmate: support.function.string.sql
 
     # Evergreen
     - evergreen0:
@@ -128,11 +136,11 @@ vscode:
       - textmate: punctuation.definition.string, # quotes around the string
 
     # Solar
-    - solarOrange2:
+    - solarPurple1 bold:
       - semantic: selfParameter
       - semantic: clsParameter
 
-    - solarOrange1:
+    - solarPurple0:
       - textmate: constant.other.table-name.sql # table columns
       - semantic: property
       - semantic: property.declaration
@@ -153,11 +161,10 @@ vscode:
     - dawn0 alpha=0.5:
       - widget.shadow
 
-    - dawn1:
+    - dawn2:
       - scrollbarSlider.background # must be lighter or darker than any scrollable, eg. editor widget or sidebar
 
     - dawn2:
-      - activityBar.background
       - sideBarSectionHeader.border
 
     - dawn3:
@@ -169,6 +176,7 @@ vscode:
       - tab.inactiveBackground
 
     - dawn4:
+      - activityBar.background
       - panel.background
       - panel.border
       - tab.hoverBackground
@@ -214,7 +222,6 @@ vscode:
       - list.activeSelectionIconForeground
       - list.inactiveSelectionForeground
       - list.inactiveSelectionIconForeground
-      - sideBar.foreground
 
     - dusk6:
       - descriptionForeground # Eg. extension descriptions in search
@@ -222,6 +229,7 @@ vscode:
       - foreground
       - icon.foreground
       - sideBarTitle.foreground
+      - sideBar.foreground
       - sideBarSectionHeader.foreground
 
     - dusk7:
@@ -232,7 +240,7 @@ vscode:
       - activityBar.inactiveForeground
       - editorLineNumber.activeForeground
 
-    - dawn2:
+    - dawn1:
       - editorLineNumber.foreground
 
     - dawn7:

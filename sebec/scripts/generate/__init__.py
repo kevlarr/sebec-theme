@@ -17,19 +17,18 @@ ROOT_PATH = (
     .parent # root
 )
 
-
 def main() -> None:
     package_path = ROOT_PATH / "package"
     vscode_themes_path = package_path / "vscode/themes"
     yml_path = ROOT_PATH / "ymls"
 
     dawn = parse_yml(yml_path / "dawn.yml")
-    usk = parse_yml(yml_path / "dusk.yml")
+    dusk = parse_yml(yml_path / "dusk.yml")
 
     iterm.export(
         package_path / "Twilight Lake.itermcolors",
         light=dawn.terminal,
-        dark=usk.terminal,
+        dark=dusk.terminal,
     )
     vscode.export(
         package_path=vscode_themes_path,
@@ -37,7 +36,7 @@ def main() -> None:
     )
     vscode.export(
         package_path=vscode_themes_path,
-        theme=usk,
+        theme=dusk,
     )
     # windows_terminal.export(
         # package_path=package_path,
