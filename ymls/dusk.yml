@@ -161,41 +161,36 @@ vscode:
       - semantic: selfParameter
       - semantic: clsParameter
 
+  ui_new:
+    activityBar:
+      background: dusk4
+    breadcrumb:
+      background: dusk0
+    editor:
+      background: dusk0
+    editorGroup:
+      border: dusk2
+    editorGroupHeader:
+      tabsBackground: dusk2
+    minimap:
+      background: dusk2 alpha=0.25
+      foregroundOpacity: "#ffffff alpha=0.5" # Color doesn't matter, only alpha
+    panel:
+      background: dusk3 # should match terminal.background
+      border: dusk3
+    sideBar:
+      background: dusk2
+    sideBarSectionHeader:
+      background: dusk2
+    sideBarTitle:
+      background: dusk2
+    tab:
+      activeBackground: dusk0
+      hoverBackground: dusk3
+      inactiveBackground: dusk2
+
   ui:
-    ##
-    ## Opacity controls
-    ##
-    ## The exact color is not important; only the alpha value is
-    ##
-    - "#ffffff alpha=0.5":
-      - minimap.foregroundOpacity
 
-    ##
-    ## Primary UI elements
-    ##
-    - dusk0:
-      - breadcrumb.background
-      - editor.background
-      - tab.activeBackground
-
-    - dusk2 alpha=0.25:
-      - minimap.background
-
-    - dusk2:
-      - editorGroup.border
-      - editorGroupHeader.tabsBackground
-      - sideBar.background
-      - sideBarSectionHeader.background
-      - sideBarTitle.background
-      - tab.inactiveBackground
-
-    - dusk3:
-      - panel.background # should match terminal.background
-      - panel.border
-      - tab.hoverBackground
-
-    - dusk4:
-      - activityBar.background
 
     - dusk5:
       - editorWidget.background

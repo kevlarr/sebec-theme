@@ -84,12 +84,13 @@ GenericToken = Annotated[
     Field(union_mode="left_to_right"),
 ]
 
+ParsedColorStyle = Annotated[
+    ColorStyle,
+    BeforeValidator(parse_color_style),
+]
 
 class UiSetting(Base):
-    style: Annotated[
-        ColorStyle,
-        BeforeValidator(parse_color_style),
-    ]
+    style: ParsedColorStyle
     scope: str
 
 
@@ -102,3 +103,4 @@ class VscodeColors(Base):
         list[UiSetting],
         BeforeValidator(flatten_ui_settings),
     ]
+    ui_new: dict[str, dict[str, ParsedColorStyle]] | None = None
