@@ -3,6 +3,7 @@ import pathlib
 
 from sebec.exporters import iterm, vscode #, windows_terminal
 from sebec.parser import parse_yml
+from sebec.parser_new import parse_yml_new
 # from sebec.vstheme import Sunrise, Twilight
 # from sebec.vstheme.base import Color
 
@@ -22,22 +23,28 @@ def main() -> None:
     vscode_themes_path = package_path / "vscode/themes"
     yml_path = ROOT_PATH / "ymls"
 
-    dawn = parse_yml(yml_path / "dawn.yml")
-    dusk = parse_yml(yml_path / "dusk.yml")
+    # dawn = parse_yml(yml_path / "dawn.yml")
+    # dusk = parse_yml(yml_path / "dusk.yml")
+
+    theme = parse_yml_new(yml_path / "theme.yml")
+
+    breakpoint()
 
     iterm.export(
         package_path / "Twilight Lake.itermcolors",
         light=dawn.terminal,
         dark=dusk.terminal,
     )
-    vscode.export(
-        package_path=vscode_themes_path,
-        theme=dawn,
-    )
-    vscode.export(
-        package_path=vscode_themes_path,
-        theme=dusk,
-    )
+
+    # vscode.export(
+    #     package_path=vscode_themes_path,
+    #     theme=dawn,
+    # )
+    # vscode.export(
+    #     package_path=vscode_themes_path,
+    #     theme=dusk,
+    # )
+
     # windows_terminal.export(
         # package_path=package_path,
         # light=sunrise.terminal,
