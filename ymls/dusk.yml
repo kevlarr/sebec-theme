@@ -162,219 +162,175 @@ vscode:
       - semantic: clsParameter
 
   ui_new:
+
+    descriptionForeground: dawn0 # Eg. extension descriptions in search
+    disabledForeground: dusk6
+    errorForeground: solarRed1
+    focusBorder: cerulean2
+    foreground: dawn0
+
     activityBar:
+      activeBorder: cerulean1
       background: dusk4
+      foreground: cerulean1 # Activity bar icon color
+      inactiveForeground: dusk7
     breadcrumb:
       background: dusk0
     editor:
       background: dusk0
+      foreground: dawn0
     editorGroup:
       border: dusk2
+      dropBackground: cerulean1 alpha=0.25
     editorGroupHeader:
       tabsBackground: dusk2
+    editorGutter:
+      foldingControlForeground: sapphire2 # The > carets for folding
+    editorLineNumber:
+      activeForeground: dusk7
+      foreground: dusk5
+    editorWidget:
+      background: dusk5
+      foreground: dawn5
+    icon:
+      foreground: dawn0
+    inputValidation:
+      errorForeground: dawn5
+      infoForeground: dawn5
+      warningForeground: dawn5
     minimap:
       background: dusk2 alpha=0.25
       foregroundOpacity: "#ffffff alpha=0.5" # Color doesn't matter, only alpha
     panel:
       background: dusk3 # should match terminal.background
       border: dusk3
+    scrollbar:
+      shadow: cerulean1 alpha=0.25 # indicator lines in the terminal that viewport can scroll horizontally/vertically
+    scrollbarSlider:
+      background: dusk6 # must be brighter than any scrollable widget
+      activeBackground: cerulean1
+      hoverBackground: cerulean0
     sideBar:
       background: dusk2
+      dropBackground: cerulean1 alpha=0.25
+      foreground: dawn0
     sideBarSectionHeader:
       background: dusk2
+      border: dusk5
+      foreground: dawn0
     sideBarTitle:
       background: dusk2
+      foreground: dawn0
     tab:
       activeBackground: dusk0
+      activeForeground: cerulean3 # Overridden by green, red, etc. if changed or errors
+      dragAndDropBorder: cerulean2
       hoverBackground: dusk3
       inactiveBackground: dusk2
+      inactiveForeground: dusk6
+      selectedBorderTop: cerulean1
+
+    list:
+      activeSelectionBackground: sapphire0
+      activeSelectionForeground: dawn5
+      activeSelectionIconForeground: dawn5
+      dropBackground: cerulean1 alpha=0.25
+      errorForeground: solarRed0
+      filterMatchBackground: sapphire0
+      hoverBackground: dusk4 # includes entire section, eg. title & description above a dropdown
+      inactiveSelectionBackground: sapphire0
+      inactiveSelectionForeground: dawn5
+      inactiveSelectionIconForeground: dawn5
+      warningForeground: solarOrange0
+
+
+    button.foreground: dawn5
+    button.hoverBackground: sapphire1
+
+    checkbox.foreground: dawn5
+    checkbox.background: dusk0
+    checkbox.border: dusk5
+
+    dropdown.foreground: dawn5
+    dropdown.background: dusk0
+    dropdown.listBackground: dusk3
+    dropdown.listBackground: dusk3
+
+    dropdown.border: dusk5
+
+    input.border: dusk5
+    input.foreground: dawn5
+    input.background: dusk0
+    input.placeholderForeground: dusk6
+
+    inputOption.activeBorder: dusk0 # match input color to hide the border
+    inputOption.hoverBackground: dusk6
+
+
+
+    textLink.foreground: cerulean1
+
+
+    editorWarning.foreground: solarRed1
+    editorError.foreground: solarRed1
+
+
+
+    listFilterWidget.background: dusk6 # brighter than editor widget because editor is darker than sidebar
+    toolbar.hoverBackground: dusk6 # eg. hovering over icons in panels/widgets
+
+    button.background: sapphire0
+
+
+    inputOption.activeBackground: sapphire2 # eg. the regex button in Find widget when activated
+    toolbar.activeBackground: sapphire2 # Eg. the "..." icons when opened or other buttons when clicked
+
+    inputValidation.warningBorder: solarOrange0
+    inputValidation.warningBackground: solarOrange0
+
+    inputValidation.errorBorder: solarRed0
+    inputValidation.errorBackground: solarRed0
+
+
+    activityBarBadge.foreground: dusk0
+    activityErrorBadge.foreground: dusk0
+    activityWarningBadge.foreground: dusk0
+    badge.foreground: dusk0 # Eg. the - Changes" count badge in Source Control sidebar
+
+    minimap.selectionHighlight: sapphire0 alpha=0.75
+    minimap.findMatchHighlight: sapphire1 alpha=0.75
+    minimap.warningHighlight: solarOrange1 alpha=0.75
+
+    selection.background: sapphire1
+
+    tree.indentGuidesStroke: cerulean0
+    tree.inactiveIndentGuidesStroke: cerulean0
+
+
+    editorGutter.addedBackground: evergreen0
+    minimapGutter.addedBackground: evergreen0
+
+
+    activityWarningBadge.background: solarOrange2
+
+    minimap.errorHighlight: solarRed0 alpha=0.75
+
+    activityErrorBadge.background: solarRed2
+    editorGutter.deletedBackground: solarRed2
+    minimapGutter.deletedBackground: solarRed2
+
+    minimapGutter.modifiedBackground: solarYellow1 alpha=0.75
+
+    activityBarBadge.background: cerulean2
+    badge.background: cerulean2 # Eg. the "Changes" count badge in Source Control sidebar
+    sash.hoverBorder: cerulean2 # The drag border indicator on hover
+    progressBar.background: cerulean2
+
+    editorGutter.modifiedBackground: solarYellow1
+    editorMinimap.inlineChatInserted: solarYellow1
+
 
   ui:
-
-
-    - dusk5:
-      - editorWidget.background
-      - sideBarSectionHeader.border
-
-    - dusk6:
-      - scrollbarSlider.background # must be brighter than any scrollable widget
-
-    - cerulean0:
-      - scrollbarSlider.hoverBackground
-
-    - cerulean1 alpha=0.25:
-      - scrollbar.shadow # indicator lines in the terminal that viewport can scroll horizontally/vertically
-
-      # Drag and drop
-      - editorGroup.dropBackground
-      - list.dropBackground
-      - sideBar.dropBackground
-
-    - cerulean1:
-      - tab.selectedBorderTop
-      - scrollbarSlider.activeBackground
-
-    ##
-    ## Foreground colors
-    ##
-    - dusk5:
-      - editorLineNumber.foreground
-
-    - dusk6:
-      - disabledForeground
-      - tab.inactiveForeground
-
-    - dusk7:
-      - activityBar.inactiveForeground
-      - editorLineNumber.activeForeground
-
-    - dawn0:
-      - descriptionForeground # Eg. extension descriptions in search
-      - editor.foreground
-      - foreground
-      - icon.foreground
-      - sideBar.foreground
-      - sideBarTitle.foreground
-      - sideBarSectionHeader.foreground
-
-    - dawn5:
-      - button.foreground
-      - checkbox.foreground
-      - dropdown.foreground
-      - editorWidget.foreground
-      - input.foreground
-      - inputValidation.errorForeground
-      - inputValidation.infoForeground
-      - inputValidation.warningForeground
-      - list.activeSelectionForeground
-      - list.activeSelectionIconForeground
-      - list.inactiveSelectionForeground
-      - list.inactiveSelectionIconForeground
-
-    - sapphire2:
-      - editorGutter.foldingControlForeground # The > carets for folding
-
-    - cerulean1:
-      - textLink.foreground
-
-    - cerulean3:
-      - tab.activeForeground # Overridden by green, red, etc. if changed or errors
-
-    - solarRed1:
-      - errorForeground
-      - editorWarning.foreground
-      - editorError.foreground
-
-    ##
-    ## Inputs and controls
-    ##
-    - dusk0:
-      - checkbox.background
-      - dropdown.background
-      - input.background
-      - inputOption.activeBorder # match input color to hide the border
-
-    - dusk3:
-      - dropdown.listBackground
-      - dropdown.listBackground
-
-    - dusk4:
-      - list.hoverBackground # includes entire section, eg. title & description above a dropdown
-
-    - dusk5:
-      - checkbox.border
-      - input.border
-      - dropdown.border
-
-    - dusk6:
-      - input.placeholderForeground
-      - inputOption.hoverBackground
-      - listFilterWidget.background # brighter than editor widget because editor is darker than sidebar
-      - toolbar.hoverBackground # eg. hovering over icons in panels/widgets
-
-    - sapphire0:
-      - button.background
-      - list.filterMatchBackground
-
-    - sapphire1:
-      - button.hoverBackground
-
-    - sapphire2:
-      - inputOption.activeBackground # eg. the regex button in Find widget when activated
-      - toolbar.activeBackground # Eg. the "..." icons when opened or other buttons when clicked
-
-    - solarOrange0:
-       - inputValidation.warningBorder
-       - inputValidation.warningBackground
-       - list.warningForeground
-
-    - solarRed0:
-      - inputValidation.errorBorder
-      - inputValidation.errorBackground
-      - list.errorForeground
-
-    ##
-    ## Accent elements, eg. badges, highlights
-    ##
-    - dusk0:
-      - activityBarBadge.foreground
-      - activityErrorBadge.foreground
-      - activityWarningBadge.foreground
-      - badge.foreground # Eg. the - Changes" count badge in Source Control sidebar
-
-    - sapphire0 alpha=0.75:
-      - minimap.selectionHighlight
-
-    - sapphire0:
-      - list.activeSelectionBackground
-      - list.inactiveSelectionBackground
-
-    - sapphire1 alpha=0.75:
-      - minimap.findMatchHighlight
-
-    - sapphire1:
-      - selection.background
-
-    - cerulean0:
-      - tree.indentGuidesStroke
-      - tree.inactiveIndentGuidesStroke
-
-    - cerulean1:
-      - activityBar.activeBorder
-      - activityBar.foreground # Activity bar icon color
-
-    - evergreen0:
-      - editorGutter.addedBackground
-      - minimapGutter.addedBackground
-
-    - solarOrange1 alpha=0.75:
-       - minimap.warningHighlight
-
-    - solarOrange2:
-       - activityWarningBadge.background
-
-    - solarRed0 alpha=0.75:
-      - minimap.errorHighlight
-
-    - solarRed2:
-      - activityErrorBadge.background
-      - editorGutter.deletedBackground
-      - minimapGutter.deletedBackground
-
-    - solarYellow1 alpha=0.75:
-      - minimapGutter.modifiedBackground
-
-    - cerulean2:
-      - activityBarBadge.background
-      - badge.background # Eg. the "Changes" count badge in Source Control sidebar
-      - sash.hoverBorder # The drag border indicator on hover
-      - tab.dragAndDropBorder
-      - focusBorder
-      - progressBar.background
-
-    - solarYellow1:
-      - editorGutter.modifiedBackground
-      - editorMinimap.inlineChatInserted
 
     ###
     ### TODO
