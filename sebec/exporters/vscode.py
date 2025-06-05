@@ -27,11 +27,13 @@ def export(*, package_path: Path, theme: ThemeModel):
             textmate_token_colors.append({"scope": token.scope, "settings": settings})
 
     terminal_colors = theme.terminal.serialize(app=TerminalApp.Vscode)
-    ui_colors = {ui.scope: str(ui.style) for ui in theme.vscode.ui}
+    ui_colors = {ui.scope: str(ui.style) for ui in (theme.vscode.ui or [])}
+    ui_new_colors = {scope: str(style) for scope, style in (theme.vscode.ui_new or {}).items()}
+    breakpoint()
 
     # Merge UI & terminal colors together but prioritize UI such that
     # they can override terminal colors if desired.
-    colors = {**terminal_colors, **ui_colors}
+    colors = {**terminal_colors, **ui_colors, **ui_new_colors}
 
     with open(package_path / filename, "w") as f:
         data = {
