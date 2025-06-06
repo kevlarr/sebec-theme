@@ -97,197 +97,407 @@ terminal:
 
     underlineColor: cerulean0
 
-# vscode:
+vscode:
 
   # TODO: Tokens
 
-  # ui:
+  ui:
+    ##
+    ## Generic, top-level properties
+    ###
+    descriptionForeground:
+      # Eg. extension descriptions in search
+      light: dusk6
+      dark: dawn0
 
-  #   descriptionForeground: dawn0 # Eg. extension descriptions in search
-  #   disabledForeground: dusk6
-  #   errorForeground: solarRed1
-  #   focusBorder: cerulean2
-  #   foreground: dawn0
+    disabledForeground:
+      light: dusk7
+      dark: dusk6
 
-  #   activityBar:
-  #     activeBorder: cerulean1
-  #     background: dusk4
-  #     foreground: cerulean1 # Activity bar icon color
-  #     inactiveForeground: dusk7
+    errorForeground: solarRed1
 
-  #   activityBarBadge:
-  #     background: cerulean2
-  #     foreground: dusk0
+    focusBorder:
+      light: solarPurple2 # FIXME
+      dark: cerulean2
 
-  #   activityErrorBadge:
-  #     background: solarRed2
-  #     foreground: dusk0
+    foreground:
+      light: dusk6
+      dark: dawn0
 
-  #   activityWarningBadge:
-  #     background: solarOrange2
-  #     foreground: dusk0
+    ##
+    ## Specific element properties
+    ##
+    activityBar:
+      activeBorder:
+        light: cerulean2
+        dark: cerulean1
 
-  #   badge:
-  #     background: cerulean2 # Eg. the "Changes" count badge in Source Control sidebar
-  #     foreground: dusk0 # Eg. the - Changes" count badge in Source Control sidebar
+      background:
+        light: dawn4
+        dark: dusk4
 
-  #   breadcrumb:
-  #     background: dusk0
+      # Activity bar icon color
+      foreground:
+        light: cerulean2
+        dark: cerulean1
 
-  #   button:
-  #     foreground: dawn5
-  #     hoverBackground: sapphire1
-  #     background: sapphire0
+      inactiveForeground:
+        light: dawn0
+        dark: dusk7
 
-  #   checkbox:
-  #     background: dusk0
-  #     border: dusk5
-  #     foreground: dawn5
+    activityBarBadge:
+      background: cerulean2
+      foreground:
+        light: dawn7
+        dark: dusk0
 
-  #   dropdown:
-  #     background: dusk0
-  #     border: dusk5
-  #     foreground: dawn5
-  #     listBackground: dusk3
-  #     listBackground: dusk3
+    activityErrorBadge:
+      background: solarRed2
+      foreground:
+        light: dawn7
+        dark: dusk0
 
-  #   editor:
-  #     background: dusk0
-  #     foreground: dawn0
+    activityWarningBadge:
+      background: solarOrange2
+      foreground:
+        light: dawn7
+        dark: dusk0
 
-  #   editorError:
-  #     foreground: solarRed1
+    badge:
+      background: cerulean2 # Eg. the "Changes" count badge in Source Control sidebar
+      foreground:
+        # Eg. the - Changes" count badge in Source Control sidebar
+        light: dawn7
+        dark: dusk0
 
-  #   editorGroup:
-  #     border: dusk2
-  #     dropBackground: cerulean1 alpha=0.25
+    breadcrumb:
+      background:
+        light: dawn6
+        dark: dusk0
 
-  #   editorGroupHeader:
-  #     tabsBackground: dusk2
+    button:
+      foreground:
+        light: dawn7
+        dark: dawn5
+      hoverBackground:
+        light: sapphire2
+        dark: sapphire1
+      background:
+        light: sapphire3
+        dark: sapphire0
 
-  #   editorGutter:
-  #     addedBackground: evergreen0
-  #     deletedBackground: solarRed2
-  #     foldingControlForeground: sapphire2 # The > carets for folding
-  #     modifiedBackground: solarYellow1
+    checkbox:
+      background:
+        light: dawn4
+        dark: dusk0
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground:
+        light: dusk4
+        dark: dawn5
 
-  #   editorLineNumber:
-  #     activeForeground: dusk7
-  #     foreground: dusk5
+    dropdown:
+      background:
+        light: dawn4
+        dark: dusk0
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground:
+        light: dusk4
+        dark: dawn5
+      listBackground:
+        light: dawn6
+        dark: dusk3
 
-  #   editorMinimap:
-  #     inlineChatInserted: solarYellow1
+    editor:
+      background:
+        light: dawn6
+        dark: dusk0 # FIXME
+      foreground:
+        light: dusk6
+        dark: dawn0
 
-  #   editorWarning:
-  #     foreground: solarRed1
+    editorError:
+      foreground: solarRed1
 
-  #   editorWidget:
-  #     background: dusk5
-  #     foreground: dawn5
+    editorGroup:
+      border:
+        light: dawn3
+        dark: dusk2
+      dropBackground:
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
 
-  #   icon:
-  #     foreground: dawn0
+    editorGroupHeader:
+      tabsBackground:
+        light: dawn3
+        dark: dusk2
 
-  #   input:
-  #     background: dusk0
-  #     border: dusk5
-  #     foreground: dawn5
-  #     placeholderForeground: dusk6
+    editorGutter:
+      addedBackground:
+        light: evergreen3
+        dark: evergreen0
+      deletedBackground: solarRed2
+      foldingControlForeground:
+        # The > carets for folding
+        light: sapphire0
+        dark: sapphire2
+      modifiedBackground:
+        light: solarYellow2
+        dark: solarYellow1
 
-  #   inputOption:
-  #     activeBorder: dusk0 # match input color to hide the border
-  #     hoverBackground: dusk6
-  #     activeBackground: sapphire2 # eg. the regex button in Find widget when activated
+    editorLineNumber:
+      activeForeground:
+        light: dawn1
+        dark: dusk7
+      foreground:
+        light: dawn0
+        dark: dusk5
 
-  #   inputValidation:
-  #     errorBackground: solarRed0
-  #     errorBorder: solarRed0
-  #     errorForeground: dawn5
-  #     infoForeground: dawn5
-  #     warningBackground: solarOrange0
-  #     warningBorder: solarOrange0
-  #     warningForeground: dawn5
+    editorMinimap: # FIXME is this right?
+      inlineChatInserted:
+        light: solarYellow2
+        dark: solarYellow1
 
-  #   list:
-  #     activeSelectionBackground: sapphire0
-  #     activeSelectionForeground: dawn5
-  #     activeSelectionIconForeground: dawn5
-  #     dropBackground: cerulean1 alpha=0.25
-  #     errorForeground: solarRed0
-  #     filterMatchBackground: sapphire0
-  #     hoverBackground: dusk4 # includes entire section, eg. title & description above a dropdown
-  #     inactiveSelectionBackground: sapphire0
-  #     inactiveSelectionForeground: dawn5
-  #     inactiveSelectionIconForeground: dawn5
-  #     warningForeground: solarOrange0
+    editorWarning:
+      foreground: solarRed1
 
-  #   listFilterWidget:
-  #     background: dusk6 # brighter than editor widget because editor is darker than sidebar
+    editorWidget:
+      background:
+        light: dawn7
+        dark: dusk5
+      foreground:
+        light: dusk4
+        dark: dawn5
 
-  #   minimap:
-  #     background: dusk2 alpha=0.25
-  #     foregroundOpacity: "#ffffff alpha=0.5" # Color doesn't matter, only alpha
-  #     errorHighlight: solarRed0 alpha=0.75
-  #     findMatchHighlight: sapphire1 alpha=0.75
-  #     selectionHighlight: sapphire0 alpha=0.75
-  #     warningHighlight: solarOrange1 alpha=0.75
+    icon:
+      foreground:
+        light: dusk6
+        dark: dawn0
 
-  #   minimapGutter:
-  #     addedBackground: evergreen0
-  #     deletedBackground: solarRed2
-  #     modifiedBackground: solarYellow1 alpha=0.75
+    input:
+      background:
+        light: dawn4
+        dark: dusk0
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground: dawn5
+      placeholderForeground:
+        light: dawn0
+        dark: dusk6
 
-  #   panel:
-  #     background: dusk3 # should match terminal.background
-  #     border: dusk3
+    inputOption:
+      activeBorder:
+        # match input color to hide the border
+        light: dawn4
+        dark: dusk0
+      hoverBackground:
+        light: dawn2
+        dark: dusk6
+      activeBackground:
+        # eg. the regex button in Find widget when activated
+        light: sapphire2
+        dark: sapphire2
 
-  #   progressBar:
-  #     background: cerulean2
+    inputValidation:
+      errorBackground: solarRed0
+      errorBorder: solarRed0
+      errorForeground:
+        light: dusk4
+        dark: dawn5
+      infoForeground:
+        light: dusk4
+        dark: dawn5
+      warningBackground: solarOrange0
+      warningBorder: solarOrange0
+      warningForeground:
+        light: dusk4
+        dark: dawn5
 
-  #   sash:
-  #     hoverBorder: cerulean2 # The drag border indicator on hover
+    list:
+      activeSelectionBackground:
+        light: sapphire3
+        dark: sapphire0
+      activeSelectionForeground:
+        light: dusk4
+        dark: dawn5
+      activeSelectionIconForeground:
+        light: dusk4
+        dark: dawn5
+      dropBackground:
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
+      errorForeground: solarRed0
+      filterMatchBackground: sapphire0
+      hoverBackground:
+        # includes entire section, eg. title & description above a dropdown
+        light: "#ffffff alpha=0.0" # Hide the hover background
+        dark: dusk4
+      inactiveSelectionBackground:
+        light: sapphire3
+        dark: sapphire0
+      inactiveSelectionForeground:
+        light: dusk4
+        dark: dawn5
+      inactiveSelectionIconForeground:
+        light: dusk4
+        dark: dawn5
+      warningForeground: solarOrange0
 
-  #   scrollbar:
-  #     shadow: cerulean1 alpha=0.25 # indicator lines in the terminal that viewport can scroll horizontally/vertically
+    listFilterWidget:
+      background:
+        # brighter than editor widget because editor is darker than sidebar
+        light: "#ff0000" # TODO
+        dark: dusk6
 
-  #   scrollbarSlider:
-  #     background: dusk6 # must be brighter than any scrollable widget
-  #     activeBackground: cerulean1
-  #     hoverBackground: cerulean0
+    minimap:
+      background:
+        light: dawn3 alpha=0.2
+        dark: dusk2 alpha=0.25
+      foregroundOpacity:
+        # Color doesn't matter, only alpha
+        light: "#ffffff alpha=0.75"
+        dark: "#ffffff alpha=0.5"
+      errorHighlight:
+        light: solarRed0 alpha=0.5
+        dark: solarRed0 alpha=0.75
+      findMatchHighlight:
+        light: sapphire3 alpha=0.5
+        dark: sapphire1 alpha=0.75
+      selectionHighlight:
+        light: sapphire3 alpha=0.5
+        dark: sapphire0 alpha=0.75
+      warningHighlight:
+        light: solarOrange1 alpha=0.5
+        dark: solarOrange1 alpha=0.75
 
-  #   selection:
-  #     background: sapphire1
+    minimapGutter:
+      addedBackground:
+        light: evergreen3
+        dark: evergreen0
+      deletedBackground: solarRed2
+      modifiedBackground:
+        light: solarYellow1 alpha=0.5
+        dark: solarYellow1 alpha=0.75
 
-  #   sideBar:
-  #     background: dusk2
-  #     dropBackground: cerulean1 alpha=0.25
-  #     foreground: dawn0
+    panel:
+      background:
+        # should match terminal.background
+        light: dawn4
+        dark: dusk3
+      border:
+        light: dawn4
+        dark: dusk3
 
-  #   sideBarSectionHeader:
-  #     background: dusk2
-  #     border: dusk5
-  #     foreground: dawn0
+    progressBar:
+      background: cerulean2
 
-  #   sideBarTitle:
-  #     background: dusk2
-  #     foreground: dawn0
+    sash:
+      hoverBorder:
+        # The drag border indicator on hover
+        light: solarPurple2 # FIXME
+        dark: cerulean2
 
-  #   tab:
-  #     activeBackground: dusk0
-  #     activeForeground: cerulean3 # Overridden by green, red, etc. if changed or errors
-  #     dragAndDropBorder: cerulean2
-  #     hoverBackground: dusk3
-  #     inactiveBackground: dusk2
-  #     inactiveForeground: dusk6
-  #     selectedBorderTop: cerulean1
+    scrollbar:
+      shadow:
+        # indicator lines in the terminal that viewport can scroll horizontally/vertically
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
 
-  #   textLink:
-  #     foreground: cerulean1
+    scrollbarSlider:
+      background:
+        # should be brighter or darker than any scrollable widget
+        light: dawn2
+        dark: dusk6
+      activeBackground:
+        light: cerulean2
+        dark: cerulean1
+      hoverBackground:
+        light: cerulean3
+        dark: cerulean0
 
-  #   toolbar:
-  #     activeBackground: sapphire2 # Eg. the "..." icons when opened or other buttons when clicked
-  #     hoverBackground: dusk6 # eg. hovering over icons in panels/widgets
+    selection:
+      background:
+        # TODO: matching the other *SelectionBackground
+        # by way of a reference would be good..
+        light: sapphire3
+        dark: sapphire1
 
-  #   tree:
-  #     inactiveIndentGuidesStroke: cerulean0
-  #     indentGuidesStroke: cerulean0
+    sideBar:
+      background:
+        light: dawn3
+        dark: dusk2
+      dropBackground:
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    sideBarSectionHeader:
+      background:
+        light: dawn3
+        dark: dusk2
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    sideBarTitle:
+      background:
+        light: dawn3
+        dark: dusk2
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    tab:
+      activeBackground:
+        light: dawn6
+        dark: dusk0
+      activeForeground:
+        light: cerulean1
+        dark: cerulean3 # Overridden by green, red, etc. if changed or errors
+      dragAndDropBorder: cerulean2
+      hoverBackground:
+        light: dawn4
+        dark: dusk3
+      inactiveBackground:
+        light: dawn3
+        dark: dusk2
+      inactiveForeground:
+        light: dusk7
+        dark: dusk6
+      selectedBorderTop:
+        light: cerulean3
+        dark: cerulean1
+
+    textLink:
+      foreground: cerulean1
+
+    toolbar:
+      activeBackground:
+        # Eg. the "..." icons when opened or other buttons when clicked
+        light: sapphire2
+        dark: sapphire2
+      hoverBackground:
+        light: dawn2
+        dark: dusk6 # eg. hovering over icons in panels/widgets
+
+    tree:
+      inactiveIndentGuidesStroke:
+        light: cerulean2
+        dark: cerulean0
+      indentGuidesStroke:
+        light: cerulean2
+        dark: cerulean0
+
+    widget:
+      shadow:
+        light: dawn0 alpha=0.5
+        dark: "#ffffff alpha=0.0" # TODO

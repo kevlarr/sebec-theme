@@ -10,40 +10,37 @@ from typing import Annotated, Any
 
 from pydantic import BeforeValidator, Field
 
-from .base import Base, ColorStyle
+from .base import Base, ColorStyle, ColorSetting
 from .formatters import parse_color_style, parse_token_style
 
 
-def match_vscode_property_format(value: str) -> str:
-    if not re.match(r"^[a-zA-Z]+(\.[a-zA-Z]+)?$", value):
-        raise ValueError("must be valid VS Code property format, eg. 'abcd' or 'abcd.efgh'")
-
+def assert_alphabetic(value: str) -> str:
+    assert re.match(r"^[a-zA-Z]+?$", value), "must be alphabetic"
     return value
 
 
-def flatten_ui_settings(value: Any) -> dict[str, str]:
-    """
-    Given a value of `dict[T0, dict[T1, T2] | T3 ]`, return a flattened value of `dict[str, T2 | T3]`.
+# def flatten_ui_settings(value: Any) -> dict[str, str]:
+#     """
+#     Given a value of `dict[T0, dict[T1, T2] | T3 ]`, return a flattened value of `dict[str, T2 | T3]`.
 
-    This function iterates through the input dictionary `value`. For each key-val pair:
-        - If the val is a dict, each of its own key-val pairs are added to the result with new keys
-          formed by concatenating the parent key and child keys
-        - Otherwise, the key/val are added to the result as-is
-    """
-    if not isinstance(value, dict):
-        raise ValueError("must be `dict[str, str | dict[str, str]]")
+#     This function iterates through the input dictionary `value`. For each key-val pair:
+#         - If the val is a dict, each of its own key-val pairs are added to the result with new keys
+#           formed by concatenating the parent key and child keys
+#         - Otherwise, the key/val are added to the result as-is
+#     """
+#     assert isinstance(value, dict), "must be `dict[str, str | dict[str, str]]"
 
-    flattened = {}
+#     flattened = {}
 
-    for parent_key, parent_val in value.items():
-        if isinstance(parent_val, dict):
-            for child_key, child_val in parent_val.items():
-                flattened[f"{parent_key}.{child_key}"] = child_val
-            continue
+#     for parent_key, parent_val in value.items():
+#         if isinstance(parent_val, dict):
+#             for child_key, child_val in parent_val.items():
+#                 flattened[f"{parent_key}.{child_key}"] = child_val
+#             continue
 
-        flattened[parent_key] = parent_val
+#         flattened[parent_key] = parent_val
 
-    return flattened
+#     return flattened
 
 
 def flatten_tokens(value):
@@ -111,15 +108,12 @@ class UiSetting(Base):
     scope: str
 
 
-VsCodeProperty = Annotated[str, BeforeValidator(match_vscode_property_format)]
-
+Alphabetic = Annotated[str, BeforeValidator(assert_alphabetic)]
+UiSection = dict[Alphabetic, ColorSetting]
 
 class VscodeColors(Base):
     # tokens: Annotated[
     #     list[GenericToken],
     #     BeforeValidator(flatten_tokens),
     # ]
-    ui: Annotated[
-        dict[VsCodeProperty, ParsedColorStyle] | None,
-        BeforeValidator(flatten_ui_settings),
-    ] = None
+    ui: dict[Alphabetic, ColorSetting | UiSection]
