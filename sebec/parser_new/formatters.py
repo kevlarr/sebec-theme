@@ -28,7 +28,9 @@ def parse_color_style(value: Any) -> dict:
     return dict(foreground=_parse_foreground(foreground))
 
 
-def parse_token_style(value: str) -> dict:
+def parse_token_color_style(value: Any) -> dict:
+    assert isinstance(value, str), "must be string"
+
     match = re.match(_TOKEN_STYLE_RGX, value)
     assert match, "invalid token style"
 

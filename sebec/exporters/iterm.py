@@ -11,7 +11,8 @@ Generating the file requires both light & dark terminal themes.
 from pathlib import Path
 from xml.etree import ElementTree
 
-from sebec.parser.terminal import TerminalApp, TerminalColors
+from sebec.parser_new.styles import ThemeStyle
+from sebec.parser_new.terminal import TerminalApp, TerminalColors
 
 
 # `xml` does not have facility for writing the `<!DOCTYPE>` element, so the header
@@ -22,12 +23,12 @@ _header = (
 )
 
 
-def export(destination: Path, *, light: TerminalColors, dark: TerminalColors):
+def export(destination: Path, terminal: TerminalColors):
     root = ElementTree.Element("plist", version="1.0")
     root_dict = ElementTree.SubElement(root, "dict")
 
-    default_colors = dark_colors = dark.serialize(TerminalApp.Iterm)
-    light_colors = light.serialize(TerminalApp.Iterm)
+    default_colors = dark_colors = terminal.serialize(TerminalApp.Iterm, ThemeStyle.Dark)
+    light_colors = terminal.serialize(TerminalApp.Iterm, ThemeStyle.Light)
 
     _append_colors(root_dict, default_colors)
     _append_colors(root_dict, dark_colors, suffix="(Dark)")
@@ -60,6 +61,7 @@ def _append_colors(parent, color_map: dict[str, str], *, suffix: str = None):
         elif len(value) in (7, 9):
             r, g, b = value[1:3], value[3:5], value[5:]
         else:
+            breakpoint()
             raise ValueError(f"expected 3- or 6- character hex string; received {value}")
 
         red = ElementTree.SubElement(dict_color, "key")

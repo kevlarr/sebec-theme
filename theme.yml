@@ -98,13 +98,194 @@ terminal:
     underlineColor: cerulean0
 
 vscode:
+  tokens:
+    ### Semantic & textmate token color assignments.
+    ###
+    ### See:
+    ###
+    ### - https://macromates.com/manual/en/language_grammars#naming_conventions
+    ### - https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+    ### - https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
 
-  # TODO: Tokens
+    # Class & function names
+    - style:
+        light: sapphire1
+        dark: cerulean2
+      semantic:
+        - class
+        - enum
+        - function
+        - function.decorator
+        - method
+      textmate:
+        - meta.function-call.generic.python
+        - support.function.string.sql
+
+    # Comments
+    - style:
+        light: dawn0 italic
+        dark: dusk6 italic
+      textmate:
+        - comment
+        - punctuation.definition.comment
+
+    # Declarations
+    - style:
+        light: sapphire1 bold
+        dark: cerulean2 bold
+      semantic:
+        - class.declaration
+        - function.declaration
+        - method.declaration
+
+    # Keyword
+    - style:
+        light: cerulean2 bold
+        dark: sapphire1 bold
+      textmate:
+        # class & def keywords
+        - storage.type.class
+        - storage.type.function
+        - storage.modifier
+        # control flow & logical keywords
+        - keyword.control.flow # eg. `if`, `while`
+        - keyword.control.import
+        - keyword.operator.logical # eg. `in`, `not`
+
+    # Keyword arguments
+    - style:
+        light: cerulean2
+        dark: sapphire1
+      textmate:
+        - variable.parameter.function-call
+
+    # Keyword argument '=' sign
+    - style:
+        light: dawn0
+        dark: dusk7
+      textmate:
+        - meta.function-call.arguments keyword.operator.assignment
+
+    # Literal values
+    - style:
+        light: evergreen1
+        dark: evergreen2
+      textmate:
+        - constant.language
+        - constant.numeric
+
+    # Modules
+    - style:
+        light: sapphire1 underline
+        dark: cerulean1 underline
+      semantic: module
+
+    # Operators
+    - style:
+        light: cerulean2
+        dark: sapphire1
+      textmate:
+        - keyword.operator.arithmetic
+        - keyword.operator.assignment
+
+    # Parameters
+    - style:
+        light: solarPurple1 bold
+        dark: solarPurple1 bold
+      semantic:
+        - selfParameter
+        - clsParameter
+
+    # Properties
+    - style:
+        light: solarPurple0
+        dark: solarPurple1
+      semantic:
+        - property
+        - property.declaration
+        - enumMember
+
+    # Punctuation
+    - style:
+        light: dawn0
+        dark: dusk7
+      textmate:
+        - punctuation.parenthesis            # Eg. parentheses when wrapping lines in Python
+        - punctuation.definition.arguments   # eg. parentheses around args in function call
+        - punctuation.separator              # eg. `,`, `.` in method calls, or `:` in dicts
+        - punctuation.section.class.begin    # eg. `:` after class def
+        - punctuation.section.function.begin # eg. `:` after function def
+
+    - style:
+        light: sapphire3
+        dark: cerulean0
+      textmate:
+        - punctuation.definition.decorator # `@` for decorators
+
+    # SQL
+    - style:
+        light: cerulean2
+        dark: sapphire1
+      textmate:
+        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
+        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
+        - keyword.other.alias.sql # eg. AS
+        - keyword.other.sql       # eg. CASE, WHEN, etc
+
+    - style:
+        light: solarPurple0
+        dark: solarPurple1
+      textmate:
+        - constant.other.table-name.sql # table columns
+
+    # Strings
+    - style:
+        light: evergreen2 italic
+        dark: evergreen0 italic
+      textmate:
+        - storage.type.string # eg. the `f` in `f"string"`
+        - punctuation.definition.string, # quotes around the string
+
+    - style:
+        light: evergreen1
+        dark: evergreen0
+      textmate:
+        - constant.character.format.placeholder
+
+    - style:
+        light: evergreen0 italic
+        dark: evergreen1 italic
+      textmate:
+        - string
+
+    # Type Hints
+    - style:
+        light: sapphire1
+        dark: cerulean1
+      semantic:
+        - class.typeHint
+        - enum.typeHint
+
+    # Variables
+    - style:
+        light: solarRed0
+        dark: solarRed2
+      textmate:
+        - support.variable.magic
+        - constant.other.caps
+
+    # Misc
+    - style:
+        light: sapphire0
+        dark: sapphire2
+      textmate:
+        - support.type.property-name.json
+        - entity.name.tag.yaml
 
   ui:
     ##
-    ## Generic, top-level properties
-    ###
+    ## General properties
+    ##
     descriptionForeground:
       # Eg. extension descriptions in search
       light: dusk6
@@ -501,3 +682,33 @@ vscode:
       shadow:
         light: dawn0 alpha=0.5
         dark: "#ffffff alpha=0.0" # TODO
+
+    ### TODO
+    #
+    #- editorActionList.background
+    #- editorActionList.foreground
+    #- editorActionList.focusForeground
+    #- editorActionList.focusBackground
+    #- sideBySideEditor.horizontalBorder
+    #- sideBySideEditor.verticalBorder
+    #- tab.border
+    #- editorGroup.border #border between editor groups
+    #- editorGroupHeader.border
+    #- editorGroupHeader.tabsBorder
+    #- sideBar.border
+    #- checkbox.selectBackground
+    #- checkbox.selectBorder
+    #- radio.activeForeground
+    #- radio.activeBackground
+    #- radio.activeBorder
+    #- radio.inactiveForeground
+    #- radio.inactiveBackground
+    #- radio.inactiveBorder
+    #- radio.inactiveHoverBackground
+    #- textBlockQuote.background
+    #- textBlockQuote.border
+    #- tab.activeBorder #Bottom border of active tab
+    #- textLink.activeForeground #Foreground on link hover/click (eg. in Welcome page)
+    #- inputValidation.errorBackground
+    #- inputValidation.infoBackground
+    #- minimap.infoHighlight

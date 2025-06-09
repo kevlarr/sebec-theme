@@ -9,8 +9,9 @@ from typing import Annotated
 from pydantic import Field, model_validator
 
 from sebec.color import Color
-from .base import Base, ColorSetting
+from .base import Base, ColorSetting, MultiColorStyle
 from .formatters import parse_color_style
+from .styles import ThemeStyle
 
 
 class TerminalApp(StrEnum):
@@ -36,7 +37,7 @@ class BaseTerminalModel(Base):
     that serializes the settings with the appropriate keys for the given app.
     """
 
-    def serialize(self, app: TerminalApp = None) -> dict[str, str]:
+    def serialize(self, app: TerminalApp, style: ThemeStyle) -> dict[str, str]:
         """
         Iterate through all of own and `BaseTerminalModel` children properties,
         serializing into a flat `dict` with keys corresponding to the given `TerminalApp`.
@@ -63,7 +64,13 @@ class BaseTerminalModel(Base):
                         break
 
                 if serialized_key:
-                    rval[serialized_key] = str(value)
+                    if isinstance(value, MultiColorStyle):
+                        # If the current theme isn't defined, eg. only "dark" is listed
+                        # for a given setting, then ignore the value
+                        if color_style := value.__dict__.get(style):
+                            rval[serialized_key] = str(color_style)
+                    else:
+                        rval[serialized_key] = str(value)
 
             stack = [*stack, *new_elements]
 
