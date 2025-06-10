@@ -85,11 +85,11 @@
 			<key>Color Space</key>
 			<string>P3</string>
 			<key>Red Component</key>
-			<real>0.11764705882352941</real>
+			<real>0.10196078431372549</real>
 			<key>Green Component</key>
-			<real>0.13333333333333333</real>
+			<real>0.11372549019607843</real>
 			<key>Blue Component</key>
-			<real>0.1607843137254902</real>
+			<real>0.13725490196078433</real>
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
@@ -379,7 +379,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Badge Color Dusk</key>
+		<key>Badge Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -392,7 +392,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Bold Color Dusk</key>
+		<key>Bold Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -405,7 +405,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Cursor Guide Color Dusk</key>
+		<key>Cursor Guide Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -418,7 +418,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Link Color Dusk</key>
+		<key>Link Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -431,7 +431,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Tab Color Dusk</key>
+		<key>Tab Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -444,7 +444,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Underline Color Dusk</key>
+		<key>Underline Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -457,20 +457,20 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Background Color Dusk</key>
+		<key>Background Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
 			<key>Red Component</key>
-			<real>0.11764705882352941</real>
+			<real>0.10196078431372549</real>
 			<key>Green Component</key>
-			<real>0.13333333333333333</real>
+			<real>0.11372549019607843</real>
 			<key>Blue Component</key>
-			<real>0.1607843137254902</real>
+			<real>0.13725490196078433</real>
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Foreground Color Dusk</key>
+		<key>Foreground Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -483,7 +483,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Selection Color Dusk</key>
+		<key>Selection Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -496,7 +496,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Selected Text Color Dusk</key>
+		<key>Selected Text Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -509,7 +509,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Match Background Color Dusk</key>
+		<key>Match Background Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -522,7 +522,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Cursor Color Dusk</key>
+		<key>Cursor Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -535,7 +535,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Cursor Text Color Dusk</key>
+		<key>Cursor Text Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -548,7 +548,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 0 Color Dusk</key>
+		<key>Ansi 0 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -561,7 +561,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 8 Color Dusk</key>
+		<key>Ansi 8 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -574,7 +574,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 4 Color Dusk</key>
+		<key>Ansi 4 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -587,7 +587,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 12 Color Dusk</key>
+		<key>Ansi 12 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -600,7 +600,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 6 Color Dusk</key>
+		<key>Ansi 6 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -613,7 +613,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 14 Color Dusk</key>
+		<key>Ansi 14 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -626,7 +626,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 2 Color Dusk</key>
+		<key>Ansi 2 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -639,7 +639,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 10 Color Dusk</key>
+		<key>Ansi 10 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -652,7 +652,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 5 Color Dusk</key>
+		<key>Ansi 5 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -665,7 +665,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 13 Color Dusk</key>
+		<key>Ansi 13 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -678,7 +678,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 1 Color Dusk</key>
+		<key>Ansi 1 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -691,7 +691,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 9 Color Dusk</key>
+		<key>Ansi 9 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -704,7 +704,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 3 Color Dusk</key>
+		<key>Ansi 3 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -717,7 +717,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 11 Color Dusk</key>
+		<key>Ansi 11 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -730,7 +730,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 7 Color Dusk</key>
+		<key>Ansi 7 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -743,7 +743,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 15 Color Dusk</key>
+		<key>Ansi 15 Color (Dark)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -756,7 +756,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Badge Color Dawn</key>
+		<key>Badge Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -769,7 +769,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Bold Color Dawn</key>
+		<key>Bold Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -782,7 +782,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Cursor Guide Color Dawn</key>
+		<key>Cursor Guide Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -795,7 +795,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Link Color Dawn</key>
+		<key>Link Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -808,7 +808,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Tab Color Dawn</key>
+		<key>Tab Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -821,7 +821,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Underline Color Dawn</key>
+		<key>Underline Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -834,7 +834,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Background Color Dawn</key>
+		<key>Background Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -847,7 +847,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Foreground Color Dawn</key>
+		<key>Foreground Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -860,7 +860,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Selection Color Dawn</key>
+		<key>Selection Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -873,7 +873,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Selected Text Color Dawn</key>
+		<key>Selected Text Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -886,7 +886,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Match Background Color Dawn</key>
+		<key>Match Background Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -899,7 +899,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Cursor Color Dawn</key>
+		<key>Cursor Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -912,7 +912,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Cursor Text Color Dawn</key>
+		<key>Cursor Text Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -925,7 +925,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 0 Color Dawn</key>
+		<key>Ansi 0 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -938,7 +938,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 8 Color Dawn</key>
+		<key>Ansi 8 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -951,7 +951,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 4 Color Dawn</key>
+		<key>Ansi 4 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -964,7 +964,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 12 Color Dawn</key>
+		<key>Ansi 12 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -977,7 +977,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 6 Color Dawn</key>
+		<key>Ansi 6 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -990,7 +990,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 14 Color Dawn</key>
+		<key>Ansi 14 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1003,7 +1003,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 2 Color Dawn</key>
+		<key>Ansi 2 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1016,7 +1016,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 10 Color Dawn</key>
+		<key>Ansi 10 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1029,7 +1029,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 5 Color Dawn</key>
+		<key>Ansi 5 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1042,7 +1042,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 13 Color Dawn</key>
+		<key>Ansi 13 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1055,7 +1055,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 1 Color Dawn</key>
+		<key>Ansi 1 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1068,7 +1068,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 9 Color Dawn</key>
+		<key>Ansi 9 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1081,7 +1081,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 3 Color Dawn</key>
+		<key>Ansi 3 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1094,7 +1094,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 11 Color Dawn</key>
+		<key>Ansi 11 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1107,7 +1107,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 7 Color Dawn</key>
+		<key>Ansi 7 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>
@@ -1120,7 +1120,7 @@
 			<key>Alpha Component</key>
 			<real>1</real>
 		</dict>
-		<key>Ansi 15 Color Dawn</key>
+		<key>Ansi 15 Color (Light)</key>
 		<dict>
 			<key>Color Space</key>
 			<string>P3</string>

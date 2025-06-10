@@ -50,7 +50,7 @@ terminal:
 
     background:
       light: dawn4
-      dark: dusk3
+      dark: dusk2
 
     foreground:
       light: dusk5
@@ -124,7 +124,7 @@ vscode:
     # Comments
     - style:
         light: dawn0 italic
-        dark: dusk6 italic
+        dark: dusk7 italic
       textmate:
         - comment
         - punctuation.definition.comment
@@ -393,9 +393,11 @@ vscode:
         dark: dusk3
 
     editor:
+      # Editor background should be more prominent than sidebar & panel,
+      # with only the editor widgets having greater prominence
       background:
         light: dawn6
-        dark: dusk0 # FIXME
+        dark: dusk1
       foreground:
         light: dusk6
         dark: dawn0
@@ -431,11 +433,11 @@ vscode:
 
     editorLineNumber:
       activeForeground:
-        light: dawn1
-        dark: dusk7
+        light: cerulean0
+        dark: cerulean1
       foreground:
         light: dawn0
-        dark: dusk5
+        dark: dusk6
 
     editorMinimap: # FIXME is this right?
       inlineChatInserted:
@@ -537,7 +539,7 @@ vscode:
     minimap:
       background:
         light: dawn3 alpha=0.2
-        dark: dusk2 alpha=0.25
+        dark: dusk4 alpha=0.25
       foregroundOpacity:
         # Color doesn't matter, only alpha
         light: "#ffffff alpha=0.75"
@@ -568,7 +570,7 @@ vscode:
       background:
         # should match terminal.background
         light: dawn4
-        dark: dusk3
+        dark: dusk2
       border:
         light: dawn4
         dark: dusk3
@@ -610,7 +612,7 @@ vscode:
     sideBar:
       background:
         light: dawn3
-        dark: dusk2
+        dark: dusk0
       dropBackground:
         light: cerulean3 alpha=0.25
         dark: cerulean1 alpha=0.25

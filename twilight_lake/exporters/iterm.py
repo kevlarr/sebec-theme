@@ -11,9 +11,9 @@ Generating the file requires both light & dark terminal themes.
 from pathlib import Path
 from xml.etree import ElementTree
 
-from twilight_lake.parser.styles import ThemeStyle
-from twilight_lake.parser.terminal import TerminalApp
-from twilight_lake.parser.theme import ThemeModel
+from twilight_lake.models.styles import ThemeStyle
+from twilight_lake.models.terminal import TerminalApp
+from twilight_lake.models.theme import ThemeModel
 
 
 FILENAME = "Twilight Lake.itermcolors"
@@ -34,8 +34,11 @@ def export(destination: Path, theme: ThemeModel):
     light_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Light)
 
     _append_colors(root_dict, default_colors)
-    _append_colors(root_dict, dark_colors, suffix=theme.style_names.dark)
-    _append_colors(root_dict, light_colors, suffix=theme.style_names.light)
+
+    # The additional color specifications with these exact suffixes are
+    # what enable this to be a dual-mode theme
+    _append_colors(root_dict, dark_colors, suffix="(Dark)")
+    _append_colors(root_dict, light_colors, suffix="(Light)")
 
     tree = ElementTree.ElementTree(root)
     ElementTree.indent(tree, "\t")

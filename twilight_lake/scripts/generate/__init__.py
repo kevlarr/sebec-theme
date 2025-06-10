@@ -1,9 +1,10 @@
-
 import pathlib
 
+from yaml import safe_load
+
 from twilight_lake.exporters import iterm, vscode #, windows_terminal
-from twilight_lake.parser import parse_yml_new
-from twilight_lake.parser.styles import ThemeStyle
+from twilight_lake.models.styles import ThemeStyle
+from twilight_lake.models.theme import ThemeModel
 
 from .palette import export_palette_html
 
@@ -17,10 +18,13 @@ ROOT_PATH = (
 )
 
 def main() -> None:
+    yml_path = ROOT_PATH / "theme.yml"
     package_path = ROOT_PATH / "package"
     vscode_themes_path = package_path / "vscode/themes"
 
-    theme = parse_yml_new(ROOT_PATH / "theme.yml")
+    with open(yml_path) as yml_file:
+        content = safe_load(yml_file)
+        theme = ThemeModel.model_validate(content)
 
     iterm.export(package_path, theme)
     vscode.export(vscode_themes_path, theme, ThemeStyle.Light)

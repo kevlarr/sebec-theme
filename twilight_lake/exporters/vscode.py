@@ -2,10 +2,10 @@
 import json
 from pathlib import Path
 
-from twilight_lake.parser.styles import ThemeStyle
-from twilight_lake.parser.terminal import TerminalApp
-from twilight_lake.parser.theme import ThemeModel
-from twilight_lake.parser.vscode import UiSection, VsCodeColors
+from twilight_lake.models.styles import ThemeStyle
+from twilight_lake.models.terminal import TerminalApp
+from twilight_lake.models.theme import ThemeModel
+from twilight_lake.models.vscode import UiSection, VsCodeColors
 
 
 THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
