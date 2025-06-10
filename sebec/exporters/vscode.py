@@ -2,46 +2,34 @@
 import json
 from pathlib import Path
 
-from sebec.parser.terminal import TerminalApp
-from sebec.parser.theme import ThemeModel
-from sebec.parser.vscode import SemanticToken
+from sebec.parser_new.styles import ThemeStyle
+from sebec.parser_new.terminal import TerminalApp
+from sebec.parser_new.theme import ThemeModel
+from sebec.parser_new.vscode import UiSection, VsCodeColors
 
 
 THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
 
 
-def export(*, package_path: Path, theme: ThemeModel):
-
-    slug = theme.name.lower().replace(" ", "-").replace("(", "").replace(")", "")
+def export(package_path: Path, theme: ThemeModel, style: ThemeStyle):
+    theme_name = f"{theme.name} {theme.style_names.__dict__[style]}"
+    slug = theme_name.lower().replace(" ", "-").replace("(", "").replace(")", "")
     filename = THEME_FILENAME_TEMPLATE.format(slug=slug)
 
-    semantic_token_colors = {}
-    textmate_token_colors = []
-
-    for token in theme.vscode.tokens:
-        style = token.style.serialize()
-        if isinstance(token, SemanticToken):
-            semantic_token_colors[token.scope] = style
-        else:
-            settings = {"foreground": style} if isinstance(style, str) else style
-            textmate_token_colors.append({"scope": token.scope, "settings": settings})
-
-    terminal_colors = theme.terminal.serialize(app=TerminalApp.Vscode)
-    ui_colors = {ui.scope: str(ui.style) for ui in (theme.vscode.ui or [])}
-    ui_new_colors = {scope: str(style) for scope, style in (theme.vscode.ui_new or {}).items()}
-    breakpoint()
+    terminal_colors = theme.terminal.serialize(TerminalApp.Vscode, style)
+    vscode_colors = theme.vscode.serialize(style)
 
     # Merge UI & terminal colors together but prioritize UI such that
     # they can override terminal colors if desired.
-    colors = {**terminal_colors, **ui_colors, **ui_new_colors}
+    colors = {**terminal_colors, **vscode_colors["ui"]}
 
     with open(package_path / filename, "w") as f:
         data = {
-            "name": theme.name,
-            "type": theme.style,
+            "name": theme_name,
+            "type": style,
             "semanticHighlighting": True,
             "colors": colors,
-            "semanticTokenColors": semantic_token_colors,
-            "tokenColors": textmate_token_colors,
+            "semanticTokenColors": vscode_colors["semantic_tokens"],
+            "tokenColors": vscode_colors["textmate_tokens"],
         }
         f.write(json.dumps(data, indent=4))

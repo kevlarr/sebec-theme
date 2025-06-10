@@ -1,16 +1,16 @@
-"""Utilities for defining styles for terminals across different applications, including:
-
-- iTerm2
-- VS Code
+"""
+Utilities for defining styles for terminals across different applications, including:
+    * iTerm2
+    * VS Code
+    * Windows Terminal
 """
 from enum import StrEnum
 from typing import Annotated
 
-from pydantic import Field, model_validator
+from pydantic import Field
 
-from sebec.color import Color
-from .base import Base, ColorSetting, MultiColorStyle
-from .formatters import parse_color_style
+from .base import Base
+from .colors import ColorSetting, MultiColorStyle
 from .styles import ThemeStyle
 
 
@@ -65,12 +65,9 @@ class BaseTerminalModel(Base):
 
                 if serialized_key:
                     if isinstance(value, MultiColorStyle):
-                        # If the current theme isn't defined, eg. only "dark" is listed
-                        # for a given setting, then ignore the value
-                        if color_style := value.__dict__.get(style):
-                            rval[serialized_key] = str(color_style)
+                        rval[serialized_key] = value.serialize(style)
                     else:
-                        rval[serialized_key] = str(value)
+                        rval[serialized_key] = value.serialize()
 
             stack = [*stack, *new_elements]
 

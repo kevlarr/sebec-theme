@@ -2,9 +2,9 @@
 
 A single file has three different key/dict pairs for all colors:
 
-  - Default, eg. "Ansi 0 Color"
-  - Dark, eg. "Ansi 0 Color (Dark)"
-  - Light, eg. "Ansi 0 Color (Light)"
+    * Default, eg. "Ansi 0 Color"
+    * Dark, eg. "Ansi 0 Color (Dark)"
+    * Light, eg. "Ansi 0 Color (Light)"
 
 Generating the file requires both light & dark terminal themes.
 """
@@ -12,8 +12,11 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 from sebec.parser_new.styles import ThemeStyle
-from sebec.parser_new.terminal import TerminalApp, TerminalColors
+from sebec.parser_new.terminal import TerminalApp
+from sebec.parser_new.theme import ThemeModel
 
+
+FILENAME = "Twilight Lake.itermcolors"
 
 # `xml` does not have facility for writing the `<!DOCTYPE>` element, so the header
 # should be written manually to include it.
@@ -23,21 +26,21 @@ _header = (
 )
 
 
-def export(destination: Path, terminal: TerminalColors):
+def export(destination: Path, theme: ThemeModel):
     root = ElementTree.Element("plist", version="1.0")
     root_dict = ElementTree.SubElement(root, "dict")
 
-    default_colors = dark_colors = terminal.serialize(TerminalApp.Iterm, ThemeStyle.Dark)
-    light_colors = terminal.serialize(TerminalApp.Iterm, ThemeStyle.Light)
+    default_colors = dark_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Dark)
+    light_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Light)
 
     _append_colors(root_dict, default_colors)
-    _append_colors(root_dict, dark_colors, suffix="(Dark)")
-    _append_colors(root_dict, light_colors, suffix="(Light)")
+    _append_colors(root_dict, dark_colors, suffix=theme.style_names.dark)
+    _append_colors(root_dict, light_colors, suffix=theme.style_names.light)
 
     tree = ElementTree.ElementTree(root)
     ElementTree.indent(tree, "\t")
 
-    with open(destination, "wb") as color_file:
+    with open(destination / FILENAME, "wb") as color_file:
         color_file.write(_header)
         tree.write(color_file, encoding="utf-8", xml_declaration=False)
 
@@ -61,7 +64,6 @@ def _append_colors(parent, color_map: dict[str, str], *, suffix: str = None):
         elif len(value) in (7, 9):
             r, g, b = value[1:3], value[3:5], value[5:]
         else:
-            breakpoint()
             raise ValueError(f"expected 3- or 6- character hex string; received {value}")
 
         red = ElementTree.SubElement(dict_color, "key")
