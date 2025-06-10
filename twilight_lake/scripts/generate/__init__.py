@@ -1,11 +1,9 @@
 
 import pathlib
 
-from sebec.exporters import iterm, vscode #, windows_terminal
-from sebec.parser_new import parse_yml_new
-from sebec.parser_new.styles import ThemeStyle
-# from sebec.vstheme import Sunrise, Twilight
-# from sebec.vstheme.base import Color
+from twilight_lake.exporters import iterm, vscode #, windows_terminal
+from twilight_lake.parser import parse_yml_new
+from twilight_lake.parser.styles import ThemeStyle
 
 from .palette import export_palette_html
 
@@ -14,7 +12,7 @@ ROOT_PATH = (
     pathlib.Path(__file__)
     .parent # generate
     .parent # scripts
-    .parent # sebec
+    .parent # twilight_lake
     .parent # root
 )
 

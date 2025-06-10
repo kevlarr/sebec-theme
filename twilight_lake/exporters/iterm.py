@@ -11,9 +11,9 @@ Generating the file requires both light & dark terminal themes.
 from pathlib import Path
 from xml.etree import ElementTree
 
-from sebec.parser_new.styles import ThemeStyle
-from sebec.parser_new.terminal import TerminalApp
-from sebec.parser_new.theme import ThemeModel
+from twilight_lake.parser.styles import ThemeStyle
+from twilight_lake.parser.terminal import TerminalApp
+from twilight_lake.parser.theme import ThemeModel
 
 
 FILENAME = "Twilight Lake.itermcolors"

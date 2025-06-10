@@ -8,7 +8,7 @@ from xml.dom import minidom
 DESIGN_PATH = (
     pathlib.Path(__file__)
     .parent # scripts
-    .parent # sebec
+    .parent # twilight_lake
     .parent # root
     / "design"
 )
@@ -16,7 +16,7 @@ DESIGN_PATH = (
 COLOR_MODULE_PATH = (
     pathlib.Path(__file__)
     .parent # scripts
-    .parent # sebec
+    .parent # twilight_lake
     / "color.py"
 )
 

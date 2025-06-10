@@ -1,8 +1,7 @@
 import re
 import logging
-from typing import Any
 
-from sebec.color import Color
+from twilight_lake.color import Color
 
 
 _logger = logging.getLogger(__name__)
@@ -11,9 +10,7 @@ _COLOR_STYLE_RGX = "^([a-zA-Z0-9]+|#[a-f0-9]{6})(\s+alpha=[\d\.]+)?$"
 _TOKEN_STYLE_RGX = f"{_COLOR_STYLE_RGX[:-1]}(\s+bold)?(\s+italic)?(\s+strikethrough)?(\s+underline)?\s*$"
 
 
-def parse_color_style(value: Any) -> dict:
-    assert isinstance(value, str), "must be string"
-
+def parse_color_style(value: str) -> dict:
     match = re.match(_COLOR_STYLE_RGX, value)
     assert match, "invalid color"
 
@@ -28,9 +25,7 @@ def parse_color_style(value: Any) -> dict:
     return dict(foreground=_parse_foreground(foreground))
 
 
-def parse_token_color_style(value: Any) -> dict:
-    assert isinstance(value, str), "must be string"
-
+def parse_token_style(value: str) -> dict:
     match = re.match(_TOKEN_STYLE_RGX, value)
     assert match, "invalid token style"
 
