@@ -1,0 +1,714 @@
+name: Twilight Lake
+
+styleNames:
+  light: Dawn
+  dark: Dusk
+
+terminal:
+  base:
+    ansi:
+      # TODO: Check these colors
+      black: dusk1
+      blackBright:
+        light: dusk0
+        dark: dusk2
+
+      blue: sapphire1
+      blueBright:
+        light: sapphire0
+        dark: sapphire2
+
+      cyan: cerulean1
+      cyanBright:
+        light: cerulean0
+        dark: cerulean2
+
+      green: evergreen1
+      greenBright:
+        light: evergreen0
+        dark: evergreen2
+
+      red: solarRed1
+      redBright:
+        light: solarRed0
+        dark: solarRed2
+
+      magenta: solarPurple1
+      magentaBright:
+        light: solarPurple0
+        dark: solarPurple2
+
+      white: dawn1
+      whiteBright:
+        light: dawn0
+        dark: dawn2
+
+      yellow: solarYellow1
+      yellowBright:
+        light: solarYellow0
+        dark: solarYellow2
+
+    background:
+      light: dawn4
+      dark: dusk3
+
+    foreground:
+      light: dusk5
+      dark: dawn0
+
+    selectionBackground:
+      light: cerulean3
+      dark: sapphire0
+
+    selectionForeground:
+      light: dusk3
+      dark: dawn4
+
+    matchBackground:
+      light: solarPurple2 alpha=0.25
+      dark: solarPurple0 alpha=0.25
+
+    cursorColor:
+      light: cerulean0
+      dark: cerulean3
+
+    cursorTextColor:
+      light: dawn6
+      dark: dusk0
+
+  iterm:
+    badgeColor: cerulean0
+
+    boldColor:
+      light: dusk2
+      dark: dawn5
+
+    cursorGuideColor:
+      light: dawn6
+      dark: dusk4
+
+    linkColor:
+      light: cerulean0
+      dark: cerulean1
+
+    tabColor:
+      light: dawn7
+      dark: dusk2
+
+    underlineColor: cerulean0
+
+vscode:
+  tokens:
+    ### Semantic & textmate token color assignments.
+    ###
+    ### See:
+    ###
+    ### - https://macromates.com/manual/en/language_grammars#naming_conventions
+    ### - https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+    ### - https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
+
+    # Class & function names
+    - style:
+        light: sapphire1
+        dark: cerulean2
+      semantic:
+        - class
+        - enum
+        - function
+        - function.decorator
+        - method
+      textmate:
+        - meta.function-call.generic.python
+        - support.function.string.sql
+
+    # Comments
+    - style:
+        light: dawn0 italic
+        dark: dusk6 italic
+      textmate:
+        - comment
+        - punctuation.definition.comment
+
+    # Declarations
+    - style:
+        light: sapphire1 bold
+        dark: cerulean2 bold
+      semantic:
+        - class.declaration
+        - function.declaration
+        - method.declaration
+
+    # Keyword
+    - style:
+        light: cerulean2 bold
+        dark: sapphire1 bold
+      textmate:
+        # class & def keywords
+        - storage.type.class
+        - storage.type.function
+        - storage.modifier
+        # control flow & logical keywords
+        - keyword.control.flow # eg. `if`, `while`
+        - keyword.control.import
+        - keyword.operator.logical # eg. `in`, `not`
+
+    # Keyword arguments
+    - style:
+        light: cerulean2
+        dark: sapphire1
+      textmate:
+        - variable.parameter.function-call
+
+    # Keyword argument '=' sign
+    - style:
+        light: dawn0
+        dark: dusk7
+      textmate:
+        - meta.function-call.arguments keyword.operator.assignment
+
+    # Literal values
+    - style:
+        light: evergreen1
+        dark: evergreen2
+      textmate:
+        - constant.language
+        - constant.numeric
+
+    # Modules
+    - style:
+        light: sapphire1 underline
+        dark: cerulean1 underline
+      semantic: module
+
+    # Operators
+    - style:
+        light: cerulean2
+        dark: sapphire1
+      textmate:
+        - keyword.operator.arithmetic
+        - keyword.operator.assignment
+
+    # Parameters
+    - style:
+        light: solarPurple1 bold
+        dark: solarPurple1 bold
+      semantic:
+        - selfParameter
+        - clsParameter
+
+    # Properties
+    - style:
+        light: solarPurple0
+        dark: solarPurple1
+      semantic:
+        - property
+        - property.declaration
+        - enumMember
+
+    # Punctuation
+    - style:
+        light: dawn0
+        dark: dusk7
+      textmate:
+        - punctuation.parenthesis            # Eg. parentheses when wrapping lines in Python
+        - punctuation.definition.arguments   # eg. parentheses around args in function call
+        - punctuation.separator              # eg. `,`, `.` in method calls, or `:` in dicts
+        - punctuation.section.class.begin    # eg. `:` after class def
+        - punctuation.section.function.begin # eg. `:` after function def
+
+    - style:
+        light: sapphire3
+        dark: cerulean0
+      textmate:
+        - punctuation.definition.decorator # `@` for decorators
+
+    # SQL
+    - style:
+        light: cerulean2
+        dark: sapphire1
+      textmate:
+        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
+        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
+        - keyword.other.alias.sql # eg. AS
+        - keyword.other.sql       # eg. CASE, WHEN, etc
+
+    - style:
+        light: solarPurple0
+        dark: solarPurple1
+      textmate:
+        - constant.other.table-name.sql # table columns
+
+    # Strings
+    - style:
+        light: evergreen2 italic
+        dark: evergreen0 italic
+      textmate:
+        - storage.type.string # eg. the `f` in `f"string"`
+        - punctuation.definition.string, # quotes around the string
+
+    - style:
+        light: evergreen1
+        dark: evergreen0
+      textmate:
+        - constant.character.format.placeholder
+
+    - style:
+        light: evergreen0 italic
+        dark: evergreen1 italic
+      textmate:
+        - string
+
+    # Type Hints
+    - style:
+        light: sapphire1
+        dark: cerulean1
+      semantic:
+        - class.typeHint
+        - enum.typeHint
+
+    # Variables
+    - style:
+        light: solarRed0
+        dark: solarRed2
+      textmate:
+        - support.variable.magic
+        - constant.other.caps
+
+    # Misc
+    - style:
+        light: sapphire0
+        dark: sapphire2
+      textmate:
+        - support.type.property-name.json
+        - entity.name.tag.yaml
+
+  ui:
+    ##
+    ## General properties
+    ##
+    descriptionForeground:
+      # Eg. extension descriptions in search
+      light: dusk6
+      dark: dawn0
+
+    disabledForeground:
+      light: dusk7
+      dark: dusk6
+
+    errorForeground: solarRed1
+
+    focusBorder:
+      light: solarPurple2 # FIXME
+      dark: cerulean2
+
+    foreground:
+      light: dusk6
+      dark: dawn0
+
+    ##
+    ## Specific element properties
+    ##
+    activityBar:
+      activeBorder:
+        light: cerulean2
+        dark: cerulean1
+
+      background:
+        light: dawn4
+        dark: dusk4
+
+      # Activity bar icon color
+      foreground:
+        light: cerulean2
+        dark: cerulean1
+
+      inactiveForeground:
+        light: dawn0
+        dark: dusk7
+
+    activityBarBadge:
+      background: cerulean2
+      foreground:
+        light: dawn7
+        dark: dusk0
+
+    activityErrorBadge:
+      background: solarRed2
+      foreground:
+        light: dawn7
+        dark: dusk0
+
+    activityWarningBadge:
+      background: solarOrange2
+      foreground:
+        light: dawn7
+        dark: dusk0
+
+    badge:
+      background: cerulean2 # Eg. the "Changes" count badge in Source Control sidebar
+      foreground:
+        # Eg. the - Changes" count badge in Source Control sidebar
+        light: dawn7
+        dark: dusk0
+
+    breadcrumb:
+      background:
+        light: dawn6
+        dark: dusk0
+
+    button:
+      foreground:
+        light: dawn7
+        dark: dawn5
+      hoverBackground:
+        light: sapphire2
+        dark: sapphire1
+      background:
+        light: sapphire3
+        dark: sapphire0
+
+    checkbox:
+      background:
+        light: dawn4
+        dark: dusk0
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground:
+        light: dusk4
+        dark: dawn5
+
+    dropdown:
+      background:
+        light: dawn4
+        dark: dusk0
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground:
+        light: dusk4
+        dark: dawn5
+      listBackground:
+        light: dawn6
+        dark: dusk3
+
+    editor:
+      background:
+        light: dawn6
+        dark: dusk0 # FIXME
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    editorError:
+      foreground: solarRed1
+
+    editorGroup:
+      border:
+        light: dawn3
+        dark: dusk2
+      dropBackground:
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
+
+    editorGroupHeader:
+      tabsBackground:
+        light: dawn3
+        dark: dusk2
+
+    editorGutter:
+      addedBackground:
+        light: evergreen3
+        dark: evergreen0
+      deletedBackground: solarRed2
+      foldingControlForeground:
+        # The > carets for folding
+        light: sapphire0
+        dark: sapphire2
+      modifiedBackground:
+        light: solarYellow2
+        dark: solarYellow1
+
+    editorLineNumber:
+      activeForeground:
+        light: dawn1
+        dark: dusk7
+      foreground:
+        light: dawn0
+        dark: dusk5
+
+    editorMinimap: # FIXME is this right?
+      inlineChatInserted:
+        light: solarYellow2
+        dark: solarYellow1
+
+    editorWarning:
+      foreground: solarRed1
+
+    editorWidget:
+      background:
+        light: dawn7
+        dark: dusk5
+      foreground:
+        light: dusk4
+        dark: dawn5
+
+    icon:
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    input:
+      background:
+        light: dawn4
+        dark: dusk0
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground: dawn5
+      placeholderForeground:
+        light: dawn0
+        dark: dusk6
+
+    inputOption:
+      activeBorder:
+        # match input color to hide the border
+        light: dawn4
+        dark: dusk0
+      hoverBackground:
+        light: dawn2
+        dark: dusk6
+      activeBackground:
+        # eg. the regex button in Find widget when activated
+        light: sapphire2
+        dark: sapphire2
+
+    inputValidation:
+      errorBackground: solarRed0
+      errorBorder: solarRed0
+      errorForeground:
+        light: dusk4
+        dark: dawn5
+      infoForeground:
+        light: dusk4
+        dark: dawn5
+      warningBackground: solarOrange0
+      warningBorder: solarOrange0
+      warningForeground:
+        light: dusk4
+        dark: dawn5
+
+    list:
+      activeSelectionBackground:
+        light: sapphire3
+        dark: sapphire0
+      activeSelectionForeground:
+        light: dusk4
+        dark: dawn5
+      activeSelectionIconForeground:
+        light: dusk4
+        dark: dawn5
+      dropBackground:
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
+      errorForeground: solarRed0
+      filterMatchBackground: sapphire0
+      hoverBackground:
+        # includes entire section, eg. title & description above a dropdown
+        light: "#ffffff alpha=0.0" # Hide the hover background
+        dark: dusk4
+      inactiveSelectionBackground:
+        light: sapphire3
+        dark: sapphire0
+      inactiveSelectionForeground:
+        light: dusk4
+        dark: dawn5
+      inactiveSelectionIconForeground:
+        light: dusk4
+        dark: dawn5
+      warningForeground: solarOrange0
+
+    listFilterWidget:
+      background:
+        # brighter than editor widget because editor is darker than sidebar
+        light: "#ff0000" # TODO
+        dark: dusk6
+
+    minimap:
+      background:
+        light: dawn3 alpha=0.2
+        dark: dusk2 alpha=0.25
+      foregroundOpacity:
+        # Color doesn't matter, only alpha
+        light: "#ffffff alpha=0.75"
+        dark: "#ffffff alpha=0.5"
+      errorHighlight:
+        light: solarRed0 alpha=0.5
+        dark: solarRed0 alpha=0.75
+      findMatchHighlight:
+        light: sapphire3 alpha=0.5
+        dark: sapphire1 alpha=0.75
+      selectionHighlight:
+        light: sapphire3 alpha=0.5
+        dark: sapphire0 alpha=0.75
+      warningHighlight:
+        light: solarOrange1 alpha=0.5
+        dark: solarOrange1 alpha=0.75
+
+    minimapGutter:
+      addedBackground:
+        light: evergreen3
+        dark: evergreen0
+      deletedBackground: solarRed2
+      modifiedBackground:
+        light: solarYellow1 alpha=0.5
+        dark: solarYellow1 alpha=0.75
+
+    panel:
+      background:
+        # should match terminal.background
+        light: dawn4
+        dark: dusk3
+      border:
+        light: dawn4
+        dark: dusk3
+
+    progressBar:
+      background: cerulean2
+
+    sash:
+      hoverBorder:
+        # The drag border indicator on hover
+        light: solarPurple2 # FIXME
+        dark: cerulean2
+
+    scrollbar:
+      shadow:
+        # indicator lines in the terminal that viewport can scroll horizontally/vertically
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
+
+    scrollbarSlider:
+      background:
+        # should be brighter or darker than any scrollable widget
+        light: dawn2
+        dark: dusk6
+      activeBackground:
+        light: cerulean2
+        dark: cerulean1
+      hoverBackground:
+        light: cerulean3
+        dark: cerulean0
+
+    selection:
+      background:
+        # TODO: matching the other *SelectionBackground
+        # by way of a reference would be good..
+        light: sapphire3
+        dark: sapphire1
+
+    sideBar:
+      background:
+        light: dawn3
+        dark: dusk2
+      dropBackground:
+        light: cerulean3 alpha=0.25
+        dark: cerulean1 alpha=0.25
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    sideBarSectionHeader:
+      background:
+        light: dawn3
+        dark: dusk2
+      border:
+        light: dawn2
+        dark: dusk5
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    sideBarTitle:
+      background:
+        light: dawn3
+        dark: dusk2
+      foreground:
+        light: dusk6
+        dark: dawn0
+
+    tab:
+      activeBackground:
+        light: dawn6
+        dark: dusk0
+      activeForeground:
+        light: cerulean1
+        dark: cerulean3 # Overridden by green, red, etc. if changed or errors
+      dragAndDropBorder: cerulean2
+      hoverBackground:
+        light: dawn4
+        dark: dusk3
+      inactiveBackground:
+        light: dawn3
+        dark: dusk2
+      inactiveForeground:
+        light: dusk7
+        dark: dusk6
+      selectedBorderTop:
+        light: cerulean3
+        dark: cerulean1
+
+    textLink:
+      foreground: cerulean1
+
+    toolbar:
+      activeBackground:
+        # Eg. the "..." icons when opened or other buttons when clicked
+        light: sapphire2
+        dark: sapphire2
+      hoverBackground:
+        light: dawn2
+        dark: dusk6 # eg. hovering over icons in panels/widgets
+
+    tree:
+      inactiveIndentGuidesStroke:
+        light: cerulean2
+        dark: cerulean0
+      indentGuidesStroke:
+        light: cerulean2
+        dark: cerulean0
+
+    widget:
+      shadow:
+        light: dawn0 alpha=0.5
+        dark: "#ffffff alpha=0.0" # TODO
+
+    ### TODO
+    #
+    #- editorActionList.background
+    #- editorActionList.foreground
+    #- editorActionList.focusForeground
+    #- editorActionList.focusBackground
+    #- sideBySideEditor.horizontalBorder
+    #- sideBySideEditor.verticalBorder
+    #- tab.border
+    #- editorGroup.border #border between editor groups
+    #- editorGroupHeader.border
+    #- editorGroupHeader.tabsBorder
+    #- sideBar.border
+    #- checkbox.selectBackground
+    #- checkbox.selectBorder
+    #- radio.activeForeground
+    #- radio.activeBackground
+    #- radio.activeBorder
+    #- radio.inactiveForeground
+    #- radio.inactiveBackground
+    #- radio.inactiveBorder
+    #- radio.inactiveHoverBackground
+    #- textBlockQuote.background
+    #- textBlockQuote.border
+    #- tab.activeBorder #Bottom border of active tab
+    #- textLink.activeForeground #Foreground on link hover/click (eg. in Welcome page)
+    #- inputValidation.errorBackground
+    #- inputValidation.infoBackground
+    #- minimap.infoHighlight

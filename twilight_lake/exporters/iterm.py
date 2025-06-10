@@ -2,17 +2,21 @@
 
 A single file has three different key/dict pairs for all colors:
 
-  - Default, eg. "Ansi 0 Color"
-  - Dark, eg. "Ansi 0 Color (Dark)"
-  - Light, eg. "Ansi 0 Color (Light)"
+    * Default, eg. "Ansi 0 Color"
+    * Dark, eg. "Ansi 0 Color (Dark)"
+    * Light, eg. "Ansi 0 Color (Light)"
 
 Generating the file requires both light & dark terminal themes.
 """
 from pathlib import Path
 from xml.etree import ElementTree
 
-from sebec.parser.terminal import TerminalApp, TerminalColors
+from twilight_lake.parser.styles import ThemeStyle
+from twilight_lake.parser.terminal import TerminalApp
+from twilight_lake.parser.theme import ThemeModel
 
+
+FILENAME = "Twilight Lake.itermcolors"
 
 # `xml` does not have facility for writing the `<!DOCTYPE>` element, so the header
 # should be written manually to include it.
@@ -22,21 +26,21 @@ _header = (
 )
 
 
-def export(destination: Path, *, light: TerminalColors, dark: TerminalColors):
+def export(destination: Path, theme: ThemeModel):
     root = ElementTree.Element("plist", version="1.0")
     root_dict = ElementTree.SubElement(root, "dict")
 
-    default_colors = dark_colors = dark.serialize(TerminalApp.Iterm)
-    light_colors = light.serialize(TerminalApp.Iterm)
+    default_colors = dark_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Dark)
+    light_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Light)
 
     _append_colors(root_dict, default_colors)
-    _append_colors(root_dict, dark_colors, suffix="(Dark)")
-    _append_colors(root_dict, light_colors, suffix="(Light)")
+    _append_colors(root_dict, dark_colors, suffix=theme.style_names.dark)
+    _append_colors(root_dict, light_colors, suffix=theme.style_names.light)
 
     tree = ElementTree.ElementTree(root)
     ElementTree.indent(tree, "\t")
 
-    with open(destination, "wb") as color_file:
+    with open(destination / FILENAME, "wb") as color_file:
         color_file.write(_header)
         tree.write(color_file, encoding="utf-8", xml_declaration=False)
 

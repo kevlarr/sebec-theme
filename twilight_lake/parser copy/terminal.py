@@ -8,7 +8,7 @@ from typing import Annotated
 
 from pydantic import Field, model_validator
 
-from sebec.color import Color
+from twilight_lake.color import Color
 from .base import Base, ColorStyle
 from .formatters import parse_color_style
 

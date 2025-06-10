@@ -1,7 +1,7 @@
 import re
 import logging
 
-from sebec.color import Color
+from twilight_lake.color import Color
 
 
 _logger = logging.getLogger(__name__)
