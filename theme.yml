@@ -49,8 +49,8 @@ terminal:
         dark: solarYellow2
 
     background:
-      light: dawn4
-      dark: dusk2
+      light: dawn6
+      dark: dusk3
 
     foreground:
       light: dusk5
@@ -109,7 +109,7 @@ vscode:
 
     # Class & function names
     - style:
-        light: sapphire1
+        light: sapphire0
         dark: cerulean2
       semantic:
         - class
@@ -119,7 +119,7 @@ vscode:
         - method
       textmate:
         - meta.function-call.generic.python
-        - support.function.string.sql
+        - support.function.string.sql # FIXME: why is this here?
 
     # Comments
     - style:
@@ -143,6 +143,8 @@ vscode:
         light: cerulean2 bold
         dark: sapphire1 bold
       textmate:
+        # var, etc.
+        - storage.type
         # class & def keywords
         - storage.type.class
         - storage.type.function
@@ -176,7 +178,7 @@ vscode:
 
     # Modules
     - style:
-        light: sapphire1 underline
+        light: cerulean1 underline
         dark: cerulean1 underline
       semantic: module
 
@@ -240,11 +242,14 @@ vscode:
 
     # Strings
     - style:
-        light: evergreen2 italic
-        dark: evergreen0 italic
+        # Should be lower contrast than actual string
+        light: evergreen2
+        dark: evergreen0
       textmate:
-        - storage.type.string # eg. the `f` in `f"string"`
-        - punctuation.definition.string, # quotes around the string
+        # Eg. the `f` in `f"string"`
+        - storage.type.string
+        # Quotes around the string
+        - punctuation.definition.string
 
     - style:
         light: evergreen1
@@ -260,11 +265,14 @@ vscode:
 
     # Type Hints
     - style:
-        light: sapphire1
+        light: sapphire2
         dark: cerulean1
       semantic:
+        # Eg. in Python
         - class.typeHint
         - enum.typeHint
+      textmate:
+        - support.type.primitive
 
     # Variables
     - style:
@@ -302,7 +310,7 @@ vscode:
       dark: cerulean2
 
     foreground:
-      light: dusk6
+      light: dusk7
       dark: dawn0
 
     ##
@@ -396,10 +404,11 @@ vscode:
       # Editor background should be more prominent than sidebar & panel,
       # with only the editor widgets having greater prominence
       background:
-        light: dawn6
-        dark: dusk1
+        light: dawn5
+        dark: dusk2
+
       foreground:
-        light: dusk6
+        light: dusk7
         dark: dawn0
 
     editorError:
@@ -569,8 +578,9 @@ vscode:
     panel:
       background:
         # should match terminal.background
-        light: dawn4
-        dark: dusk2
+        light: dawn6
+        dark: dusk3
+
       border:
         light: dawn4
         dark: dusk3
@@ -613,6 +623,7 @@ vscode:
       background:
         light: dawn3
         dark: dusk0
+
       dropBackground:
         light: cerulean3 alpha=0.25
         dark: cerulean1 alpha=0.25
