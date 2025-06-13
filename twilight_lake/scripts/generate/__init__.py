@@ -17,6 +17,7 @@ ROOT_PATH = (
     .parent # root
 )
 
+
 def main() -> None:
     yml_path = ROOT_PATH / "theme.yml"
     package_path = ROOT_PATH / "package"

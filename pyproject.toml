@@ -11,9 +11,11 @@ readme = "README.md"
 
 [tool.poetry.scripts]
 generate = "twilight_lake.scripts.generate:main"
+print-colors = "twilight_lake.scripts.print_colors:main"
 update-colors = "twilight_lake.scripts.update_colors:main"
 
 [tool.poetry.dependencies]
 python = "^3.13"
 pyyaml = "^6.0.2"
 pydantic = "^2.10.6"
+termcolor = "^3.1.0"
