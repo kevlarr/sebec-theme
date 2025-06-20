@@ -7,54 +7,32 @@ styleNames:
 terminal:
   base:
     ansi:
-      # TODO: Check these colors
-      black: dusk1
-      blackBright:
-        light: dusk0
-        dark: dusk2
-
+      # The "bright" colors should be lighter than their counterparts,
+      # even for white, in both modes
+      black: dusk0
+      blackBright: dusk5
       blue: sapphire1
-      blueBright:
-        light: sapphire0
-        dark: sapphire2
-
+      blueBright: sapphire2
       cyan: cerulean1
-      cyanBright:
-        light: cerulean0
-        dark: cerulean2
-
+      cyanBright: cerulean2
       green: evergreen1
-      greenBright:
-        light: evergreen0
-        dark: evergreen2
-
+      greenBright: evergreen2
       red: solarRed1
-      redBright:
-        light: solarRed0
-        dark: solarRed2
-
+      redBright: solarRed2
       magenta: solarPurple1
-      magentaBright:
-        light: solarPurple0
-        dark: solarPurple2
-
-      white: dawn1
-      whiteBright:
-        light: dawn0
-        dark: dawn2
-
+      magentaBright: solarPurple2
+      white: dawn0
+      whiteBright: dawn5
       yellow: solarYellow1
-      yellowBright:
-        light: solarYellow0
-        dark: solarYellow2
+      yellowBright: solarYellow2
 
-    background:
+    background: &terminalBackground
       light: dawn6
       dark: dusk3
 
     foreground:
       light: dusk5
-      dark: dawn0
+      dark: dawn2
 
     selectionBackground:
       light: cerulean3
@@ -109,7 +87,7 @@ vscode:
 
     # Class & function names
     - style:
-        light: sapphire0
+        light: sapphire1
         dark: cerulean2
       semantic:
         - class
@@ -140,7 +118,7 @@ vscode:
 
     # Keyword
     - style:
-        light: cerulean2 bold
+        light: cerulean1
         dark: sapphire1 bold
       textmate:
         # var, etc.
@@ -171,15 +149,15 @@ vscode:
     # Literal values
     - style:
         light: evergreen1
-        dark: evergreen2
+        dark: evergreen2 italic
       textmate:
         - constant.language
         - constant.numeric
 
     # Modules
     - style:
-        light: cerulean1 underline
-        dark: cerulean1 underline
+        light: dusk6 underline
+        dark: dawn0 underline
       semantic: module
 
     # Operators
@@ -192,7 +170,7 @@ vscode:
 
     # Parameters
     - style:
-        light: solarPurple1 bold
+        light: solarPurple2 bold
         dark: solarPurple1 bold
       semantic:
         - selfParameter
@@ -277,7 +255,7 @@ vscode:
     # Variables
     - style:
         light: solarRed0
-        dark: solarRed2
+        dark: solarPurple1 bold
       textmate:
         - support.variable.magic
         - constant.other.caps
@@ -361,8 +339,8 @@ vscode:
 
     breadcrumb:
       background:
-        light: dawn6
-        dark: dusk0
+        light: dawn5
+        dark: dusk1
 
     button:
       foreground:
@@ -405,11 +383,11 @@ vscode:
       # with only the editor widgets having greater prominence
       background:
         light: dawn5
-        dark: dusk2
+        dark: dusk1
 
       foreground:
-        light: dusk7
-        dark: dawn0
+        light: dusk3
+        dark: dawn1
 
     editorError:
       foreground: solarRed1
@@ -425,7 +403,7 @@ vscode:
     editorGroupHeader:
       tabsBackground:
         light: dawn3
-        dark: dusk2
+        dark: dusk0
 
     editorGutter:
       addedBackground:
@@ -459,7 +437,7 @@ vscode:
     editorWidget:
       background:
         light: dawn7
-        dark: dusk5
+        dark: dusk4
       foreground:
         light: dusk4
         dark: dawn5
@@ -476,7 +454,9 @@ vscode:
       border:
         light: dawn2
         dark: dusk5
-      foreground: dawn5
+      foreground:
+        light: dusk5
+        dark: dawn5
       placeholderForeground:
         light: dawn0
         dark: dusk6
@@ -577,10 +557,7 @@ vscode:
 
     panel:
       background:
-        # should match terminal.background
-        light: dawn6
-        dark: dusk3
-
+        <<: *terminalBackground
       border:
         light: dawn4
         dark: dusk3
@@ -623,7 +600,6 @@ vscode:
       background:
         light: dawn3
         dark: dusk0
-
       dropBackground:
         light: cerulean3 alpha=0.25
         dark: cerulean1 alpha=0.25
@@ -634,7 +610,7 @@ vscode:
     sideBarSectionHeader:
       background:
         light: dawn3
-        dark: dusk2
+        dark: dusk0
       border:
         light: dawn2
         dark: dusk5
@@ -643,30 +619,30 @@ vscode:
         dark: dawn0
 
     sideBarTitle:
-      background:
-        light: dawn3
-        dark: dusk2
+      # background:
+      #   light: dawn3
+      #   dark: dusk2
       foreground:
         light: dusk6
         dark: dawn0
 
     tab:
       activeBackground:
-        light: dawn6
-        dark: dusk0
+        light: dawn5
+        dark: dusk1
       activeForeground:
         light: cerulean1
         dark: cerulean3 # Overridden by green, red, etc. if changed or errors
       dragAndDropBorder: cerulean2
       hoverBackground:
-        light: dawn4
-        dark: dusk3
+        light: dawn5
+        dark: dusk1
       inactiveBackground:
         light: dawn3
-        dark: dusk2
+        dark: dusk0
       inactiveForeground:
-        light: dusk7
-        dark: dusk6
+        light: dawn0
+        dark: dusk7
       selectedBorderTop:
         light: cerulean3
         dark: cerulean1
