@@ -32,27 +32,29 @@ terminal:
 
     foreground:
       light: dusk5
-      dark: dawn2
+      dark: dawn1
 
     selectionBackground:
-      light: cerulean3
-      dark: sapphire0
+      light: dusk7
+      dark: "#ff0000"
 
     selectionForeground:
-      light: dusk3
-      dark: dawn4
+      light: dawn7
+      dark: "#ff0000"
 
-    matchBackground:
-      light: solarPurple2 alpha=0.25
-      dark: solarPurple0 alpha=0.25
+    # In iterm the match background color is for inactive matches;
+    # the active match background color uses the selection background color
+    matchBackground: &matchBackground
+      light: dawn2
+      dark: "#ff0000"
 
     cursorColor:
-      light: cerulean0
-      dark: cerulean3
+      light: cerulean3
+      dark: cerulean1
 
     cursorTextColor:
-      light: dawn6
-      dark: dusk0
+      light: dawn7
+      dark: dawn3
 
   iterm:
     badgeColor: cerulean0
@@ -388,6 +390,15 @@ vscode:
       foreground:
         light: dusk3
         dark: dawn1
+
+      # The active match background
+      findMatchBackground:
+        <<: *matchBackground
+
+      # The inactive match backgrounds
+      findMatchHighlightBackground:
+        light: solarYellow2
+        dark: solarYellow0
 
     editorError:
       foreground: solarRed1
