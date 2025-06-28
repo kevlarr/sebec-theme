@@ -1,5 +1,7 @@
+import traceback
 import pathlib
 
+from watchfiles import watch
 from yaml import safe_load
 
 from twilight_lake.exporters import iterm, vscode #, windows_terminal
@@ -43,3 +45,20 @@ def main() -> None:
     # Twilight.save(themes)
 
     print("Themes and palette generated successfully!")
+
+def watch_main() -> None:
+    files = [
+        ROOT_PATH / "theme.yml",
+        ROOT_PATH / "twilight_lake" / "color.py",
+    ]
+    print("\nWatching files for changes:")
+    for watched in files:
+        print(f"  - {watched}")
+    print()
+    for _ in watch(*files):
+        try:
+            main()
+        except Exception as exc:
+            print(f"Error: {exc}")
+            traceback.print_exc()
+        print()

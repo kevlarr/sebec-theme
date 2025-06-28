@@ -1,4 +1,5 @@
 from enum import StrEnum
+from typing import Annotated
 
 from pydantic import Field
 
@@ -13,3 +14,4 @@ class ThemeModel(Base):
     style_names: ThemeStyleNames = Field(alias="styleNames")
     terminal: TerminalColors
     vscode: VsCodeColors
+    ignore: Annotated[dict, Field(..., alias="_ignore", exclude=True)]
