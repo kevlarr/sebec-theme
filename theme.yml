@@ -36,15 +36,18 @@ terminal:
     foreground: &terminalForeground { light: black5, dark: white0 }
 
     # This will also be the active match background in iterm
-    selectionBackground: &activeMatchBackground { light: black7, dark: white3 }
-    selectionForeground: { light: white7, dark: black0 }
+    selectionBackground: &activeMatchBackground { light: purple2, dark: purple1 }
+    selectionForeground: *terminalForeground
+    # selectionBackground: &activeMatchBackground { light: black7, dark: white3 }
+    # selectionForeground: &activeMatchForeground { light: white7, dark: black0 }
 
     # In iterm the match background color is for inactive matches;
     # the active match background color uses the selection background color,
     # so these colors should be less contrasty than selectionBackground
     #
-    # FIXME: vscode says this should have  transparency
-    matchBackground: &matchBackground { light: white2, dark: black7 }
+    # FIXME: vscode says this should have  transparency..? Maybe need to override this later.
+    # matchBackground: &matchBackground { light: red2, dark: purple0 }
+    matchBackground: &matchBackground { light: white2, dark: red2 }
 
     cursorColor:     { light: cyan3,  dark: cyan1 }
     cursorTextColor: { light: white7, dark: white3 }
@@ -555,12 +558,25 @@ vscode:
       background: &editorBackground   { light: white5, dark: black1 }
       foreground: *terminalForeground
 
-      # The active match background
-      findMatchBackground: *matchBackground
-      # The inactive match backgrounds
-      findMatchHighlightBackground: { light: yellow2, dark: yellow0 } # FIXME: vscode says this should have transparency
+      # The active & inactive match backgrounds - these should match terminal.selectionBackground,
+      # just with the addition of an alpha channel to not obscure text decorations
+      findMatchBackground:          &editorActiveMatchBackground { light: purple1 alpha=0.5, dark: purple1 alpha=0.5 }
+      findMatchHighlightBackground: &editorMatchBackground       { light: purple3 alpha=0.35, dark: purple0 alpha=0.5 }
+      # This is the 'implicit find' for other matches when cursor is in a word;
+      # the foreground color can't be adjusted, so make this dimmer than normal find
+      wordHighlightBackground:                                   { light: white3 alpha=0.5, dark: purple0 alpha=0.25 }
+      # This is the highlight for other matches when actually selecting a range;
+      # the foreground color also can't be adjusted
+      selectionHighlightBackground: *editorMatchBackground
 
       foldBackground: { light: cyan3 alpha=0.25, dark: cyan0 alpha=0.25 }
+      selectionBackground: &editorSelectionBackground { light: cyan2 alpha=0.25, dark: cyan1 alpha=0.25 }
+
+      findRangeHighlightBackground: *editorSelectionBackground
+      hoverHighlightBackground:     &editorFaintBackground { light: white2 alpha=0.5, dark: black5 alpha=0.5}
+      lineHighlightBackground: &editorLineHighlightBackground { light: white4, dark: black2 }
+      lineHighlightBorder:     *editorLineHighlightBackground
+
 
     editorLineNumber:
       foreground:       { light: white0, dark: black6 }
@@ -581,6 +597,14 @@ vscode:
 
 
 
+    # "editor.selectionBackground": "polarNight2cc",
+    # "editor.selectionHighlightBackground": "polarNight2cc",
+    # "editor.rangeHighlightBackground": "polarNight252",
+    # "editor.wordHighlightBackground": "frost266",
+    # "editor.wordHighlightStrongBackground": "frost299",
+    # "editor.stackFrameHighlightBackground": "frost3",
+    # "editor.focusedStackFrameHighlightBackground": "frost3",
+
     # "editorActiveLineNumber.foreground": "snowStorm0cc",
     # "editorCursor.foreground": "snowStorm0",
     # "editorHint.border": "auroraYellow00",
@@ -594,24 +618,6 @@ vscode:
     # "editorWhitespace.foreground": "polarNight3b3",
     # "editorWidget.background": "polarNight0",
     # "editorWidget.border": "polarNight1",
-    # "editor.background": "polarNight0",
-    # "editor.foreground": "snowStorm0",
-    # "editor.hoverHighlightBackground": "polarNight1",
-    # "editor.findMatchBackground": "frost166",
-    # "editor.findMatchHighlightBackground": "frost133",
-    # "editor.findRangeHighlightBackground": "frost133",
-    # "editor.lineHighlightBackground": "polarNight1",
-    # "editor.lineHighlightBorder": "polarNight1",
-    # "editor.inactiveSelectionBackground": "polarNight2cc",
-    # "editor.inlineValuesBackground": "polarNight3",
-    # "editor.inlineValuesForeground": "snowStorm2",
-    # "editor.selectionBackground": "polarNight2cc",
-    # "editor.selectionHighlightBackground": "polarNight2cc",
-    # "editor.rangeHighlightBackground": "polarNight252",
-    # "editor.wordHighlightBackground": "frost266",
-    # "editor.wordHighlightStrongBackground": "frost299",
-    # "editor.stackFrameHighlightBackground": "frost3",
-    # "editor.focusedStackFrameHighlightBackground": "frost3",
     # "editorError.foreground": "auroraRed",
     # "editorError.border": "auroraRed00",
     # "editorWarning.foreground": "auroraYellow",
@@ -847,6 +853,8 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#debug-colors
 
     # "debugToolBar.background": "polarNight1",
+    # "editor.inlineValuesBackground": "polarNight3",
+    # "editor.inlineValuesForeground": "snowStorm2",
 
     ### -----------------------------------------------------------------------
     ### MARK: Testing colors
