@@ -35,19 +35,19 @@ terminal:
     background: &terminalBackground { light: white6, dark: black3 }
     foreground: &terminalForeground { light: black5, dark: white0 }
 
-    # This will also be the active match background in iterm
-    selectionBackground: &activeMatchBackground { light: purple2, dark: purple1 }
-    selectionForeground: *terminalForeground
-    # selectionBackground: &activeMatchBackground { light: black7, dark: white3 }
-    # selectionForeground: &activeMatchForeground { light: white7, dark: black0 }
-
-    # In iterm the match background color is for inactive matches;
-    # the active match background color uses the selection background color,
-    # so these colors should be less contrasty than selectionBackground
+    # The selectionBackground is used to highlight active matches in iterm,
+    # which is unfortunate because it means either the selection highlight
+    # needs to be very prominent in order for active matches to be visible
+    # or it means the active match needs to be subdued in order to get a
+    # non-contrasty selection.
     #
-    # FIXME: vscode says this should have  transparency..? Maybe need to override this later.
-    # matchBackground: &matchBackground { light: red2, dark: purple0 }
-    matchBackground: &matchBackground { light: white2, dark: red2 }
+    # Note: It also seems to control active matches in vscode as well
+    # (see https://github.com/microsoft/vscode/issues/252449)
+    selectionBackground: &activeMatchBackground { light: blue3, dark: blue0 }
+    selectionForeground: *terminalForeground
+
+    # The highlight for inactive search matches in iterm and vscode
+    matchBackground: &matchBackground { light: white3, dark: black5 }
 
     cursorColor:     { light: cyan3,  dark: cyan1 }
     cursorTextColor: { light: white7, dark: white3 }
@@ -531,8 +531,7 @@ vscode:
 
     tab:
       # activeBorder: bottom border for selected tab
-      # activeBorderTop
-      # border
+      # activeBorderTop: how different from selectedBorderTop?
       # hoverBorder
       # unfocusedActiveBorder
       # unfocusedActiveBorderTop
@@ -546,8 +545,9 @@ vscode:
       inactiveBackground: { light: white3, dark: black0 }
       inactiveForeground: { light: white0, dark: black7 }
       selectedBorderTop:  { light: cyan3,  dark: cyan1 }
+      border: *alpha0
       dragAndDropBorder: cyan2
-      lastPinnedBorder: black5
+      lastPinnedBorder: *alpha0 # { light: white1, dark: black5 }
 
     ### -----------------------------------------------------------------------
     ### MARK: Editor colors
@@ -558,25 +558,27 @@ vscode:
       background: &editorBackground   { light: white5, dark: black1 }
       foreground: *terminalForeground
 
+      selectionBackground: &editorSelectionBackground { light: blue2 alpha=0.5, dark: blue0 alpha=0.5 }
+
       # The active & inactive match backgrounds - these should match terminal.selectionBackground,
       # just with the addition of an alpha channel to not obscure text decorations
-      findMatchBackground:          &editorActiveMatchBackground { light: purple1 alpha=0.5, dark: purple1 alpha=0.5 }
-      findMatchHighlightBackground: &editorMatchBackground       { light: purple3 alpha=0.35, dark: purple0 alpha=0.5 }
+      findMatchBackground:          *editorSelectionBackground
+      findMatchHighlightBackground: &editorInactiveMatchBackground { light: white2 alpha=0.5, dark: black5 alpha=0.5 }
+
       # This is the 'implicit find' for other matches when cursor is in a word;
       # the foreground color can't be adjusted, so make this dimmer than normal find
-      wordHighlightBackground:                                   { light: white3 alpha=0.5, dark: purple0 alpha=0.25 }
+      wordHighlightBackground: { light: white2 alpha=0.35, dark: black5 alpha=0.35 }
+
       # This is the highlight for other matches when actually selecting a range;
       # the foreground color also can't be adjusted
-      selectionHighlightBackground: *editorMatchBackground
-
-      foldBackground: { light: cyan3 alpha=0.25, dark: cyan0 alpha=0.25 }
-      selectionBackground: &editorSelectionBackground { light: cyan2 alpha=0.25, dark: cyan1 alpha=0.25 }
+      selectionHighlightBackground: *editorInactiveMatchBackground
 
       findRangeHighlightBackground: *editorSelectionBackground
       hoverHighlightBackground:     &editorFaintBackground { light: white2 alpha=0.5, dark: black5 alpha=0.5}
-      lineHighlightBackground: &editorLineHighlightBackground { light: white4, dark: black2 }
-      lineHighlightBorder:     *editorLineHighlightBackground
+      lineHighlightBackground:      &editorLineHighlightBackground { light: white4, dark: black2 }
+      lineHighlightBorder:          *editorLineHighlightBackground
 
+      foldBackground: { light: purple3 alpha=0.25, dark: purple0 alpha=0.25 }
 
     editorLineNumber:
       foreground:       { light: white0, dark: black6 }
@@ -847,6 +849,9 @@ vscode:
 
     # "terminal.tab.activeBorder": "frost1",
 
+    # FIXME: This seems to be a broken setting:
+    # https://github.com/microsoft/vscode/issues/252449
+    # terminal.findMatchBackground: red2
 
     ### -----------------------------------------------------------------------
     ### MARK: Debug colors

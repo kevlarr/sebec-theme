@@ -217,7 +217,7 @@ class GeneralTerminalColors(BaseTerminalModel):
         ColorSetting,
         Field(alias="matchBackground"),
         Iterm("Match Background Color"),
-        Vscode("terminal.findMatchBackground"),
+        Vscode("terminal.findMatchHighlightBackground"),
     ]
     cursor_color: Annotated[
         ColorSetting,
