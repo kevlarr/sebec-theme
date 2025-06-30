@@ -88,7 +88,7 @@ class AnsiColors(BaseTerminalModel):
         Field(alias="blackBright"),
         Iterm("Ansi 8 Color"),
         Vscode("terminal.ansiBrightBlack"),
-        WindowsTerminal("brightblack"),
+        WindowsTerminal("brightBlack"),
     ]
     blue: Annotated[
         ColorSetting,

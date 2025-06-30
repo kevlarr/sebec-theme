@@ -4,7 +4,7 @@ import pathlib
 from watchfiles import watch
 from yaml import safe_load
 
-from twilight_lake.exporters import iterm, vscode #, windows_terminal
+from twilight_lake.exporters import iterm, vscode, windows_terminal
 from twilight_lake.models.styles import ThemeStyle
 from twilight_lake.models.theme import ThemeModel
 
@@ -33,11 +33,7 @@ def main() -> None:
     vscode.export(vscode_themes_path, theme, ThemeStyle.Light)
     vscode.export(vscode_themes_path, theme, ThemeStyle.Dark)
 
-    # windows_terminal.export(
-        # package_path=package_path,
-        # light=sunrise.terminal,
-        # dark=twilight.terminal,
-    # )
+    windows_terminal.export(package_path, theme)
 
     export_palette_html(package_path / "palette.html")
 
