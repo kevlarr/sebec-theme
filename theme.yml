@@ -39,7 +39,7 @@ terminal:
       yellow: yellow1
       yellowBright: yellow2
 
-    background: &terminalBackground { light: white6, dark: black3 }
+    background: &terminalBackground { light: white6, dark: black2 }
     foreground: &terminalForeground { light: black5, dark: white0 }
 
     # The selectionBackground is used to highlight active matches in iterm,
@@ -693,7 +693,7 @@ vscode:
     ### MARK: Editor widget colors
     ### https://code.visualstudio.com/api/references/theme-color#editor-widget-colors
     editorWidget:
-      background: { light: white7, dark: black4 }
+      background: { light: white7, dark: black3 }
       foreground: { light: black4, dark: white5 }
       border: { light: cyan2, dark: cyan1 }
 
@@ -709,8 +709,6 @@ vscode:
       selectedForeground: *editorPopupForeground
       highlightForeground:      { light: cyan2, dark: cyan1 } # autocomplete match in inactive rows
       focusHighlightForeground: *editorPopupActiveForeground # autocomplete match in active row
-
-    #   selectedForeground": "snowStorm0",
 
     ### -----------------------------------------------------------------------
     ### MARK: Peek view colors
