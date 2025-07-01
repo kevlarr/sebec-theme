@@ -13,7 +13,7 @@ from .styles import ThemeStyle
 
 
 def assert_alphabetic(value: str) -> str:
-    assert re.match(r"^[a-zA-Z\.]+?$", value), "must be alphabetic"
+    assert re.match(r"^[a-zA-Z\.0-9]+?$", value), "must be alphabetic"
     return value
 
 

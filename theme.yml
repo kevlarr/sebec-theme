@@ -49,8 +49,8 @@ terminal:
     # The highlight for inactive search matches in iterm and vscode
     matchBackground: &matchBackground { light: white3, dark: black5 }
 
-    cursorColor:     { light: cyan3,  dark: cyan1 }
-    cursorTextColor: { light: white7, dark: white3 }
+    cursorColor:     &cursorColor     { light: cyan2,  dark: cyan1 }
+    cursorTextColor: &cursorTextColor { light: white7, dark: black0 }
 
   iterm:
     badgeColor:       { light: white5, dark: black4 }
@@ -240,7 +240,7 @@ vscode:
 
     # Variables
     - style:
-        light: red0
+        light: red0 # FIXME
         dark: purple1 bold
       textmate:
         - support.variable.magic
@@ -269,7 +269,7 @@ vscode:
     widget.shadow:         { light: white3, dark: black0 }
 
     focusBorder:     &focusBorder     cyan2
-    errorForeground: &errorForeground { light: red1,   dark: red2   }
+    errorForeground: &errorForeground { light: red1, dark: red2   }
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Window colors
@@ -295,8 +295,6 @@ vscode:
     # "textBlockQuote.background": "polarNight1",
     # "textBlockQuote.border": "frost2",
     # "textCodeBlock.background": "polarNight3",
-    # "textLink.activeForeground": "frost1",
-    # "textLink.foreground": "frost1",
     # "textPreformat.foreground": "frost0",
     # "textSeparator.foreground": "snowStorm2",
 
@@ -429,8 +427,8 @@ vscode:
       deemphasizedForeground: red2
 
     tree:
-      indentGuidesStroke:         &treeGuideStroke { light: cyan2, dark: cyan0 }
-      inactiveIndentGuidesStroke: *treeGuideStroke
+      indentGuidesStroke:         &guideStroke         { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75}
+      inactiveIndentGuidesStroke: &inactiveGuideStroke { light: cyan3 alpha=0.25, dark: cyan0 alpha=0.25}
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Activity bar
@@ -441,7 +439,7 @@ vscode:
     ###  - activityBar.activeFocusBorder
     ###  - activityBarTop.*
     activityBar:
-      background:       &activityBarBackground { light: white4, dark: black3 }
+      background:       &activityBarBackground { light: white3, dark: black3 }
       foreground:       &activityBarForeground { light: cyan2,  dark: cyan1 }
       activeBorder:     *activityBarForeground
 
@@ -476,7 +474,7 @@ vscode:
     ###  - sideBarActivityBarTop.border
     ###  - sideBarStickyScroll.*
     sideBar:
-      background: &sideBarBackground { light: white3, dark: black0 }
+      background: &sideBarBackground { light: white4, dark: black0 }
       foreground: &sideBarForeground { light: black6, dark: white1 }
       border:     &sideBarBorder     { light: white1, dark: black4 }
       dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
@@ -567,7 +565,8 @@ vscode:
 
       # This is the 'implicit find' for other matches when cursor is in a word;
       # the foreground color can't be adjusted, so make this dimmer than normal find
-      wordHighlightBackground: { light: white2 alpha=0.35, dark: black5 alpha=0.35 }
+      wordHighlightBackground:       { light: white2 alpha=0.35, dark: black5 alpha=0.35 }
+      wordHighlightStrongBackground: { light: white2 alpha=0.5, dark: black5 alpha=0.5 }
 
       # This is the highlight for other matches when actually selecting a range;
       # the foreground color also can't be adjusted
@@ -578,87 +577,90 @@ vscode:
       lineHighlightBackground:      &editorLineHighlightBackground { light: white4, dark: black2 }
       lineHighlightBorder:          *editorLineHighlightBackground
 
-      foldBackground: { light: purple3 alpha=0.25, dark: purple0 alpha=0.25 }
+      foldBackground: { light: blue3 alpha=0.25, dark: blue0 alpha=0.25 }
 
-    editorLineNumber:
+    editorBracketMatch: # ✅
+      background: { light: purple2 alpha=0.5, dark: purple1 alpha=0.5 }
+      border: *alpha0
+
+    # these only apply if bracket pair colorization is enabled
+    editorBracketHighlight: # ✅
+      unexpectedBracket.foreground: { light: red1, dark: red1 }
+      # They go up to 6 but 3 should be enough
+      foreground1: { light: yellow2, dark: yellow1 }
+      foreground2: { light: blue2, dark: blue1 }
+      foreground3: { light: purple2, dark: purple1 }
+
+    editorCursor: # ✅
+      background: *cursorTextColor
+      foreground: *cursorColor
+
+    editorGutter: # ✅
+      addedBackground:    { light: green3 alpha=0.75,  dark: green0 alpha=0.75 }
+      deletedBackground:  { light: red2 alpha=0.75,    dark: red1 alpha=0.75 }
+      modifiedBackground: { light: yellow2 alpha=0.75, dark: yellow1 alpha=0.75 }
+      # The > carets for folding
+      foldingControlForeground: { light: blue1, dark: blue2 }
+
+    editorLineNumber: # ✅
       foreground:       { light: white0, dark: black6 }
       activeForeground: { light: cyan0,  dark: cyan1 }
 
     editorError:
-      foreground: red1
+      foreground: red1 # TODO
 
     editorWarning:
-      foreground: red1
+      foreground: yellow0 # TODO
 
-    editorGutter:
-      addedBackground:    { light: green3 alpha=0.5,  dark: green0 alpha=0.5 }
-      deletedBackground:  { light: red2 alpha=0.5,    dark: red1 alpha=0.5 }
-      modifiedBackground: { light: yellow2 alpha=0.5, dark: yellow1 alpha=0.5 }
-      # The > carets for folding
-      foldingControlForeground: { light: cyan1, dark: cyan1 }
+    editorHint:
+      background: red2 # TODO
 
+    editorHoverWidget: # ✅
+      background: { light: white6, dark: black3 }
+      foreground: *terminalForeground
+      border: *alpha0
 
+    editorIndentGuide:
+      background: *inactiveGuideStroke
+      activeBackground: *guideStroke
 
-    # "editor.selectionBackground": "polarNight2cc",
-    # "editor.selectionHighlightBackground": "polarNight2cc",
-    # "editor.rangeHighlightBackground": "polarNight252",
-    # "editor.wordHighlightBackground": "frost266",
-    # "editor.wordHighlightStrongBackground": "frost299",
-    # "editor.stackFrameHighlightBackground": "frost3",
-    # "editor.focusedStackFrameHighlightBackground": "frost3",
+    editorRuler.foreground: { light: blue3 alpha=0.25, dark: blue0 alpha=0.25 }
 
-    # "editorActiveLineNumber.foreground": "snowStorm0cc",
-    # "editorCursor.foreground": "snowStorm0",
+    editorOverviewRuler:
+      border: *alpha0
+      findMatchForeground: *matchBackground
+      # currentContentForeground: polarNight1
+      # incomingContentForeground: polarNight1
+      # findMatchForeground: frost166
+      # rangeHighlightForeground: frost166
+      # selectionHighlightForeground: frost166
+      # wordHighlightForeground: frost166
+      # wordHighlightStrongForeground: frost166
+      # modifiedForeground: auroraYellow
+      # addedForeground: auroraGreen
+      # deletedForeground: auroraRed
+      # errorForeground: auroraRed
+      # warningForeground: auroraYellow
+      # infoForeground: frost2
+
     # "editorHint.border": "auroraYellow00",
     # "editorHint.foreground": "auroraYellow",
-    # "editorIndentGuide.background": "polarNight2b3",
-    # "editorIndentGuide.activeBackground": "polarNight3",
     # "editorInlayHint.background": "polarNight2",
     # "editorInlayHint.foreground": "snowStorm0",
-    # "editorLineNumber.foreground": "polarNight3",
-    # "editorLineNumber.activeForeground": "snowStorm0",
-    # "editorWhitespace.foreground": "polarNight3b3",
+
+    # "editorWhitespace.foreground": "polarNight3b3"
+
     # "editorWidget.background": "polarNight0",
     # "editorWidget.border": "polarNight1",
-    # "editorError.foreground": "auroraRed",
-    # "editorError.border": "auroraRed00",
-    # "editorWarning.foreground": "auroraYellow",
-    # "editorWarning.border": "auroraYellow00",
-    # "editorBracketMatch.background": "polarNight000",
-    # "editorBracketMatch.border": "frost1",
-    # "editorBracketHighlight.foreground1": "frost0",
-    # "editorBracketHighlight.foreground2": "frost1",
-    # "editorBracketHighlight.foreground3": "frost2",
-    # "editorBracketHighlight.foreground4": "frost3",
-    # "editorBracketHighlight.foreground5": "frost0",
-    # "editorBracketHighlight.foreground6": "frost1",
-    # "editorBracketHighlight.unexpectedBracket.foreground": "auroraRed",
+
     # "editorCodeLens.foreground": "polarNight3",
-    # "editorGutter.background": "polarNight0",
-    # "editorGutter.modifiedBackground": "auroraYellow",
-    # "editorGutter.addedBackground": "auroraGreen",
-    # "editorGutter.deletedBackground": "auroraRed",
-    # "editorHoverWidget.background": "polarNight1",
-    # "editorHoverWidget.border": "polarNight1",
+
     # "editorLink.activeForeground": "frost1",
+
     # "editorMarkerNavigation.background": "frost3c0",
     # "editorMarkerNavigationError.background": "auroraRedc0",
     # "editorMarkerNavigationWarning.background": "auroraYellowc0",
-    # "editorOverviewRuler.border": "polarNight1",
-    # "editorOverviewRuler.currentContentForeground": "polarNight1",
-    # "editorOverviewRuler.incomingContentForeground": "polarNight1",
-    # "editorOverviewRuler.findMatchForeground": "frost166",
-    # "editorOverviewRuler.rangeHighlightForeground": "frost166",
-    # "editorOverviewRuler.selectionHighlightForeground": "frost166",
-    # "editorOverviewRuler.wordHighlightForeground": "frost166",
-    # "editorOverviewRuler.wordHighlightStrongForeground": "frost166",
-    # "editorOverviewRuler.modifiedForeground": "auroraYellow",
-    # "editorOverviewRuler.addedForeground": "auroraGreen",
-    # "editorOverviewRuler.deletedForeground": "auroraRed",
-    # "editorOverviewRuler.errorForeground": "auroraRed",
-    # "editorOverviewRuler.warningForeground": "auroraYellow",
-    # "editorOverviewRuler.infoForeground": "frost2",
-    # "editorRuler.foreground": "polarNight2",
+
     # "editorSuggestWidget.background": "polarNight0",
     # "editorSuggestWidget.border": "polarNight1",
     # "editorSuggestWidget.foreground": "snowStorm0",
@@ -860,6 +862,9 @@ vscode:
     # "debugToolBar.background": "polarNight1",
     # "editor.inlineValuesBackground": "polarNight3",
     # "editor.inlineValuesForeground": "snowStorm2",
+    # "editor.stackFrameHighlightBackground": "frost3",
+    # "editor.focusedStackFrameHighlightBackground": "frost3",
+
 
     ### -----------------------------------------------------------------------
     ### MARK: Testing colors
