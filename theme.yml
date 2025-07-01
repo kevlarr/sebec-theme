@@ -10,12 +10,27 @@ _ignore:
   alpha50: &alpha50 "#000000 alpha=0.5"
   alpha75: &alpha75 "#000000 alpha=0.75"
 
+  badgeBackground:  &badgeBackground cyan2
+  badgeForeground: &badgeForeground { light: white7, dark: black0 }
+
   # Colors for popup items in the editor, eg. actions list and suggestion widget
   editorPopupBackground: &editorPopupBackground { light: white6, dark: black3 }
   editorPopupForeground: &editorPopupForeground { light: black5, dark: white0 }
   editorPopupBorder: &editorPopupBorder { light: white4, dark: black4 }
   editorPopupActiveBackground: &editorPopupActiveBackground { light: cyan3 alpha=0.5, dark: cyan0 alpha=0.5 }
   editorPopupActiveForeground: &editorPopupActiveForeground { light: cyan1, dark: cyan2 }
+
+  indentGuidesStroke:         &guideStroke         { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75}
+  inactiveIndentGuidesStroke: &inactiveGuideStroke { light: cyan3 alpha=0.25, dark: cyan0 alpha=0.25}
+
+  scrollbarSliderActiveBackground: &scrollbarSliderActiveBackground { light: cyan2 alpha=0.75, dark: cyan1 alpha=0.75 }
+  scrollbarSliderHoverBackground:  &scrollbarSliderHoverBackground  { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75 }
+
+  sideBarBackground: &sideBarBackground { light: white4, dark: black0 }
+  sideBarForeground: &sideBarForeground { light: black6, dark: white1 }
+  sideBarBorder:     &sideBarBorder     { light: white1, dark: black4 }
+
+  textLinkActiveForeground: &textLinkActiveForeground {light: cyan0, dark: cyan2}
 
 terminal:
   base:
@@ -279,166 +294,22 @@ vscode:
     errorForeground: &errorForeground { light: red1, dark: red2   }
 
     ### -----------------------------------------------------------------------
-    ### ✅ MARK: Window colors
-    ### https://code.visualstudio.com/api/references/theme-color#window-border
-    window:
-        # These downplay the border
-      activeBorder:   &windowBorder { light: white7, dark: black0 }
-      inactiveBorder: *windowBorder
-
-    ### -----------------------------------------------------------------------
-    ### ✅ MARK: Text colors
-    ### https://code.visualstudio.com/api/references/theme-color#text-colors
-    ###
-    ### Unstyled:
-    ###  - textBlockQuote
-    ###  - textCodeBlock
-    ###  - textPreformat
-    ###  - textSeparator
-    textLink:
-      foreground:       cyan1
-      activeForeground: &textLinkActiveForeground {light: cyan0, dark: cyan2}
-
-    # "textBlockQuote.background": "polarNight1",
-    # "textBlockQuote.border": "frost2",
-    # "textCodeBlock.background": "polarNight3",
-    # "textPreformat.foreground": "frost0",
-    # "textSeparator.foreground": "snowStorm2",
-
-    ### -----------------------------------------------------------------------
     ### ✅ MARK: Action colors
     ### https://code.visualstudio.com/api/references/theme-color#action-colors
-    toolbar:
-      # Eg. the "..." icons when opened or other buttons when clicked
-      activeBackground: { light: white1, dark: black6 }
-      hoverBackground:  { light: white2, dark: black5 }
-
     editorActionList:
       background: *editorPopupBackground
       foreground: *editorPopupForeground
       focusForeground: *editorPopupActiveForeground
       focusBackground: *editorPopupActiveBackground
 
-    ### -----------------------------------------------------------------------
-    ### MARK: Button control
-    ### https://code.visualstudio.com/api/references/theme-color#button-control
-    ###
-    ### Unstyled:
-    ###  - button.border
-    ###  - button.separator
-    ###  - button.secondary*
-    ###  - checkbox.*
-    ###  - radio.*
-    button:
-      background:      &buttonBackground      { light: cyan2, dark: cyan0 }
-      hoverBackground: &buttonHoverBackground { light: cyan1, dark: cyan1 }
-      foreground:      &buttonForeground      { light: white7, dark: white5 }
+    toolbar:
+      # Eg. the "..." icons when opened or other buttons when clicked
+      activeBackground: { light: white1, dark: black6 }
+      hoverBackground:  { light: white2, dark: black5 }
 
     ### -----------------------------------------------------------------------
-    ### ✅ MARK: Dropdown control
-    ### https://code.visualstudio.com/api/references/theme-color#dropdown-control
-    ###
-    ### Unstyled:
-    ###  - dropdown.border
-    ###  - dropdown.foreground
-    dropdown:
-      background:     &inputBackground {light: white4, dark: black0}
-      listBackground: *inputBackground
-
-    ### -----------------------------------------------------------------------
-    ### ✅ MARK: Input control
-    ### https://code.visualstudio.com/api/references/theme-color#input-control
-    input:
-      background:            *inputBackground
-      foreground:            { light: black5, dark: white5 }
-      placeholderForeground: { light: white0, dark: black6 }
-      border:                { light: white2, dark: black5 }
-
-    inputOption:
-      activeBackground: *buttonBackground
-      activeForeground: *buttonForeground
-
-      # match input color to hide the border
-      activeBorder: *inputBackground
-      # these should be relative to &inputBackground
-      hoverBackground: { light: white2, dark: black4 }
-
-    inputValidation:
-      errorBackground: &errorBackground { light: red2,   dark: red1 }
-      errorForeground:                  { light: white7, dark: white5 }
-      errorBorder:     *errorBackground
-
-      infoBackground: &infoBackground { light: cyan2,  dark: cyan1 }
-      infoForeground:                 { light: white7, dark: white5 }
-      infoBorder:     *infoBackground
-
-      warningBackground: &warningBackground { light: yellow1, dark: yellow0 }
-      warningForeground:                    { light: black4,  dark: white5 }
-      warningBorder:     *warningBackground
-
-    ### -----------------------------------------------------------------------
-    ### ✅ MARK: Scrollbar control
-    ### https://code.visualstudio.com/api/references/theme-color#scrollbar-control
-    scrollbar:
-      shadow: { light: cyan3 alpha=0.5, dark: cyan0 alpha=0.5 }
-
-    scrollbarSlider:
-      # should be brighter or darker than any scrollable widget
-      background: { light: white2 alpha=0.75, dark: black5 alpha=0.75 }
-      activeBackground: &scrollbarSliderActiveBackground { light: cyan2 alpha=0.75, dark: cyan1 alpha=0.75 }
-      hoverBackground:  &scrollbarSliderHoverBackground  { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75 }
-
-    ### -----------------------------------------------------------------------
-    ### ✅ MARK: Badge
-    ### https://code.visualstudio.com/api/references/theme-color#badge
-    badge:
-      background: &badgeBackground cyan2
-      foreground: &badgeForeground { light: white7, dark: black0 }
-
-    ### -----------------------------------------------------------------------
-    ### ✅ MARK: Progress bar
-    ### https://code.visualstudio.com/api/references/theme-color#progress-bar
-    progressBar:
-      background: cyan2
-
-    ### -----------------------------------------------------------------------
-    ### ✅ MARK: Lists and trees
-    ### https://code.visualstudio.com/api/references/theme-color#lists-and-trees
-    ###
-    ### Unstyled:
-    ###  - list.focusHighlightForeground
-    ###  - list.focusAndSelectionOutline
-    ###  - list.highlightForeground
-    ###  - listFilterWidget.*
-    ###  - tree.tableOddRowsBackground
-    list:
-      activeSelectionBackground:       &listActiveBackground { light: cyan3,  dark: cyan0 }
-      activeSelectionForeground:       &listActiveForeground { light: black4, dark: white5 }
-      activeSelectionIconForeground:   *listActiveForeground
-      inactiveSelectionBackground:     *listActiveBackground
-      inactiveSelectionForeground:     *listActiveForeground
-      inactiveSelectionIconForeground: *listActiveForeground
-
-      # this applies to not only items in explorer list but also panels
-      # with inputs in the settings ui
-      hoverBackground: &listHoverBackground { light: white4, dark: black4 }
-      # this seems to only apply to lists like file explorer
-      hoverForeground: &listHoverForeground { light: black2, dark: white3 }
-      focusBackground: *listHoverBackground
-      focusForeground: *listHoverForeground
-      focusOutline:    *alpha0
-
-      dropBackground:        { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
-      filterMatchBackground: *matchBackground
-
-      errorForeground:   *errorForeground
-      warningForeground: { light: yellow2, dark: yellow1 }
-
-      deemphasizedForeground: red2
-
-    tree:
-      indentGuidesStroke:         &guideStroke         { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75}
-      inactiveIndentGuidesStroke: &inactiveGuideStroke { light: cyan3 alpha=0.25, dark: cyan0 alpha=0.25}
+    ### MARK: Action bar colors
+    ### https://code.visualstudio.com/api/references/theme-color#action-bar-colors
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Activity bar
@@ -472,95 +343,107 @@ vscode:
       foreground: *badgeForeground
 
     ### -----------------------------------------------------------------------
-    ### Profiles
-    ### https://code.visualstudio.com/api/references/theme-color#profiles
+    ### ✅ MARK: Badge
+    ### https://code.visualstudio.com/api/references/theme-color#badge
+    badge:
+      background: *badgeBackground
+      foreground: *badgeForeground
 
     ### -----------------------------------------------------------------------
-    ### ✅ MARK: Sidebar
-    ### https://code.visualstudio.com/api/references/theme-color#side-bar
-    ###
-    ### Unstyled
-    ###  - sideBarTitle.*
-    ###  - sideBarActivityBarTop.border
-    ###  - sideBarStickyScroll.*
-    sideBar:
-      background: &sideBarBackground { light: white4, dark: black0 }
-      foreground: &sideBarForeground { light: black6, dark: white1 }
-      border:     &sideBarBorder     { light: white1, dark: black4 }
-      dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
-
-    sideBarSectionHeader:
-      background: *sideBarBackground
-      foreground: *sideBarForeground
-      border: { light: white2, dark: black5 }
+    ### MARK: Banner colors
+    ### https://code.visualstudio.com/api/references/theme-color#banner-colors
 
     ### -----------------------------------------------------------------------
-    ### ✅ MARK: Minimap
-    ### https://code.visualstudio.com/api/references/theme-color#minimap
+    ### MARK: Breadcrumbs colors
+    ### https://code.visualstudio.com/api/references/theme-color#breadcrumbs-colors
+    breadcrumb:
+      background:
+        light: white5
+        dark: black1
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Button control
+    ### https://code.visualstudio.com/api/references/theme-color#button-control
     ###
     ### Unstyled:
-    ###  - editorMinimap.inlineChatInserted
-    minimap:
-      background: { light: white4 alpha=0.5,  dark: black0 alpha=0.5 }
-
-      # These values only care about alpha level and not color
-      foregroundOpacity: *alpha50
-
-      errorHighlight:     { light: red0 alpha=0.5,    dark: red1 alpha=0.5 }
-      warningHighlight:   { light: yellow1 alpha=0.5, dark: yellow1 alpha=0.5 }
-      findMatchHighlight: { light: blue3 alpha=0.5,   dark: white3 alpha=0.5 }
-      selectionHighlight: { light: blue3 alpha=0.5,   dark: white1 alpha=0.5 }
-
-    minimapGutter:
-      addedBackground:    green1 alpha=0.5
-      deletedBackground:  red1 alpha=0.5
-      modifiedBackground: yellow1 alpha=0.5
-
-    minimapSlider:
-      background: { light: white4 alpha=0.5,  dark: black4 alpha=0.5 }
-      activeBackground: *scrollbarSliderActiveBackground
-      hoverBackground:  *scrollbarSliderHoverBackground
+    ###  - button.border
+    ###  - button.separator
+    ###  - button.secondary*
+    ###  - checkbox.*
+    ###  - radio.*
+    button:
+      background:      &buttonBackground      { light: cyan2, dark: cyan0 }
+      hoverBackground: &buttonHoverBackground { light: cyan1, dark: cyan1 }
+      foreground:      &buttonForeground      { light: white7, dark: white5 }
 
     ### -----------------------------------------------------------------------
-    ### ✅ MARK: Editor groups & tabs
-    ### https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
+    ### MARK: Chart colors
+    ### https://code.visualstudio.com/api/references/theme-color#chart-colors
+    charts:
+      red: red1
+      blue: blue1
+      green: green1
+      yellow: yellow1
+      purple: purple1
+      orange: cyan1
+      foreground:
+        light: black5
+        dark: white1
+      lines: green0
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Chat colors
+    ### https://code.visualstudio.com/api/references/theme-color#chat-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Command center colors
+    ### https://code.visualstudio.com/api/references/theme-color#command-center-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Comments view colors
+    ### https://code.visualstudio.com/api/references/theme-color#comments-view-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Debug colors
+    ### https://code.visualstudio.com/api/references/theme-color#debug-colors
+
+    # "debugToolBar.background": "polarNight1",
+    # "editor.inlineValuesBackground": "polarNight3",
+    # "editor.inlineValuesForeground": "snowStorm2",
+    # "editor.stackFrameHighlightBackground": "frost3",
+    # "editor.focusedStackFrameHighlightBackground": "frost3",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Debug icons colors
+    ### https://code.visualstudio.com/api/references/theme-color#debug-icons-colors
+
+    # "debugConsole.infoForeground": "frost1",
+    # "debugConsole.warningForeground": "auroraYellow",
+    # "debugConsole.errorForeground": "auroraRed",
+    # "debugConsole.sourceForeground": "#616e88",
+    # "debugConsoleInputIcon.foreground": "frost2",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Diff editor colors
+    ### https://code.visualstudio.com/api/references/theme-color#diff-editor-colors
+
+    # "diffEditor.insertedTextBackground": "frost233",
+    # "diffEditor.removedTextBackground": "auroraRed4d",
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Dropdown control
+    ### https://code.visualstudio.com/api/references/theme-color#dropdown-control
     ###
     ### Unstyled:
-    ###
-    ###  - sideBySideEditor.*
-    editorGroup:
-      border: *sideBarBorder
-      dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
-
-    editorGroupHeader:
-      # border:     # below the breadcrumbs
-      # tabsBorder: # between the breadcrumbs
-      tabsBackground: { light: white3, dark: black0 }
-
-    tab:
-      # activeBorder: bottom border for selected tab
-      # activeBorderTop: how different from selectedBorderTop?
-      # hoverBorder
-      # unfocusedActiveBorder
-      # unfocusedActiveBorderTop
-      # unfocusedActiveForeground
-      # unfocusedHoverBackground
-      # unfocusedHoverBorder
-      # unfocusedInactiveForeground
-      activeBackground:   { light: white5, dark: black1 }
-      activeForeground:   { light: cyan1,  dark: cyan3 }
-      hoverBackground:    { light: white5, dark: black1 }
-      inactiveBackground: { light: white3, dark: black0 }
-      inactiveForeground: { light: white0, dark: black7 }
-      selectedBorderTop:  { light: cyan3,  dark: cyan1 }
-      border: *alpha0
-      dragAndDropBorder: cyan2
-      lastPinnedBorder: *alpha0 # { light: white1, dark: black5 }
+    ###  - dropdown.border
+    ###  - dropdown.foreground
+    dropdown:
+      background:     &inputBackground {light: white4, dark: black0}
+      listBackground: *inputBackground
 
     ### -----------------------------------------------------------------------
     ### MARK: Editor colors
     ### https://code.visualstudio.com/api/references/theme-color#editor-colors
-
     editor:
       # Editor should be more prominent than sidebar but less than panel
       background: &editorBackground   { light: white5, dark: black1 }
@@ -617,7 +500,7 @@ vscode:
 
     editorHint: # TODO
       foreground: red2
-    #   border: red2
+      # border: red2
 
     editorHoverWidget: # ✅
       background: *editorPopupBackground
@@ -670,24 +553,41 @@ vscode:
     # "editorMarkerNavigationError.background": "auroraRedc0",
     # "editorMarkerNavigationWarning.background": "auroraYellowc0",
 
-
-
-
-
     ### -----------------------------------------------------------------------
-    ### MARK: Diff editor colors
-    ### https://code.visualstudio.com/api/references/theme-color#diff-editor-colors
+    ### ✅ MARK: Editor groups & tabs
+    ### https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
+    ###
+    ### Unstyled:
+    ###
+    ###  - sideBySideEditor.*
+    editorGroup:
+      border: *sideBarBorder
+      dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
 
-    # "diffEditor.insertedTextBackground": "frost233",
-    # "diffEditor.removedTextBackground": "auroraRed4d",
+    editorGroupHeader:
+      # border:     # below the breadcrumbs
+      # tabsBorder: # between the breadcrumbs
+      tabsBackground: { light: white3, dark: black0 }
 
-    ### -----------------------------------------------------------------------
-    ### MARK: Chat colors
-    ### https://code.visualstudio.com/api/references/theme-color#chat-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Panel chat colors
-    ### https://code.visualstudio.com/api/references/theme-color#panel-chat-colors
+    tab:
+      # activeBorder: bottom border for selected tab
+      # activeBorderTop: how different from selectedBorderTop?
+      # hoverBorder
+      # unfocusedActiveBorder
+      # unfocusedActiveBorderTop
+      # unfocusedActiveForeground
+      # unfocusedHoverBackground
+      # unfocusedHoverBorder
+      # unfocusedInactiveForeground
+      activeBackground:   { light: white5, dark: black1 }
+      activeForeground:   { light: cyan1,  dark: cyan3 }
+      hoverBackground:    { light: white5, dark: black1 }
+      inactiveBackground: { light: white3, dark: black0 }
+      inactiveForeground: { light: white0, dark: black7 }
+      selectedBorderTop:  { light: cyan3,  dark: cyan1 }
+      border: *alpha0
+      dragAndDropBorder: cyan2
+      lastPinnedBorder: *alpha0 # { light: white1, dark: black5 }
 
     ### -----------------------------------------------------------------------
     ### MARK: Editor widget colors
@@ -709,6 +609,212 @@ vscode:
       selectedForeground: *editorPopupForeground
       highlightForeground:      { light: cyan2, dark: cyan1 } # autocomplete match in inactive rows
       focusHighlightForeground: *editorPopupActiveForeground # autocomplete match in active row
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Extensions colors
+    ### https://code.visualstudio.com/api/references/theme-color#extensions-colors
+
+    # "extensionButton.prominentForeground": "snowStorm0",
+    # "extensionButton.prominentBackground": "polarNight2",
+    # "extensionButton.prominentHoverBackground": "polarNight3",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Gauge colors
+    ### https://code.visualstudio.com/api/references/theme-color#gauge-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Git colors
+    ### https://code.visualstudio.com/api/references/theme-color#git-colors
+
+    # "gitDecoration.modifiedResourceForeground": "auroraYellow",
+    # "gitDecoration.deletedResourceForeground": "auroraRed",
+    # "gitDecoration.untrackedResourceForeground": "auroraGreen",
+    # "gitDecoration.ignoredResourceForeground": "snowStorm066",
+    # "gitDecoration.conflictingResourceForeground": "frost3",
+    # "gitDecoration.submoduleResourceForeground": "frost0",
+    # "gitDecoration.stageDeletedResourceForeground": "auroraRed",
+    # "gitDecoration.stageModifiedResourceForeground": "auroraYellow",
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Input control
+    ### https://code.visualstudio.com/api/references/theme-color#input-control
+    input:
+      background:            *inputBackground
+      foreground:            { light: black5, dark: white5 }
+      placeholderForeground: { light: white0, dark: black6 }
+      border:                { light: white2, dark: black5 }
+
+    inputOption:
+      activeBackground: *buttonBackground
+      activeForeground: *buttonForeground
+
+      # match input color to hide the border
+      activeBorder: *inputBackground
+      # these should be relative to &inputBackground
+      hoverBackground: { light: white2, dark: black4 }
+
+    inputValidation:
+      errorBackground: &errorBackground { light: red2,   dark: red1 }
+      errorForeground:                  { light: white7, dark: white5 }
+      errorBorder:     *errorBackground
+
+      infoBackground: &infoBackground { light: cyan2,  dark: cyan1 }
+      infoForeground:                 { light: white7, dark: white5 }
+      infoBorder:     *infoBackground
+
+      warningBackground: &warningBackground { light: yellow1, dark: yellow0 }
+      warningForeground:                    { light: black4,  dark: white5 }
+      warningBorder:     *warningBackground
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Integrated terminal colors
+    ### https://code.visualstudio.com/api/references/theme-color#integrated-terminal-colors
+
+    # "terminal.tab.activeBorder": "frost1",
+
+    # FIXME: This seems to be a broken setting:
+    # https://github.com/microsoft/vscode/issues/252449
+    # terminal.findMatchBackground: red2
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Keybinding label colors
+    ### https://code.visualstudio.com/api/references/theme-color#keybinding-label-colors
+
+    # "keybindingLabel.background": "polarNight3",
+    # "keybindingLabel.border": "polarNight3",
+    # "keybindingLabel.bottomBorder": "polarNight3",
+    # "keybindingLabel.foreground": "snowStorm0",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Keyboard shortcut table colors
+    ### https://code.visualstudio.com/api/references/theme-color#keyboard-shortcut-table-colors
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Lists and trees
+    ### https://code.visualstudio.com/api/references/theme-color#lists-and-trees
+    ###
+    ### Unstyled:
+    ###  - list.focusHighlightForeground
+    ###  - list.focusAndSelectionOutline
+    ###  - list.highlightForeground
+    ###  - listFilterWidget.*
+    ###  - tree.tableOddRowsBackground
+    list:
+      activeSelectionBackground:       &listActiveBackground { light: cyan3,  dark: cyan0 }
+      activeSelectionForeground:       &listActiveForeground { light: black4, dark: white5 }
+      activeSelectionIconForeground:   *listActiveForeground
+      inactiveSelectionBackground:     *listActiveBackground
+      inactiveSelectionForeground:     *listActiveForeground
+      inactiveSelectionIconForeground: *listActiveForeground
+
+      # this applies to not only items in explorer list but also panels
+      # with inputs in the settings ui
+      hoverBackground: &listHoverBackground { light: white4, dark: black4 }
+      # this seems to only apply to lists like file explorer
+      hoverForeground: &listHoverForeground { light: black2, dark: white3 }
+      focusBackground: *listHoverBackground
+      focusForeground: *listHoverForeground
+      focusOutline:    *alpha0
+
+      dropBackground:        { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
+      filterMatchBackground: *matchBackground
+
+      errorForeground:   *errorForeground
+      warningForeground: { light: yellow2, dark: yellow1 }
+
+      deemphasizedForeground: red2
+
+    tree:
+      indentGuidesStroke:         *guideStroke
+      inactiveIndentGuidesStroke: *inactiveGuideStroke
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Merge conflict colors
+    ### https://code.visualstudio.com/api/references/theme-color#merge-conflicts-colors
+
+    # "merge.currentHeaderBackground": "frost266",
+    # "merge.currentContentBackground": "frost24d",
+    # "merge.incomingHeaderBackground": "frost066",
+    # "merge.incomingContentBackground": "frost04d",
+    # "merge.border": "polarNight100",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Menu bar colors
+    ### https://code.visualstudio.com/api/references/theme-color#menu-bar-colors
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Minimap
+    ### https://code.visualstudio.com/api/references/theme-color#minimap
+    ###
+    ### Unstyled:
+    ###  - editorMinimap.inlineChatInserted
+    minimap:
+      background: { light: white4 alpha=0.5,  dark: black0 alpha=0.5 }
+
+      # These values only care about alpha level and not color
+      foregroundOpacity: *alpha50
+
+      errorHighlight:     { light: red0 alpha=0.5,    dark: red1 alpha=0.5 }
+      warningHighlight:   { light: yellow1 alpha=0.5, dark: yellow1 alpha=0.5 }
+      findMatchHighlight: { light: blue3 alpha=0.5,   dark: white3 alpha=0.5 }
+      selectionHighlight: { light: blue3 alpha=0.5,   dark: white1 alpha=0.5 }
+
+    minimapGutter:
+      addedBackground:    green1 alpha=0.5
+      deletedBackground:  red1 alpha=0.5
+      modifiedBackground: yellow1 alpha=0.5
+
+    minimapSlider:
+      background: { light: white4 alpha=0.5,  dark: black4 alpha=0.5 }
+      activeBackground: *scrollbarSliderActiveBackground
+      hoverBackground:  *scrollbarSliderHoverBackground
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Notebook colors
+    ### https://code.visualstudio.com/api/references/theme-color#notebook-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Notification colors
+    ### https://code.visualstudio.com/api/references/theme-color#notification-colors
+
+    # per nord: `notification.*` keys are legacy support for VS Code versions >1.21.0
+    # "notification.background": "polarNight1",
+    # "notification.buttonBackground": "polarNight2",
+    # "notification.buttonForeground": "snowStorm0",
+    # "notification.buttonHoverBackground": "polarNight3",
+    # "notification.errorBackground": "auroraRed",
+    # "notification.errorForeground": "polarNight0",
+    # "notification.foreground": "snowStorm0",
+    # "notification.infoBackground": "frost1",
+    # "notification.infoForeground": "polarNight0",
+    # "notification.warningBackground": "auroraYellow",
+    # "notification.warningForeground": "polarNight0",
+    # "notificationCenter.border": "polarNight100",
+    # "notificationCenterHeader.background": "polarNight0",
+    # "notificationCenterHeader.foreground": "frost1",
+    # "notificationLink.foreground": "frost1",
+    # "notifications.background": "polarNight1",
+    # "notifications.border": "polarNight0",
+    # "notifications.foreground": "snowStorm0",
+    # "notificationToast.border": "polarNight100",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Panel colors
+    ### https://code.visualstudio.com/api/references/theme-color#panel-colors
+    panel:
+      background:
+        <<: *terminalBackground
+      border:
+        light: white4
+        dark: black3
+
+    # "panelTitle.activeBorder": "frost100",
+    # "panelTitle.activeForeground": "frost1",
+    # "panelTitle.inactiveForeground": "snowStorm0",
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Panel chat colors
+    ### https://code.visualstudio.com/api/references/theme-color#panel-chat-colors
 
     ### -----------------------------------------------------------------------
     ### MARK: Peek view colors
@@ -741,30 +847,71 @@ vscode:
     # peekViewTitleLabel:
     #   foreground: frost1
 
+    ### -----------------------------------------------------------------------
+    ### MARK: Ports colors
+    ### https://code.visualstudio.com/api/references/theme-color#ports-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Merge conflict colors
-    ### https://code.visualstudio.com/api/references/theme-color#merge-conflicts-colors
-
-    # "merge.currentHeaderBackground": "frost266",
-    # "merge.currentContentBackground": "frost24d",
-    # "merge.incomingHeaderBackground": "frost066",
-    # "merge.incomingContentBackground": "frost04d",
-    # "merge.border": "polarNight100",
+    ### MARK: Profiles
+    ### https://code.visualstudio.com/api/references/theme-color#profiles
 
     ### -----------------------------------------------------------------------
-    ### MARK: Panel colors
-    ### https://code.visualstudio.com/api/references/theme-color#panel-colors
-    panel:
-      background:
-        <<: *terminalBackground
-      border:
-        light: white4
-        dark: black3
+    ### ✅ MARK: Progress bar
+    ### https://code.visualstudio.com/api/references/theme-color#progress-bar
+    progressBar:
+      background: cyan2
 
-    # "panelTitle.activeBorder": "frost100",
-    # "panelTitle.activeForeground": "frost1",
-    # "panelTitle.inactiveForeground": "snowStorm0",
+    ### -----------------------------------------------------------------------
+    ### MARK: Quick picker colors
+    ### https://code.visualstudio.com/api/references/theme-color#quick-picker-colors
+
+    # "pickerGroup.border": "polarNight1",
+    # "pickerGroup.foreground": "frost1",
+    # "quickInputList.focusBackground": "frost1",
+    # "quickInputList.focusForeground": "polarNight0",
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Scrollbar control
+    ### https://code.visualstudio.com/api/references/theme-color#scrollbar-control
+    scrollbar:
+      shadow: { light: cyan3 alpha=0.5, dark: cyan0 alpha=0.5 }
+
+    scrollbarSlider:
+      # should be brighter or darker than any scrollable widget
+      background: { light: white2 alpha=0.75, dark: black5 alpha=0.75 }
+      activeBackground: *scrollbarSliderActiveBackground
+      hoverBackground:  *scrollbarSliderHoverBackground
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Settings editor colors
+    ### https://code.visualstudio.com/api/references/theme-color#settings-editor-colors
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Sidebar
+    ### https://code.visualstudio.com/api/references/theme-color#side-bar
+    ###
+    ### Unstyled
+    ###  - sideBarTitle.*
+    ###  - sideBarActivityBarTop.border
+    ###  - sideBarStickyScroll.*
+    sideBar:
+      background: *sideBarBackground
+      foreground: *sideBarForeground
+      border:     *sideBarBorder
+      dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
+
+    sideBarSectionHeader:
+      background: *sideBarBackground
+      foreground: *sideBarForeground
+      border: { light: white2, dark: black5 }
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Snippets colors
+    ### https://code.visualstudio.com/api/references/theme-color#snippets-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Source control graph colors
+    ### https://code.visualstudio.com/api/references/theme-color#source-control-graph-colors
 
     ### -----------------------------------------------------------------------
     ### MARK: Status bar colors
@@ -787,6 +934,33 @@ vscode:
     # "statusBarItem.warningForeground": "polarNight0",
 
     ### -----------------------------------------------------------------------
+    ### MARK: Symbol icons colors
+    ### https://code.visualstudio.com/api/references/theme-color#symbol-icons-colors
+
+    ### -----------------------------------------------------------------------
+    ### MARK: Testing colors
+    ### https://code.visualstudio.com/api/references/theme-color#testing-colors
+
+    ### -----------------------------------------------------------------------
+    ### ✅ MARK: Text colors
+    ### https://code.visualstudio.com/api/references/theme-color#text-colors
+    ###
+    ### Unstyled:
+    ###  - textBlockQuote
+    ###  - textCodeBlock
+    ###  - textPreformat
+    ###  - textSeparator
+    textLink:
+      foreground:       cyan1
+      activeForeground: *textLinkActiveForeground
+
+    # "textBlockQuote.background": "polarNight1",
+    # "textBlockQuote.border": "frost2",
+    # "textCodeBlock.background": "polarNight3",
+    # "textPreformat.foreground": "frost0",
+    # "textSeparator.foreground": "snowStorm2",
+
+    ### -----------------------------------------------------------------------
     ### MARK: Title bar colors
     ### https://code.visualstudio.com/api/references/theme-color#title-bar-colors
 
@@ -797,102 +971,6 @@ vscode:
     # "titleBar.inactiveForeground": "snowStorm066",
 
     ### -----------------------------------------------------------------------
-    ### MARK: Menu bar colors
-    ### https://code.visualstudio.com/api/references/theme-color#menu-bar-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Command center colors
-    ### https://code.visualstudio.com/api/references/theme-color#command-center-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Notification colors
-    ### https://code.visualstudio.com/api/references/theme-color#notification-colors
-
-    # per nord: `notification.*` keys are legacy support for VS Code versions >1.21.0
-    # "notification.background": "polarNight1",
-    # "notification.buttonBackground": "polarNight2",
-    # "notification.buttonForeground": "snowStorm0",
-    # "notification.buttonHoverBackground": "polarNight3",
-    # "notification.errorBackground": "auroraRed",
-    # "notification.errorForeground": "polarNight0",
-    # "notification.foreground": "snowStorm0",
-    # "notification.infoBackground": "frost1",
-    # "notification.infoForeground": "polarNight0",
-    # "notification.warningBackground": "auroraYellow",
-    # "notification.warningForeground": "polarNight0",
-    # "notificationCenter.border": "polarNight100",
-    # "notificationCenterHeader.background": "polarNight0",
-    # "notificationCenterHeader.foreground": "frost1",
-    # "notificationLink.foreground": "frost1",
-    # "notifications.background": "polarNight1",
-    # "notifications.border": "polarNight0",
-    # "notifications.foreground": "snowStorm0",
-    # "notificationToast.border": "polarNight100",
-
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Banner colors
-    ### https://code.visualstudio.com/api/references/theme-color#banner-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Extensions colors
-    ### https://code.visualstudio.com/api/references/theme-color#extensions-colors
-
-    # "extensionButton.prominentForeground": "snowStorm0",
-    # "extensionButton.prominentBackground": "polarNight2",
-    # "extensionButton.prominentHoverBackground": "polarNight3",
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Quick picker colors
-    ### https://code.visualstudio.com/api/references/theme-color#quick-picker-colors
-
-    # "pickerGroup.border": "polarNight1",
-    # "pickerGroup.foreground": "frost1",
-    # "quickInputList.focusBackground": "frost1",
-    # "quickInputList.focusForeground": "polarNight0",
-
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Keybinding label colors
-    ### https://code.visualstudio.com/api/references/theme-color#keybinding-label-colors
-
-
-    # "keybindingLabel.background": "polarNight3",
-    # "keybindingLabel.border": "polarNight3",
-    # "keybindingLabel.bottomBorder": "polarNight3",
-    # "keybindingLabel.foreground": "snowStorm0",
-
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Keyboard shortcut table colors
-    ### https://code.visualstudio.com/api/references/theme-color#keyboard-shortcut-table-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Integrated terminal colors
-    ### https://code.visualstudio.com/api/references/theme-color#integrated-terminal-colors
-
-    # "terminal.tab.activeBorder": "frost1",
-
-    # FIXME: This seems to be a broken setting:
-    # https://github.com/microsoft/vscode/issues/252449
-    # terminal.findMatchBackground: red2
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Debug colors
-    ### https://code.visualstudio.com/api/references/theme-color#debug-colors
-
-    # "debugToolBar.background": "polarNight1",
-    # "editor.inlineValuesBackground": "polarNight3",
-    # "editor.inlineValuesForeground": "snowStorm2",
-    # "editor.stackFrameHighlightBackground": "frost3",
-    # "editor.focusedStackFrameHighlightBackground": "frost3",
-
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Testing colors
-    ### https://code.visualstudio.com/api/references/theme-color#testing-colors
-
-    ### -----------------------------------------------------------------------
     ### MARK: Welcome page colors
     ### https://code.visualstudio.com/api/references/theme-color#welcome-page-colors
 
@@ -901,83 +979,9 @@ vscode:
     # "welcomePage.buttonHoverBackground": "polarNight3",
 
     ### -----------------------------------------------------------------------
-    ### MARK: Git colors
-    ### https://code.visualstudio.com/api/references/theme-color#git-colors
-
-    # "gitDecoration.modifiedResourceForeground": "auroraYellow",
-    # "gitDecoration.deletedResourceForeground": "auroraRed",
-    # "gitDecoration.untrackedResourceForeground": "auroraGreen",
-    # "gitDecoration.ignoredResourceForeground": "snowStorm066",
-    # "gitDecoration.conflictingResourceForeground": "frost3",
-    # "gitDecoration.submoduleResourceForeground": "frost0",
-    # "gitDecoration.stageDeletedResourceForeground": "auroraRed",
-    # "gitDecoration.stageModifiedResourceForeground": "auroraYellow",
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Source control graph colors
-    ### https://code.visualstudio.com/api/references/theme-color#source-control-graph-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Settings editor colors
-    ### https://code.visualstudio.com/api/references/theme-color#settings-editor-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Breadcrumbs colors
-    ### https://code.visualstudio.com/api/references/theme-color#breadcrumbs-colors
-    breadcrumb:
-      background:
-        light: white5
-        dark: black1
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Snippets colors
-    ### https://code.visualstudio.com/api/references/theme-color#snippets-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Symbol icons colors
-    ### https://code.visualstudio.com/api/references/theme-color#symbol-icons-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Debug icons colors
-    ### https://code.visualstudio.com/api/references/theme-color#debug-icons-colors
-
-    # "debugConsole.infoForeground": "frost1",
-    # "debugConsole.warningForeground": "auroraYellow",
-    # "debugConsole.errorForeground": "auroraRed",
-    # "debugConsole.sourceForeground": "#616e88",
-    # "debugConsoleInputIcon.foreground": "frost2",
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Notebook colors
-    ### https://code.visualstudio.com/api/references/theme-color#notebook-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Chart colors
-    ### https://code.visualstudio.com/api/references/theme-color#chart-colors
-    charts:
-      red: red1
-      blue: blue1
-      green: green1
-      yellow: yellow1
-      purple: purple1
-      orange: cyan1
-      foreground:
-        light: black5
-        dark: white1
-      lines: green0
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Ports colors
-    ### https://code.visualstudio.com/api/references/theme-color#ports-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Comments view colors
-    ### https://code.visualstudio.com/api/references/theme-color#comments-view-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Action bar colors
-    ### https://code.visualstudio.com/api/references/theme-color#action-bar-colors
-
-    ### -----------------------------------------------------------------------
-    ### MARK: Gauge colors
-    ### https://code.visualstudio.com/api/references/theme-color#gauge-colors
+    ### ✅ MARK: Window colors
+    ### https://code.visualstudio.com/api/references/theme-color#window-border
+    window:
+        # These downplay the border
+      activeBorder:   &windowBorder { light: white7, dark: black0 }
+      inactiveBorder: *windowBorder
