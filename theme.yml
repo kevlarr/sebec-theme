@@ -10,6 +10,13 @@ _ignore:
   alpha50: &alpha50 "#000000 alpha=0.5"
   alpha75: &alpha75 "#000000 alpha=0.75"
 
+  # Colors for popup items in the editor, eg. actions list and suggestion widget
+  editorPopupBackground: &editorPopupBackground { light: white6, dark: black3 }
+  editorPopupForeground: &editorPopupForeground { light: black5, dark: white0 }
+  editorPopupBorder: &editorPopupBorder { light: white4, dark: black4 }
+  editorPopupActiveBackground: &editorPopupActiveBackground { light: cyan3 alpha=0.5, dark: cyan0 alpha=0.5 }
+  editorPopupActiveForeground: &editorPopupActiveForeground { light: cyan1, dark: cyan2 }
+
 terminal:
   base:
     ansi:
@@ -290,7 +297,7 @@ vscode:
     ###  - textSeparator
     textLink:
       foreground:       cyan1
-      activeForeground: {light: cyan0, dark: cyan2}
+      activeForeground: &textLinkActiveForeground {light: cyan0, dark: cyan2}
 
     # "textBlockQuote.background": "polarNight1",
     # "textBlockQuote.border": "frost2",
@@ -301,13 +308,16 @@ vscode:
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Action colors
     ### https://code.visualstudio.com/api/references/theme-color#action-colors
-    ###
-    ### Unstyled:
-    ###  - editorActionList
     toolbar:
       # Eg. the "..." icons when opened or other buttons when clicked
       activeBackground: { light: white1, dark: black6 }
       hoverBackground:  { light: white2, dark: black5 }
+
+    editorActionList:
+      background: *editorPopupBackground
+      foreground: *editorPopupForeground
+      focusForeground: *editorPopupActiveForeground
+      focusBackground: *editorPopupActiveBackground
 
     ### -----------------------------------------------------------------------
     ### MARK: Button control
@@ -556,7 +566,7 @@ vscode:
       background: &editorBackground   { light: white5, dark: black1 }
       foreground: *terminalForeground
 
-      selectionBackground: &editorSelectionBackground { light: blue2 alpha=0.5, dark: blue0 alpha=0.5 }
+      selectionBackground: &editorSelectionBackground { light: blue3 alpha=0.5, dark: blue0 alpha=0.5 }
 
       # The active & inactive match backgrounds - these should match terminal.selectionBackground,
       # just with the addition of an alpha channel to not obscure text decorations
@@ -595,6 +605,9 @@ vscode:
       background: *cursorTextColor
       foreground: *cursorColor
 
+    editorError:
+      foreground: red1 # TODO
+
     editorGutter: # ✅
       addedBackground:    { light: green3 alpha=0.75,  dark: green0 alpha=0.75 }
       deletedBackground:  { light: red2 alpha=0.75,    dark: red1 alpha=0.75 }
@@ -602,29 +615,29 @@ vscode:
       # The > carets for folding
       foldingControlForeground: { light: blue1, dark: blue2 }
 
-    editorLineNumber: # ✅
-      foreground:       { light: white0, dark: black6 }
-      activeForeground: { light: cyan0,  dark: cyan1 }
-
-    editorError:
-      foreground: red1 # TODO
-
-    editorWarning:
-      foreground: yellow0 # TODO
-
-    editorHint:
-      background: red2 # TODO
+    editorHint: # TODO
+      foreground: red2
+    #   border: red2
 
     editorHoverWidget: # ✅
-      background: { light: white6, dark: black3 }
-      foreground: *terminalForeground
-      border: *alpha0
+      background: *editorPopupBackground
+      foreground: *editorPopupForeground
+      border:     *editorPopupBorder
+
+    editorInlayHint:
+      background: { light: cyan2 alpha=0.25, dark: cyan1 alpha=0.25}
+      foreground: { light: cyan1, dark: cyan2 }
 
     editorIndentGuide:
       background: *inactiveGuideStroke
       activeBackground: *guideStroke
 
-    editorRuler.foreground: { light: blue3 alpha=0.25, dark: blue0 alpha=0.25 }
+    editorLineNumber: # ✅
+      foreground:       { light: white0, dark: black6 }
+      activeForeground: { light: cyan0,  dark: cyan1 }
+
+    editorLink:
+      activeForeground: *textLinkActiveForeground
 
     editorOverviewRuler:
       border: *alpha0
@@ -643,31 +656,21 @@ vscode:
       # warningForeground: auroraYellow
       # infoForeground: frost2
 
-    # "editorHint.border": "auroraYellow00",
-    # "editorHint.foreground": "auroraYellow",
-    # "editorInlayHint.background": "polarNight2",
-    # "editorInlayHint.foreground": "snowStorm0",
+    editorRuler.foreground: { light: blue3 alpha=0.25, dark: blue0 alpha=0.25 }
 
-    # "editorWhitespace.foreground": "polarNight3b3"
+    editorWarning:
+      foreground: yellow0 # TODO
 
-    # "editorWidget.background": "polarNight0",
-    # "editorWidget.border": "polarNight1",
+    editorWhitespace:
+      foreground: { light: white2, dark: black4 }
 
-    # "editorCodeLens.foreground": "polarNight3",
-
-    # "editorLink.activeForeground": "frost1",
+    editorCodeLens.foreground: red2 # TODO
 
     # "editorMarkerNavigation.background": "frost3c0",
     # "editorMarkerNavigationError.background": "auroraRedc0",
     # "editorMarkerNavigationWarning.background": "auroraYellowc0",
 
-    # "editorSuggestWidget.background": "polarNight0",
-    # "editorSuggestWidget.border": "polarNight1",
-    # "editorSuggestWidget.foreground": "snowStorm0",
-    # "editorSuggestWidget.focusHighlightForeground": "frost1",
-    # "editorSuggestWidget.highlightForeground": "frost1",
-    # "editorSuggestWidget.selectedBackground": "polarNight2",
-    # "editorSuggestWidget.selectedForeground": "snowStorm0",
+
 
 
 
@@ -690,34 +693,55 @@ vscode:
     ### MARK: Editor widget colors
     ### https://code.visualstudio.com/api/references/theme-color#editor-widget-colors
     editorWidget:
-      background:
-        light: white7
-        dark: black4
-      foreground:
-        light: black4
-        dark: white5
+      background: { light: white7, dark: black4 }
+      foreground: { light: black4, dark: white5 }
+      border: { light: cyan2, dark: cyan1 }
 
-    # "debugExceptionWidget.background": "polarNight3",
-    # "debugExceptionWidget.border": "polarNight0",
+    # debugExceptionWidget: # TODO
+    #   background: red2
+    #   border: red2
+
+    editorSuggestWidget:
+      background: *editorPopupBackground
+      foreground: *editorPopupForeground
+      border:     *editorPopupBorder
+      selectedBackground: *editorPopupActiveBackground
+      selectedForeground: *editorPopupForeground
+      highlightForeground:      { light: cyan2, dark: cyan1 } # autocomplete match in inactive rows
+      focusHighlightForeground: *editorPopupActiveForeground # autocomplete match in active row
+
+    #   selectedForeground": "snowStorm0",
 
     ### -----------------------------------------------------------------------
     ### MARK: Peek view colors
     ### https://code.visualstudio.com/api/references/theme-color#peek-view-colors
 
+    # peekView:
+    #   border: polarNight3
 
-    # "peekView.border": "polarNight3",
-    # "peekViewEditor.background": "polarNight0",
-    # "peekViewEditorGutter.background": "polarNight0",
-    # "peekViewEditor.matchHighlightBackground": "frost14d",
-    # "peekViewResult.background": "polarNight0",
-    # "peekViewResult.fileForeground": "frost1",
-    # "peekViewResult.lineForeground": "snowStorm066",
-    # "peekViewResult.matchHighlightBackground": "frost1cc",
-    # "peekViewResult.selectionBackground": "polarNight2",
-    # "peekViewResult.selectionForeground": "snowStorm0",
-    # "peekViewTitle.background": "polarNight1",
-    # "peekViewTitleDescription.foreground": "snowStorm0",
-    # "peekViewTitleLabel.foreground": "frost1",
+    # peekViewEditor:
+    #   background: polarNight0
+    #   matchHighlightBackground: frost14d
+
+    # peekViewEditorGutter:
+    #   background: polarNight0
+
+    # peekViewResult:
+    #   background: polarNight0
+    #   fileForeground: frost1
+    #   lineForeground: snowStorm066
+    #   matchHighlightBackground: frost1cc
+    #   selectionBackground: polarNight2
+    #   selectionForeground: snowStorm0
+
+    # peekViewTitle:
+    #   background: polarNight1
+
+    # peekViewTitleDescription:
+    #   foreground: snowStorm0
+
+    # peekViewTitleLabel:
+    #   foreground: frost1
 
 
     ### -----------------------------------------------------------------------
