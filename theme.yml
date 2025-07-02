@@ -26,7 +26,7 @@ _ignore:
   scrollbarSliderActiveBackground: &scrollbarSliderActiveBackground { light: cyan2 alpha=0.75, dark: cyan1 alpha=0.75 }
   scrollbarSliderHoverBackground:  &scrollbarSliderHoverBackground  { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75 }
 
-  sideBarBackground: &sideBarBackground { light: white4, dark: black0 }
+  sideBarBackground: &sideBarBackground { light: white4, dark: black1 }
   sideBarForeground: &sideBarForeground { light: black6, dark: white1 }
   sideBarBorder:     &sideBarBorder     { light: white1, dark: black4 }
 
@@ -54,7 +54,7 @@ terminal:
       yellow: yellow1
       yellowBright: yellow2
 
-    background: &terminalBackground { light: white6, dark: black2 }
+    background: &terminalBackground { light: white6, dark: black3 }
     foreground: &terminalForeground { light: black5, dark: white0 }
 
     # The selectionBackground is used to highlight active matches in iterm,
@@ -320,7 +320,7 @@ vscode:
     ###  - activityBar.activeFocusBorder
     ###  - activityBarTop.*
     activityBar:
-      background:       &activityBarBackground { light: white3, dark: black3 }
+      background:       &activityBarBackground { light: white3, dark: black0 }
       foreground:       &activityBarForeground { light: cyan2,  dark: cyan1 }
       activeBorder:     *activityBarForeground
 
@@ -357,7 +357,7 @@ vscode:
     ### MARK: ✅ Breadcrumbs colors
     ### https://code.visualstudio.com/api/references/theme-color#breadcrumbs-colors
     breadcrumb:
-      background: { light: white5, dark: black1 }
+      background: { light: white5, dark: black2 }
 
     ### -----------------------------------------------------------------------
     ### MARK: ✅ Button control
@@ -395,7 +395,7 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#chat-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Command center colors
+    ### MARK: ✅ Command center colors
     ### https://code.visualstudio.com/api/references/theme-color#command-center-colors
 
     ### -----------------------------------------------------------------------
@@ -445,7 +445,7 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#editor-colors
     editor:
       # Editor should be more prominent than sidebar but less than panel
-      background: &editorBackground   { light: white5, dark: black1 }
+      background: &editorBackground   { light: white5, dark: black2 }
       foreground: *terminalForeground
 
       selectionBackground: &editorSelectionBackground { light: blue3 alpha=0.5, dark: blue0 alpha=0.5 }
@@ -566,7 +566,7 @@ vscode:
     editorGroupHeader:
       # border:     # below the breadcrumbs
       # tabsBorder: # between the breadcrumbs
-      tabsBackground: { light: white3, dark: black0 }
+      tabsBackground: { light: white3, dark: black1 }
 
     tab:
       # activeBorder: bottom border for selected tab
@@ -578,10 +578,10 @@ vscode:
       # unfocusedHoverBackground
       # unfocusedHoverBorder
       # unfocusedInactiveForeground
-      activeBackground:   { light: white5, dark: black1 }
+      activeBackground:   { light: white5, dark: black2 }
       activeForeground:   { light: cyan1,  dark: cyan3 }
       hoverBackground:    { light: white5, dark: black1 }
-      inactiveBackground: { light: white3, dark: black0 }
+      inactiveBackground: { light: white4, dark: black1 }
       inactiveForeground: { light: white0, dark: black7 }
       selectedBorderTop:  { light: cyan3,  dark: cyan1 }
       border: *alpha0
@@ -592,7 +592,7 @@ vscode:
     ### MARK: Editor widget colors
     ### https://code.visualstudio.com/api/references/theme-color#editor-widget-colors
     editorWidget:
-      background: { light: white7, dark: black3 }
+      background: { light: white7, dark: black4 }
       foreground: { light: black4, dark: white5 }
       border: { light: cyan2, dark: cyan1 }
 
@@ -934,6 +934,9 @@ vscode:
 
     ### -----------------------------------------------------------------------
     ### MARK: Symbol icons colors
+    ###
+    ### The theme colors for symbol icons that appears in the Outline view, breadcrumb navigation, and suggest widget:
+    ###
     ### https://code.visualstudio.com/api/references/theme-color#symbol-icons-colors
 
     ### -----------------------------------------------------------------------
@@ -963,10 +966,10 @@ vscode:
     ### ✅ MARK: Title bar colors
     ### https://code.visualstudio.com/api/references/theme-color#title-bar-colors
     titleBar:
-      activeBackground:   { light: white5, dark: black0 }
-      inactiveBackground: { light: white5, dark: black0 }
+      activeBackground:   { light: white3, dark: black0 }
+      inactiveBackground: { light: white3, dark: black0 }
       activeForeground:   { light: black7, dark: white0 }
-      inactiveForeground: { light: black7, dark: black4 }
+      inactiveForeground: { light: white1, dark: black5 }
 
     ### -----------------------------------------------------------------------
     ### MARK: Welcome page colors
