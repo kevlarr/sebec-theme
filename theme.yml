@@ -441,7 +441,7 @@ vscode:
       listBackground: *inputBackground
 
     ### -----------------------------------------------------------------------
-    ### MARK: Editor colors
+    ### MARK: ❌ Editor colors
     ### https://code.visualstudio.com/api/references/theme-color#editor-colors
     editor:
       # Editor should be more prominent than sidebar but less than panel
@@ -521,7 +521,7 @@ vscode:
     editorLink:
       activeForeground: *textLinkActiveForeground
 
-    editorOverviewRuler:
+    editorOverviewRuler: # TODO
       border: *alpha0
       findMatchForeground: *matchBackground
       # currentContentForeground: polarNight1
@@ -676,13 +676,14 @@ vscode:
     # terminal.findMatchBackground: red2
 
     ### -----------------------------------------------------------------------
-    ### MARK: Keybinding label colors
+    ### ✅ MARK: Keybinding label colors
     ### https://code.visualstudio.com/api/references/theme-color#keybinding-label-colors
 
-    # "keybindingLabel.background": "polarNight3",
-    # "keybindingLabel.border": "polarNight3",
-    # "keybindingLabel.bottomBorder": "polarNight3",
-    # "keybindingLabel.foreground": "snowStorm0",
+    keybindingLabel:
+      background: *alpha0
+      foreground:   { light: black7, dark: white0 }
+      border:       { light: white2, dark: black7 }
+      bottomBorder: { light: white2, dark: black7 }
 
     ### -----------------------------------------------------------------------
     ### MARK: Keyboard shortcut table colors
@@ -731,11 +732,12 @@ vscode:
     ### MARK: Merge conflict colors
     ### https://code.visualstudio.com/api/references/theme-color#merge-conflicts-colors
 
-    # "merge.currentHeaderBackground": "frost266",
-    # "merge.currentContentBackground": "frost24d",
-    # "merge.incomingHeaderBackground": "frost066",
-    # "merge.incomingContentBackground": "frost04d",
-    # "merge.border": "polarNight100",
+    # merge:
+    #   currentHeaderBackground: red2
+    #   currentContentBackground: red2
+    #   incomingHeaderBackground: red2
+    #   incomingContentBackground: red2
+    #   border: red2
 
     ### -----------------------------------------------------------------------
     ### MARK: Menu bar colors
@@ -773,29 +775,37 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#notebook-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Notification colors
+    ### MARK:❌ Notification colors
     ### https://code.visualstudio.com/api/references/theme-color#notification-colors
 
-    # per nord: `notification.*` keys are legacy support for VS Code versions >1.21.0
-    # "notification.background": "polarNight1",
-    # "notification.buttonBackground": "polarNight2",
-    # "notification.buttonForeground": "snowStorm0",
-    # "notification.buttonHoverBackground": "polarNight3",
-    # "notification.errorBackground": "auroraRed",
-    # "notification.errorForeground": "polarNight0",
-    # "notification.foreground": "snowStorm0",
-    # "notification.infoBackground": "frost1",
-    # "notification.infoForeground": "polarNight0",
-    # "notification.warningBackground": "auroraYellow",
-    # "notification.warningForeground": "polarNight0",
-    # "notificationCenter.border": "polarNight100",
-    # "notificationCenterHeader.background": "polarNight0",
-    # "notificationCenterHeader.foreground": "frost1",
-    # "notificationLink.foreground": "frost1",
-    # "notifications.background": "polarNight1",
-    # "notifications.border": "polarNight0",
-    # "notifications.foreground": "snowStorm0",
-    # "notificationToast.border": "polarNight100",
+    # Per Nord: `notification.*` keys are legacy support for VS Code versions >1.21.0
+    # notification:
+    #   foreground: red2
+    #   buttonBackground: red2
+    #   buttonForeground: red2
+    #   buttonHoverBackground: red2
+    #   errorBackground: red2
+    #   errorForeground: red2
+    #   infoBackground: red2
+    #   infoForeground: red2
+    #   warningBackground: red2
+    #   warningForeground: red2
+
+    # notificationCenter:
+    #   border: red2
+
+    # notificationCenterHeader:
+    #   background: red2
+    #   foreground: red2
+
+    # notificationLink.foreground: red2
+
+    # notifications:
+    #   background: red2
+    #   border: red2
+    #   foreground: red2
+
+    # notificationToast.border: red2
 
     ### -----------------------------------------------------------------------
     ### MARK: Panel colors
@@ -816,7 +826,7 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#panel-chat-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Peek view colors
+    ### MARK: ❌ Peek view colors
     ### https://code.visualstudio.com/api/references/theme-color#peek-view-colors
 
     # peekView:
@@ -847,11 +857,11 @@ vscode:
     #   foreground: frost1
 
     ### -----------------------------------------------------------------------
-    ### MARK: Ports colors
+    ### ✅MARK: Ports colors
     ### https://code.visualstudio.com/api/references/theme-color#ports-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Profiles
+    ### ✅MARK: Profiles
     ### https://code.visualstudio.com/api/references/theme-color#profiles
 
     ### -----------------------------------------------------------------------
@@ -861,13 +871,19 @@ vscode:
       background: cyan2
 
     ### -----------------------------------------------------------------------
-    ### MARK: Quick picker colors
+    ### ✅ MARK: Quick picker colors
+    ###
+    ### The command palette, color theme picker, etc. By default these will inherit
+    ### from the editorWidget settings (which includes the Find/Replace widget).
+    ###
     ### https://code.visualstudio.com/api/references/theme-color#quick-picker-colors
+    pickerGroup:
+      # eg. the "recently opened" label in command center
+      foreground: &pickerGroupDim { light: white4, dark: black7 }
+      border:     *pickerGroupDim
 
-    # "pickerGroup.border": "polarNight1",
-    # "pickerGroup.foreground": "frost1",
-    # "quickInputList.focusBackground": "frost1",
-    # "quickInputList.focusForeground": "polarNight0",
+    quickInput:
+      foreground: *terminalForeground
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Scrollbar control
@@ -913,24 +929,29 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#source-control-graph-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Status bar colors
+    ### ✅ MARK: Status bar colors
     ### https://code.visualstudio.com/api/references/theme-color#status-bar-colors
+    statusBar:
+      background: { light: cyan3, dark: cyan0 }
+      foreground: { light: cyan0, dark: cyan3 }
 
-    # "statusBar.background": "polarNight1",
-    # "statusBar.debuggingBackground": "frost3",
-    # "statusBar.debuggingForeground": "snowStorm0",
-    # "statusBar.noFolderForeground": "snowStorm0",
-    # "statusBar.noFolderBackground": "polarNight1",
-    # "statusBar.foreground": "snowStorm0",
-    # "statusBar.border": "polarNight100",
-    # "statusBarItem.activeBackground": "polarNight3",
-    # "statusBarItem.hoverBackground": "polarNight2",
-    # "statusBarItem.prominentBackground": "polarNight1",
-    # "statusBarItem.prominentHoverBackground": "polarNight2",
-    # "statusBarItem.errorBackground": "polarNight1",
-    # "statusBarItem.errorForeground": "auroraRed",
-    # "statusBarItem.warningBackground": "auroraYellow",
-    # "statusBarItem.warningForeground": "polarNight0",
+    statusBarItem:
+      activeBackground: { light: cyan2, dark: cyan2 }
+      hoverBackground:  { light: cyan2, dark: cyan1 }
+      prominentBackground:      { light: cyan2 alpha=0.5, dark: cyan1 alpha=0.5 }
+      prominentHoverBackground: { light: cyan2,           dark: cyan1 }
+      remoteBackground:      { light: cyan3, dark: cyan0 }
+      remoteHoverBackground: { light: cyan2, dark: cyan1 }
+
+      hoverForeground:       { light: white7, dark: white3 }
+      remoteForeground:      { light: cyan0,  dark: cyan3 }
+      remoteHoverForeground: { light: white7, dark: white3 }
+
+      # TODO
+      errorBackground: red0
+      errorForeground: red3
+      warningBackground: yellow0
+      warningForeground: yellow3
 
     ### -----------------------------------------------------------------------
     ### MARK: Symbol icons colors
@@ -974,10 +995,6 @@ vscode:
     ### -----------------------------------------------------------------------
     ### MARK: Welcome page colors
     ### https://code.visualstudio.com/api/references/theme-color#welcome-page-colors
-
-    # "walkThrough.embeddedEditorBackground": "polarNight0",
-    # "welcomePage.buttonBackground": "polarNight2",
-    # "welcomePage.buttonHoverBackground": "polarNight3",
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Window colors
