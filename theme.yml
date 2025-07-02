@@ -354,41 +354,40 @@ vscode:
     ### https://code.visualstudio.com/api/references/theme-color#banner-colors
 
     ### -----------------------------------------------------------------------
-    ### MARK: Breadcrumbs colors
+    ### MARK: ✅ Breadcrumbs colors
     ### https://code.visualstudio.com/api/references/theme-color#breadcrumbs-colors
     breadcrumb:
-      background:
-        light: white5
-        dark: black1
+      background: { light: white5, dark: black1 }
 
     ### -----------------------------------------------------------------------
-    ### MARK: Button control
+    ### MARK: ✅ Button control
     ### https://code.visualstudio.com/api/references/theme-color#button-control
     ###
     ### Unstyled:
     ###  - button.border
     ###  - button.separator
-    ###  - button.secondary*
     ###  - checkbox.*
     ###  - radio.*
     button:
       background:      &buttonBackground      { light: cyan2, dark: cyan0 }
       hoverBackground: &buttonHoverBackground { light: cyan1, dark: cyan1 }
       foreground:      &buttonForeground      { light: white7, dark: white5 }
+      # Secondary-action buttons, including the "^" button at the bottom of an
+      # extension page to scroll to the top
+      secondaryBackground:      { light: white1, dark: black6 }
+      secondaryHoverBackground: { light: white0, dark: black7 }
 
     ### -----------------------------------------------------------------------
     ### MARK: Chart colors
     ### https://code.visualstudio.com/api/references/theme-color#chart-colors
-    charts:
+    charts: # TODO: When are these used?
+      foreground: { light: black5, dark: white1 }
       red: red1
       blue: blue1
       green: green1
       yellow: yellow1
       purple: purple1
       orange: cyan1
-      foreground:
-        light: black5
-        dark: white1
       lines: green0
 
     ### -----------------------------------------------------------------------
@@ -961,14 +960,13 @@ vscode:
     # "textSeparator.foreground": "snowStorm2",
 
     ### -----------------------------------------------------------------------
-    ### MARK: Title bar colors
+    ### ✅ MARK: Title bar colors
     ### https://code.visualstudio.com/api/references/theme-color#title-bar-colors
-
-    # "titleBar.activeBackground": "polarNight0",
-    # "titleBar.activeForeground": "snowStorm0",
-    # "titleBar.border": "polarNight000",
-    # "titleBar.inactiveBackground": "polarNight0",
-    # "titleBar.inactiveForeground": "snowStorm066",
+    titleBar:
+      activeBackground:   { light: white5, dark: black0 }
+      inactiveBackground: { light: white5, dark: black0 }
+      activeForeground:   { light: black7, dark: white0 }
+      inactiveForeground: { light: black7, dark: black4 }
 
     ### -----------------------------------------------------------------------
     ### MARK: Welcome page colors
