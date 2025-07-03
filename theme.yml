@@ -4,7 +4,7 @@ styleNames:
   light: Dawn
   dark: Dusk
 
-_ignore:
+_var:
   # Useful anchors for when a color doesn't matter & only the alpha does
   alpha0:  &alpha0  "#000000 alpha=0"
   alpha50: &alpha50 "#000000 alpha=0.5"
@@ -507,8 +507,8 @@ vscode:
       border:     *editorPopupBorder
 
     editorInlayHint:
-      background: { light: cyan2 alpha=0.25, dark: cyan1 alpha=0.25}
-      foreground: { light: cyan1, dark: cyan2 }
+      background: *alpha0
+      foreground: { light: yellow3, dark: yellow0 }
 
     editorIndentGuide:
       background: *inactiveGuideStroke
