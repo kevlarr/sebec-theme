@@ -6,31 +6,31 @@ styleNames:
 
 _var:
   # Useful anchors for when a color doesn't matter & only the alpha does
-  alpha0:  &alpha0  "#000000 alpha=0"
-  alpha50: &alpha50 "#000000 alpha=0.5"
-  alpha75: &alpha75 "#000000 alpha=0.75"
+  - &alpha0  "#000000 0%"
+  - &alpha50 "#000000 50%"
+  - &alpha75 "#000000 75%"
 
-  badgeBackground:  &badgeBackground cyan2
-  badgeForeground: &badgeForeground { light: white7, dark: black0 }
+  - &badgeBackground cyan2
+  - &badgeForeground { light: white7, dark: black0 }
 
   # Colors for popup items in the editor, eg. actions list and suggestion widget
-  editorPopupBackground: &editorPopupBackground { light: white6, dark: black3 }
-  editorPopupForeground: &editorPopupForeground { light: black5, dark: white0 }
-  editorPopupBorder: &editorPopupBorder { light: white4, dark: black4 }
-  editorPopupActiveBackground: &editorPopupActiveBackground { light: cyan3 alpha=0.5, dark: cyan0 alpha=0.5 }
-  editorPopupActiveForeground: &editorPopupActiveForeground { light: cyan1, dark: cyan2 }
+  - &editorPopupBackground { light: white6, dark: black3 }
+  - &editorPopupForeground { light: black5, dark: white0 }
+  - &editorPopupBorder { light: white4, dark: black4 }
+  - &editorPopupActiveBackground { light: cyan3 50%, dark: cyan0 50% }
+  - &editorPopupActiveForeground { light: cyan1, dark: cyan2 }
 
-  indentGuidesStroke:         &guideStroke         { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75}
-  inactiveIndentGuidesStroke: &inactiveGuideStroke { light: cyan3 alpha=0.25, dark: cyan0 alpha=0.25}
+  - &guideStroke         { light: cyan3 75%, dark: cyan0 75%}
+  - &inactiveGuideStroke { light: cyan3 25%, dark: cyan0 25%}
 
-  scrollbarSliderActiveBackground: &scrollbarSliderActiveBackground { light: cyan2 alpha=0.75, dark: cyan1 alpha=0.75 }
-  scrollbarSliderHoverBackground:  &scrollbarSliderHoverBackground  { light: cyan3 alpha=0.75, dark: cyan0 alpha=0.75 }
+  - &scrollbarSliderActiveBackground { light: cyan2 75%, dark: cyan1 75% }
+  - &scrollbarSliderHoverBackground  { light: cyan3 75%, dark: cyan0 75% }
 
-  sideBarBackground: &sideBarBackground { light: white4, dark: black1 }
-  sideBarForeground: &sideBarForeground { light: black6, dark: white1 }
-  sideBarBorder:     &sideBarBorder     { light: white1, dark: black4 }
+  - &sideBarBackground { light: white4, dark: black1 }
+  - &sideBarForeground { light: black6, dark: white1 }
+  - &sideBarBorder     { light: white1, dark: black4 }
 
-  textLinkActiveForeground: &textLinkActiveForeground {light: cyan0, dark: cyan2}
+  - &textLinkActiveForeground {light: cyan0, dark: cyan2}
 
 terminal:
   base:
@@ -448,31 +448,31 @@ vscode:
       background: &editorBackground   { light: white5, dark: black2 }
       foreground: *terminalForeground
 
-      selectionBackground: &editorSelectionBackground { light: blue3 alpha=0.5, dark: blue0 alpha=0.5 }
+      selectionBackground: &editorSelectionBackground { light: blue3 50%, dark: blue0 50% }
 
       # The active & inactive match backgrounds - these should match terminal.selectionBackground,
       # just with the addition of an alpha channel to not obscure text decorations
       findMatchBackground:          *editorSelectionBackground
-      findMatchHighlightBackground: &editorInactiveMatchBackground { light: white2 alpha=0.5, dark: black5 alpha=0.5 }
+      findMatchHighlightBackground: &editorInactiveMatchBackground { light: white2 50%, dark: black5 50% }
 
       # This is the 'implicit find' for other matches when cursor is in a word;
       # the foreground color can't be adjusted, so make this dimmer than normal find
-      wordHighlightBackground:       { light: white2 alpha=0.35, dark: black5 alpha=0.35 }
-      wordHighlightStrongBackground: { light: white2 alpha=0.5, dark: black5 alpha=0.5 }
+      wordHighlightBackground:       { light: white2 35%, dark: black5 35% }
+      wordHighlightStrongBackground: { light: white2 50%, dark: black5 50% }
 
       # This is the highlight for other matches when actually selecting a range;
       # the foreground color also can't be adjusted
       selectionHighlightBackground: *editorInactiveMatchBackground
 
       findRangeHighlightBackground: *editorSelectionBackground
-      hoverHighlightBackground:     &editorFaintBackground { light: white2 alpha=0.5, dark: black5 alpha=0.5}
+      hoverHighlightBackground:     &editorFaintBackground { light: white2 50%, dark: black5 50%}
       lineHighlightBackground:      &editorLineHighlightBackground { light: white4, dark: black2 }
       lineHighlightBorder:          *editorLineHighlightBackground
 
-      foldBackground: { light: blue3 alpha=0.25, dark: blue0 alpha=0.25 }
+      foldBackground: { light: blue3 25%, dark: blue0 25% }
 
     editorBracketMatch: # ✅
-      background: { light: purple2 alpha=0.5, dark: purple1 alpha=0.5 }
+      background: { light: purple2 50%, dark: purple1 50% }
       border: *alpha0
 
     # these only apply if bracket pair colorization is enabled
@@ -491,9 +491,9 @@ vscode:
       foreground: red1 # TODO
 
     editorGutter: # ✅
-      addedBackground:    { light: green3 alpha=0.75,  dark: green0 alpha=0.75 }
-      deletedBackground:  { light: red2 alpha=0.75,    dark: red1 alpha=0.75 }
-      modifiedBackground: { light: yellow2 alpha=0.75, dark: yellow1 alpha=0.75 }
+      addedBackground:    { light: green3 75%,  dark: green0 75% }
+      deletedBackground:  { light: red2 75%,    dark: red1 75% }
+      modifiedBackground: { light: yellow2 75%, dark: yellow1 75% }
       # The > carets for folding
       foldingControlForeground: { light: blue1, dark: blue2 }
 
@@ -538,7 +538,7 @@ vscode:
       # warningForeground: auroraYellow
       # infoForeground: frost2
 
-    editorRuler.foreground: { light: blue3 alpha=0.25, dark: blue0 alpha=0.25 }
+    editorRuler.foreground: { light: blue3 25%, dark: blue0 25% }
 
     editorWarning:
       foreground: yellow0 # TODO
@@ -561,7 +561,7 @@ vscode:
     ###  - sideBySideEditor.*
     editorGroup:
       border: *sideBarBorder
-      dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
+      dropBackground: { light: cyan3 25%, dark: cyan1 25% }
 
     editorGroupHeader:
       # border:     # below the breadcrumbs
@@ -716,7 +716,7 @@ vscode:
       focusForeground: *listHoverForeground
       focusOutline:    *alpha0
 
-      dropBackground:        { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
+      dropBackground:        { light: cyan3 25%, dark: cyan1 25% }
       filterMatchBackground: *matchBackground
 
       errorForeground:   *errorForeground
@@ -750,23 +750,23 @@ vscode:
     ### Unstyled:
     ###  - editorMinimap.inlineChatInserted
     minimap:
-      background: { light: white4 alpha=0.5,  dark: black0 alpha=0.5 }
+      background: { light: white4 50%,  dark: black0 50% }
 
       # These values only care about alpha level and not color
       foregroundOpacity: *alpha50
 
-      errorHighlight:     { light: red0 alpha=0.5,    dark: red1 alpha=0.5 }
-      warningHighlight:   { light: yellow1 alpha=0.5, dark: yellow1 alpha=0.5 }
-      findMatchHighlight: { light: blue3 alpha=0.5,   dark: white3 alpha=0.5 }
-      selectionHighlight: { light: blue3 alpha=0.5,   dark: white1 alpha=0.5 }
+      errorHighlight:     { light: red0 50%,    dark: red1 50% }
+      warningHighlight:   { light: yellow1 50%, dark: yellow1 50% }
+      findMatchHighlight: { light: blue3 50%,   dark: white3 50% }
+      selectionHighlight: { light: blue3 50%,   dark: white1 50% }
 
     minimapGutter:
-      addedBackground:    green1 alpha=0.5
-      deletedBackground:  red1 alpha=0.5
-      modifiedBackground: yellow1 alpha=0.5
+      addedBackground:    green1 50%
+      deletedBackground:  red1 50%
+      modifiedBackground: yellow1 50%
 
     minimapSlider:
-      background: { light: white4 alpha=0.5,  dark: black4 alpha=0.5 }
+      background: { light: white4 50%,  dark: black4 50% }
       activeBackground: *scrollbarSliderActiveBackground
       hoverBackground:  *scrollbarSliderHoverBackground
 
@@ -889,11 +889,11 @@ vscode:
     ### ✅ MARK: Scrollbar control
     ### https://code.visualstudio.com/api/references/theme-color#scrollbar-control
     scrollbar:
-      shadow: { light: cyan3 alpha=0.5, dark: cyan0 alpha=0.5 }
+      shadow: { light: cyan3 50%, dark: cyan0 50% }
 
     scrollbarSlider:
       # should be brighter or darker than any scrollable widget
-      background: { light: white2 alpha=0.75, dark: black5 alpha=0.75 }
+      background: { light: white2 75%, dark: black5 75% }
       activeBackground: *scrollbarSliderActiveBackground
       hoverBackground:  *scrollbarSliderHoverBackground
 
@@ -913,7 +913,7 @@ vscode:
       background: *sideBarBackground
       foreground: *sideBarForeground
       border:     *sideBarBorder
-      dropBackground: { light: cyan3 alpha=0.25, dark: cyan1 alpha=0.25 }
+      dropBackground: { light: cyan3 25%, dark: cyan1 25% }
 
     sideBarSectionHeader:
       background: *sideBarBackground
@@ -938,7 +938,7 @@ vscode:
     statusBarItem:
       activeBackground: { light: cyan2, dark: cyan2 }
       hoverBackground:  { light: cyan2, dark: cyan1 }
-      prominentBackground:      { light: cyan2 alpha=0.5, dark: cyan1 alpha=0.5 }
+      prominentBackground:      { light: cyan2 50%, dark: cyan1 50% }
       prominentHoverBackground: { light: cyan2,           dark: cyan1 }
       remoteBackground:      { light: cyan3, dark: cyan0 }
       remoteHoverBackground: { light: cyan2, dark: cyan1 }

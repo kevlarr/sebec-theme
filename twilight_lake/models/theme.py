@@ -14,4 +14,4 @@ class ThemeModel(Base):
     style_names: ThemeStyleNames = Field(alias="styleNames")
     terminal: TerminalColors
     vscode: VsCodeColors
-    var: Annotated[dict, Field(..., alias="_var", exclude=True)]
+    var: Annotated[list, Field(..., alias="_var", exclude=True)]

@@ -7,7 +7,7 @@ from twilight_lake.color import Color
 
 _logger = logging.getLogger(__name__)
 
-_COLOR_STYLE_RGX = "^([a-zA-Z0-9]+|#[a-f0-9]{6})(\s+alpha=[\d\.]+)?$"
+_COLOR_STYLE_RGX = "^([a-zA-Z0-9]+|#[a-f0-9]{6})(\s+\d{1,2}%)?$"
 _TOKEN_STYLE_RGX = f"{_COLOR_STYLE_RGX[:-1]}(\s+bold)?(\s+italic)?(\s+strikethrough)?(\s+underline)?\s*$"
 
 
@@ -22,7 +22,7 @@ def parse_color_style(value: Any) -> dict:
     if alpha := match.group(2):
         return dict(
             foreground=_parse_foreground(foreground),
-            alpha=_clamp_alpha(float(alpha.split("=")[1])),
+            alpha=float(alpha[:-1]) / 100.0
         )
 
     return dict(foreground=_parse_foreground(foreground))
@@ -55,8 +55,3 @@ def _parse_foreground(value: str) -> Color | str:
         return value.lower()
 
     return Color[value.lower()]
-
-
-def _clamp_alpha(alpha: float) -> float:
-    # Restricts alpha to [0.0, 1.0]
-    return max(0.0, min(1.0, alpha))
