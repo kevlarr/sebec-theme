@@ -1,11 +1,11 @@
 [
     {
         "background": "#fcfcfd",
-        "foreground": "#3e4656",
+        "foreground": "#3a4150",
         "selectionBackground": "#a9b6da",
         "cursorColor": "#7eafc8",
-        "black": "#111318",
-        "brightBlack": "#3e4656",
+        "black": "#13161b",
+        "brightBlack": "#3a4150",
         "blue": "#4962ab",
         "brightBlue": "#7e91c8",
         "cyan": "#498bab",
@@ -18,17 +18,17 @@
         "brightRed": "#c17b81",
         "yellow": "#a48546",
         "brightYellow": "#c5ab77",
-        "white": "#a4aab7",
+        "white": "#8d95a5",
         "brightWhite": "#f6f7f8",
         "name": "Twilight Lake Dawn"
     },
     {
-        "background": "#272b35",
-        "foreground": "#a4aab7",
+        "background": "#242932",
+        "foreground": "#8d95a5",
         "selectionBackground": "#293d7a",
         "cursorColor": "#498bab",
-        "black": "#111318",
-        "brightBlack": "#3e4656",
+        "black": "#13161b",
+        "brightBlack": "#3a4150",
         "blue": "#4962ab",
         "brightBlue": "#7e91c8",
         "cyan": "#498bab",
@@ -41,7 +41,7 @@
         "brightRed": "#c17b81",
         "yellow": "#a48546",
         "brightYellow": "#c5ab77",
-        "white": "#a4aab7",
+        "white": "#8d95a5",
         "brightWhite": "#f6f7f8",
         "name": "Twilight Lake Dusk"
     }

@@ -37,7 +37,7 @@ def parse_token_color_style(value: Any) -> dict:
     foreground, alpha, bold, italic, strikethrough, underline = match.groups()
 
     if alpha:
-        alpha = alpha.split("=")[1]
+        alpha = float(alpha[:-1]) / 100.0
 
     return dict(
         foreground=_parse_foreground(foreground),

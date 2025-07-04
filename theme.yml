@@ -9,6 +9,7 @@ _var:
   - &alpha0  "#000000 0%"
   - &alpha50 "#000000 50%"
   - &alpha75 "#000000 75%"
+  - &fixme   "#ff0000"
 
   - &badgeBackground cyan2
   - &badgeForeground { light: white7, dark: black0 }
@@ -93,41 +94,108 @@ vscode:
     ### - https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
     ### - https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
 
-    # Class & function names
-    - style:
-        light: blue1
-        dark: cyan2
+    ### MARK: Semantic tokens
+
+    # TODO
+    - style: purple1
+      semantic:
+        - typeParameter
+        - type
+
+    # Class & types
+    - style: &tokenTypeDeclarations { light: *fixme, dark: white5 bold }
+      semantic:
+        - class.declaration
+        - enum.declaration
+        - interface.declaration
+        - struct.declaration
+
+    - style: &tokenType { light: *fixme, dark: white3 }
       semantic:
         - class
         - enum
+        - interface
+        - struct
+
+    - style: &tokenTypeHints { light: blue2, dark: black7 italic }
+      semantic:
+        - "*.typeHint"
+
+    # Functions and methods
+    - style: *tokenTypeDeclarations
+      semantic:
+        - function.declaration
+        - method.declaration
+
+    - style: *tokenType
+      semantic:
         - function
         - function.decorator
         - method
+
+    # Modules
+    - style: { light: *fixme, dark: white0 underline }
+      semantic:
+        - module
+        - namespace # TODO: What does this do?
+
+    # Parameters
+    - style: { light: *fixme, dark: purple2 }
+      semantic:
+        - selfParameter
+        - clsParameter
+
+    - style: { light: *fixme, dark: white2 }
+      semantic:
+        - parameter
+
+    # Properties
+    - style: { light: *fixme, dark: white3 }
+      semantic:
+        - enumMember
+        - property
+
+    # Strings
+    - style: &tokenString { light: *fixme, dark: blue2 }
+      semantic:
+        - string
+
+    # Variables
+    - style: { light: *fixme, dark: white1 }
+      semantic:
+        - variable
+
+    # - style: { light: *fixme, dark: cyan1 italic }
+    #   semantic:
+    #     - variable.builtin
+
+    ### MARK: Textmate tokens
+
+    # TODO
+
+    - style: *fixme
       textmate:
-        - meta.function-call.generic.python
-        - support.function.string.sql # FIXME: why is this here?
+        - support.type.primitive
 
     # Comments
-    - style:
-        light: white0 italic
-        dark: black7 italic
+    - style: { light: *fixme, dark: green0 italic }
       textmate:
         - comment
         - punctuation.definition.comment
 
-    # Declarations
-    - style:
-        light: blue1 bold
-        dark: cyan2 bold
-      semantic:
-        - class.declaration
-        - function.declaration
-        - method.declaration
+    # Constant values
+    - style: { light: *fixme, dark: blue2 }
+      textmate:
+        - constant.language
+        - constant.numeric
+
+    # Function calls, eg. when the semantic tokens isn't
+    # reliably assigned
+    - style: *tokenType
+      textmate: meta.function-call.generic.python
 
     # Keyword
-    - style:
-        light: cyan1
-        dark: blue1 bold
+    - style: &tokenKeyword { light: *fixme, dark: black7 bold }
       textmate:
         # var, etc.
         - storage.type
@@ -136,67 +204,25 @@ vscode:
         - storage.type.function
         - storage.modifier
         # control flow & logical keywords
-        - keyword.control.flow # eg. `if`, `while`
-        - keyword.control.import
+        - keyword.control
+        # - keyword.control.flow # eg. `if`, `while`
+        # - keyword.control.import
         - keyword.operator.logical # eg. `in`, `not`
 
     # Keyword arguments
-    - style:
-        light: cyan2
-        dark: blue1
+    - style: { light: *fixme, dark: black7 italic }
       textmate:
         - variable.parameter.function-call
-
-    # Keyword argument '=' sign
-    - style:
-        light: white0
-        dark: black7
-      textmate:
         - meta.function-call.arguments keyword.operator.assignment
 
-    # Literal values
-    - style:
-        light: green1
-        dark: green2 italic
-      textmate:
-        - constant.language
-        - constant.numeric
-
-    # Modules
-    - style:
-        light: black6 underline
-        dark: white0 underline
-      semantic: module
-
     # Operators
-    - style:
-        light: cyan2
-        dark: blue1
+    - style: *tokenKeyword
       textmate:
         - keyword.operator.arithmetic
         - keyword.operator.assignment
 
-    # Parameters
-    - style:
-        light: purple2 bold
-        dark: purple1 bold
-      semantic:
-        - selfParameter
-        - clsParameter
-
-    # Properties
-    - style:
-        light: purple0
-        dark: purple1
-      semantic:
-        - property
-        - property.declaration
-        - enumMember
-
     # Punctuation
-    - style:
-        light: white0
-        dark: black7
+    - style: *tokenKeyword
       textmate:
         - punctuation.parenthesis            # Eg. parentheses when wrapping lines in Python
         - punctuation.definition.arguments   # eg. parentheses around args in function call
@@ -204,77 +230,36 @@ vscode:
         - punctuation.section.class.begin    # eg. `:` after class def
         - punctuation.section.function.begin # eg. `:` after function def
 
-    - style:
-        light: blue3
-        dark: cyan0
-      textmate:
-        - punctuation.definition.decorator # `@` for decorators
-
-    # SQL
-    - style:
-        light: cyan2
-        dark: blue1
-      textmate:
-        - keyword.other.DML.sql   # eg. SELECT, FROM, etc
-        - keyword.other.DDL       # eg. IS, NOT, NULL, etc
-        - keyword.other.alias.sql # eg. AS
-        - keyword.other.sql       # eg. CASE, WHEN, etc
-
-    - style:
-        light: purple0
-        dark: purple1
-      textmate:
-        - constant.other.table-name.sql # table columns
-
     # Strings
-    - style:
-        # Should be lower contrast than actual string
-        light: green2
-        dark: green0
-      textmate:
-        # Eg. the `f` in `f"string"`
-        - storage.type.string
-        # Quotes around the string
-        - punctuation.definition.string
+    - style: *tokenString
+      textmate: string
 
-    - style:
-        light: green1
-        dark: green0
-      textmate:
-        - constant.character.format.placeholder
-
-    - style:
-        light: green0 italic
-        dark: green1 italic
-      textmate:
-        - string
-
-    # Type Hints
-    - style:
-        light: blue2
-        dark: cyan1
-      semantic:
-        # Eg. in Python
-        - class.typeHint
-        - enum.typeHint
-      textmate:
-        - support.type.primitive
-
-    # Variables
-    - style:
-        light: red0 # FIXME
-        dark: purple1 bold
-      textmate:
-        - support.variable.magic
-        - constant.other.caps
-
-    # Misc
-    - style:
-        light: blue0
-        dark: blue2
+    ### -----------------------------------------------------------------------
+    ### [JSON/YML]
+    - style: { light: *fixme, dark: black7 italic }
       textmate:
         - support.type.property-name.json
         - entity.name.tag.yaml
+
+    ### -----------------------------------------------------------------------
+    ### [SQL]
+    # - style:
+    #     light: cyan2
+    #     dark: blue1
+    #   textmate:
+    #     - keyword.other.DML.sql   # eg. SELECT, FROM, etc
+    #     - keyword.other.DDL       # eg. IS, NOT, NULL, etc
+    #     - keyword.other.alias.sql # eg. AS
+    #     - keyword.other.sql       # eg. CASE, WHEN, etc
+
+    # - style:
+    #     light: purple0
+    #     dark: purple1
+    #   textmate:
+    #     - constant.other.table-name.sql # table columns
+
+    # - style: { light: blue1, dark: cyan2 }
+    #   textmate: support.function.string.sql # FIXME: why is this here?
 
   ### MARK: UI
   ui:

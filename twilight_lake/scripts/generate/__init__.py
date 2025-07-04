@@ -32,15 +32,12 @@ def main() -> None:
     iterm.export(package_path, theme)
     vscode.export(vscode_themes_path, theme, ThemeStyle.Light)
     vscode.export(vscode_themes_path, theme, ThemeStyle.Dark)
-
     windows_terminal.export(package_path, theme)
 
     export_palette_html(package_path / "palette.html")
 
-    # Sunrise.save(themes)
-    # Twilight.save(themes)
-
     print("Themes and palette generated successfully!")
+
 
 def watch_main() -> None:
     files = [
