@@ -97,27 +97,28 @@ vscode:
     ### MARK: Semantic tokens
 
     # TODO
-    - style: purple1
+    - style: *fixme
       semantic:
         - typeParameter
         - type
+        # - variable.builtin # tough token since it highlights others, eg. `None`
 
     # Class & types
-    - style: &tokenTypeDeclarations { light: *fixme, dark: white5 bold }
+    - style: &tokenTypeDeclarations { light: black5 bold, dark: white5 bold }
       semantic:
         - class.declaration
         - enum.declaration
         - interface.declaration
         - struct.declaration
 
-    - style: &tokenType { light: *fixme, dark: white3 }
+    - style: &tokenType { light: black3, dark: white3 }
       semantic:
         - class
         - enum
         - interface
         - struct
 
-    - style: &tokenTypeHints { light: blue2, dark: black7 italic }
+    - style: &tokenTypeHints { light: white0 italic, dark: black7 italic }
       semantic:
         - "*.typeHint"
 
@@ -134,40 +135,36 @@ vscode:
         - method
 
     # Modules
-    - style: { light: *fixme, dark: white0 underline }
+    - style: { light: black6 underline, dark: white0 underline }
       semantic:
         - module
         - namespace # TODO: What does this do?
 
     # Parameters
-    - style: { light: *fixme, dark: purple2 }
+    - style: { light: purple1 bold, dark: purple2 bold}
       semantic:
         - selfParameter
         - clsParameter
 
-    - style: { light: *fixme, dark: white2 }
+    - style: { light: black3, dark: white2 }
       semantic:
         - parameter
 
     # Properties
-    - style: { light: *fixme, dark: white3 }
+    - style: { light: black2, dark: white3 }
       semantic:
         - enumMember
         - property
 
     # Strings
-    - style: &tokenString { light: *fixme, dark: blue2 }
+    - style: &tokenString { light: blue1, dark: blue2 }
       semantic:
         - string
 
     # Variables
-    - style: { light: *fixme, dark: white1 }
+    - style: { light: black5, dark: white1 }
       semantic:
         - variable
-
-    # - style: { light: *fixme, dark: cyan1 italic }
-    #   semantic:
-    #     - variable.builtin
 
     ### MARK: Textmate tokens
 
@@ -178,13 +175,13 @@ vscode:
         - support.type.primitive
 
     # Comments
-    - style: { light: *fixme, dark: green0 italic }
+    - style: { light: green2, dark: green0 italic }
       textmate:
         - comment
         - punctuation.definition.comment
 
     # Constant values
-    - style: { light: *fixme, dark: blue2 }
+    - style: { light: blue1, dark: blue2 }
       textmate:
         - constant.language
         - constant.numeric
@@ -195,7 +192,7 @@ vscode:
       textmate: meta.function-call.generic.python
 
     # Keyword
-    - style: &tokenKeyword { light: *fixme, dark: black7 bold }
+    - style: &tokenKeyword { light: white0, dark: black7 bold }
       textmate:
         # var, etc.
         - storage.type
@@ -210,7 +207,7 @@ vscode:
         - keyword.operator.logical # eg. `in`, `not`
 
     # Keyword arguments
-    - style: { light: *fixme, dark: black7 italic }
+    - style: { light: white0 italic, dark: black7 italic }
       textmate:
         - variable.parameter.function-call
         - meta.function-call.arguments keyword.operator.assignment
@@ -236,7 +233,7 @@ vscode:
 
     ### -----------------------------------------------------------------------
     ### [JSON/YML]
-    - style: { light: *fixme, dark: black7 italic }
+    - style: { light: white0 italic, dark: black7 italic }
       textmate:
         - support.type.property-name.json
         - entity.name.tag.yaml

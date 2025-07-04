@@ -229,31 +229,64 @@
         "window.inactiveBorder": "#fff"
     },
     "semanticTokenColors": {
-        "typeParameter": "#886382",
-        "type": "#886382",
-        "class.declaration": "#ff0000",
-        "enum.declaration": "#ff0000",
-        "interface.declaration": "#ff0000",
-        "struct.declaration": "#ff0000",
-        "class": "#ff0000",
-        "enum": "#ff0000",
-        "interface": "#ff0000",
-        "struct": "#ff0000",
-        "*.typeHint": "#7e91c8",
-        "function.declaration": "#ff0000",
-        "method.declaration": "#ff0000",
-        "function": "#ff0000",
-        "function.decorator": "#ff0000",
-        "method": "#ff0000",
-        "module": "#ff0000",
-        "namespace": "#ff0000",
-        "selfParameter": "#ff0000",
-        "clsParameter": "#ff0000",
-        "parameter": "#ff0000",
-        "enumMember": "#ff0000",
-        "property": "#ff0000",
-        "string": "#ff0000",
-        "variable": "#ff0000"
+        "typeParameter": "#ff0000",
+        "type": "#ff0000",
+        "class.declaration": {
+            "foreground": "#3a4150",
+            "fontStyle": "bold"
+        },
+        "enum.declaration": {
+            "foreground": "#3a4150",
+            "fontStyle": "bold"
+        },
+        "interface.declaration": {
+            "foreground": "#3a4150",
+            "fontStyle": "bold"
+        },
+        "struct.declaration": {
+            "foreground": "#3a4150",
+            "fontStyle": "bold"
+        },
+        "class": "#242932",
+        "enum": "#242932",
+        "interface": "#242932",
+        "struct": "#242932",
+        "*.typeHint": {
+            "foreground": "#8d95a5",
+            "fontStyle": "italic"
+        },
+        "function.declaration": {
+            "foreground": "#3a4150",
+            "fontStyle": "bold"
+        },
+        "method.declaration": {
+            "foreground": "#3a4150",
+            "fontStyle": "bold"
+        },
+        "function": "#242932",
+        "function.decorator": "#242932",
+        "method": "#242932",
+        "module": {
+            "foreground": "#4b5468",
+            "fontStyle": "underline"
+        },
+        "namespace": {
+            "foreground": "#4b5468",
+            "fontStyle": "underline"
+        },
+        "selfParameter": {
+            "foreground": "#886382",
+            "fontStyle": "bold"
+        },
+        "clsParameter": {
+            "foreground": "#886382",
+            "fontStyle": "bold"
+        },
+        "parameter": "#242932",
+        "enumMember": "#1c1f26",
+        "property": "#1c1f26",
+        "string": "#4962ab",
+        "variable": "#3a4150"
     },
     "tokenColors": [
         {
@@ -270,7 +303,7 @@
                 "punctuation.definition.comment"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#97b295"
             }
         },
         {
@@ -279,13 +312,13 @@
                 "constant.numeric"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#4962ab"
             }
         },
         {
             "scope": "meta.function-call.generic.python",
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#242932"
             }
         },
         {
@@ -298,7 +331,7 @@
                 "keyword.operator.logical"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#8d95a5"
             }
         },
         {
@@ -307,7 +340,8 @@
                 "meta.function-call.arguments keyword.operator.assignment"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#8d95a5",
+                "fontStyle": "italic"
             }
         },
         {
@@ -316,7 +350,7 @@
                 "keyword.operator.assignment"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#8d95a5"
             }
         },
         {
@@ -328,13 +362,13 @@
                 "punctuation.section.function.begin"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#8d95a5"
             }
         },
         {
             "scope": "string",
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#4962ab"
             }
         },
         {
@@ -343,7 +377,8 @@
                 "entity.name.tag.yaml"
             ],
             "settings": {
-                "foreground": "#ff0000"
+                "foreground": "#8d95a5",
+                "fontStyle": "italic"
             }
         }
     ]

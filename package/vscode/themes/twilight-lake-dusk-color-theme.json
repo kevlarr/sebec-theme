@@ -229,8 +229,8 @@
         "window.inactiveBorder": "#13161b"
     },
     "semanticTokenColors": {
-        "typeParameter": "#886382",
-        "type": "#886382",
+        "typeParameter": "#ff0000",
+        "type": "#ff0000",
         "class.declaration": {
             "foreground": "#f6f7f8",
             "fontStyle": "bold"
@@ -274,8 +274,14 @@
             "foreground": "#8d95a5",
             "fontStyle": "underline"
         },
-        "selfParameter": "#ae8fa8",
-        "clsParameter": "#ae8fa8",
+        "selfParameter": {
+            "foreground": "#ae8fa8",
+            "fontStyle": "bold"
+        },
+        "clsParameter": {
+            "foreground": "#ae8fa8",
+            "fontStyle": "bold"
+        },
         "parameter": "#cccfd7",
         "enumMember": "#e2e4e9",
         "property": "#e2e4e9",
