@@ -4,9 +4,9 @@ import pathlib
 from watchfiles import watch
 from yaml import safe_load
 
-from twilight_lake.exporters import iterm, vscode, windows_terminal
-from twilight_lake.models.styles import ThemeStyle
-from twilight_lake.models.theme import ThemeModel
+from sebec.exporters import iterm, vscode, windows_terminal
+from sebec.models.styles import ThemeStyle
+from sebec.models.theme import ThemeModel
 
 from .palette import export_palette_html
 
@@ -15,7 +15,7 @@ ROOT_PATH = (
     pathlib.Path(__file__)
     .parent # generate
     .parent # scripts
-    .parent # twilight_lake
+    .parent # sebec
     .parent # root
 )
 
@@ -23,16 +23,15 @@ ROOT_PATH = (
 def main() -> None:
     yml_path = ROOT_PATH / "theme.yml"
     package_path = ROOT_PATH / "package"
-    vscode_themes_path = package_path / "vscode/themes"
 
     with open(yml_path) as yml_file:
         content = safe_load(yml_file)
         theme = ThemeModel.model_validate(content)
 
-    iterm.export(package_path, theme)
-    vscode.export(vscode_themes_path, theme, ThemeStyle.Light)
-    vscode.export(vscode_themes_path, theme, ThemeStyle.Dark)
-    windows_terminal.export(package_path, theme)
+    iterm.export(package_path / "iterm2", theme)
+    vscode.export(package_path / "vscode/themes", theme, ThemeStyle.Light)
+    vscode.export(package_path / "vscode/themes", theme, ThemeStyle.Dark)
+    windows_terminal.export(package_path / "windows-terminal", theme)
 
     export_palette_html(package_path / "palette.html")
 
@@ -42,7 +41,7 @@ def main() -> None:
 def watch_main() -> None:
     files = [
         ROOT_PATH / "theme.yml",
-        ROOT_PATH / "twilight_lake" / "color.py",
+        ROOT_PATH / "sebec" / "color.py",
     ]
     print("\nWatching files for changes:")
     for watched in files:

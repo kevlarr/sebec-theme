@@ -3,17 +3,17 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "twilight_lake"
+name = "sebec"
 version = "0.1.0"
 description = ""
 authors = ["kevlarr <6306496+kevlarr@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.scripts]
-generate = "twilight_lake.scripts.generate:main"
-generate-watch = "twilight_lake.scripts.generate:watch_main"
-print-colors = "twilight_lake.scripts.print_colors:main"
-update-colors = "twilight_lake.scripts.update_colors:main"
+generate = "sebec.scripts.generate:main"
+generate-watch = "sebec.scripts.generate:watch_main"
+print-colors = "sebec.scripts.print_colors:main"
+update-colors = "sebec.scripts.update_colors:main"
 
 [tool.poetry.dependencies]
 python = "^3.13"

@@ -2,7 +2,7 @@ import re
 import logging
 from typing import Any
 
-from twilight_lake.color import Color
+from sebec.color import Color
 
 
 _logger = logging.getLogger(__name__)

@@ -1,6 +1,5 @@
 import pathlib
 import re
-import shutil
 import sys
 from xml.dom import minidom
 
@@ -8,7 +7,7 @@ from xml.dom import minidom
 DESIGN_PATH = (
     pathlib.Path(__file__)
     .parent # scripts
-    .parent # twilight_lake
+    .parent # sebec
     .parent # root
     / "design"
 )
@@ -16,7 +15,7 @@ DESIGN_PATH = (
 COLOR_MODULE_PATH = (
     pathlib.Path(__file__)
     .parent # scripts
-    .parent # twilight_lake
+    .parent # sebec
     / "color.py"
 )
 
@@ -34,11 +33,6 @@ class Color(enum.StrEnum):
 
 def main():
     source_path = DESIGN_PATH / sys.argv[1]
-
-    # Copy the source file over to `palette.svg` for use in the README
-    palette_path = DESIGN_PATH / "palette.svg"
-    shutil.copy(source_path, palette_path)
-
     colors = []
 
     with open(source_path) as svg_file:

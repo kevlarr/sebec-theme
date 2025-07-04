@@ -11,12 +11,10 @@ Generating the file requires both light & dark terminal themes.
 from pathlib import Path
 from xml.etree import ElementTree
 
-from twilight_lake.models.styles import ThemeStyle
-from twilight_lake.models.terminal import TerminalApp
-from twilight_lake.models.theme import ThemeModel
+from sebec.models.styles import ThemeStyle
+from sebec.models.terminal import TerminalApp
+from sebec.models.theme import ThemeModel
 
-
-FILENAME = "Twilight Lake.itermcolors"
 
 # `xml` does not have facility for writing the `<!DOCTYPE>` element, so the header
 # should be written manually to include it.
@@ -27,6 +25,8 @@ _header = (
 
 
 def export(destination: Path, theme: ThemeModel):
+    filename = f"{theme.name}.itermcolors"
+
     root = ElementTree.Element("plist", version="1.0")
     root_dict = ElementTree.SubElement(root, "dict")
 
@@ -43,7 +43,7 @@ def export(destination: Path, theme: ThemeModel):
     tree = ElementTree.ElementTree(root)
     ElementTree.indent(tree, "\t")
 
-    with open(destination / FILENAME, "wb") as color_file:
+    with open(destination / filename, "wb") as color_file:
         color_file.write(_header)
         tree.write(color_file, encoding="utf-8", xml_declaration=False)
 

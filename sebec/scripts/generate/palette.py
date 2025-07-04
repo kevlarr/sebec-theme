@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from twilight_lake.color import Color
+from sebec.color import Color
 
 
 def export_palette_html(destination: Path):
