@@ -13,7 +13,7 @@ THEME_FILENAME_TEMPLATE = "{slug}-color-theme.json"
 
 def export(package_path: Path, theme: ThemeModel, style: ThemeStyle):
     theme_name = f"{theme.name} {theme.style_names.__dict__[style]}"
-    slug = theme_name.lower().replace(" ", "-").replace("(", "").replace(")", "")
+    slug = theme_name.lower().replace(" ", "-")
     filename = THEME_FILENAME_TEMPLATE.format(slug=slug)
 
     terminal_colors = theme.terminal.serialize(TerminalApp.Vscode, style)
