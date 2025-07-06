@@ -11,9 +11,13 @@ readme = "README.md"
 
 [tool.poetry.scripts]
 generate = "sebec.scripts.generate:main"
+generate-watch = "sebec.scripts.generate:watch_main"
+print-colors = "sebec.scripts.print_colors:main"
 update-colors = "sebec.scripts.update_colors:main"
 
 [tool.poetry.dependencies]
 python = "^3.13"
 pyyaml = "^6.0.2"
 pydantic = "^2.10.6"
+termcolor = "^3.1.0"
+watchfiles = "^1.1.0"

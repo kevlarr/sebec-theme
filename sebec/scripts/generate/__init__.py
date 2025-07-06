@@ -1,10 +1,12 @@
-
+import traceback
 import pathlib
 
-from sebec.exporters import iterm, vscode #, windows_terminal
-from sebec.parser import parse_yml
-# from sebec.vstheme import Sunrise, Twilight
-# from sebec.vstheme.base import Color
+from watchfiles import watch
+from yaml import safe_load
+
+from sebec.exporters import iterm, vscode, windows_terminal
+from sebec.models.styles import ThemeStyle
+from sebec.models.theme import ThemeModel
 
 from .palette import export_palette_html
 
@@ -19,35 +21,36 @@ ROOT_PATH = (
 
 
 def main() -> None:
+    yml_path = ROOT_PATH / "theme.yml"
     package_path = ROOT_PATH / "package"
-    vscode_themes_path = package_path / "vscode/themes"
-    yml_path = ROOT_PATH / "ymls"
 
-    dawn = parse_yml(yml_path / "dawn.yml")
-    usk = parse_yml(yml_path / "dusk.yml")
+    with open(yml_path) as yml_file:
+        content = safe_load(yml_file)
+        theme = ThemeModel.model_validate(content)
 
-    iterm.export(
-        package_path / "Twilight Lake.itermcolors",
-        light=dawn.terminal,
-        dark=usk.terminal,
-    )
-    vscode.export(
-        package_path=vscode_themes_path,
-        theme=dawn,
-    )
-    vscode.export(
-        package_path=vscode_themes_path,
-        theme=usk,
-    )
-    # windows_terminal.export(
-        # package_path=package_path,
-        # light=sunrise.terminal,
-        # dark=twilight.terminal,
-    # )
+    iterm.export(package_path / "iterm2", theme)
+    vscode.export(package_path / "vscode/themes", theme, ThemeStyle.Light)
+    vscode.export(package_path / "vscode/themes", theme, ThemeStyle.Dark)
+    windows_terminal.export(package_path / "windows-terminal", theme)
 
     export_palette_html(package_path / "palette.html")
 
-    # Sunrise.save(themes)
-    # Twilight.save(themes)
-
     print("Themes and palette generated successfully!")
+
+
+def watch_main() -> None:
+    files = [
+        ROOT_PATH / "theme.yml",
+        ROOT_PATH / "sebec" / "color.py",
+    ]
+    print("\nWatching files for changes:")
+    for watched in files:
+        print(f"  - {watched}")
+    print()
+    for _ in watch(*files):
+        try:
+            main()
+        except Exception as exc:
+            print(f"Error: {exc}")
+            traceback.print_exc()
+        print()

@@ -2,16 +2,18 @@
 
 A single file has three different key/dict pairs for all colors:
 
-  - Default, eg. "Ansi 0 Color"
-  - Dark, eg. "Ansi 0 Color (Dark)"
-  - Light, eg. "Ansi 0 Color (Light)"
+    * Default, eg. "Ansi 0 Color"
+    * Dark, eg. "Ansi 0 Color (Dark)"
+    * Light, eg. "Ansi 0 Color (Light)"
 
 Generating the file requires both light & dark terminal themes.
 """
 from pathlib import Path
 from xml.etree import ElementTree
 
-from sebec.parser.terminal import TerminalApp, TerminalColors
+from sebec.models.styles import ThemeStyle
+from sebec.models.terminal import TerminalApp
+from sebec.models.theme import ThemeModel
 
 
 # `xml` does not have facility for writing the `<!DOCTYPE>` element, so the header
@@ -22,21 +24,26 @@ _header = (
 )
 
 
-def export(destination: Path, *, light: TerminalColors, dark: TerminalColors):
+def export(destination: Path, theme: ThemeModel):
+    filename = f"{theme.name}.itermcolors"
+
     root = ElementTree.Element("plist", version="1.0")
     root_dict = ElementTree.SubElement(root, "dict")
 
-    default_colors = dark_colors = dark.serialize(TerminalApp.Iterm)
-    light_colors = light.serialize(TerminalApp.Iterm)
+    default_colors = dark_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Dark)
+    light_colors = theme.terminal.serialize(TerminalApp.Iterm, ThemeStyle.Light)
 
     _append_colors(root_dict, default_colors)
+
+    # The additional color specifications with these exact suffixes are
+    # what enable this to be a dual-mode theme
     _append_colors(root_dict, dark_colors, suffix="(Dark)")
     _append_colors(root_dict, light_colors, suffix="(Light)")
 
     tree = ElementTree.ElementTree(root)
     ElementTree.indent(tree, "\t")
 
-    with open(destination, "wb") as color_file:
+    with open(destination / filename, "wb") as color_file:
         color_file.write(_header)
         tree.write(color_file, encoding="utf-8", xml_declaration=False)
 
