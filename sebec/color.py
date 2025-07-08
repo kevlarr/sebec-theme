@@ -6,9 +6,9 @@ __all__ = ["Color"]
 
 
 class Color(enum.StrEnum):
-    black0 = "#13161b"
-    black1 = "#181b21"
-    black2 = "#1c1f26"
+    black0 = "#0f1115"
+    black1 = "#13161b"
+    black2 = "#181b21"
     black3 = "#242932"
     black4 = "#2b303b"
     black5 = "#3a4150"
@@ -34,9 +34,9 @@ class Color(enum.StrEnum):
     red1 = "#a04b52"
     red2 = "#c17b81"
     red3 = "#d19ea2"
-    white0 = "#8d95a5"
-    white1 = "#afb5c0"
-    white2 = "#cccfd7"
+    white0 = "#818a9c"
+    white1 = "#a4aab7"
+    white2 = "#c6cad2"
     white3 = "#e2e4e9"
     white4 = "#eeeff2"
     white5 = "#f6f7f8"

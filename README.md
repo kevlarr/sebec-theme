@@ -1,7 +1,8 @@
 # Sebec Theme
 
-
-Sebec is a dual-mode color theme originally inspired by [Nord](https://www.nordtheme.com/) and [Verdandi](https://github.com/be5invis/vsc-theme-verdandi). Application support currently includes:
+Sebec is a dual-mode color theme originally inspired by [Nord](https://www.nordtheme.com/)
+and [Verdandi](https://github.com/be5invis/vsc-theme-verdandi).
+Application support currently includes:
 
 - iTerm2
 - VS Code

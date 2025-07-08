@@ -1,10 +1,10 @@
 [
     {
         "background": "#fcfcfd",
-        "foreground": "#3a4150",
+        "foreground": "#4b5468",
         "selectionBackground": "#a9b6da",
         "cursorColor": "#7eafc8",
-        "black": "#13161b",
+        "black": "#0f1115",
         "brightBlack": "#3a4150",
         "blue": "#4962ab",
         "brightBlue": "#7e91c8",
@@ -18,16 +18,16 @@
         "brightRed": "#c17b81",
         "yellow": "#a48546",
         "brightYellow": "#c5ab77",
-        "white": "#8d95a5",
+        "white": "#818a9c",
         "brightWhite": "#f6f7f8",
         "name": "Sebec Dawn"
     },
     {
         "background": "#242932",
-        "foreground": "#8d95a5",
+        "foreground": "#a4aab7",
         "selectionBackground": "#293d7a",
         "cursorColor": "#498bab",
-        "black": "#13161b",
+        "black": "#0f1115",
         "brightBlack": "#3a4150",
         "blue": "#4962ab",
         "brightBlue": "#7e91c8",
@@ -41,7 +41,7 @@
         "brightRed": "#c17b81",
         "yellow": "#a48546",
         "brightYellow": "#c5ab77",
-        "white": "#8d95a5",
+        "white": "#818a9c",
         "brightWhite": "#f6f7f8",
         "name": "Sebec Dusk"
     }

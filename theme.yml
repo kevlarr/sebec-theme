@@ -56,7 +56,7 @@ terminal:
       yellowBright: yellow2
 
     background: &terminalBackground { light: white6, dark: black3 }
-    foreground: &terminalForeground { light: black5, dark: white0 }
+    foreground: &terminalForeground { light: black6, dark: white1 }
 
     # The selectionBackground is used to highlight active matches in iterm,
     # which is unfortunate because it means either the selection highlight
@@ -111,7 +111,7 @@ vscode:
         - interface.declaration
         - struct.declaration
 
-    - style: &tokenType { light: black3, dark: white3 }
+    - style: &tokenType { light: black2, dark: white3 }
       semantic:
         - class
         - enum
@@ -135,20 +135,21 @@ vscode:
         - method
 
     # Modules
-    - style: { light: black6 underline, dark: white0 underline }
+    - style: { light: black6 underline, dark: white1 underline }
       semantic:
         - module
         - namespace # TODO: What does this do?
 
     # Parameters
-    - style: { light: purple1 bold, dark: purple2 bold}
+    - style: { light: purple2 bold, dark: purple1 bold}
       semantic:
         - selfParameter
         - clsParameter
 
-    - style: { light: black3, dark: white2 }
-      semantic:
-        - parameter
+    - style: &tokenParameter { light: purple1, dark: purple2 }
+      # In specific situations, keyword arguments will use this
+      # color in a function call in Python
+      semantic: parameter
 
     # Properties
     - style: { light: black2, dark: white3 }
@@ -162,26 +163,25 @@ vscode:
         - string
 
     # Variables
-    - style: { light: black5, dark: white1 }
+    - style: *tokenParameter
       semantic:
-        - variable
+        - variable.builtin
 
     ### MARK: Textmate tokens
 
     # TODO
-
     - style: *fixme
       textmate:
         - support.type.primitive
 
     # Comments
-    - style: { light: green2, dark: green0 italic }
+    - style: { light: green2 italic, dark: green0 italic }
       textmate:
         - comment
         - punctuation.definition.comment
 
     # Constant values
-    - style: { light: blue1, dark: blue2 }
+    - style: *tokenString
       textmate:
         - constant.language
         - constant.numeric
@@ -192,7 +192,7 @@ vscode:
       textmate: meta.function-call.generic.python
 
     # Keyword
-    - style: &tokenKeyword { light: white0, dark: black7 bold }
+    - style: &tokenKeyword { light: white1 bold, dark: black7 bold }
       textmate:
         # var, etc.
         - storage.type
@@ -207,7 +207,7 @@ vscode:
         - keyword.operator.logical # eg. `in`, `not`
 
     # Keyword arguments
-    - style: { light: white0 italic, dark: black7 italic }
+    - style: &tokenKeywordArgument { light: white0 italic, dark: black7 italic }
       textmate:
         - variable.parameter.function-call
         - meta.function-call.arguments keyword.operator.assignment
@@ -230,6 +230,19 @@ vscode:
     # Strings
     - style: *tokenString
       textmate: string
+
+    ### -----------------------------------------------------------------------
+    ### [HTML]
+    - style: cyan1
+      textmate: entity.name.tag.html
+
+    - style: *tokenKeywordArgument
+      textmate: entity.other.attribute-name.html
+
+    - style: { light: white0, dark: black7 }
+      textmate:
+        - punctuation.definition.tag.begin.html
+        - punctuation.definition.tag.end.html
 
     ### -----------------------------------------------------------------------
     ### [JSON/YML]
@@ -460,10 +473,12 @@ vscode:
     # these only apply if bracket pair colorization is enabled
     editorBracketHighlight: # ✅
       unexpectedBracket.foreground: { light: red1, dark: red1 }
-      # They go up to 6 but 3 should be enough
-      foreground1: { light: yellow2, dark: yellow1 }
-      foreground2: { light: blue2, dark: blue1 }
-      foreground3: { light: purple2, dark: purple1 }
+      foreground1: { light: blue2, dark: blue1 }
+      foreground2: { light: purple2, dark: purple1 }
+      foreground3: { light: cyan2, dark: cyan1 }
+      foreground4: { light: yellow2, dark: yellow1 }
+      foreground5: { light: green2, dark: green1 }
+      foreground6: { light: white1, dark: black7 }
 
     editorCursor: # ✅
       background: *cursorTextColor
