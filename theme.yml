@@ -29,7 +29,7 @@ _var:
 
   - &sideBarBackground { light: white4, dark: black1 }
   - &sideBarForeground { light: black6, dark: white1 }
-  - &sideBarBorder     { light: white1, dark: black4 }
+  - &sideBarBorder     { light: white3, dark: black4 }
 
   - &textLinkActiveForeground {light: cyan0, dark: cyan2}
 
@@ -146,10 +146,10 @@ vscode:
         - selfParameter
         - clsParameter
 
-    - style: &tokenParameter { light: purple1, dark: purple2 }
-      # In specific situations, keyword arguments will use this
-      # color in a function call in Python
-      semantic: parameter
+    # In specific situations, keyword arguments will use this
+    # color in a function call in Python
+    #- style: &tokenParameter { light: purple1, dark: purple2 }
+      #semantic: parameter
 
     # Properties
     - style: { light: black2, dark: white3 }
@@ -163,7 +163,7 @@ vscode:
         - string
 
     # Variables
-    - style: *tokenParameter
+    - style: { light: purple1, dark: purple2 }
       semantic:
         - variable.builtin
 
@@ -319,7 +319,7 @@ vscode:
       foreground:       &activityBarForeground { light: cyan2,  dark: cyan1 }
       activeBorder:     *activityBarForeground
 
-      border: { light: white2, dark: black5 }
+      border: { light: white2, dark: black3 }
       dropBorder: { light: cyan3, dark: cyan0 }
       # Not specifying these will default to using dimmed
       # versions of the base foreground color

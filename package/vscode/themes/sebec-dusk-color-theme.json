@@ -18,8 +18,8 @@
         "terminal.ansiBrightCyan": "#7eafc8",
         "terminal.ansiGreen": "#6a8e67",
         "terminal.ansiBrightGreen": "#97b295",
-        "terminal.ansiMagenta": "#886382",
-        "terminal.ansiBrightMagenta": "#ae8fa8",
+        "terminal.ansiMagenta": "#7c6388",
+        "terminal.ansiBrightMagenta": "#a38fae",
         "terminal.ansiRed": "#a04b52",
         "terminal.ansiBrightRed": "#c17b81",
         "terminal.ansiYellow": "#a48546",
@@ -44,7 +44,7 @@
         "activityBar.background": "#0f1115",
         "activityBar.foreground": "#498bab",
         "activityBar.activeBorder": "#498bab",
-        "activityBar.border": "#3a4150",
+        "activityBar.border": "#242932",
         "activityBar.dropBorder": "#295f7a",
         "activityBar.inactiveForeground": "#5e6a82",
         "activityBarBadge.background": "#7eafc8",
@@ -66,7 +66,7 @@
         "charts.blue": "#4962ab",
         "charts.green": "#6a8e67",
         "charts.yellow": "#a48546",
-        "charts.purple": "#886382",
+        "charts.purple": "#7c6388",
         "charts.orange": "#498bab",
         "charts.lines": "#41653e",
         "dropdown.background": "#0f1115",
@@ -84,11 +84,11 @@
         "editor.lineHighlightBackground": "#181b21",
         "editor.lineHighlightBorder": "#181b21",
         "editor.foldBackground": "#293d7a3f",
-        "editorBracketMatch.background": "#8863827f",
+        "editorBracketMatch.background": "#7c63887f",
         "editorBracketMatch.border": "#00000000",
         "editorBracketHighlight.unexpectedBracket.foreground": "#a04b52",
         "editorBracketHighlight.foreground1": "#4962ab",
-        "editorBracketHighlight.foreground2": "#886382",
+        "editorBracketHighlight.foreground2": "#7c6388",
         "editorBracketHighlight.foreground3": "#498bab",
         "editorBracketHighlight.foreground4": "#a48546",
         "editorBracketHighlight.foreground5": "#6a8e67",
@@ -278,18 +278,17 @@
             "fontStyle": "underline"
         },
         "selfParameter": {
-            "foreground": "#886382",
+            "foreground": "#7c6388",
             "fontStyle": "bold"
         },
         "clsParameter": {
-            "foreground": "#886382",
+            "foreground": "#7c6388",
             "fontStyle": "bold"
         },
-        "parameter": "#ae8fa8",
         "enumMember": "#e2e4e9",
         "property": "#e2e4e9",
         "string": "#7e91c8",
-        "variable.builtin": "#ae8fa8"
+        "variable.builtin": "#a38fae"
     },
     "tokenColors": [
         {
