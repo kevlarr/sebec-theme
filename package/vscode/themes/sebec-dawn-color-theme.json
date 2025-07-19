@@ -293,14 +293,6 @@
     "tokenColors": [
         {
             "scope": [
-                "support.type.primitive"
-            ],
-            "settings": {
-                "foreground": "#ff0000"
-            }
-        },
-        {
-            "scope": [
                 "comment",
                 "punctuation.definition.comment"
             ],
@@ -378,9 +370,19 @@
             }
         },
         {
+            "scope": [
+                "support.type.primitive"
+            ],
+            "settings": {
+                "foreground": "#818a9c",
+                "fontStyle": "italic"
+            }
+        },
+        {
             "scope": "entity.name.tag.html",
             "settings": {
-                "foreground": "#498bab"
+                "foreground": "#3a4150",
+                "fontStyle": "bold"
             }
         },
         {
@@ -396,7 +398,8 @@
                 "punctuation.definition.tag.end.html"
             ],
             "settings": {
-                "foreground": "#818a9c"
+                "foreground": "#a4aab7",
+                "fontStyle": "bold"
             }
         },
         {

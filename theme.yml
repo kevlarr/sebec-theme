@@ -118,7 +118,7 @@ vscode:
         - interface
         - struct
 
-    - style: &tokenTypeHints { light: white0 italic, dark: black7 italic }
+    - style: &tokenTypeHint { light: white0 italic, dark: black7 italic }
       semantic:
         - "*.typeHint"
 
@@ -168,11 +168,6 @@ vscode:
         - variable.builtin
 
     ### MARK: Textmate tokens
-
-    # TODO
-    - style: *fixme
-      textmate:
-        - support.type.primitive
 
     # Comments
     - style: { light: green2 italic, dark: green0 italic }
@@ -231,15 +226,20 @@ vscode:
     - style: *tokenString
       textmate: string
 
+    # Type hints (fallback)
+    - style: *tokenTypeHint
+      textmate:
+        - support.type.primitive
+
     ### -----------------------------------------------------------------------
     ### [HTML]
-    - style: cyan1
+    - style: *tokenTypeDeclarations
       textmate: entity.name.tag.html
 
     - style: *tokenKeywordArgument
       textmate: entity.other.attribute-name.html
 
-    - style: { light: white0, dark: black7 }
+    - style: *tokenKeyword
       textmate:
         - punctuation.definition.tag.begin.html
         - punctuation.definition.tag.end.html
