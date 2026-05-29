@@ -233,7 +233,6 @@
     },
     "semanticTokenColors": {
         "typeParameter": "#ff0000",
-        "type": "#ff0000",
         "class.declaration": {
             "foreground": "#f6f7f8",
             "fontStyle": "bold"
@@ -379,14 +378,20 @@
             }
         },
         {
-            "scope": "entity.name.tag.html",
+            "scope": [
+                "entity.name.tag.html",
+                "entity.name.tag.svelte"
+            ],
             "settings": {
                 "foreground": "#f6f7f8",
                 "fontStyle": "bold"
             }
         },
         {
-            "scope": "entity.other.attribute-name.html",
+            "scope": [
+                "entity.other.attribute-name.html",
+                "entity.other.attribute-name.svelte"
+            ],
             "settings": {
                 "foreground": "#5e6a82",
                 "fontStyle": "italic"
@@ -395,7 +400,9 @@
         {
             "scope": [
                 "punctuation.definition.tag.begin.html",
-                "punctuation.definition.tag.end.html"
+                "punctuation.definition.tag.begin.svelte",
+                "punctuation.definition.tag.end.html",
+                "punctuation.definition.tag.end.svelte"
             ],
             "settings": {
                 "foreground": "#5e6a82",

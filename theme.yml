@@ -100,7 +100,7 @@ vscode:
     - style: *fixme
       semantic:
         - typeParameter
-        - type
+        #- type # tough in typescript, it covers types as well as some type annotations
         # - variable.builtin # tough token since it highlights others, eg. `None`
 
     # Class & types
@@ -234,15 +234,21 @@ vscode:
     ### -----------------------------------------------------------------------
     ### [HTML]
     - style: *tokenTypeDeclarations
-      textmate: entity.name.tag.html
+      textmate:
+        - entity.name.tag.html
+        - entity.name.tag.svelte
 
     - style: *tokenKeywordArgument
-      textmate: entity.other.attribute-name.html
+      textmate:
+        - entity.other.attribute-name.html
+        - entity.other.attribute-name.svelte
 
     - style: *tokenKeyword
       textmate:
         - punctuation.definition.tag.begin.html
+        - punctuation.definition.tag.begin.svelte
         - punctuation.definition.tag.end.html
+        - punctuation.definition.tag.end.svelte
 
     ### -----------------------------------------------------------------------
     ### [JSON/YML]
