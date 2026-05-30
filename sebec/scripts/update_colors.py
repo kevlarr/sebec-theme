@@ -42,7 +42,9 @@ def main():
             if not style: continue
 
             match = re.match("fill:(#[a-fA-F0-9]{3,6});", style.value)
-            if not match: continue
+            if not match:
+                print(f"warning: no match on '{style.value}'")
+                continue
 
             colors.append({
                 "name": element.attributes["id"].value.lower(),
