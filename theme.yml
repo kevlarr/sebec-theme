@@ -83,13 +83,30 @@ vscode:
     ### MARK: Semantic tokens
 
     # Type hints and decorators — italic, foreground color
-    - style: &tokenAnnotation { light: cyan1 italic, dark: cyan2 italic }
+    - style: &tokenAnnotation { light: cyan1 italic, dark: cyan1 italic }
       semantic:
         - "*.typeHint"
         - decorator
 
+    # Declarations — bold signals "this is where the thing is defined"
+    - style: &tokenDeclaration { light: cyan1 bold, dark: cyan1 bold }
+      semantic:
+        - function.declaration
+        - method.declaration
+        - class.declaration
+        - enum.declaration
+        - interface.declaration
+        - struct.declaration
+
+    # Parameters — explicitly foreground to prevent bleed from keyword/punctuation rules
+    - style: &tokenForeground { light: black5, dark: white0 }
+      semantic:
+        - parameter
+      textmate:
+        - variable.parameter
+
     # Callables — all function and method calls, built-in or user-defined
-    - style: &tokenCallable { light: cyan1, dark: cyan2 }
+    - style: &tokenCallable { light: cyan1, dark: cyan1 }
       semantic:
         - function
         - method
@@ -99,7 +116,7 @@ vscode:
         - function.defaultLibrary
 
     # Literal values — all embedded data
-    - style: &tokenLiteral { light: purple1 italic, dark: purple2 italic }
+    - style: &tokenLiteral { light: purple1, dark: purple1 }
       semantic:
         - string
 
@@ -137,7 +154,7 @@ vscode:
       textmate:
         - string
         - constant.numeric
-        - constant.language         # None, True, False, null, nil, undefined
+        - constant.language  # None, True, False, null, nil, undefined
 
 
 

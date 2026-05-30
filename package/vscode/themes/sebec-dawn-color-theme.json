@@ -217,18 +217,48 @@
             "foreground": "#4f97ba",
             "fontStyle": "italic"
         },
+        "function.declaration": {
+            "foreground": "#4f97ba",
+            "fontStyle": "bold"
+        },
+        "method.declaration": {
+            "foreground": "#4f97ba",
+            "fontStyle": "bold"
+        },
+        "class.declaration": {
+            "foreground": "#4f97ba",
+            "fontStyle": "bold"
+        },
+        "enum.declaration": {
+            "foreground": "#4f97ba",
+            "fontStyle": "bold"
+        },
+        "interface.declaration": {
+            "foreground": "#4f97ba",
+            "fontStyle": "bold"
+        },
+        "struct.declaration": {
+            "foreground": "#4f97ba",
+            "fontStyle": "bold"
+        },
+        "parameter": "#404859",
         "function": "#4f97ba",
         "method": "#4f97ba",
         "variable.builtin": "#4f97ba",
         "type.defaultLibrary": "#4f97ba",
         "class.defaultLibrary": "#4f97ba",
         "function.defaultLibrary": "#4f97ba",
-        "string": {
-            "foreground": "#8d6c9d",
-            "fontStyle": "italic"
-        }
+        "string": "#8d6c9d"
     },
     "tokenColors": [
+        {
+            "scope": [
+                "variable.parameter"
+            ],
+            "settings": {
+                "foreground": "#404859"
+            }
+        },
         {
             "scope": [
                 "keyword",
@@ -268,8 +298,7 @@
                 "constant.language"
             ],
             "settings": {
-                "foreground": "#8d6c9d",
-                "fontStyle": "italic"
+                "foreground": "#8d6c9d"
             }
         },
         {
