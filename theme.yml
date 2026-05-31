@@ -9,6 +9,8 @@ _var:
   - &alpha50 "#000000 50%"
   - &alpha75 "#000000 75%"
 
+  - &foreground { light: black5, dark: white0 }
+
   - &badgeBackground blue2
   - &badgeForeground { light: white5, dark: black0 }
 
@@ -52,8 +54,10 @@ terminal:
       yellowBright: yellow2
 
     background: &terminalBackground { light: white3, dark: black2 }
-    foreground: &terminalForeground { light: black5, dark: white0 }
+    foreground: *foreground
 
+    # TODO: The `blue` might be too jarring, maybe use a gray for the selection background,
+    # and make sure that it's standardized across terminal, editor, and ui
     selectionBackground: &activeMatchBackground { light: blue2, dark: blue0 }
     selectionForeground: { light: white5, dark: white0 }
 
@@ -83,7 +87,7 @@ vscode:
     ### MARK: Semantic tokens
 
     # Declarations — bold signals "this is where the thing is defined"
-    - style: &tokenDeclaration { light: cyan1 bold, dark: cyan1 bold }
+    - style: &tokenDeclaration { light: cyan0 bold, dark: cyan2 bold }
       semantic:
         - function.declaration
         - method.declaration
@@ -122,7 +126,7 @@ vscode:
         - "function.decorator"
 
     # Callables — things that do: functions, methods, and classes (callable objects)
-    - style: &tokenCallable { light: cyan1, dark: cyan1 }
+    - style: &tokenCallable { light: cyan0, dark: cyan1 }
       semantic:
         - function
         - method
@@ -132,14 +136,14 @@ vscode:
         - function.defaultLibrary
 
     # Literal values — all embedded data
-    - style: &tokenLiteral { light: green1, dark: green1 }
+    - style: &tokenLiteral { light: green0, dark: green2 }
       semantic:
         - string
 
     ### MARK: Textmate tokens
 
     # De-emphasized tokens
-    - style: &tokenDeemphasized { light: gray3, dark: gray4 }
+    - style: &tokenDeemphasized { light: gray4, dark: gray3 }
       textmate:
         # Keywords — all keywords unified: control flow, storage, modifiers
         - keyword
@@ -161,7 +165,7 @@ vscode:
         - storage.modifier
 
     # Comments
-    - style: &tokenComment { light: blue2 italic, dark: blue1 italic }
+    - style: &tokenComment { light: blue2 italic, dark: blue0 italic }
       textmate:
         - comment
         - punctuation.definition.comment
@@ -227,10 +231,10 @@ vscode:
   ### MARK: UI
   ui:
 
-    foreground:           { light: black4, dark: white0 }
+    foreground:           *foreground
     disabledForeground:   { light: white0, dark: black5 }
     sash.hoverBorder:     { light: blue2,  dark: blue1  }
-    selection.background: { light: white0, dark: black4 }
+    selection.background: { light: white0, dark: black4 } # Eg. selecting text in a search widget
     widget.shadow:        { light: white1, dark: black0 }
 
     focusBorder:     &focusBorder     blue2
@@ -254,7 +258,7 @@ vscode:
       activeBorder:     *activityBarForeground
       border:           { light: white0, dark: black3 }
       dropBorder:       { light: blue2,  dark: blue0 }
-      inactiveForeground: { light: white0, dark: black5 }
+      inactiveForeground: { light: gray5, dark: gray0 }
 
     activityBarBadge:
       background: *badgeBackground
@@ -289,7 +293,7 @@ vscode:
     ### Editor
     editor:
       background: &editorBackground { light: white3, dark: black2 }
-      foreground: *terminalForeground
+      foreground: *foreground
 
       selectionBackground: &editorSelectionBackground { light: blue2 50%, dark: blue0 50% }
 
@@ -362,6 +366,11 @@ vscode:
     editorWhitespace:
       foreground: { light: white0, dark: black4 }
 
+    ### Diff editor
+    diffEditor:
+      insertedTextBackground: { light: green1 20%, dark: green0 20% }
+      removedTextBackground:  { light: red1 20%,   dark: red0 20% }
+
     ### Editor groups & tabs
     editorGroup:
       border: *sideBarBorder
@@ -376,6 +385,7 @@ vscode:
       hoverBackground:    { light: white3, dark: black1 }
       inactiveBackground: { light: white2, dark: black1 }
       inactiveForeground: { light: white0, dark: black5 }
+      activeBorderTop:    { light: blue2,  dark: blue1 }
       selectedBorderTop:  { light: blue2,  dark: blue1 }
       border: *alpha0
       dragAndDropBorder: blue2
@@ -478,6 +488,11 @@ vscode:
         light: white2
         dark: black3
 
+    panelTitle:
+      activeForeground:   { light: blue1,  dark: blue2 }
+      activeBorder:       { light: blue2,  dark: blue1 }
+      inactiveForeground: { light: white0, dark: black5 }
+
     ### Progress bar
     progressBar:
       background: blue2
@@ -486,6 +501,10 @@ vscode:
     pickerGroup:
       foreground: &pickerGroupDim { light: white2, dark: black5 }
       border:     *pickerGroupDim
+
+    quickInputList:
+      focusBackground: *editorPopupActiveBackground
+      focusForeground: *editorPopupForeground
 
     ### Scrollbar
     scrollbar:
@@ -506,10 +525,24 @@ vscode:
     sideBarSectionHeader:
       border: { light: white0, dark: black5 }
 
+    ### Git decorations (explorer sidebar file status)
+    gitDecoration:
+      addedResourceForeground:         { light: green1, dark: green2 }
+      untrackedResourceForeground:     { light: green1, dark: green2 }
+      modifiedResourceForeground:      { light: yellow1, dark: yellow2 }
+      stageModifiedResourceForeground: { light: yellow1, dark: yellow2 }
+      deletedResourceForeground:       { light: red1, dark: red2 }
+      stageDeletedResourceForeground:  { light: red1, dark: red2 }
+      conflictingResourceForeground:   { light: red1, dark: red2 }
+      ignoredResourceForeground:       { light: white0, dark: black5 }
+
     ### Status bar
     statusBar:
       background: { light: blue2, dark: blue0 }
-      foreground: { light: blue0, dark: blue2 }
+      foreground: { light: white5, dark: white1 }
+      border: *alpha0
+      debuggingBackground: { light: yellow1, dark: yellow0 }
+      debuggingForeground: { light: black4,  dark: white4 }
 
     statusBarItem:
       activeBackground: { light: blue2, dark: blue2 }
@@ -537,6 +570,16 @@ vscode:
       inactiveBackground: { light: white1, dark: black0 }
       activeForeground:   { light: black5, dark: white0 }
       inactiveForeground: { light: white0, dark: black5 }
+
+    ### Notifications
+    notifications:
+      background: *editorPopupBackground
+      foreground: *editorPopupForeground
+      border:     *editorPopupBorder
+
+    notificationCenterHeader:
+      background: *sideBarBackground
+      foreground: *sideBarForeground
 
     ### Window border
     window:
