@@ -9,26 +9,26 @@ _var:
   - &alpha50 "#000000 50%"
   - &alpha75 "#000000 75%"
 
-  - &badgeBackground cyan2
+  - &badgeBackground blue2
   - &badgeForeground { light: white5, dark: black0 }
 
   - &editorPopupBackground { light: white4, dark: black3 }
   - &editorPopupForeground { light: black5, dark: white0 }
   - &editorPopupBorder { light: white2, dark: black4 }
-  - &editorPopupActiveBackground { light: cyan2 50%, dark: cyan0 50% }
-  - &editorPopupActiveForeground { light: cyan1, dark: cyan2 }
+  - &editorPopupActiveBackground { light: blue2 50%, dark: blue0 50% }
+  - &editorPopupActiveForeground { light: blue1, dark: blue2 }
 
-  - &guideStroke         { light: cyan2 75%, dark: cyan0 75% }
-  - &inactiveGuideStroke { light: cyan2 25%, dark: cyan0 25% }
+  - &guideStroke         { light: blue2 75%, dark: blue0 75% }
+  - &inactiveGuideStroke { light: blue2 25%, dark: blue0 25% }
 
-  - &scrollbarSliderActiveBackground { light: cyan2 75%, dark: cyan1 75% }
-  - &scrollbarSliderHoverBackground  { light: cyan2 75%, dark: cyan0 75% }
+  - &scrollbarSliderActiveBackground { light: blue2 75%, dark: blue1 75% }
+  - &scrollbarSliderHoverBackground  { light: blue2 75%, dark: blue0 75% }
 
   - &sideBarBackground { light: white2, dark: black1 }
   - &sideBarForeground { light: black5, dark: white0 }
   - &sideBarBorder     { light: white1, dark: black4 }
 
-  - &textLinkActiveForeground { light: cyan0, dark: cyan2 }
+  - &textLinkActiveForeground { light: blue0, dark: blue2 }
 
 terminal:
   base:
@@ -59,14 +59,14 @@ terminal:
 
     matchBackground: &matchBackground { light: white1, dark: black5 }
 
-    cursorColor:     &cursorColor     { light: cyan2, dark: cyan1 }
+    cursorColor:     &cursorColor     { light: blue2, dark: blue1 }
     cursorTextColor: &cursorTextColor { light: white5, dark: black0 }
 
   iterm:
     badgeColor:       { light: white4, dark: black4 }
     boldColor:        { light: black2, dark: white4 }
     cursorGuideColor: { light: white4, dark: black4 }
-    linkColor:        { light: cyan0,  dark: cyan1 }
+    linkColor:        { light: blue0,  dark: blue1 }
     tabColor:         { light: white3, dark: black3 }
     underlineColor:   { light: black0, dark: white5 }
 
@@ -81,12 +81,6 @@ vscode:
     ###   https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
 
     ### MARK: Semantic tokens
-
-    # Type hints and decorators — italic, foreground color
-    - style: &tokenAnnotation { light: cyan1 italic, dark: cyan1 italic }
-      semantic:
-        - "*.typeHint"
-        - decorator
 
     # Declarations — bold signals "this is where the thing is defined"
     - style: &tokenDeclaration { light: cyan1 bold, dark: cyan1 bold }
@@ -105,46 +99,69 @@ vscode:
       textmate:
         - variable.parameter
 
-    # Callables — all function and method calls, built-in or user-defined
+    # Types — purely type-system constructs (interfaces, abstract types, type parameters)
+    - style: &tokenType { light: purple1, dark: purple2 }
+      semantic:
+        - type
+        - interface
+        - struct
+        - enum
+        - typeParameter
+        - type.defaultLibrary
+
+    # Decorators and type annotations — italic purple: not executable code
+    # class.typeHint is explicit because VS Code gives exact-type rules precedence over
+    # wildcard-modifier rules (*.typeHint) for color; explicit beats both
+    - style: &tokenAnnotation { light: purple1 italic, dark: purple2 italic }
+      semantic:
+        - decorator
+        - "*.typeHint"
+        - class.typeHint
+        - class.decorator
+        - "function.typeHint"
+        - "function.decorator"
+
+    # Callables — things that do: functions, methods, and classes (callable objects)
     - style: &tokenCallable { light: cyan1, dark: cyan1 }
       semantic:
         - function
         - method
-        - variable.builtin        # self, cls, this, super
-        - type.defaultLibrary
+        - class               # classes are callable objects; *.typeHint overrides in annotation positions
         - class.defaultLibrary
+        - variable.builtin    # self, cls, this, super
         - function.defaultLibrary
 
     # Literal values — all embedded data
-    - style: &tokenLiteral { light: purple1, dark: purple1 }
+    - style: &tokenLiteral { light: green1, dark: green1 }
       semantic:
         - string
 
     ### MARK: Textmate tokens
 
     # De-emphasized tokens
-    #   * Keywords — all keywords unified: control flow, storage, modifiers
-    #   * Operators and punctuation — de-emphasized
-    - style: &tokenDeemphasized { light: blue2, dark: blue1 }
+    - style: &tokenDeemphasized { light: gray3, dark: gray4 }
       textmate:
+        # Keywords — all keywords unified: control flow, storage, modifiers
         - keyword
         - keyword.control
         - keyword.operator.logical  # and, or, not, in, is
         - keyword.operator.arithmetic
         - keyword.operator.assignment
         - keyword.operator.comparison
+        # Operators and punctuation — de-emphasized
         - punctuation.parenthesis
         - punctuation.definition.arguments
         - punctuation.separator
         - punctuation.section.class.begin
         - punctuation.section.function.begin
+        # Keywords eg. `def` and `class`
         - storage.type
         - storage.type.class
         - storage.type.function
         - storage.modifier
 
     # Comments
-    - style: &tokenComment { light: green2 italic, dark: green0 italic }
+    - style: &tokenComment { light: blue2 italic, dark: blue1 italic }
       textmate:
         - comment
         - punctuation.definition.comment
@@ -159,34 +176,42 @@ vscode:
 
 
 
-    # Callables — functions and methods (textmate fallback)
+    # Types — textmate fallback (purely type-system constructs)
+    - style: *tokenType
+      textmate:
+        - entity.name.type
+        - support.type
+
+    # Callables — textmate fallback (classes are callable objects)
     - style: *tokenCallable
       textmate:
         - entity.name.function
+        - entity.name.class
         - support.function
-        - variable.language         # self, this, super
-        - support.type.primitive    # type hint fallback: int, str, bool
+        - support.class
+        - support.type.primitive  # int, str, bool — callable builtins
+        - variable.language       # self, this, super
 
-
-    # Decorators — italic
+    # Decorators — italic purple, including the @ symbol
     - style: *tokenAnnotation
       textmate:
         - entity.name.function.decorator
+        - punctuation.decorator             # @ in TypeScript/JavaScript
+        - punctuation.definition.decorator  # @ in Python
 
     ### -----------------------------------------------------------------------
     ### [HTML/Svelte]
-    - style: *tokenDeemphasized
+    # Tag names are type/class identifiers — more prominent than attributes
+    - style: *tokenCallable
       textmate:
         - entity.name.tag.html
         - entity.name.tag.svelte
 
-    - style: *tokenAnnotation
+    # Attribute names and punctuation recede like structural labels
+    - style: *tokenDeemphasized
       textmate:
         - entity.other.attribute-name.html
         - entity.other.attribute-name.svelte
-
-    - style: *tokenDeemphasized
-      textmate:
         - punctuation.definition.tag.begin.html
         - punctuation.definition.tag.begin.svelte
         - punctuation.definition.tag.end.html
@@ -194,7 +219,7 @@ vscode:
 
     ### -----------------------------------------------------------------------
     ### [JSON/YAML]
-    - style: *tokenAnnotation
+    - style: *tokenDeemphasized
       textmate:
         - support.type.property-name.json
         - entity.name.tag.yaml
@@ -204,11 +229,11 @@ vscode:
 
     foreground:           { light: black4, dark: white0 }
     disabledForeground:   { light: white0, dark: black5 }
-    sash.hoverBorder:     { light: cyan2,  dark: cyan1  }
+    sash.hoverBorder:     { light: blue2,  dark: blue1  }
     selection.background: { light: white0, dark: black4 }
     widget.shadow:        { light: white1, dark: black0 }
 
-    focusBorder:     &focusBorder     cyan2
+    focusBorder:     &focusBorder     blue2
     errorForeground: &errorForeground { light: red1, dark: red2 }
 
     ### Action colors
@@ -225,10 +250,10 @@ vscode:
     ### Activity bar
     activityBar:
       background:       &activityBarBackground { light: white1, dark: black0 }
-      foreground:       &activityBarForeground { light: cyan2,  dark: cyan1 }
+      foreground:       &activityBarForeground { light: blue2,  dark: blue1 }
       activeBorder:     *activityBarForeground
       border:           { light: white0, dark: black3 }
-      dropBorder:       { light: cyan2,  dark: cyan0 }
+      dropBorder:       { light: blue2,  dark: blue0 }
       inactiveForeground: { light: white0, dark: black5 }
 
     activityBarBadge:
@@ -250,8 +275,8 @@ vscode:
 
     ### Button
     button:
-      background:      &buttonBackground      { light: cyan2, dark: cyan0 }
-      hoverBackground: &buttonHoverBackground { light: cyan1, dark: cyan1 }
+      background:      &buttonBackground      { light: blue1, dark: blue0 }
+      hoverBackground: &buttonHoverBackground { light: blue0, dark: blue1 }
       foreground:      &buttonForeground      { light: white5, dark: white3 }
       secondaryBackground:      { light: white0, dark: black4 }
       secondaryHoverBackground: { light: white0, dark: black5 }
@@ -281,14 +306,14 @@ vscode:
       foldBackground: { light: blue2 25%, dark: blue0 25% }
 
     editorBracketMatch:
-      background: { light: purple2 50%, dark: purple1 50% }
+      background: { light: blue2 50%, dark: blue0 50% }
       border: *alpha0
 
     editorBracketHighlight:
       unexpectedBracket.foreground: { light: red1,    dark: red1 }
       foreground1: { light: blue2,   dark: blue1 }
       foreground2: { light: purple2, dark: purple1 }
-      foreground3: { light: cyan2,   dark: cyan1 }
+      foreground3: { light: cyan2,   dark: cyan1 }  # bracket pairs are code tokens, keep cyan
       foreground4: { light: yellow2, dark: yellow1 }
       foreground5: { light: green2,  dark: green1 }
       foreground6: { light: white0,  dark: black5 }
@@ -321,7 +346,7 @@ vscode:
 
     editorLineNumber:
       foreground:       { light: white0, dark: black5 }
-      activeForeground: { light: cyan0,  dark: cyan1 }
+      activeForeground: { light: blue0,  dark: blue1 }
 
     editorLink:
       activeForeground: *textLinkActiveForeground
@@ -340,32 +365,32 @@ vscode:
     ### Editor groups & tabs
     editorGroup:
       border: *sideBarBorder
-      dropBackground: { light: cyan2 25%, dark: cyan1 25% }
+      dropBackground: { light: blue2 25%, dark: blue1 25% }
 
     editorGroupHeader:
       tabsBackground: { light: white1, dark: black1 }
 
     tab:
       activeBackground:   { light: white3, dark: black2 }
-      activeForeground:   { light: cyan1,  dark: cyan2 }
+      activeForeground:   { light: blue1,  dark: blue2 }
       hoverBackground:    { light: white3, dark: black1 }
       inactiveBackground: { light: white2, dark: black1 }
       inactiveForeground: { light: white0, dark: black5 }
-      selectedBorderTop:  { light: cyan2,  dark: cyan1 }
+      selectedBorderTop:  { light: blue2,  dark: blue1 }
       border: *alpha0
-      dragAndDropBorder: cyan2
+      dragAndDropBorder: blue2
       lastPinnedBorder: *alpha0
 
     ### Editor widgets
     editorWidget:
       background: { light: white5, dark: black4 }
       foreground: { light: black4, dark: white2 }
-      border: { light: cyan2, dark: cyan1 }
+      border: { light: blue2, dark: blue1 }
 
     editorSuggestWidget:
       selectedBackground: *editorPopupActiveBackground
       selectedForeground: *editorPopupForeground
-      highlightForeground:      { light: cyan2, dark: cyan1 }
+      highlightForeground:      { light: blue2, dark: blue1 }
       focusHighlightForeground: *editorPopupActiveForeground
 
     ### Input
@@ -386,7 +411,7 @@ vscode:
       errorForeground:                  { light: white5, dark: white4 }
       errorBorder:     *errorBackground
 
-      infoBackground: &infoBackground { light: cyan2,  dark: cyan1 }
+      infoBackground: &infoBackground { light: blue2,  dark: blue1 }
       infoForeground:                 { light: white5, dark: white4 }
       infoBorder:     *infoBackground
 
@@ -403,7 +428,7 @@ vscode:
 
     ### Lists and trees
     list:
-      activeSelectionBackground:       &listActiveBackground { light: cyan2,  dark: cyan0 }
+      activeSelectionBackground:       &listActiveBackground { light: blue2,  dark: blue0 }
       activeSelectionForeground:       &listActiveForeground { light: black4, dark: white4 }
       activeSelectionIconForeground:   *listActiveForeground
       inactiveSelectionBackground:     *listActiveBackground
@@ -416,7 +441,7 @@ vscode:
       focusForeground: *listHoverForeground
       focusOutline:    *alpha0
 
-      dropBackground:        { light: cyan2 25%, dark: cyan1 25% }
+      dropBackground:        { light: blue2 25%, dark: blue1 25% }
       filterMatchBackground: *matchBackground
 
       errorForeground:   *errorForeground
@@ -455,7 +480,7 @@ vscode:
 
     ### Progress bar
     progressBar:
-      background: cyan2
+      background: blue2
 
     ### Quick picker
     pickerGroup:
@@ -464,7 +489,7 @@ vscode:
 
     ### Scrollbar
     scrollbar:
-      shadow: { light: cyan2 50%, dark: cyan0 50% }
+      shadow: { light: blue2 50%, dark: blue0 50% }
 
     scrollbarSlider:
       background:       { light: white0 75%, dark: black5 75% }
@@ -476,25 +501,25 @@ vscode:
       background: *sideBarBackground
       foreground: *sideBarForeground
       border:     *sideBarBorder
-      dropBackground: { light: cyan2 25%, dark: cyan1 25% }
+      dropBackground: { light: blue2 25%, dark: blue1 25% }
 
     sideBarSectionHeader:
       border: { light: white0, dark: black5 }
 
     ### Status bar
     statusBar:
-      background: { light: cyan2, dark: cyan0 }
-      foreground: { light: cyan0, dark: cyan2 }
+      background: { light: blue2, dark: blue0 }
+      foreground: { light: blue0, dark: blue2 }
 
     statusBarItem:
-      activeBackground: { light: cyan2, dark: cyan2 }
-      hoverBackground:  { light: cyan2, dark: cyan1 }
-      prominentBackground:      { light: cyan2 50%, dark: cyan1 50% }
-      prominentHoverBackground: { light: cyan2,     dark: cyan1 }
-      remoteBackground:      { light: cyan2, dark: cyan0 }
-      remoteHoverBackground: { light: cyan2, dark: cyan1 }
+      activeBackground: { light: blue2, dark: blue2 }
+      hoverBackground:  { light: blue2, dark: blue1 }
+      prominentBackground:      { light: blue2 50%, dark: blue1 50% }
+      prominentHoverBackground: { light: blue2,     dark: blue1 }
+      remoteBackground:      { light: blue2, dark: blue0 }
+      remoteHoverBackground: { light: blue2, dark: blue1 }
       hoverForeground:       { light: white5, dark: white2 }
-      remoteForeground:      { light: cyan0,  dark: cyan2 }
+      remoteForeground:      { light: blue0,  dark: blue2 }
       remoteHoverForeground: { light: white5, dark: white2 }
       errorBackground: red0
       errorForeground: red2
@@ -503,7 +528,7 @@ vscode:
 
     ### Text
     textLink:
-      foreground:       cyan1
+      foreground:       blue1
       activeForeground: *textLinkActiveForeground
 
     ### Title bar
