@@ -19,7 +19,7 @@ system:
     - &foreground         { light: black5, dark: white0 }
     - &foregroundDim      { light: gray3, dark: gray3 }
     - &foregroundDisabled { light: white0, dark: black5 }
-    - &foregroundAccent   { light: blue3,  dark: blue2 }
+    - &foregroundAccent   { light: blue2,  dark: blue2 }
 
     # These foreground colors are for inline messages; the corresponding alerts use light text
     # on the various background colors
@@ -62,8 +62,10 @@ system:
     # color without being as attention-grabbing as the blue selection background color that is
     # used as the "active" match background.
     - &matchBackgroundActive { light: blue4, dark: blue1 }
-    - &matchForegroundActive { light: white5, dark: white0 }
     - &matchBackgroundInactive { light: white1, dark: black5 }
+
+    # { light: black4, dark: white4 }
+    - &matchForegroundActive { light: white5, dark: white2 }
 
 terminal:
   base:
@@ -346,7 +348,7 @@ vscode:
     ###  - activityBarTop.*
     activityBar:
       background:       &activityBarBackground { light: white1, dark: black0 }
-      foreground:       *borderActive
+      foreground:       *foregroundAccent
       activeBorder:     *borderActive
       border:           *borderDim
       dropBorder:       *borderActiveDim
@@ -608,6 +610,10 @@ vscode:
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Lists and trees
+    ###
+    ### Colors for list and trees like the File Explorer. An active list/tree has keyboard
+    ### focus, an inactive does not.
+    ###
     ### https://code.visualstudio.com/api/references/theme-color#lists-and-trees
     ###
     ### Unstyled:
@@ -617,27 +623,29 @@ vscode:
     ###  - listFilterWidget.*
     ###  - tree.tableOddRowsBackground
     list:
-      activeSelectionBackground:       &listActiveBackground { light: blue3,  dark: blue1 }
-      activeSelectionForeground:       &listActiveForeground { light: black4, dark: white4 }
-      activeSelectionIconForeground:   *listActiveForeground
-      inactiveSelectionBackground:     *listActiveBackground
-      inactiveSelectionForeground:     *listActiveForeground
-      inactiveSelectionIconForeground: *listActiveForeground
+      activeSelectionBackground:       *matchBackgroundActive
+      activeSelectionForeground:       *matchForegroundActive
+      activeSelectionIconForeground:   *matchForegroundActive
+      # Keep the "inactive" highlighted with the accent color
+      inactiveSelectionBackground:     *matchBackgroundActive
+      inactiveSelectionForeground:     *matchForegroundActive
+      inactiveSelectionIconForeground: *matchForegroundActive
 
-      hoverBackground: &listHoverBackground { light: white2, dark: black4 }
-      hoverForeground: &listHoverForeground { light: black3, dark: white2 }
-      focusBackground: *listHoverBackground
-      focusForeground: *listHoverForeground
-      focusOutline:    *alpha0
+      # Focus shows when navigating with keyboard or when clicking, but not when a different
+      # window is focused - only the "inactiveSelection" shows.
+      # focusBackground: *matchBackgroundInactive
+      # focusForeground: *listHoverForeground
+      focusOutline: *borderActive
+      hoverBackground: *matchBackgroundInactive
 
-      dropBackground:        { light: blue3 25%, dark: blue2 25% }
-      filterMatchBackground: *matchBackgroundInactive
+      dropBackground: *selectionBackground
+      filterMatchBackground: *matchBackgroundActive
 
-      errorForeground:   *foregroundError
-      warningForeground: { light: yellow2, dark: yellow1 }
+      errorForeground: *foregroundError
+      warningForeground: *foregroundWarning
 
     tree:
-      indentGuidesStroke:         *guideStroke
+      indentGuidesStroke: *guideStroke
       inactiveIndentGuidesStroke: *inactiveGuideStroke
 
     ### -----------------------------------------------------------------------
@@ -682,18 +690,18 @@ vscode:
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Panel colors
+    ###
+    ### Panels are shown below the editor area and contain views like Output and Integrated Terminal.
+    ###
     ### https://code.visualstudio.com/api/references/theme-color#panel-colors
     panel:
-      background:
-        <<: *background
-      border:
-        light: white2
-        dark: black3
+      background: *background
+      border: *border
 
     panelTitle:
-      activeForeground:   { light: blue2,  dark: blue3 }
-      activeBorder:       { light: blue3,  dark: blue2 }
-      inactiveForeground: { light: white0, dark: black5 }
+      activeForeground: *foregroundAccent
+      activeBorder: *borderActive
+      inactiveForeground: *foregroundDim
 
     ### -----------------------------------------------------------------------
     ### MARK: Panel chat colors
@@ -725,12 +733,12 @@ vscode:
     ###
     ### https://code.visualstudio.com/api/references/theme-color#quick-picker-colors
     pickerGroup:
-      foreground: &pickerGroupDim { light: white2, dark: black5 }
-      border:     *pickerGroupDim
+      foreground: *foregroundDim
+      border: *border
 
-    quickInputList:
-      focusBackground: *backgroundActive
-      focusForeground: *foreground
+    # quickInputList:
+    #   focusBackground: *backgroundActive
+    #   focusForeground: *foreground
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Scrollbar control
@@ -759,10 +767,14 @@ vscode:
       background: *backgroundLow
       foreground: *foreground
       border:     *border
-      dropBackground: { light: blue3 25%, dark: blue2 25% }
+      dropBackground: *selectionBackground
+
+    sideBarTitle.foreground: *foregroundDim
 
     sideBarSectionHeader:
-      border: { light: white0, dark: black5 }
+      background: *alpha0
+      border: *alpha0
+      foreground: *foreground
 
     ### -----------------------------------------------------------------------
     ### MARK: Snippets colors
@@ -774,6 +786,9 @@ vscode:
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Git colors
+    ###
+    ### Used for file labels and the SCM viewlet.
+    ###
     ### https://code.visualstudio.com/api/references/theme-color#git-colors
     gitDecoration:
       addedResourceForeground:         { light: green1, dark: green2 }
@@ -783,28 +798,27 @@ vscode:
       deletedResourceForeground:       { light: red1, dark: red2 }
       stageDeletedResourceForeground:  { light: red1, dark: red2 }
       conflictingResourceForeground:   { light: red1, dark: red2 }
-      ignoredResourceForeground:       { light: white0, dark: black5 }
+      ignoredResourceForeground:       *foregroundDim
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Status bar colors
     ### https://code.visualstudio.com/api/references/theme-color#status-bar-colors
     statusBar:
-      background: { light: blue3, dark: blue1 }
-      foreground: { light: white5, dark: white1 }
+      background: *buttonBackground
+      foreground: *buttonForeground
       border: *alpha0
-      debuggingBackground: { light: yellow1, dark: yellow0 }
-      debuggingForeground: { light: black4,  dark: white4 }
+      # debuggingBackground: { light: yellow1, dark: yellow0 }
+      # debuggingForeground: { light: black4,  dark: white4 }
 
     statusBarItem:
-      activeBackground: { light: blue3, dark: blue3 }
-      hoverBackground:  { light: blue3, dark: blue2 }
-      prominentBackground:      { light: blue3 50%, dark: blue2 50% }
-      prominentHoverBackground: { light: blue3,     dark: blue2 }
-      remoteBackground:      { light: blue3, dark: blue1 }
-      remoteHoverBackground: { light: blue3, dark: blue2 }
-      hoverForeground:       { light: white5, dark: white2 }
-      remoteForeground:      { light: blue1,  dark: blue3 }
-      remoteHoverForeground: { light: white5, dark: white2 }
+      activeBackground: *buttonBackgroundHover
+      hoverBackground:  *buttonBackgroundHover
+      # prominentBackground:      { light: blue3 50%, dark: blue2 50% }
+      # prominentHoverBackground: { light: blue3,     dark: blue2 }
+      # remoteBackground:      *buttonBackground
+      # remoteHoverBackground: *buttonBackgroundHover
+      # remoteForeground:      { light: blue1,  dark: blue3 }
+      # remoteHoverForeground: { light: white5, dark: white2 }
       errorBackground: red0
       errorForeground: red2
       warningBackground: yellow0
@@ -828,17 +842,17 @@ vscode:
     ###  - textPreformat.*
     ###  - textSeparator.*
     textLink:
-      foreground:       blue2
+      foreground: *linkColor
       activeForeground: *linkColorActive
 
     ### -----------------------------------------------------------------------
     ### ✅ MARK: Title bar colors
     ### https://code.visualstudio.com/api/references/theme-color#title-bar-colors
     titleBar:
-      activeBackground:   { light: white1, dark: black0 }
-      inactiveBackground: { light: white1, dark: black0 }
-      activeForeground:   { light: black5, dark: white0 }
-      inactiveForeground: { light: white0, dark: black5 }
+      activeBackground: *backgroundHigh
+      inactiveBackground: *backgroundLow
+      activeForeground: *foreground
+      inactiveForeground: *foregroundDisabled
 
     ### -----------------------------------------------------------------------
     ### MARK: Welcome page colors
@@ -860,5 +874,5 @@ vscode:
     ### ✅ MARK: Window border
     ### https://code.visualstudio.com/api/references/theme-color#window-border
     window:
-      activeBorder:   &windowBorder { light: white5, dark: black0 }
-      inactiveBorder: *windowBorder
+      activeBorder: *borderActiveDim
+      inactiveBorder: *border
