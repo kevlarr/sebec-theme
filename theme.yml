@@ -4,44 +4,66 @@ styleNames:
   light: Dawn
   dark: Dusk
 
-_var:
-  - &alpha0  "#000000 0%"
-  - &alpha50 "#000000 50%"
-  - &alpha75 "#000000 75%"
+# The design system tokens
+#
+# These are not meant to comprehensively cover every feature for any application,
+# like "badge colors" that are only used in VS Code; they are meant to codify the
+# design decisions shared between apps.
+system:
+    - &backgroundLow  { light: white2, dark: black1 }
+    - &background     { light: white3, dark: black2 }
+    - &backgroundHigh { light: white4, dark: black3 }
 
-  - &foreground { light: black5, dark: white0 }
+    - &foreground         { light: black5, dark: white0 }
+    - &foregroundDim      { light: gray3, dark: gray3 }
+    - &foregroundDisabled { light: white0, dark: black5 }
+    - &foregroundAccent   { light: blue3,  dark: blue2 }
+    - &foregroundError    { light: red1, dark: red2 }
+    - &foregroundWarning  { light: yellow0, dark: yellow1 }
 
-  - &badgeBackground blue2
-  - &badgeForeground { light: white5, dark: black0 }
+    # Terminal cursor
+    - &cursorColor { light: blue4, dark: blue2 } # The intended color for line or box cursors
+    - &cursorTextForeground { light: white5, dark: black0 } # The intended text color for box cursors
+    - &cursorGuideColor { light: white2, dark: black3 } # Should be one stop away from the background
 
-  - &editorPopupBackground { light: white4, dark: black3 }
-  - &editorPopupForeground { light: black5, dark: white0 }
-  - &editorPopupBorder { light: white2, dark: black4 }
-  - &editorPopupActiveBackground { light: blue2 50%, dark: blue0 50% }
-  - &editorPopupActiveForeground { light: blue1, dark: blue2 }
+    # Git modifiers
+    - &gitAdded    { light: green2,  dark: green0 }
+    - &gitDeleted  { light: red2,    dark: red0 }
+    - &gitModified { light: yellow2, dark: yellow1 }
 
-  - &guideStroke         { light: blue2 75%, dark: blue0 75% }
-  - &inactiveGuideStroke { light: blue2 25%, dark: blue0 25% }
+    # Hyperlinks
+    - &linkColor { light: cyan0,  dark: cyan1 }
+    - &linkColorActive { light: cyan1, dark: cyan2 }
 
-  - &scrollbarSliderActiveBackground { light: blue2 75%, dark: blue1 75% }
-  - &scrollbarSliderHoverBackground  { light: blue2 75%, dark: blue0 75% }
+    # Text selection
+    - &selectionBackground { light: blue5, dark: blue0 }
+    - &selectionForeground { light: black5, dark: white0 }
 
-  - &sideBarBackground { light: white2, dark: black1 }
-  - &sideBarForeground { light: black5, dark: white0 }
-  - &sideBarBorder     { light: white1, dark: black4 }
-
-  - &textLinkActiveForeground { light: blue0, dark: blue2 }
+    # Match backgrounds
+    #
+    # The "active" match background should be slightly more prevalent than text selection
+    # backgrounds, in case they are able to be displayed at the same time.
+    #
+    # The "inactive" match background should use a gray that's noticeable against the background
+    # color without being as attention-grabbing as the blue selection background color that is
+    # used as the "active" match background.
+    - &matchBackgroundActive { light: blue4, dark: blue1 }
+    - &matchForegroundActive { light: white5, dark: white0 }
+    - &matchBackgroundInactive { light: white1, dark: black5 }
 
 terminal:
   base:
     ansi:
       # Bright variants should be lighter than their counterparts in both modes
+      # TODO: Verify colors on light mode
+      # FIXME: Understand how black/white work in both modes and figure out if they need to be
+      # swapped out for a gray depending on the mode
       black: black0
       blackBright: black5
-      blue: blue1
-      blueBright: blue2
-      cyan: cyan1
-      cyanBright: cyan2
+      blue: blue2
+      blueBright: blue3
+      cyan: { light: cyan0, dark: cyan1 }
+      cyanBright: { light: cyan1, dark: cyan2 }
       green: green1
       greenBright: green2
       red: red1
@@ -53,28 +75,55 @@ terminal:
       yellow: yellow1
       yellowBright: yellow2
 
-    background: &terminalBackground { light: white3, dark: black2 }
     foreground: *foreground
+    background: *background
+    selectionForeground: *selectionForeground
+    selectionBackground: *selectionBackground
 
-    # TODO: The `blue` might be too jarring, maybe use a gray for the selection background,
-    # and make sure that it's standardized across terminal, editor, and ui
-    selectionBackground: &activeMatchBackground { light: blue2, dark: blue0 }
-    selectionForeground: { light: white5, dark: white0 }
+    matchBackground: *matchBackgroundInactive
 
-    matchBackground: &matchBackground { light: white1, dark: black5 }
-
-    cursorColor:     &cursorColor     { light: blue2, dark: blue1 }
-    cursorTextColor: &cursorTextColor { light: white5, dark: black0 }
+    # iTerm2 will ignore cursor color for box cursors if "Smart box cursor color" is selected
+    cursorColor: *cursorColor
+    cursorTextColor: *cursorTextForeground
 
   iterm:
-    badgeColor:       { light: white4, dark: black4 }
-    boldColor:        { light: black2, dark: white4 }
-    cursorGuideColor: { light: white4, dark: black4 }
-    linkColor:        { light: blue0,  dark: blue1 }
+    badgeColor:       { light: white4, dark: black4 } # TODO
+    boldColor:        { light: black2, dark: white4 } # TODO
+    cursorGuideColor: *cursorGuideColor
+    linkColor:        *linkColor
     tabColor:         { light: white3, dark: black3 }
-    underlineColor:   { light: black0, dark: white5 }
+    underlineColor:   { light: black0, dark: white5 } # TODO
 
 vscode:
+  var:
+    - &alpha0  "#000000 0%"
+    - &alpha50 "#000000 50%"
+    - &alpha75 "#000000 75%"
+
+    - &backgroundActive { light: blue3 50%, dark: blue1 }
+
+    - &badgeBackground blue3
+    - &badgeForeground { light: white5, dark: black0 }
+
+    - &border    { light: white1, dark: black4 }
+    - &borderDim { light: white0, dark: black3 }
+    - &borderActive    { light: blue3,  dark: blue2 } # *foregroundAccent
+    - &borderActiveDim { light: blue4,  dark: blue1 }
+
+    - &buttonBackground      { light: blue3, dark: blue1 }
+    - &buttonBackgroundHover { light: blue2, dark: blue2 }
+    - &buttonForeground { light: white5, dark: white3 }
+
+    - &editorPopupActiveForeground { light: blue2, dark: blue3 }
+
+    - &guideStroke         { light: blue5, dark: blue0  }
+    - &inactiveGuideStroke { light: white1, dark: black5 }
+
+    - &inputBackground { light: white2, dark: black1 }
+
+    - &scrollbarSliderActiveBackground { light: blue3 75%, dark: blue2 75% }
+    - &scrollbarSliderHoverBackground  { light: blue3 75%, dark: blue1 75% }
+
   ### MARK: Tokens
   tokens:
     ### Semantic & textmate token color assignments.
@@ -136,7 +185,7 @@ vscode:
         - function.defaultLibrary
 
     # Literal values — all embedded data
-    - style: &tokenLiteral { light: green0, dark: green2 }
+    - style: &tokenLiteral { light: green0, dark: green1 }
       semantic:
         - string
 
@@ -165,7 +214,7 @@ vscode:
         - storage.modifier
 
     # Comments
-    - style: &tokenComment { light: blue2 italic, dark: blue0 italic }
+    - style: &tokenComment { light: blue3 italic, dark: blue1 italic }
       textmate:
         - comment
         - punctuation.definition.comment
@@ -232,33 +281,33 @@ vscode:
   ui:
 
     foreground:           *foreground
-    disabledForeground:   { light: white0, dark: black5 }
-    sash.hoverBorder:     { light: blue2,  dark: blue1  }
-    selection.background: { light: white0, dark: black4 } # Eg. selecting text in a search widget
-    widget.shadow:        { light: white1, dark: black0 }
+    disabledForeground:   *foregroundDisabled
+    sash.hoverBorder:     *borderActiveDim
+    selection.background: *selectionBackground # Eg. selecting text in a search widget
+    # widget.shadow:        { light: blue4, dark: blue2 }
 
-    focusBorder:     &focusBorder     blue2
-    errorForeground: &errorForeground { light: red1, dark: red2 }
+    focusBorder: *borderActive
+    errorForeground: *foregroundError
 
     ### Action colors
     editorActionList:
-      background: *editorPopupBackground
-      foreground: *editorPopupForeground
+      background: *backgroundHigh
+      foreground: *foreground
       focusForeground: *editorPopupActiveForeground
-      focusBackground: *editorPopupActiveBackground
+      focusBackground: *backgroundActive
 
     toolbar:
-      activeBackground: { light: white0, dark: black5 }
-      hoverBackground:  { light: white1, dark: black4 }
+      activeBackground: *buttonBackground
+      hoverBackground:  *buttonBackgroundHover
 
     ### Activity bar
     activityBar:
       background:       &activityBarBackground { light: white1, dark: black0 }
-      foreground:       &activityBarForeground { light: blue2,  dark: blue1 }
-      activeBorder:     *activityBarForeground
-      border:           { light: white0, dark: black3 }
-      dropBorder:       { light: blue2,  dark: blue0 }
-      inactiveForeground: { light: gray5, dark: gray0 }
+      foreground:       *borderActive
+      activeBorder:     *borderActive
+      border:           *borderDim
+      dropBorder:       *borderActiveDim
+      inactiveForeground: *foregroundDim
 
     activityBarBadge:
       background: *badgeBackground
@@ -279,43 +328,41 @@ vscode:
 
     ### Button
     button:
-      background:      &buttonBackground      { light: blue1, dark: blue0 }
-      hoverBackground: &buttonHoverBackground { light: blue0, dark: blue1 }
-      foreground:      &buttonForeground      { light: white5, dark: white3 }
-      secondaryBackground:      { light: white0, dark: black4 }
-      secondaryHoverBackground: { light: white0, dark: black5 }
+      background:      *buttonBackground
+      hoverBackground: *buttonBackgroundHover
+      foreground:      *buttonForeground
+      secondaryBackground:      { light: white2, dark: gray0 }
+      secondaryHoverBackground: { light: white1, dark: gray1 }
 
     ### Dropdown / input background
     dropdown:
-      background:     &inputBackground { light: white2, dark: black0 }
+      background: *inputBackground
       listBackground: *inputBackground
 
     ### Editor
     editor:
-      background: &editorBackground { light: white3, dark: black2 }
+      background: *background
       foreground: *foreground
 
-      selectionBackground: &editorSelectionBackground { light: blue2 50%, dark: blue0 50% }
+      findMatchBackground:  *matchBackgroundActive
+      findMatchHighlightBackground: *matchBackgroundInactive
 
-      findMatchBackground:          *editorSelectionBackground
-      findMatchHighlightBackground: &editorInactiveMatchBackground { light: white0 50%, dark: black5 50% }
-
-      wordHighlightBackground:       { light: white0 35%, dark: black5 35% }
-      wordHighlightStrongBackground: { light: white0 50%, dark: black5 50% }
-
-      selectionHighlightBackground: *editorInactiveMatchBackground
-      hoverHighlightBackground:     { light: white0 50%, dark: black5 50% }
-      lineHighlightBackground:      { light: white2, dark: black2 }
-
-      foldBackground: { light: blue2 25%, dark: blue0 25% }
+      # TODO
+      foldBackground: { light: blue5 35%, dark: blue0 35% }
+      # hoverHighlightBackground:     { light: white0 50%, dark: black5 50% }
+      # lineHighlightBackground: *cursorGuideColor
+      selectionBackground: *selectionBackground
+      selectionHighlightBackground: *selectionBackground
+      wordHighlightBackground:       { light: white0 35%, dark: black3 }
+      # wordHighlightStrongBackground: { light: white0 50%, dark: black5 50% }
 
     editorBracketMatch:
-      background: { light: blue2 50%, dark: blue0 50% }
-      border: *alpha0
+      # background: { light: blue3 50%, dark: blue1 50% }
+      border: *borderActive
 
     editorBracketHighlight:
       unexpectedBracket.foreground: { light: red1,    dark: red1 }
-      foreground1: { light: blue2,   dark: blue1 }
+      foreground1: { light: blue3,   dark: blue2 }
       foreground2: { light: purple2, dark: purple1 }
       foreground3: { light: cyan2,   dark: cyan1 }  # bracket pairs are code tokens, keep cyan
       foreground4: { light: yellow2, dark: yellow1 }
@@ -323,48 +370,48 @@ vscode:
       foreground6: { light: white0,  dark: black5 }
 
     editorCursor:
-      background: *cursorTextColor
+      background: *cursorTextForeground
       foreground: *cursorColor
 
     editorError:
-      foreground: red1
+      foreground: *foregroundError
 
     editorGutter:
-      addedBackground:    { light: green2 75%,  dark: green0 75% }
-      deletedBackground:  { light: red2 75%,    dark: red1 75% }
-      modifiedBackground: { light: yellow2 75%, dark: yellow1 75% }
-      foldingControlForeground: { light: blue1, dark: blue2 }
+      addedBackground: *gitAdded
+      deletedBackground: *gitDeleted
+      modifiedBackground: *gitModified
+      foldingControlForeground: *borderActive
 
     editorHoverWidget:
-      background: *editorPopupBackground
-      foreground: *editorPopupForeground
-      border:     *editorPopupBorder
+      background: *backgroundHigh
+      foreground: *foreground
+      border:     *border
 
     editorInlayHint:
       background: *alpha0
-      foreground: { light: yellow2, dark: yellow0 }
+      foreground: { light: purple2, dark: purple0 } # Purple for syntax inlay
 
     editorIndentGuide:
       background: *inactiveGuideStroke
       activeBackground: *guideStroke
 
     editorLineNumber:
-      foreground:       { light: white0, dark: black5 }
-      activeForeground: { light: blue0,  dark: blue1 }
+      foreground: *foregroundDisabled
+      activeForeground: *borderActive
 
     editorLink:
-      activeForeground: *textLinkActiveForeground
+      activeForeground: *linkColorActive
 
     editorOverviewRuler:
       border: *alpha0
 
-    editorRuler.foreground: { light: blue2 25%, dark: blue0 25% }
+    # editorRuler.foreground: { light: blue3 25%, dark: blue1 25% }
 
     editorWarning:
-      foreground: yellow0
+      foreground: *foregroundWarning
 
-    editorWhitespace:
-      foreground: { light: white0, dark: black4 }
+    # editorWhitespace:
+    #   foreground: { light: white0, dark: black4 }
 
     ### Diff editor
     diffEditor:
@@ -373,34 +420,35 @@ vscode:
 
     ### Editor groups & tabs
     editorGroup:
-      border: *sideBarBorder
-      dropBackground: { light: blue2 25%, dark: blue1 25% }
+      border: *border
+      dropBackground: *borderActiveDim
 
     editorGroupHeader:
-      tabsBackground: { light: white1, dark: black1 }
+      tabsBackground: *backgroundLow
 
     tab:
-      activeBackground:   { light: white3, dark: black2 }
-      activeForeground:   { light: blue1,  dark: blue2 }
+      activeBackground:   *background
+      activeForeground:   *foregroundAccent
       hoverBackground:    { light: white3, dark: black1 }
-      inactiveBackground: { light: white2, dark: black1 }
-      inactiveForeground: { light: white0, dark: black5 }
-      activeBorderTop:    { light: blue2,  dark: blue1 }
-      selectedBorderTop:  { light: blue2,  dark: blue1 }
+      inactiveBackground: *backgroundLow
+      inactiveForeground: *foregroundDim
+      activeBorderTop:    *borderActive
+      selectedBorderTop:  *borderActiveDim
       border: *alpha0
-      dragAndDropBorder: blue2
+      dragAndDropBorder: *borderActiveDim
       lastPinnedBorder: *alpha0
 
+    ####################################### TODO: START HERE
     ### Editor widgets
     editorWidget:
       background: { light: white5, dark: black4 }
       foreground: { light: black4, dark: white2 }
-      border: { light: blue2, dark: blue1 }
+      border: *borderActive
 
     editorSuggestWidget:
-      selectedBackground: *editorPopupActiveBackground
-      selectedForeground: *editorPopupForeground
-      highlightForeground:      { light: blue2, dark: blue1 }
+      selectedBackground: *backgroundActive
+      selectedForeground: *foreground
+      highlightForeground:      { light: blue3, dark: blue2 }
       focusHighlightForeground: *editorPopupActiveForeground
 
     ### Input
@@ -421,7 +469,7 @@ vscode:
       errorForeground:                  { light: white5, dark: white4 }
       errorBorder:     *errorBackground
 
-      infoBackground: &infoBackground { light: blue2,  dark: blue1 }
+      infoBackground: &infoBackground { light: blue3,  dark: blue2 }
       infoForeground:                 { light: white5, dark: white4 }
       infoBorder:     *infoBackground
 
@@ -438,7 +486,7 @@ vscode:
 
     ### Lists and trees
     list:
-      activeSelectionBackground:       &listActiveBackground { light: blue2,  dark: blue0 }
+      activeSelectionBackground:       &listActiveBackground { light: blue3,  dark: blue1 }
       activeSelectionForeground:       &listActiveForeground { light: black4, dark: white4 }
       activeSelectionIconForeground:   *listActiveForeground
       inactiveSelectionBackground:     *listActiveBackground
@@ -451,10 +499,10 @@ vscode:
       focusForeground: *listHoverForeground
       focusOutline:    *alpha0
 
-      dropBackground:        { light: blue2 25%, dark: blue1 25% }
-      filterMatchBackground: *matchBackground
+      dropBackground:        { light: blue3 25%, dark: blue2 25% }
+      filterMatchBackground: *matchBackgroundInactive
 
-      errorForeground:   *errorForeground
+      errorForeground:   *foregroundError
       warningForeground: { light: yellow2, dark: yellow1 }
 
     tree:
@@ -467,8 +515,8 @@ vscode:
       foregroundOpacity: *alpha50
       errorHighlight:     { light: red0 50%,    dark: red1 50% }
       warningHighlight:   { light: yellow1 50%, dark: yellow1 50% }
-      findMatchHighlight: { light: blue2 50%,   dark: white1 50% }
-      selectionHighlight: { light: blue2 50%,   dark: white0 50% }
+      findMatchHighlight: { light: blue3 50%,   dark: white1 50% }
+      selectionHighlight: { light: blue3 50%,   dark: white0 50% }
 
     minimapGutter:
       addedBackground:    green1 50%
@@ -483,19 +531,19 @@ vscode:
     ### Panel
     panel:
       background:
-        <<: *terminalBackground
+        <<: *background
       border:
         light: white2
         dark: black3
 
     panelTitle:
-      activeForeground:   { light: blue1,  dark: blue2 }
-      activeBorder:       { light: blue2,  dark: blue1 }
+      activeForeground:   { light: blue2,  dark: blue3 }
+      activeBorder:       { light: blue3,  dark: blue2 }
       inactiveForeground: { light: white0, dark: black5 }
 
     ### Progress bar
     progressBar:
-      background: blue2
+      background: blue3
 
     ### Quick picker
     pickerGroup:
@@ -503,12 +551,12 @@ vscode:
       border:     *pickerGroupDim
 
     quickInputList:
-      focusBackground: *editorPopupActiveBackground
-      focusForeground: *editorPopupForeground
+      focusBackground: *backgroundActive
+      focusForeground: *foreground
 
     ### Scrollbar
     scrollbar:
-      shadow: { light: blue2 50%, dark: blue0 50% }
+      shadow: { light: blue3 50%, dark: blue1 50% }
 
     scrollbarSlider:
       background:       { light: white0 75%, dark: black5 75% }
@@ -517,10 +565,10 @@ vscode:
 
     ### Sidebar
     sideBar:
-      background: *sideBarBackground
-      foreground: *sideBarForeground
-      border:     *sideBarBorder
-      dropBackground: { light: blue2 25%, dark: blue1 25% }
+      background: *backgroundLow
+      foreground: *foreground
+      border:     *border
+      dropBackground: { light: blue3 25%, dark: blue2 25% }
 
     sideBarSectionHeader:
       border: { light: white0, dark: black5 }
@@ -538,21 +586,21 @@ vscode:
 
     ### Status bar
     statusBar:
-      background: { light: blue2, dark: blue0 }
+      background: { light: blue3, dark: blue1 }
       foreground: { light: white5, dark: white1 }
       border: *alpha0
       debuggingBackground: { light: yellow1, dark: yellow0 }
       debuggingForeground: { light: black4,  dark: white4 }
 
     statusBarItem:
-      activeBackground: { light: blue2, dark: blue2 }
-      hoverBackground:  { light: blue2, dark: blue1 }
-      prominentBackground:      { light: blue2 50%, dark: blue1 50% }
-      prominentHoverBackground: { light: blue2,     dark: blue1 }
-      remoteBackground:      { light: blue2, dark: blue0 }
-      remoteHoverBackground: { light: blue2, dark: blue1 }
+      activeBackground: { light: blue3, dark: blue3 }
+      hoverBackground:  { light: blue3, dark: blue2 }
+      prominentBackground:      { light: blue3 50%, dark: blue2 50% }
+      prominentHoverBackground: { light: blue3,     dark: blue2 }
+      remoteBackground:      { light: blue3, dark: blue1 }
+      remoteHoverBackground: { light: blue3, dark: blue2 }
       hoverForeground:       { light: white5, dark: white2 }
-      remoteForeground:      { light: blue0,  dark: blue2 }
+      remoteForeground:      { light: blue1,  dark: blue3 }
       remoteHoverForeground: { light: white5, dark: white2 }
       errorBackground: red0
       errorForeground: red2
@@ -561,8 +609,8 @@ vscode:
 
     ### Text
     textLink:
-      foreground:       blue1
-      activeForeground: *textLinkActiveForeground
+      foreground:       blue2
+      activeForeground: *linkColorActive
 
     ### Title bar
     titleBar:
@@ -573,13 +621,13 @@ vscode:
 
     ### Notifications
     notifications:
-      background: *editorPopupBackground
-      foreground: *editorPopupForeground
-      border:     *editorPopupBorder
+      background: *backgroundHigh
+      foreground: *foreground
+      border:     *border
 
     notificationCenterHeader:
-      background: *sideBarBackground
-      foreground: *sideBarForeground
+      background: *backgroundLow
+      foreground: *foreground
 
     ### Window border
     window:

@@ -5,7 +5,7 @@ and semantic & textmate tokens.
 import re
 from typing import Annotated, TypedDict
 
-from pydantic import BeforeValidator
+from pydantic import BeforeValidator, Field
 
 from .base import Base
 from .colors import ColorSetting, FontStyle, TokenColorSetting
@@ -36,6 +36,7 @@ class SerializedColors(TypedDict):
 class VsCodeColors(Base):
     tokens: list[TokenGroup]
     ui: dict[Alphabetic, ColorSetting | UiSection]
+    var: Annotated[list, Field(..., exclude=True)]
 
     def serialize(self, style: ThemeStyle) -> dict:
         semantic_tokens, textmate_tokens, ui = {}, [], {}
