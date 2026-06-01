@@ -1,6 +1,7 @@
 import pathlib
 import re
 import sys
+from typing import TypedDict
 from xml.dom import minidom
 
 
@@ -31,9 +32,14 @@ class Color(enum.StrEnum):
 '''
 
 
+class ColorInfo(TypedDict):
+    name: str
+    code: str
+
+
 def main():
     source_path = DESIGN_PATH / sys.argv[1]
-    colors = []
+    colors: list[ColorInfo] = []
 
     with open(source_path) as svg_file:
         doc = minidom.parse(svg_file)
@@ -42,7 +48,9 @@ def main():
             if not style: continue
 
             match = re.match("fill:(#[a-fA-F0-9]{3,6});", style.value)
-            if not match: continue
+            if not match:
+                print(f"warning: no match on '{style.value}'")
+                continue
 
             colors.append({
                 "name": element.attributes["id"].value.lower(),
