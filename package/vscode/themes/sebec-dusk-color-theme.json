@@ -100,7 +100,6 @@
         "editorGroupHeader.tabsBackground": "#1a1f23",
         "tab.activeBackground": "#22292f",
         "tab.activeForeground": "#3b80c4",
-        "tab.hoverBackground": "#1a1f23",
         "tab.inactiveBackground": "#1a1f23",
         "tab.inactiveForeground": "#718598",
         "tab.activeBorderTop": "#3b80c4",
@@ -120,20 +119,20 @@
         "inputOption.activeBackground": "#2f669d",
         "inputOption.activeForeground": "#f6f7f9",
         "inputOption.activeBorder": "#1a1f23",
-        "inputOption.hoverBackground": "#333d47",
-        "inputValidation.errorBackground": "#a85764",
+        "inputOption.hoverBackground": "#3b80c4",
+        "inputValidation.errorBackground": "#874550",
         "inputValidation.errorForeground": "#fcfcfd",
-        "inputValidation.errorBorder": "#a85764",
+        "inputValidation.errorBorder": "#874550",
         "inputValidation.infoBackground": "#3b80c4",
         "inputValidation.infoForeground": "#fcfcfd",
         "inputValidation.infoBorder": "#3b80c4",
         "inputValidation.warningBackground": "#9e9047",
         "inputValidation.warningForeground": "#fcfcfd",
         "inputValidation.warningBorder": "#9e9047",
-        "keybindingLabel.background": "#00000000",
+        "keybindingLabel.background": "#1a1f23",
         "keybindingLabel.foreground": "#bcc7d2",
-        "keybindingLabel.border": "#3c4753",
-        "keybindingLabel.bottomBorder": "#3c4753",
+        "keybindingLabel.border": "#333d47",
+        "keybindingLabel.bottomBorder": "#333d47",
         "list.activeSelectionBackground": "#2f669d",
         "list.activeSelectionForeground": "#fcfcfd",
         "list.activeSelectionIconForeground": "#fcfcfd",
@@ -394,11 +393,35 @@
         },
         {
             "scope": [
-                "support.type.property-name.json",
-                "entity.name.tag.yaml"
+                "support.type.property-name.json"
             ],
             "settings": {
                 "foreground": "#718598"
+            }
+        },
+        {
+            "scope": [
+                "entity.name.tag.yaml"
+            ],
+            "settings": {
+                "foreground": "#bcc7d2"
+            }
+        },
+        {
+            "scope": [
+                "variable.other.anchor.yaml"
+            ],
+            "settings": {
+                "foreground": "#62bed0",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": [
+                "variable.other.alias.yaml"
+            ],
+            "settings": {
+                "foreground": "#3badc4"
             }
         }
     ]

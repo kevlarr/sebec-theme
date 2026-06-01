@@ -6,20 +6,34 @@ styleNames:
 
 # The design system tokens
 #
-# These are not meant to comprehensively cover every feature for any application,
-# like "badge colors" that are only used in VS Code; they are meant to codify the
-# design decisions shared between apps.
+# These are not meant to comprehensively cover every feature for any application, like
+# "badge colors" that are only used in VS Code; they are meant to codify the design decisions
+# shared between apps. Additionally, these should not include any alpha levels - they should be
+# entirely opaque, as transparency is application-dependent.
 system:
-    - &backgroundLow  { light: white2, dark: black1 }
-    - &background     { light: white3, dark: black2 }
-    - &backgroundHigh { light: white4, dark: black3 }
+    # The base background & foreground colors
+    - &backgroundLow   { light: white2, dark: black1 }
+    - &background      { light: white3, dark: black2 }
+    - &backgroundHigh  { light: white4, dark: black3 }
 
     - &foreground         { light: black5, dark: white0 }
     - &foregroundDim      { light: gray3, dark: gray3 }
     - &foregroundDisabled { light: white0, dark: black5 }
     - &foregroundAccent   { light: blue3,  dark: blue2 }
-    - &foregroundError    { light: red1, dark: red2 }
-    - &foregroundWarning  { light: yellow0, dark: yellow1 }
+
+    # These foreground colors are for inline messages; the corresponding alerts use light text
+    # on the various background colors
+    - &foregroundError   { light: red1, dark: red2 }
+    - &foregroundWarning { light: yellow0, dark: yellow1 }
+
+    # Alert background & foreground colors
+    - &alertBackgroundError   { light: red2,   dark: red0 }
+    - &alertBackgroundInfo    { light: blue3,  dark: blue2 }
+    - &alertBackgroundWarning { light: yellow1, dark: yellow0 }
+
+    - &alertForegroundError   { light: white5, dark: white4 }
+    - &alertForegroundInfo    { light: white5, dark: white4 }
+    - &alertForegroundWarning { light: black4,  dark: white4 }
 
     # Terminal cursor
     - &cursorColor { light: blue4, dark: blue2 } # The intended color for line or box cursors
@@ -269,11 +283,26 @@ vscode:
         - punctuation.definition.tag.end.svelte
 
     ### -----------------------------------------------------------------------
-    ### [JSON/YAML]
+    ### [JSON]
     - style: *tokenDeemphasized
       textmate:
         - support.type.property-name.json
+
+    ### -----------------------------------------------------------------------
+    ### [YAML]
+    - style: *tokenForeground
+      textmate:
         - entity.name.tag.yaml
+
+    # The anchor definition
+    - style: *tokenDeclaration
+      textmate:
+        - variable.other.anchor.yaml
+
+    # The anchor reference
+    - style: *tokenCallable
+      textmate:
+        - variable.other.alias.yaml
 
   ### MARK: UI
   ui:
@@ -500,7 +529,7 @@ vscode:
     tab:
       activeBackground:   *background
       activeForeground:   *foregroundAccent
-      hoverBackground:    { light: white3, dark: black1 }
+      # hoverBackground:    { light: white3, dark: black1 } # TODO wasn't working
       inactiveBackground: *backgroundLow
       inactiveForeground: *foregroundDim
       activeBorderTop:    *borderActive
@@ -544,21 +573,21 @@ vscode:
     inputOption:
       activeBackground: *buttonBackground
       activeForeground: *buttonForeground
-      activeBorder: *inputBackground
-      hoverBackground: { light: white0, dark: black4 }
+      activeBorder:     *inputBackground
+      hoverBackground:  *buttonBackgroundHover
 
     inputValidation:
-      errorBackground: &errorBackground { light: red2,   dark: red1 }
-      errorForeground:                  { light: white5, dark: white4 }
-      errorBorder:     *errorBackground
+      errorBackground: *alertBackgroundError
+      errorForeground: *alertForegroundError
+      errorBorder:     *alertBackgroundError
 
-      infoBackground: &infoBackground { light: blue3,  dark: blue2 }
-      infoForeground:                 { light: white5, dark: white4 }
-      infoBorder:     *infoBackground
+      infoBackground: *alertBackgroundInfo
+      infoForeground: *alertForegroundInfo
+      infoBorder:     *alertBackgroundInfo
 
-      warningBackground: &warningBackground { light: yellow1, dark: yellow0 }
-      warningForeground:                    { light: black4,  dark: white4 }
-      warningBorder:     *warningBackground
+      warningBackground: *alertBackgroundWarning
+      warningForeground: *alertForegroundWarning
+      warningBorder:     *alertBackgroundWarning
 
     ### -----------------------------------------------------------------------
     ### MARK: Integrated terminal colors
@@ -568,10 +597,10 @@ vscode:
     ### ✅ MARK: Keybinding label colors
     ### https://code.visualstudio.com/api/references/theme-color#keybinding-label-colors
     keybindingLabel:
-      background:   *alpha0
-      foreground:   { light: black5, dark: white0 }
-      border:       { light: white0, dark: black5 }
-      bottomBorder: { light: white0, dark: black5 }
+      background:   *backgroundLow
+      foreground:   *foreground
+      border:       *border
+      bottomBorder: *border
 
     ### -----------------------------------------------------------------------
     ### MARK: Keyboard shortcut table colors
