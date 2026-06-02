@@ -11,12 +11,18 @@ styleNames:
 # shared between apps. Additionally, these should not include any alpha levels - they should be
 # entirely opaque, as transparency is application-dependent.
 system:
+    ###
+    ### UI tokens
+    ###
+
     # The base background & foreground colors
     - &backgroundLow   { light: white2, dark: black1 }
     - &background      { light: white3, dark: black2 }
     - &backgroundHigh  { light: white4, dark: black3 }
 
     - &foreground         { light: black5, dark: white0 }
+    - &foregroundBold     { light: black3 bold, dark: white2 bold }
+    - &foregroundEm       { light: black3 italic, dark: white2 italic }
     - &foregroundDim      { light: gray3, dark: gray3 }
     - &foregroundDisabled { light: white0, dark: black5 }
     - &foregroundAccent   { light: blue2,  dark: blue2 }
@@ -66,6 +72,19 @@ system:
 
     # { light: black4, dark: white4 }
     - &matchForegroundActive { light: white5, dark: white2 }
+
+    ###
+    ### Syntax highlighting tokens
+    ###
+
+    - &syntaxContent       { light: black5, dark: white0 }                 # Primary content elements
+    - &syntaxComment       { light: blue3 italic, dark: blue1 italic }     # Comments!
+    - &syntaxDeclaration   { light: cyan0 bold, dark: cyan2 bold }         # The definitions of things
+    - &syntaxDocumentation { light: blue2 italic, dark: blue2 italic }     # Doc comments, docstrings, etc
+    - &syntaxEntity        { light: cyan0, dark: cyan1 }                   # Named things with definitions
+    - &syntaxLiteral       { light: green0, dark: green1 }                 # Literal values
+    - &syntaxMeta          { light: purple2 italic, dark: purple1 italic } # Code that's describing code
+    - &syntaxStructure     { light: gray4, dark: gray2 }                   # Structural elements of a program
 
 terminal:
   base:
@@ -140,73 +159,89 @@ vscode:
 
   ### MARK: Tokens
   tokens:
-    ### Semantic & textmate token color assignments.
+    ### Semantic & textmate token color mapping
     ###
     ### See:
     ###   https://macromates.com/manual/en/language_grammars#naming_conventions
     ###   https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
     ###   https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
 
-    ### MARK: Semantic tokens
+    - style: *syntaxComment
+      textmate:
+        - comment
+        - punctuation.definition.comment
 
-    # Declarations — bold signals "this is where the thing is defined"
-    - style: &tokenDeclaration { light: cyan0 bold, dark: cyan2 bold }
+    - style: *syntaxDocumentation
+      textmate:
+        - string.quoted.docstring
+
+    # 'Content' (ie. foreground) is the default mode, so these assignments are only necessary
+    # when trying to remove styling applied from other rules
+    - style: *syntaxContent
+    #   semantic:
+    #     - parameter
+    #   textmate:
+    #     - variable.parameter
+
+    - style: *syntaxDeclaration
       semantic:
-        - function.declaration
-        - method.declaration
+        # '*.declaration' would include things like variable declaration
         - class.declaration
         - enum.declaration
+        - function.declaration
         - interface.declaration
+        - method.declaration
+        - namespace.declaration
         - struct.declaration
+        - type.declaration
 
-    # Parameters — explicitly foreground to prevent bleed from keyword/punctuation rules
-    - style: &tokenForeground { light: black5, dark: white0 }
+    - style: *syntaxEntity
       semantic:
-        - parameter
-      textmate:
-        - variable.parameter
-
-    # Types — purely type-system constructs (interfaces, abstract types, type parameters)
-    - style: &tokenType { light: purple1, dark: purple2 }
-      semantic:
-        - type
-        - interface
-        - struct
+        - "*.builtin" # Eg. variable.builtin: `__name__`
+        - "*.defaultLibrary"
+        - class
         - enum
-        - typeParameter
-        - type.defaultLibrary
+        - function
+        - interface
+        - method
+        - namespace
+        - struct
+        - type
+        - typeParameter # FIXME: Should this be an annotation?
+      textmate:
+        - entity.name.class
+        - entity.name.function
+        - entity.name.type
+        - support.class
+        - support.function
+        - support.types
+        - support.type.primitive  # int, str, bool — callable builtins
+        - variable.language       # self, this, super
 
-    # Decorators and type annotations — italic purple: not executable code
-    # class.typeHint is explicit because VS Code gives exact-type rules precedence over
-    # wildcard-modifier rules (*.typeHint) for color; explicit beats both
-    - style: &tokenAnnotation { light: purple1 italic, dark: purple2 italic }
+    - style: *syntaxLiteral
       semantic:
+        - string
+      textmate:
+        - string
+        - constant.numeric
+        - constant.language  # None, True, False, null, nil, undefined
+
+    - style: *syntaxMeta
+      semantic:
+        # class.typeHint is explicit because VS Code gives exact-type rules precedence over
+        # wildcard-modifier rules (*.typeHint) for color; explicit beats both
         - decorator
         - "*.typeHint"
         - class.typeHint
         - class.decorator
         - "function.typeHint"
         - "function.decorator"
+      textmate:
+        - entity.name.function.decorator
+        - punctuation.decorator             # @ in TypeScript/JavaScript
+        - punctuation.definition.decorator  # @ in Python
 
-    # Callables — things that do: functions, methods, and classes (callable objects)
-    - style: &tokenCallable { light: cyan0, dark: cyan1 }
-      semantic:
-        - function
-        - method
-        - class               # classes are callable objects; *.typeHint overrides in annotation positions
-        - class.defaultLibrary
-        - variable.builtin    # self, cls, this, super
-        - function.defaultLibrary
-
-    # Literal values — all embedded data
-    - style: &tokenLiteral { light: green0, dark: green1 }
-      semantic:
-        - string
-
-    ### MARK: Textmate tokens
-
-    # De-emphasized tokens
-    - style: &tokenDeemphasized { light: gray4, dark: gray3 }
+    - style: *syntaxStructure
       textmate:
         # Keywords — all keywords unified: control flow, storage, modifiers
         - keyword
@@ -215,9 +250,11 @@ vscode:
         - keyword.operator.arithmetic
         - keyword.operator.assignment
         - keyword.operator.comparison
-        # Operators and punctuation — de-emphasized
-        - punctuation.parenthesis
+        # Operators and punctuation
         - punctuation.definition.arguments
+        - punctuation.definition.link
+        - punctuation.definition.metadata
+        - punctuation.parenthesis
         - punctuation.separator
         - punctuation.section.class.begin
         - punctuation.section.function.begin
@@ -227,55 +264,14 @@ vscode:
         - storage.type.function
         - storage.modifier
 
-    # Comments
-    - style: &tokenComment { light: blue3 italic, dark: blue1 italic }
-      textmate:
-        - comment
-        - punctuation.definition.comment
-
-    # Literal values — strings, numbers, language constants
-    - style: *tokenLiteral
-      textmate:
-        - string
-        - constant.numeric
-        - constant.language  # None, True, False, null, nil, undefined
-
-
-
-
-    # Types — textmate fallback (purely type-system constructs)
-    - style: *tokenType
-      textmate:
-        - entity.name.type
-        - support.type
-
-    # Callables — textmate fallback (classes are callable objects)
-    - style: *tokenCallable
-      textmate:
-        - entity.name.function
-        - entity.name.class
-        - support.function
-        - support.class
-        - support.type.primitive  # int, str, bool — callable builtins
-        - variable.language       # self, this, super
-
-    # Decorators — italic purple, including the @ symbol
-    - style: *tokenAnnotation
-      textmate:
-        - entity.name.function.decorator
-        - punctuation.decorator             # @ in TypeScript/JavaScript
-        - punctuation.definition.decorator  # @ in Python
-
     ### -----------------------------------------------------------------------
     ### [HTML/Svelte]
-    # Tag names are type/class identifiers — more prominent than attributes
-    - style: *tokenCallable
+    - style: *syntaxEntity
       textmate:
         - entity.name.tag.html
         - entity.name.tag.svelte
 
-    # Attribute names and punctuation recede like structural labels
-    - style: *tokenDeemphasized
+    - style: *syntaxStructure
       textmate:
         - entity.other.attribute-name.html
         - entity.other.attribute-name.svelte
@@ -285,26 +281,65 @@ vscode:
         - punctuation.definition.tag.end.svelte
 
     ### -----------------------------------------------------------------------
+    ### [Python]
+
+    # FIXME: I think variable.builtin is a python semantic token
+
+    ### -----------------------------------------------------------------------
+    ### [Markdown]
+
+    - style: { light: purple1 bold italic, dark: purple2 bold italic } # 'Stronger' version of *syntaxMeta
+      textmate:
+        - heading.1.markdown
+
+    - style: *syntaxMeta
+      textmate:
+        - heading.2.markdown
+        - heading.3.markdown
+        - heading.4.markdown
+        - heading.5.markdown
+        - heading.6.markdown
+
+
+    - style: *foregroundBold
+      textmate:
+        - markup.bold.markdown
+
+    - style: *foregroundEm
+      textmate:
+        - markup.italic.markdown
+
+    - style: *linkColor
+      textmate:
+        - meta.link.inline.markdown
+
+    - style: *syntaxStructure
+      textmate:
+        - punctuation.definition.bold.markdown
+        - punctuation.definition.heading.markdown
+        - punctuation.definition.italic.markdown
+        - punctuation.definition.list.begin.markdown
+
+    ### -----------------------------------------------------------------------
     ### [JSON]
-    - style: *tokenDeemphasized
+    - style: *syntaxStructure
       textmate:
         - support.type.property-name.json
 
     ### -----------------------------------------------------------------------
     ### [YAML]
-    - style: *tokenForeground
+
+    - style: *syntaxDeclaration
+      textmate:
+        - variable.other.anchor.yaml # &anchor
+
+    - style: *syntaxEntity
+      textmate:
+        - variable.other.alias.yaml # *anchor
+
+    - style: *syntaxStructure
       textmate:
         - entity.name.tag.yaml
-
-    # The anchor definition
-    - style: *tokenDeclaration
-      textmate:
-        - variable.other.anchor.yaml
-
-    # The anchor reference
-    - style: *tokenCallable
-      textmate:
-        - variable.other.alias.yaml
 
   ### MARK: UI
   ui:
@@ -484,7 +519,7 @@ vscode:
 
     editorInlayHint:
       background: *alpha0
-      foreground: { light: purple2, dark: purple0 } # Purple for syntax inlay
+      foreground: { light: purple1, dark: purple2 }
 
     editorIndentGuide:
       background: *inactiveGuideStroke

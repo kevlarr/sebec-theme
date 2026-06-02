@@ -1,17 +1,51 @@
 # Sebec Theme
 
-Sebec is a dual-mode color theme originally inspired by [Nord](https://www.nordtheme.com/)
-and [Verdandi](https://github.com/be5invis/vsc-theme-verdandi).
+<img src="./design/stacked-themes.png" style="width: 512"/>
+
+
 Application support currently includes:
 
-- iTerm2
-- VS Code
-- Windows Terminal
+- **Editors:** VS Code
+- **Terminals:** iTerm2, Windows Terminal
 
-**Important:** This theme is a work in progress, and language
-support in VS Code is still very preliminary.
+## Motivation
 
-<img src="./design/stacked-themes.png" style="width: 512"/>
+This theme exists solely due to my struggle to find light and dark themes (which I do switch between
+depending on the environment I'm in) that help more than they hurt; or in other words,
+that aid in visual processing more than they distract, and that have consistency in styling
+between light and dark modes so that switching between isn't jarring and doesn't require 'retraining'.
+
+I also wanted consistency between applications, too, since I do switch between editors for various reasons.
+
+## Philosophy
+
+Sebec uses a smaller palette of colors than many other themes.
+Rather than attempting to apply a unique colors or styles to as many token categories
+as possible, only a few colors are used to meaningfully distinguish between the most important
+signals and modes or reading.
+
+### Syntax Highlighting
+
+Syntax highlighting should reduce parsing effort, not just decorate code.
+There are a few legitimate jobs:
+
+1. Help the eye skip over structure to find meaning
+2. Distinguish modes of reading, eg. code vs. comments vs. string data
+3. Signal semantic categories
+
+Many themes fail (for me, like)
+
+The failure mode of most themes is trying to give every token type a unique color, which creates visual noise that slows parsing rather than accelerating it. Sebec uses a small number of colors, each tied to a meaningful semantic category.
+
+### UI Chrome
+
+
+## Inspiration
+
+Sebec is a dual-mode color theme originally inspired by [Nord](https://www.nordtheme.com/)
+and [Verdandi](https://github.com/be5invis/vsc-theme-verdandi).
+
+
 
 ## Motivation
 

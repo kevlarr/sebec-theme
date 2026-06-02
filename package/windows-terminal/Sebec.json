@@ -1,11 +1,11 @@
 [
     {
         "background": "#f6f7f9",
-        "foreground": "#3c4753",
+        "foreground": "#404d59",
         "selectionBackground": "#b0cce8",
         "cursorColor": "#89b3dc",
         "black": "#13171b",
-        "brightBlack": "#3c4753",
+        "brightBlack": "#404d59",
         "blue": "#3b80c4",
         "brightBlue": "#6299d0",
         "cyan": "#2f8b9d",
@@ -28,7 +28,7 @@
         "selectionBackground": "#234d76",
         "cursorColor": "#3b80c4",
         "black": "#13171b",
-        "brightBlack": "#3c4753",
+        "brightBlack": "#404d59",
         "blue": "#3b80c4",
         "brightBlue": "#6299d0",
         "cyan": "#3badc4",
