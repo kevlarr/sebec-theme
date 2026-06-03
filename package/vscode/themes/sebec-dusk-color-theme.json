@@ -265,14 +265,6 @@
         "*.typeHint": {
             "foreground": "#6e62a7",
             "fontStyle": "italic"
-        },
-        "function.decorator": {
-            "foreground": "#6e62a7",
-            "fontStyle": "italic"
-        },
-        "function.typeHint": {
-            "foreground": "#6e62a7",
-            "fontStyle": "italic"
         }
     },
     "tokenColors": [
@@ -331,22 +323,8 @@
         {
             "scope": [
                 "keyword",
-                "keyword.control",
-                "keyword.operator.logical",
-                "keyword.operator.arithmetic",
-                "keyword.operator.assignment",
-                "keyword.operator.comparison",
-                "punctuation.definition.arguments",
-                "punctuation.definition.link",
-                "punctuation.definition.metadata",
-                "punctuation.parenthesis",
-                "punctuation.separator",
-                "punctuation.section.class.begin",
-                "punctuation.section.function.begin",
-                "storage.type",
-                "storage.type.class",
-                "storage.type.function",
-                "storage.modifier"
+                "punctuation",
+                "storage"
             ],
             "settings": {
                 "foreground": "#637588"

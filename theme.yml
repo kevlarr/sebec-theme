@@ -233,8 +233,8 @@ vscode:
         - "*.typeHint"
         # - class.decorator
         # - class.typeHint
-        - function.decorator
-        - function.typeHint
+        # - function.decorator
+        # - function.typeHint
       textmate:
         - entity.name.function.decorator
         - punctuation.decorator             # @ in TypeScript/JavaScript
@@ -242,26 +242,9 @@ vscode:
 
     - style: *syntaxStructure
       textmate:
-        # Keywords — all keywords unified: control flow, storage, modifiers
         - keyword
-        - keyword.control
-        - keyword.operator.logical  # and, or, not, in, is
-        - keyword.operator.arithmetic
-        - keyword.operator.assignment
-        - keyword.operator.comparison
-        # Operators and punctuation
-        - punctuation.definition.arguments
-        - punctuation.definition.link
-        - punctuation.definition.metadata
-        - punctuation.parenthesis
-        - punctuation.separator
-        - punctuation.section.class.begin
-        - punctuation.section.function.begin
-        # Keywords eg. `def` and `class`
-        - storage.type
-        - storage.type.class
-        - storage.type.function
-        - storage.modifier
+        - punctuation
+        - storage # Keywords like `class` and `def` in Python
 
     ### -----------------------------------------------------------------------
     ### [HTML/Svelte]
