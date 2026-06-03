@@ -2,7 +2,6 @@
 
 <img src="./design/stacked-themes.png" style="width: 512"/>
 
-
 Application support currently includes:
 
 - **Editors:** VS Code
@@ -38,7 +37,6 @@ Many themes fail (for me, like)
 The failure mode of most themes is trying to give every token type a unique color, which creates visual noise that slows parsing rather than accelerating it. Sebec uses a small number of colors, each tied to a meaningful semantic category.
 
 ### UI Chrome
-
 
 ## Inspiration
 

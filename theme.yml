@@ -80,7 +80,7 @@ system:
     - &syntaxContent       { light: black5, dark: white0 }                 # Primary content elements
     - &syntaxComment       { light: blue3 italic, dark: blue1 italic }     # Comments!
     - &syntaxDeclaration   { light: cyan0 bold, dark: cyan2 bold }         # The definitions of things
-    - &syntaxDocumentation { light: blue2 italic, dark: blue2 italic }     # Doc comments, docstrings, etc
+    - &syntaxDocumentation { light: blue1 italic, dark: blue2 italic }     # Doc comments, docstrings, etc
     - &syntaxEntity        { light: cyan0, dark: cyan1 }                   # Named things with definitions
     - &syntaxLiteral       { light: green0, dark: green1 }                 # Literal values
     - &syntaxMeta          { light: purple2 italic, dark: purple1 italic } # Code that's describing code
@@ -185,7 +185,8 @@ vscode:
 
     - style: *syntaxDeclaration
       semantic:
-        # '*.declaration' would include things like variable declaration
+        # '*.declaration' would include things like enum member and variable declarations
+        # that should remain foreground
         - class.declaration
         - enum.declaration
         - function.declaration
@@ -198,7 +199,7 @@ vscode:
     - style: *syntaxEntity
       semantic:
         - "*.builtin" # Eg. variable.builtin: `__name__`
-        - "*.defaultLibrary"
+        # - "*.defaultLibrary"
         - class
         - enum
         - function
@@ -207,16 +208,15 @@ vscode:
         - namespace
         - struct
         - type
-        - typeParameter # FIXME: Should this be an annotation?
+        - typeParameter # TODO: Should this be an annotation?
       textmate:
         - entity.name.class
         - entity.name.function
         - entity.name.type
         - support.class
         - support.function
-        - support.types
-        - support.type.primitive  # int, str, bool — callable builtins
-        - variable.language       # self, this, super
+        # - support.types
+        # - support.type.primitive  # int, str, bool — callable builtins
 
     - style: *syntaxLiteral
       semantic:
@@ -228,14 +228,13 @@ vscode:
 
     - style: *syntaxMeta
       semantic:
-        # class.typeHint is explicit because VS Code gives exact-type rules precedence over
-        # wildcard-modifier rules (*.typeHint) for color; explicit beats both
         - decorator
+        - "*.decorator"
         - "*.typeHint"
-        - class.typeHint
-        - class.decorator
-        - "function.typeHint"
-        - "function.decorator"
+        # - class.decorator
+        # - class.typeHint
+        - function.decorator
+        - function.typeHint
       textmate:
         - entity.name.function.decorator
         - punctuation.decorator             # @ in TypeScript/JavaScript
@@ -292,6 +291,15 @@ vscode:
       textmate:
         - heading.1.markdown
 
+    - style: *syntaxLiteral
+      textmate:
+        - markup.fenced_code.block.markdown
+        - markup.inline.raw.string.markdown
+
+    - style: *syntaxDocumentation
+      textmate:
+        - markup.quote.markdown
+
     - style: *syntaxMeta
       textmate:
         - heading.2.markdown
@@ -315,10 +323,12 @@ vscode:
 
     - style: *syntaxStructure
       textmate:
+        - punctuation.definition.markdown
         - punctuation.definition.bold.markdown
         - punctuation.definition.heading.markdown
         - punctuation.definition.italic.markdown
         - punctuation.definition.list.begin.markdown
+        - punctuation.definition.raw.markdown
 
     ### -----------------------------------------------------------------------
     ### [JSON]

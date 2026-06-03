@@ -244,7 +244,6 @@
             "fontStyle": "bold"
         },
         "*.builtin": "#2f8b9d",
-        "*.defaultLibrary": "#2f8b9d",
         "class": "#2f8b9d",
         "enum": "#2f8b9d",
         "function": "#2f8b9d",
@@ -259,23 +258,19 @@
             "foreground": "#867cb6",
             "fontStyle": "italic"
         },
+        "*.decorator": {
+            "foreground": "#867cb6",
+            "fontStyle": "italic"
+        },
         "*.typeHint": {
             "foreground": "#867cb6",
             "fontStyle": "italic"
         },
-        "class.typeHint": {
-            "foreground": "#867cb6",
-            "fontStyle": "italic"
-        },
-        "class.decorator": {
+        "function.decorator": {
             "foreground": "#867cb6",
             "fontStyle": "italic"
         },
         "function.typeHint": {
-            "foreground": "#867cb6",
-            "fontStyle": "italic"
-        },
-        "function.decorator": {
             "foreground": "#867cb6",
             "fontStyle": "italic"
         }
@@ -296,7 +291,7 @@
                 "string.quoted.docstring"
             ],
             "settings": {
-                "foreground": "#3b80c4",
+                "foreground": "#2f669d",
                 "fontStyle": "italic"
             }
         },
@@ -306,10 +301,7 @@
                 "entity.name.function",
                 "entity.name.type",
                 "support.class",
-                "support.function",
-                "support.types",
-                "support.type.primitive",
-                "variable.language"
+                "support.function"
             ],
             "settings": {
                 "foreground": "#2f8b9d"
@@ -393,6 +385,24 @@
         },
         {
             "scope": [
+                "markup.fenced_code.block.markdown",
+                "markup.inline.raw.string.markdown"
+            ],
+            "settings": {
+                "foreground": "#47855c"
+            }
+        },
+        {
+            "scope": [
+                "markup.quote.markdown"
+            ],
+            "settings": {
+                "foreground": "#2f669d",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": [
                 "heading.2.markdown",
                 "heading.3.markdown",
                 "heading.4.markdown",
@@ -432,10 +442,12 @@
         },
         {
             "scope": [
+                "punctuation.definition.markdown",
                 "punctuation.definition.bold.markdown",
                 "punctuation.definition.heading.markdown",
                 "punctuation.definition.italic.markdown",
-                "punctuation.definition.list.begin.markdown"
+                "punctuation.definition.list.begin.markdown",
+                "punctuation.definition.raw.markdown"
             ],
             "settings": {
                 "foreground": "#8394a5"
