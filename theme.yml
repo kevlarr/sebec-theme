@@ -180,13 +180,13 @@ vscode:
     - style: *syntaxContent
     #   semantic:
     #     - parameter
-    #   textmate:
-    #     - variable.parameter
+      # textmate:
+      #   - variable.parameter
 
     - style: *syntaxDeclaration
       semantic:
         # '*.declaration' would include things like enum member and variable declarations
-        # that should remain foreground
+        # that should remain foreground color and normal weight
         - class.declaration
         - enum.declaration
         - function.declaration
