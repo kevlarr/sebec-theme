@@ -178,6 +178,7 @@ vscode:
     # 'Content' (ie. foreground) is the default mode, so these assignments are only necessary
     # when trying to remove styling applied from other rules
     - style: *syntaxContent
+      textmate:
     #   semantic:
     #     - parameter
       # textmate:
@@ -215,6 +216,7 @@ vscode:
         - entity.name.type
         - support.class
         - support.function
+        - constant.character.escape # Escape characters
 
     - style: *syntaxLiteral
       semantic:
@@ -276,6 +278,14 @@ vscode:
     ### [Python]
 
     # FIXME: I think variable.builtin is a python semantic token
+
+    ### -----------------------------------------------------------------------
+    ### [Go]
+
+    # Match general escape characters
+    - style: *syntaxEntity
+      textmate:
+        - constant.other.placeholder.go
 
     ### -----------------------------------------------------------------------
     ### [Markdown]
