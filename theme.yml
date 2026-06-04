@@ -18,7 +18,7 @@ system:
     # The base background & foreground colors
     - &backgroundLow   { light: white2, dark: black1 }
     - &background      { light: white3, dark: black2 }
-    - &backgroundHigh  { light: white4, dark: black3 }
+    - &backgroundHigh  { light: white5, dark: black4 }
 
     - &foreground         { light: black5, dark: white0 }
     - &foregroundBold     { light: black3 bold, dark: white2 bold }

@@ -1,73 +1,64 @@
-# Sebec Theme
+# Sebec Theme (WIP)
 
-<img src="./design/stacked-themes.png" style="width: 512"/>
+Originally inspired by more minimal themes like Nord, Zenburned, and Verdandi,
+Sebec represents the search for a balanced theme where there is just enough variation in font
+and UI styling for code (and the overall editor) to be easily scannable at a glance, but not so
+much that it becomes distracting, jarring, or tiring.
+Where light mode is equally as legible as dark, relying on the same palette, background variations,
+and highlighting choices to reduce the cognitive impact when switching between modes.
+
+
+<figure style="margin: 2rem 0">
+<img src="./design/stacked-themes.png"/>
+<figcaption style="text-align: center"><i>Light and dark modes share the same color palette and highlighting strategies</i></figcaption>
+</figure>
+
+Rather than trying to assign a wide range of colors across as many token categories as possible,
+which in many themes tends to impede visual processing rather than enable it (for me),
+Sebec aims to apply a more narrow range of colors to where it matters most; to downplay the
+elements that matter less, and to distinguish the most important semantic categories and modes of reading.
+
+Warmer, brighter yellows and reds are avoided except for diagnostics, and even purple and green are pushed toward blue and cyan - separate enough to be distinct, but close enough for the eye to transition smoothly.
+
+Signal over noise, more with less, that sort of thing.
+
+And at the UI layer, variations in background color should make it obvious which elements
+deserve attention - a widget opening even in the periphery should bring the eye toward it.
 
 Application support currently includes:
 
 - **Editors:** VS Code
 - **Terminals:** iTerm2, Windows Terminal
 
-## Motivation
-
-This theme exists solely due to my struggle to find light and dark themes (which I do switch between
-depending on the environment I'm in) that help more than they hurt; or in other words,
-that aid in visual processing more than they distract, and that have consistency in styling
-between light and dark modes so that switching between isn't jarring and doesn't require 'retraining'.
-
-I also wanted consistency between applications, too, since I do switch between editors for various reasons.
-
-## Philosophy
-
-Sebec uses a smaller palette of colors than many other themes.
-Rather than attempting to apply a unique colors or styles to as many token categories
-as possible, only a few colors are used to meaningfully distinguish between the most important
-signals and modes or reading.
-
-### Syntax Highlighting
-
-Syntax highlighting should reduce parsing effort, not just decorate code.
-There are a few legitimate jobs:
-
-1. Help the eye skip over structure to find meaning
-2. Distinguish modes of reading, eg. code vs. comments vs. string data
-3. Signal semantic categories
-
-Many themes fail (for me, like)
-
-The failure mode of most themes is trying to give every token type a unique color, which creates visual noise that slows parsing rather than accelerating it. Sebec uses a small number of colors, each tied to a meaningful semantic category.
-
-### UI Chrome
-
-## Inspiration
-
-Sebec is a dual-mode color theme originally inspired by [Nord](https://www.nordtheme.com/)
-and [Verdandi](https://github.com/be5invis/vsc-theme-verdandi).
-
-
-
-## Motivation
-
-Most color themes have become too distracting for me, and it's been incredibly
-hard to find a light theme that helps me distinguish between tokens and UI elements
-while still also being readable at a glance in bright light, so this theme is my
-attempt to balance colorization, "gray"-scale variations, and a wider spectrum
-of background elements such that:
-
-* Token colors are no longer so different that they are visually jarring and distracting
-* Background colors for panels & widgets naturally attract attention to the element
-that should have focus
-* Iteration and maintenance should be easy, ie. using named colors and generators
-rather than manually editing application-specific theme files and hex color values
+> Interestingly enough, after a lot of iteration and evolution, the theme has ended up bearing
+> some surprising similarities to the default Neovim light and dark themes. Go figure.
 
 ## Development
 
-Run `poetry install` to add the necessary scripts.
+Theme development should be easy. At least, it should be easier than having hex color values
+strewn all over the place.
+(What does `#3b80c4` mean and how does it relate to `#6299d0`?
+I don't know either, and I don't want to update the same code across different theme files
+whenever those shades of blue change - especially when some apps use RFB over hex.)
 
-The various theme files are generated via `poetry run generate`,
-which will update their files stored in `package/`.
+That's why Sebec uses a series of generators to ultimately create the application themes:
 
-After updating the Affinity Designer palette, re-export the `palette.svg` file
-from the artboard and then run `poetry run update-colors` to update the `Color` enum itself.
+- `poetry run update-colors <.svg file>` writes `color.py` to store all hex values as named
+  colors on an enum, eg. `blue0` or `purple2`
+- `poetry run generate` reads the `theme.yml` file which maps named colors to application
+  theme settings and then generates the various application packages or theme files
+
+The overall workflow looks like:
+
+1. Define or adjust color swatches in the Affinity Designer palette file
+2. Export the artboard (with named color layers) to SVG
+3. Run `update-colors` on that SVG
+4. Update `theme.yml`; map style objects (eg. `{ light: blue1 italic, dark: blue2 italic }`)
+  to keys, using anchors and aliases whenever possible to maintain consistency in styles
+5. Run `generate` for the series of Pydantic models to do their work and export all of the
+  different application theme packages or files into `package/`
+
+(First run `poetry install` to add the necessary scripts.)
 
 ### Testing the VS Code theme
 
