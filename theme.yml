@@ -78,7 +78,7 @@ system:
     ###
 
     - &syntaxContent       { light: black5, dark: white0 }                 # Primary content elements
-    - &syntaxComment       { light: blue3 italic, dark: blue1 italic }     # Comments!
+    - &syntaxComment       { light: blue4 italic, dark: blue1 italic }     # Comments!
     - &syntaxDeclaration   { light: cyan0 bold, dark: cyan2 bold }         # The definitions of things
     - &syntaxDocumentation { light: blue1 italic, dark: blue2 italic }     # Doc comments, docstrings, etc
     - &syntaxEntity        { light: cyan0, dark: cyan1 }                   # Named things with definitions
@@ -215,16 +215,15 @@ vscode:
         - entity.name.type
         - support.class
         - support.function
-        # - support.types
-        # - support.type.primitive  # int, str, bool — callable builtins
 
     - style: *syntaxLiteral
       semantic:
+        - builtinConstant.typeHint
         - string
       textmate:
         - string
         - constant.numeric
-        - constant.language  # None, True, False, null, nil, undefined
+        - constant.language  # Eg. None, True, False, null, nil, undefined
 
     - style: *syntaxMeta
       semantic:
@@ -247,14 +246,25 @@ vscode:
         - storage # Keywords like `class` and `def` in Python
 
     ### -----------------------------------------------------------------------
-    ### [HTML/Svelte]
+    ### [HTML/CSS/Svelte]
     - style: *syntaxEntity
       textmate:
-        - entity.name.tag.html
-        - entity.name.tag.svelte
+        - entity.name.tag # Includes tag names in HTML, Svelte, and CSS
+        - entity.name.tag
+        - punctuation.definition.variable.svelte # Eg. $ in $props
+
+    - style: *syntaxLiteral
+      textmate:
+        - meta.property-value.css
+        - support.constant.property-value.css
+
+    - style: *syntaxMeta
+      textmate:
+        - entity.other.attribute-name.pseudo-class.css
 
     - style: *syntaxStructure
       textmate:
+        - support.type.property-name.css
         - entity.other.attribute-name.html
         - entity.other.attribute-name.svelte
         - punctuation.definition.tag.begin.html
@@ -302,6 +312,8 @@ vscode:
 
     - style: *linkColor
       textmate:
+        # This will not pick up base URLs that are just normal paragraph text; it will only
+        # highlight links that are given display text, ie. `[text](link_to_highlight)`
         - meta.link.inline.markdown
 
     - style: *syntaxStructure
