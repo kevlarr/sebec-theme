@@ -1,8 +1,8 @@
 name: Sebec
 
 styleNames:
-  light: Dawn
-  dark: Dusk
+  light: Cloudy Day
+  dark: Evening Twilight
 
 # The design system tokens
 #
@@ -252,7 +252,6 @@ vscode:
     - style: *syntaxEntity
       textmate:
         - entity.name.tag # Includes tag names in HTML, Svelte, and CSS
-        - entity.name.tag
         - punctuation.definition.variable.svelte # Eg. $ in $props
 
     - style: *syntaxLiteral
@@ -372,18 +371,10 @@ vscode:
     errorForeground: *foregroundError
 
     ### -----------------------------------------------------------------------
-    ### ✅ MARK: Action colors
+    ### MARK: Action colors
     ### https://code.visualstudio.com/api/references/theme-color#action-colors
     editorActionList:
-      background: *backgroundHigh
-      foreground: *foreground
-      # focusForeground: *editorPopupActiveForeground # TODO
-      focusBackground: *backgroundActive
-
-    toolbar:
-      activeBackground: *buttonBackground
-      hoverBackground:  *buttonBackgroundHover
-
+      background: red2
     ### -----------------------------------------------------------------------
     ### MARK: Action bar colors
     ### https://code.visualstudio.com/api/references/theme-color#action-bar-colors
@@ -495,11 +486,15 @@ vscode:
       # TODO
       foldBackground: { light: blue5 35%, dark: blue0 35% }
       # hoverHighlightBackground:     { light: white0 50%, dark: black5 50% }
-      # lineHighlightBackground: *cursorGuideColor
+      lineHighlightBackground: { light: white2, dark: black3 }
       selectionBackground: *selectionBackground
       selectionHighlightBackground: *selectionBackground
-      wordHighlightBackground:       { light: white0 35%, dark: black3 }
-      # wordHighlightStrongBackground: { light: white0 50%, dark: black5 50% }
+      # These control background colors when the cursor is an identifier - "strong" is where it's declared
+      # or written to, other is just 'read' references. There are corresponding `*Border` versions that are
+      # not set by default. It is incredibly distracting for them to be always popping up in normal editing,
+      # especially when an identifier can be double-clicked/text-selected and matches show up anyway.
+      wordHighlightBackground:       *alpha0
+      wordHighlightStrongBackground: *alpha0
 
     editorBracketMatch:
       # background: { light: blue3 50%, dark: blue1 50% }
@@ -513,6 +508,8 @@ vscode:
       foreground4: { light: yellow2, dark: yellow1 }
       foreground5: { light: green2,  dark: green1 }
       foreground6: { light: white0,  dark: black5 }
+
+    # editorCodeLens.foreground: red1 # TODO
 
     editorCursor:
       background: *cursorTextForeground
@@ -760,6 +757,24 @@ vscode:
     ### -----------------------------------------------------------------------
     ### MARK: Peek view colors
     ### https://code.visualstudio.com/api/references/theme-color#peek-view-colors
+
+    peekView.border: *borderActive
+
+    peekViewEditor:
+      background: { light: blue4 20%, dark: blue0 20% }
+      matchHighlightBackground: *matchBackgroundActive
+
+    peekViewResult:
+      background: { light: blue4 30%, dark: blue0 5% }
+      fileForeground: *foreground
+      lineForeground: *foregroundDim
+      matchHighlightBackground: *alpha0
+      selectionBackground: *selectionBackground
+      selectionForeground: *selectionForeground
+
+    peekViewTitle.background: *borderActiveDim
+    peekViewTitleDescription.foreground: *foreground
+    # peekViewTitleLabel.foreground:
 
     ### -----------------------------------------------------------------------
     ### MARK: Ports colors
